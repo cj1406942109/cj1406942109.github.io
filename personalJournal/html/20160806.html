@@ -897,26 +897,28 @@ div.mermaidTooltip {
 <h3 class="line" data-line="2" id="&#x5DE5;&#x4F5C;&#x5185;&#x5BB9;">工作内容</h3>
 <h4 class="line" data-line="4" id="&#x4E91;&#x5E73;&#x53F0;&#x524D;&#x7AEF;&#x6587;&#x6863;&#x6574;&#x7406;"><strong>云平台前端文档整理</strong></h4>
 <ol>
-<li><p class="line" data-line="6">完成度：</p></li>
+<li><p class="line" data-line="6">完成度：5%</p></li>
 <li><p class="line" data-line="7">说明：阅读登录模块相关代码，同时学习angularjs</p></li>
 <li><p class="line" data-line="8">详细信息：
 <ul>
 <li><p class="line" data-line="9">login.html</p></li>
+<li><p class="line" data-line="10">loginMain.js</p></li>
+<li><p class="line" data-line="11">loginApp.js</p></li>
 </ul></p></li>
 </ol>
 <hr>
-<h3 class="line" data-line="16" id="&#x5B66;&#x4E60;&#x5185;&#x5BB9;">学习内容</h3>
-<h4 class="line" data-line="18" id="nodejs&#x5B66;&#x4E60;-nodejs&#x5F00;&#x53D1;&#x6307;&#x5357;"><strong>NodeJs学习–Node.js开发指南</strong></h4>
-<h5 class="line" data-line="20" id="&#x7B2C;&#x4E09;&#x7AE0;nodejs&#x5FEB;&#x901F;&#x5165;&#x95E8;">第三章：Node.js快速入门</h5>
-<p class="line" data-line="21"><strong>个人总结</strong></p>
+<h3 class="line" data-line="15" id="&#x5B66;&#x4E60;&#x5185;&#x5BB9;">学习内容</h3>
+<h4 class="line" data-line="17" id="nodejs&#x5B66;&#x4E60;-nodejs&#x5F00;&#x53D1;&#x6307;&#x5357;"><strong>NodeJs学习–Node.js开发指南</strong></h4>
+<h5 class="line" data-line="19" id="&#x7B2C;&#x4E09;&#x7AE0;nodejs&#x5FEB;&#x901F;&#x5165;&#x95E8;">第三章：Node.js快速入门</h5>
+<p class="line" data-line="20"><strong>个人总结</strong></p>
 <ul>
-<li><p class="line" data-line="22"><strong>supervisor</strong>的使用
+<li><p class="line" data-line="21"><strong>supervisor</strong>的使用
 <blockquote>
-<p class="line" data-line="23">用于监视代码的改动，自动重启node.js,避免每次修改代码都需要重新执行node xx.js。</p>
-<p class="line" data-line="25">使用方法：</p>
+<p class="line" data-line="22">用于监视代码的改动，自动重启node.js,避免每次修改代码都需要重新执行node xx.js。</p>
+<p class="line" data-line="24">使用方法：</p>
 <pre class="editor-colors lang-js"><div class="line"><span class="source js"><span>npm&nbsp;install&nbsp;</span><span class="keyword operator js"><span>-</span></span><span>g&nbsp;supervisor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment line double-slash js"><span class="punctuation definition comment js"><span>//</span></span><span>全局安装supervisor</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source js"><span>supervisor&nbsp;</span><span class="variable other object js"><span>xx</span></span><span class="meta delimiter property period js"><span>.</span></span><span class="variable other property js"><span>js</span></span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment line double-slash js"><span class="punctuation definition comment js"><span>//</span></span><span>使用supervisor启动xx.js</span><span>&nbsp;</span></span></span></div></pre>
 </blockquote></p></li>
-<li><p class="line" data-line="30">理解<strong>单线程事件驱动异步式（非阻塞）I/O</strong>和<strong>多线程同步式（阻塞）I/O</strong>的区别
+<li><p class="line" data-line="29">理解<strong>单线程事件驱动异步式（非阻塞）I/O</strong>和<strong>多线程同步式（阻塞）I/O</strong>的区别
 <table>
 <thead>
 <tr><th style="text-align:center">同步式I/O(阻塞式)</th><th style="text-align:center">异步式I/O(非阻塞式)</th></tr>
@@ -931,29 +933,29 @@ div.mermaidTooltip {
 </tbody>
 </table>
 </p></li>
-<li><p class="line" data-line="39">理解<strong>事件循环机制</strong>
+<li><p class="line" data-line="38">理解<strong>事件循环机制</strong>
 <blockquote>
-<p class="line" data-line="40">nodejs程序由事件循环开始，到事件循环结束，所有逻辑都是事件循环的回调函数。</p>
-<p class="line" data-line="42"><em>nodejs始终在事件循环中，程序入口就是事件循环第一个事件的回调函数。</em></p>
+<p class="line" data-line="39">nodejs程序由事件循环开始，到事件循环结束，所有逻辑都是事件循环的回调函数。</p>
+<p class="line" data-line="41"><em>nodejs始终在事件循环中，程序入口就是事件循环第一个事件的回调函数。</em></p>
 </blockquote></p></li>
-<li><p class="line" data-line="43"><strong>模块和包</strong>
+<li><p class="line" data-line="42"><strong>模块和包</strong>
 <blockquote>
-<p class="line" data-line="44">一个nodejs文件就是一个模块，包是模块的集合。</p>
+<p class="line" data-line="43">一个nodejs文件就是一个模块，包是模块的集合。</p>
 <ol>
-<li><p class="line" data-line="46">exports是模块公开的接口，require用于从外部获取一个模块的接口(即所获取模块的exports对象)。</p></li>
-<li><p class="line" data-line="47"><em>对同一个模块无论调用多少次require，都只会获得同一个模块。</em></p></li>
-<li><p class="line" data-line="48">覆盖exports，使用<code>module.exports = Object;</code>，用Object对象来覆盖exports对象。exports模块本身只是一个空对象<code>{}</code>，专门用来声明接口。</p></li>
-<li><p class="line" data-line="49">学习<strong>包的发布</strong>，
+<li><p class="line" data-line="45">exports是模块公开的接口，require用于从外部获取一个模块的接口(即所获取模块的exports对象)。</p></li>
+<li><p class="line" data-line="46"><em>对同一个模块无论调用多少次require，都只会获得同一个模块。</em></p></li>
+<li><p class="line" data-line="47">覆盖exports，使用<code>module.exports = Object;</code>，用Object对象来覆盖exports对象。exports模块本身只是一个空对象<code>{}</code>，专门用来声明接口。</p></li>
+<li><p class="line" data-line="48">学习<strong>包的发布</strong>，
 <ul>
-<li><p class="line" data-line="50">在要发布的包目录下使用<code>npm init</code>命令，可以根据提示完成<code>package.json</code>文件的生成；</p></li>
-<li><p class="line" data-line="51">使用<code>npm adduser</code>命令完成npm账号的创建，用于今后维护自己的包(<code>username:cj1406942109</code>、<code>password:same as github</code>、<code>email:1406942109@qq.com</code>)。</p></li>
-<li><p class="line" data-line="52"><code>npm whoami</code>命令可以查看是否已经取得账号。</p></li>
-<li><p class="line" data-line="53"><code>npm publish</code>命令完成发布，可以访问<a href="http://search.npmjs.org/">http://search.npmjs.org/</a>找到自己发布的包。</p></li>
-<li><p class="line" data-line="54"><code>npm unpublish</code>命令可以取消发布</p></li>
+<li><p class="line" data-line="49">在要发布的包目录下使用<code>npm init</code>命令，可以根据提示完成<code>package.json</code>文件的生成；</p></li>
+<li><p class="line" data-line="50">使用<code>npm adduser</code>命令完成npm账号的创建，用于今后维护自己的包(<code>username:cj1406942109</code>、<code>password:same as github</code>、<code>email:1406942109@qq.com</code>)。</p></li>
+<li><p class="line" data-line="51"><code>npm whoami</code>命令可以查看是否已经取得账号。</p></li>
+<li><p class="line" data-line="52"><code>npm publish</code>命令完成发布，可以访问<a href="http://search.npmjs.org/">http://search.npmjs.org/</a>找到自己发布的包。</p></li>
+<li><p class="line" data-line="53"><code>npm unpublish</code>命令可以取消发布</p></li>
 </ul></p></li>
-<li><p class="line" data-line="55">学习<strong>命令行调试</strong>
+<li><p class="line" data-line="54">学习<strong>命令行调试</strong>
 <ul>
-<li><p class="line" data-line="56">本地调试：<code>node debug debug.js</code>(debug.js为要调试的脚本)， 启动调试工具</p>
+<li><p class="line" data-line="55">本地调试：<code>node debug debug.js</code>(debug.js为要调试的脚本)， 启动调试工具</p>
 <table>
 <thead>
 <tr><th style="text-align:center">命令</th><th style="text-align:center">功能</th></tr>
@@ -981,175 +983,175 @@ div.mermaidTooltip {
 </tbody>
 </table>
 </li>
-<li><p class="line" data-line="79">远程调试：</p>
+<li><p class="line" data-line="78">远程调试：</p>
 <ol>
-<li><p class="line" data-line="80">调试服务器端使用命令<code>node --debug[=port] debug.js</code>(debug.js为要调试的脚本)，打开调试服务器，此时脚本会正常执行，但不会暂停，执行过程中客户端可以连接到调试服务器。如果要求脚本暂停执行，等待客户端连接，应使用<code>--debug-brk</code>选项，即<code>node --debug-brk[=port] debug.js</code>。</p></li>
-<li><p class="line" data-line="81">客户端连接，使用命令<code>node debug url:port</code>,连接成功后，其他操作与本地调试相同</p></li>
+<li><p class="line" data-line="79">调试服务器端使用命令<code>node --debug[=port] debug.js</code>(debug.js为要调试的脚本)，打开调试服务器，此时脚本会正常执行，但不会暂停，执行过程中客户端可以连接到调试服务器。如果要求脚本暂停执行，等待客户端连接，应使用<code>--debug-brk</code>选项，即<code>node --debug-brk[=port] debug.js</code>。</p></li>
+<li><p class="line" data-line="80">客户端连接，使用命令<code>node debug url:port</code>,连接成功后，其他操作与本地调试相同</p></li>
 </ol></li>
-<li><p class="line" data-line="82">使用node-inspector调试：</p>
+<li><p class="line" data-line="81">使用node-inspector调试：</p>
 <ol>
-<li><p class="line" data-line="83">安装node-inspector <code>npm install -g node-inspector</code></p></li>
-<li><p class="line" data-line="84">在终端通过 <code>node --debug-brk=5858 debug.js</code>连接要调试的脚本的调试服务器</p></li>
-<li><p class="line" data-line="85">启动node-inspector，终端输入<code>node-inspector</code></p></li>
-<li><p class="line" data-line="86">在浏览器打开http:127.0.0.1:8080/debug?port=5858</p></li>
-<li><p class="line" data-line="87">使用方法和浏览器端脚本调试工具相同</p></li>
+<li><p class="line" data-line="82">安装node-inspector <code>npm install -g node-inspector</code></p></li>
+<li><p class="line" data-line="83">在终端通过 <code>node --debug-brk=5858 debug.js</code>连接要调试的脚本的调试服务器</p></li>
+<li><p class="line" data-line="84">启动node-inspector，终端输入<code>node-inspector</code></p></li>
+<li><p class="line" data-line="85">在浏览器打开http:127.0.0.1:8080/debug?port=5858</p></li>
+<li><p class="line" data-line="86">使用方法和浏览器端脚本调试工具相同</p></li>
 </ol></li>
 </ul></p></li>
 </ol>
 </blockquote></p></li>
 </ul>
-<h4 class="line" data-line="90" id="angularjs&#x5B66;&#x4E60;-angularjs&#x6743;&#x5A01;&#x6559;&#x7A0B;"><strong>AngularJS学习–AngularJS权威教程</strong></h4>
-<h5 class="line" data-line="92" id="&#x7B2C;&#x5341;&#x7AE0;&#x6307;&#x4EE4;&#x8BE6;&#x89E3;">第十章：指令详解</h5>
-<p class="line" data-line="94"><strong>个人总结</strong>(原书该章节发现很多错误：修正参考<a href="https://docs.angularjs.org/api/ng/service/$compile#">angularjs<code>$compile</code>服务</a>)</p>
+<h4 class="line" data-line="89" id="angularjs&#x5B66;&#x4E60;-angularjs&#x6743;&#x5A01;&#x6559;&#x7A0B;"><strong>AngularJS学习–AngularJS权威教程</strong></h4>
+<h5 class="line" data-line="91" id="&#x7B2C;&#x5341;&#x7AE0;&#x6307;&#x4EE4;&#x8BE6;&#x89E3;">第十章：指令详解</h5>
+<p class="line" data-line="93"><strong>个人总结</strong>(原书该章节发现很多错误：修正参考<a href="https://docs.angularjs.org/api/ng/service/$compile#">angularjs<code>$compile</code>服务</a>)</p>
 <ul>
-<li><p class="line" data-line="95"><strong>基本语法</strong>
+<li><p class="line" data-line="94"><strong>基本语法</strong>
 <pre class="editor-colors lang-js"><div class="line"><span class="source js"><span class="variable other object js"><span>angular</span></span><span class="meta method-call js"><span class="meta delimiter method period js"><span>.</span></span><span class="entity name function js"><span>module</span></span><span class="meta arguments js"><span class="punctuation definition arguments begin bracket round js"><span>(</span></span><span class="string quoted single js"><span class="punctuation definition string begin js"><span>&#39;</span></span><span>myApp</span><span class="punctuation definition string end js"><span>&#39;</span></span></span><span class="meta delimiter object comma js"><span>,</span></span><span class="meta brace square js"><span>[</span><span>]</span></span><span class="punctuation definition arguments end bracket round js"><span>)</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta method-call js"><span class="meta delimiter method period js"><span>.</span></span><span class="entity name function js"><span>directive</span></span><span class="meta arguments js"><span class="punctuation definition arguments begin bracket round js"><span>(</span></span><span class="string quoted single js"><span class="punctuation definition string begin js"><span>&#39;</span></span><span>myDirective</span><span class="punctuation definition string end js"><span>&#39;</span></span></span><span class="meta delimiter object comma js"><span>,</span></span><span class="meta function js"><span class="storage type function js"><span>function</span></span><span class="meta parameters js"><span class="punctuation definition parameters begin bracket round js"><span>(</span></span><span class="punctuation definition parameters end bracket round js"><span>)</span></span></span></span><span class="punctuation definition function body begin bracket curly js"><span>{</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta method-call js"><span class="meta arguments js"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="storage type var js"><span>var</span></span><span>&nbsp;directiveDefinitionObject&nbsp;</span><span class="keyword operator assignment js"><span>=</span></span><span>&nbsp;</span><span class="meta brace curly js"><span>{</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta method-call js"><span class="meta arguments js"><span class="punctuation whitespace comment leading js"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="comment line double-slash js"><span class="punctuation definition comment js"><span>//</span></span><span>对象属性</span><span>&nbsp;</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta method-call js"><span class="meta arguments js"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;priority</span><span class="keyword operator js"><span>:</span></span><span>&nbsp;</span><span class="constant numeric decimal js"><span>0</span></span><span class="meta delimiter object comma js"><span>,</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta method-call js"><span class="meta arguments js"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;template</span><span class="keyword operator js"><span>:</span></span><span>&nbsp;</span><span class="string quoted single js"><span class="punctuation definition string begin js"><span>&#39;</span></span><span>&lt;div&gt;&lt;/div&gt;</span><span class="punctuation definition string end js"><span>&#39;</span></span></span><span class="meta delimiter object comma js"><span>,</span></span><span>&nbsp;</span><span class="comment line double-slash js"><span class="punctuation definition comment js"><span>//</span></span><span>&nbsp;or&nbsp;//&nbsp;function(tElement,&nbsp;tAttrs)&nbsp;{&nbsp;...&nbsp;},</span><span>&nbsp;</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta method-call js"><span class="meta arguments js"><span class="punctuation whitespace comment leading js"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="comment line double-slash js"><span class="punctuation definition comment js"><span>//</span></span><span>&nbsp;or</span><span>&nbsp;</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta method-call js"><span class="meta arguments js"><span class="punctuation whitespace comment leading js"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="comment line double-slash js"><span class="punctuation definition comment js"><span>//</span></span><span>&nbsp;templateUrl:&nbsp;&#39;directive.html&#39;,&nbsp;//&nbsp;or&nbsp;//&nbsp;function(tElement,&nbsp;tAttrs)&nbsp;{&nbsp;...&nbsp;},</span><span>&nbsp;</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta method-call js"><span class="meta arguments js"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transclude</span><span class="keyword operator js"><span>:</span></span><span>&nbsp;</span><span class="constant language boolean false js"><span>false</span></span><span class="meta delimiter object comma js"><span>,</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta method-call js"><span class="meta arguments js"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;restrict</span><span class="keyword operator js"><span>:</span></span><span>&nbsp;</span><span class="string quoted single js"><span class="punctuation definition string begin js"><span>&#39;</span></span><span>A</span><span class="punctuation definition string end js"><span>&#39;</span></span></span><span class="meta delimiter object comma js"><span>,</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta method-call js"><span class="meta arguments js"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;templateNamespace</span><span class="keyword operator js"><span>:</span></span><span>&nbsp;</span><span class="string quoted single js"><span class="punctuation definition string begin js"><span>&#39;</span></span><span>html</span><span class="punctuation definition string end js"><span>&#39;</span></span></span><span class="meta delimiter object comma js"><span>,</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta method-call js"><span class="meta arguments js"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scope</span><span class="keyword operator js"><span>:</span></span><span>&nbsp;</span><span class="constant language boolean false js"><span>false</span></span><span class="meta delimiter object comma js"><span>,</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta method-call js"><span class="meta arguments js"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta function json js"><span class="entity name function js"><span>controller</span></span><span class="keyword operator assignment js"><span>:</span></span><span>&nbsp;</span><span class="storage type function js"><span>function</span></span><span class="meta parameters js"><span class="punctuation definition parameters begin bracket round js"><span>(</span></span><span class="variable parameter function js"><span>$scope</span></span><span class="meta delimiter object comma js"><span>,</span></span><span>&nbsp;</span><span class="variable parameter function js"><span>$element</span></span><span class="meta delimiter object comma js"><span>,</span></span><span>&nbsp;</span><span class="variable parameter function js"><span>$attrs</span></span><span class="meta delimiter object comma js"><span>,</span></span><span>&nbsp;</span><span class="variable parameter function js"><span>$transclude</span></span><span class="meta delimiter object comma js"><span>,</span></span><span>&nbsp;</span><span class="variable parameter function js"><span>otherInjectables</span></span><span class="punctuation definition parameters end bracket round js"><span>)</span></span></span></span><span>&nbsp;</span><span class="punctuation definition function body begin bracket curly js"><span>{</span></span><span>&nbsp;</span><span class="keyword operator spread js"><span>...</span></span><span>&nbsp;</span><span class="punctuation definition function body end bracket curly js"><span>}</span></span><span class="meta delimiter object comma js"><span>,</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta method-call js"><span class="meta arguments js"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;controllerAs</span><span class="keyword operator js"><span>:</span></span><span>&nbsp;</span><span class="string quoted single js"><span class="punctuation definition string begin js"><span>&#39;</span></span><span>stringIdentifier</span><span class="punctuation definition string end js"><span>&#39;</span></span></span><span class="meta delimiter object comma js"><span>,</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta method-call js"><span class="meta arguments js"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bindToController</span><span class="keyword operator js"><span>:</span></span><span>&nbsp;</span><span class="constant language boolean false js"><span>false</span></span><span class="meta delimiter object comma js"><span>,</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta method-call js"><span class="meta arguments js"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;require</span><span class="keyword operator js"><span>:</span></span><span>&nbsp;</span><span class="string quoted single js"><span class="punctuation definition string begin js"><span>&#39;</span></span><span>siblingDirectiveName</span><span class="punctuation definition string end js"><span>&#39;</span></span></span><span class="meta delimiter object comma js"><span>,</span></span><span>&nbsp;</span><span class="comment line double-slash js"><span class="punctuation definition comment js"><span>//</span></span><span>&nbsp;or&nbsp;//&nbsp;[&#39;^parentDirectiveName&#39;,&nbsp;&#39;?optionalDirectiveName&#39;,&nbsp;&nbsp;&nbsp;&nbsp;&#39;?^optionalParent&#39;],</span><span>&nbsp;</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta method-call js"><span class="meta arguments js"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta function json js"><span class="entity name function js"><span>compile</span></span><span class="keyword operator assignment js"><span>:</span></span><span>&nbsp;</span><span class="storage type function js"><span>function</span></span><span>&nbsp;</span><span class="entity name function js"><span>compile</span></span><span class="meta parameters js"><span class="punctuation definition parameters begin bracket round js"><span>(</span></span><span class="variable parameter function js"><span>tElement</span></span><span class="meta delimiter object comma js"><span>,</span></span><span>&nbsp;</span><span class="variable parameter function js"><span>tAttrs</span></span><span class="meta delimiter object comma js"><span>,</span></span><span>&nbsp;</span><span class="variable parameter function js"><span>transclude</span></span><span class="punctuation definition parameters end bracket round js"><span>)</span></span></span></span><span>&nbsp;</span><span class="punctuation definition function body begin bracket curly js"><span>{</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta method-call js"><span class="meta arguments js"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword control js"><span>return</span></span><span>&nbsp;</span><span class="meta brace curly js"><span>{</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta method-call js"><span class="meta arguments js"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta function json js"><span class="entity name function js"><span>pre</span></span><span class="keyword operator assignment js"><span>:</span></span><span>&nbsp;</span><span class="storage type function js"><span>function</span></span><span>&nbsp;</span><span class="entity name function js"><span>preLink</span></span><span class="meta parameters js"><span class="punctuation definition parameters begin bracket round js"><span>(</span></span><span class="variable parameter function js"><span>scope</span></span><span class="meta delimiter object comma js"><span>,</span></span><span>&nbsp;</span><span class="variable parameter function js"><span>iElement</span></span><span class="meta delimiter object comma js"><span>,</span></span><span>&nbsp;</span><span class="variable parameter function js"><span>iAttrs</span></span><span class="meta delimiter object comma js"><span>,</span></span><span>&nbsp;</span><span class="variable parameter function js"><span>controller</span></span><span class="punctuation definition parameters end bracket round js"><span>)</span></span></span></span><span>&nbsp;</span><span class="punctuation definition function body begin bracket curly js"><span>{</span></span><span>&nbsp;</span><span class="keyword operator spread js"><span>...</span></span><span>&nbsp;</span><span class="punctuation definition function body end bracket curly js"><span>}</span></span><span class="meta delimiter object comma js"><span>,</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta method-call js"><span class="meta arguments js"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta function json js"><span class="entity name function js"><span>post</span></span><span class="keyword operator assignment js"><span>:</span></span><span>&nbsp;</span><span class="storage type function js"><span>function</span></span><span>&nbsp;</span><span class="entity name function js"><span>postLink</span></span><span class="meta parameters js"><span class="punctuation definition parameters begin bracket round js"><span>(</span></span><span class="variable parameter function js"><span>scope</span></span><span class="meta delimiter object comma js"><span>,</span></span><span>&nbsp;</span><span class="variable parameter function js"><span>iElement</span></span><span class="meta delimiter object comma js"><span>,</span></span><span>&nbsp;</span><span class="variable parameter function js"><span>iAttrs</span></span><span class="meta delimiter object comma js"><span>,</span></span><span>&nbsp;</span><span class="variable parameter function js"><span>controller</span></span><span class="punctuation definition parameters end bracket round js"><span>)</span></span></span></span><span>&nbsp;</span><span class="punctuation definition function body begin bracket curly js"><span>{</span></span><span>&nbsp;</span><span class="keyword operator spread js"><span>...</span></span><span>&nbsp;</span><span class="punctuation definition function body end bracket curly js"><span>}</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta method-call js"><span class="meta arguments js"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta brace curly js"><span>}</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta method-call js"><span class="meta arguments js"><span class="punctuation whitespace comment leading js"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="comment line double-slash js"><span class="punctuation definition comment js"><span>//</span></span><span>&nbsp;or</span><span>&nbsp;</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta method-call js"><span class="meta arguments js"><span class="punctuation whitespace comment leading js"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="comment line double-slash js"><span class="punctuation definition comment js"><span>//</span></span><span>&nbsp;return&nbsp;function&nbsp;postLink(&nbsp;...&nbsp;)&nbsp;{&nbsp;...&nbsp;}</span><span>&nbsp;</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta method-call js"><span class="meta arguments js"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="punctuation definition function body end bracket curly js"><span>}</span></span><span class="meta delimiter object comma js"><span>,</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta method-call js"><span class="meta arguments js"><span class="punctuation whitespace comment leading js"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="comment line double-slash js"><span class="punctuation definition comment js"><span>//</span></span><span>&nbsp;or</span><span>&nbsp;</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta method-call js"><span class="meta arguments js"><span class="punctuation whitespace comment leading js"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="comment line double-slash js"><span class="punctuation definition comment js"><span>//</span></span><span>&nbsp;link:&nbsp;{</span><span>&nbsp;</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta method-call js"><span class="meta arguments js"><span class="punctuation whitespace comment leading js"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="comment line double-slash js"><span class="punctuation definition comment js"><span>//</span></span><span>&nbsp;&nbsp;pre:&nbsp;function&nbsp;preLink(scope,&nbsp;iElement,&nbsp;iAttrs,&nbsp;controller)&nbsp;{&nbsp;...&nbsp;},</span><span>&nbsp;</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta method-call js"><span class="meta arguments js"><span class="punctuation whitespace comment leading js"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="comment line double-slash js"><span class="punctuation definition comment js"><span>//</span></span><span>&nbsp;&nbsp;post:&nbsp;function&nbsp;postLink(scope,&nbsp;iElement,&nbsp;iAttrs,&nbsp;controller)&nbsp;{&nbsp;...&nbsp;}</span><span>&nbsp;</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta method-call js"><span class="meta arguments js"><span class="punctuation whitespace comment leading js"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="comment line double-slash js"><span class="punctuation definition comment js"><span>//</span></span><span>&nbsp;}</span><span>&nbsp;</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta method-call js"><span class="meta arguments js"><span class="punctuation whitespace comment leading js"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="comment line double-slash js"><span class="punctuation definition comment js"><span>//</span></span><span>&nbsp;or</span><span>&nbsp;</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta method-call js"><span class="meta arguments js"><span class="punctuation whitespace comment leading js"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="comment line double-slash js"><span class="punctuation definition comment js"><span>//</span></span><span>&nbsp;link:&nbsp;function&nbsp;postLink(&nbsp;...&nbsp;)&nbsp;{&nbsp;...&nbsp;}</span><span>&nbsp;</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta method-call js"><span class="meta arguments js"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta brace curly js"><span>}</span></span><span class="punctuation terminator statement js"><span>;</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta method-call js"><span class="meta arguments js"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword control js"><span>return</span></span><span>&nbsp;directiveDefinitionObject</span><span class="punctuation terminator statement js"><span>;</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta method-call js"><span class="meta arguments js"><span class="punctuation definition function body end bracket curly js"><span>}</span></span><span class="punctuation definition arguments end bracket round js"><span>)</span></span></span></span></span></div></pre>
 <ol>
-<li><p class="line" data-line="132"><code>.directive()</code>方法接收两个参数，<code>name</code>（用于在视图中的引用）和<code>function</code>（用于定义指令的行为</p></li>
-<li><p class="line" data-line="133">指令的函数参数的返回值是一个对象，<em>也可以返回一个函数来替代对象，这个函数称为链接传递函数，可以用来定义指令的链接（link）功能，但是会限制定义指令时的自由度，所以只适合构造简单的指令</em>。</p></li>
+<li><p class="line" data-line="131"><code>.directive()</code>方法接收两个参数，<code>name</code>（用于在视图中的引用）和<code>function</code>（用于定义指令的行为</p></li>
+<li><p class="line" data-line="132">指令的函数参数的返回值是一个对象，<em>也可以返回一个函数来替代对象，这个函数称为链接传递函数，可以用来定义指令的链接（link）功能，但是会限制定义指令时的自由度，所以只适合构造简单的指令</em>。</p></li>
 </ol></p></li>
-<li><p class="line" data-line="134"><strong>运行机制</strong>
+<li><p class="line" data-line="133"><strong>运行机制</strong>
 <ol>
-<li><p class="line" data-line="135">angularjs应用启动时，会把指令的第一个参数当做字符串，并以此为名来注册第二个参数返回的对象。</p></li>
-<li><p class="line" data-line="136">angularjs编译器解析主html的dom中（元素，属性，类名，注释）使用了这个名字的地方，并在这些地方引用对应指令，找到后，在页面插入指令对应dom元素。</p></li>
-<li><p class="line" data-line="137">指令的工厂函数由<code>$injector.invoke</code>调用，并且只会被调用一次。</p></li>
-<li><p class="line" data-line="138">指令的生命周期开始于<code>$compile</code>方法，结束于<code>link</code>方法。</p></li>
+<li><p class="line" data-line="134">angularjs应用启动时，会把指令的第一个参数当做字符串，并以此为名来注册第二个参数返回的对象。</p></li>
+<li><p class="line" data-line="135">angularjs编译器解析主html的dom中（元素，属性，类名，注释）使用了这个名字的地方，并在这些地方引用对应指令，找到后，在页面插入指令对应dom元素。</p></li>
+<li><p class="line" data-line="136">指令的工厂函数由<code>$injector.invoke</code>调用，并且只会被调用一次。</p></li>
+<li><p class="line" data-line="137">指令的生命周期开始于<code>$compile</code>方法，结束于<code>link</code>方法。</p></li>
 </ol></p></li>
-<li><p class="line" data-line="139"><strong>生命周期钩子</strong>
+<li><p class="line" data-line="138"><strong>生命周期钩子</strong>
 <ol>
-<li><p class="line" data-line="140">说明：指令的控制器可以提供下列方法，供angularjs在指令的生命周期的各个点调用。
+<li><p class="line" data-line="139">说明：指令的控制器可以提供下列方法，供angularjs在指令的生命周期的各个点调用。
 <ul>
-<li><p class="line" data-line="141"><code>$onInit()</code>：当某个元素上的所有控制器被构建并且他们的绑定完成初始化（在该元素上的指令的pre&amp;post linking函数之前运行）时由每个控制器调用，可以在该方法内为你的控制器添加一些用于初始化的代码。</p></li>
-<li><p class="line" data-line="142"><code>onChanges(changesObj)</code>：当单向绑定（<code>&lt;</code>）或者插值绑定（<code>@</code>）被更新时调用，<code>changesObj</code>是一个哈希表，其键是改变的绑定属性名，其值是形如<code>{currentValue,previousValue,isFirstChange()}</code>的对象。使用这个钩子在组件内部触发更新（如克隆绑定值）来防止意外改变外部值，</p></li>
-<li><p class="line" data-line="143"><code>onCheck()</code>：在每个消化周期（digest cycle）被调用。为改变提供检测和添加动作的机会。任何动作你想添加到检测到的对应改变上，都必须在这个钩子处调用，并且实现这些不会对<code>onChanges</code>被调用产生影响。例如：如果你想完成一个深度相等检查、或者检查一个日期对象，使用这个钩子就非常有用。对这些的改变不会被angular的改变检测器检测到，也就不会触发<code>$onChanges</code>。这个钩子的调用不需要参数，如果想要检测改变，你必须把以前的值进行保存以便和当前值进行比较。</p></li>
-<li><p class="line" data-line="144"><code>onDestroy()</code>：当一个控制器包含的作用域被销毁时调用。使用这个钩子来释放外部资源、观察者（watches）和事件处理器。注意：组件调用<code>onDestroy()</code>钩子的顺序与<code>$scope.$broadcast</code>事件被触发的顺序相同（自顶向下）。这意味着父组件的<code>onDestroy</code>钩子比子组件先调用。</p></li>
-<li><p class="line" data-line="145"><code>$postLink()</code>：控制器的元素和它的孩子链接后被调用。与post-link函数相同，这个钩子可以用来设置dom事件处理器和直接对dom进行操作。注意：包含<code>templateUrl</code>指令的子元素不会被编译和链接，因为它们需要异步等待模板的加载，编译和链接被暂停。</p></li>
+<li><p class="line" data-line="140"><code>$onInit()</code>：当某个元素上的所有控制器被构建并且他们的绑定完成初始化（在该元素上的指令的pre&amp;post linking函数之前运行）时由每个控制器调用，可以在该方法内为你的控制器添加一些用于初始化的代码。</p></li>
+<li><p class="line" data-line="141"><code>onChanges(changesObj)</code>：当单向绑定（<code>&lt;</code>）或者插值绑定（<code>@</code>）被更新时调用，<code>changesObj</code>是一个哈希表，其键是改变的绑定属性名，其值是形如<code>{currentValue,previousValue,isFirstChange()}</code>的对象。使用这个钩子在组件内部触发更新（如克隆绑定值）来防止意外改变外部值，</p></li>
+<li><p class="line" data-line="142"><code>onCheck()</code>：在每个消化周期（digest cycle）被调用。为改变提供检测和添加动作的机会。任何动作你想添加到检测到的对应改变上，都必须在这个钩子处调用，并且实现这些不会对<code>onChanges</code>被调用产生影响。例如：如果你想完成一个深度相等检查、或者检查一个日期对象，使用这个钩子就非常有用。对这些的改变不会被angular的改变检测器检测到，也就不会触发<code>$onChanges</code>。这个钩子的调用不需要参数，如果想要检测改变，你必须把以前的值进行保存以便和当前值进行比较。</p></li>
+<li><p class="line" data-line="143"><code>onDestroy()</code>：当一个控制器包含的作用域被销毁时调用。使用这个钩子来释放外部资源、观察者（watches）和事件处理器。注意：组件调用<code>onDestroy()</code>钩子的顺序与<code>$scope.$broadcast</code>事件被触发的顺序相同（自顶向下）。这意味着父组件的<code>onDestroy</code>钩子比子组件先调用。</p></li>
+<li><p class="line" data-line="144"><code>$postLink()</code>：控制器的元素和它的孩子链接后被调用。与post-link函数相同，这个钩子可以用来设置dom事件处理器和直接对dom进行操作。注意：包含<code>templateUrl</code>指令的子元素不会被编译和链接，因为它们需要异步等待模板的加载，编译和链接被暂停。</p></li>
 </ul></p></li>
 </ol></p></li>
-<li><p class="line" data-line="146"><strong>指令定义对象的属性详解</strong>
+<li><p class="line" data-line="145"><strong>指令定义对象的属性详解</strong>
 <ol>
-<li><p class="line" data-line="147">multiElement(布尔型)
+<li><p class="line" data-line="146">multiElement(布尔型)
 <ul>
-<li><p class="line" data-line="148">功能：如果设置为true，html编译器会收集指令开始标签和结束标签之间的所有dom节点，并将它们聚集在一起作为指令元素。建议不要在严格行为指令（如<code>ngClick</code>）和操作、替换子节点的指令（如<code>ngInclude</code>）上使用该特性。</p></li>
+<li><p class="line" data-line="147">功能：如果设置为true，html编译器会收集指令开始标签和结束标签之间的所有dom节点，并将它们聚集在一起作为指令元素。建议不要在严格行为指令（如<code>ngClick</code>）和操作、替换子节点的指令（如<code>ngInclude</code>）上使用该特性。</p></li>
 </ul></p></li>
-<li><p class="line" data-line="149">restrict(字符串)
+<li><p class="line" data-line="148">restrict(字符串)
 <ul>
-<li><p class="line" data-line="150">功能：设置指令在dom中的声明方式，默认值为A。</p></li>
-<li><p class="line" data-line="151">可选值：E（元素）、A（属性）、C（类名）、M（注释），可单独使用，也可混合使用,
+<li><p class="line" data-line="149">功能：设置指令在dom中的声明方式，默认值为A。</p></li>
+<li><p class="line" data-line="150">可选值：E（元素）、A（属性）、C（类名）、M（注释），可单独使用，也可混合使用,
 <pre class="editor-colors lang-js"><div class="line"><span class="source js"><span class="variable other object js"><span>angurlar</span></span><span class="meta method-call js"><span class="meta delimiter method period js"><span>.</span></span><span class="entity name function js"><span>module</span></span><span class="meta arguments js"><span class="punctuation definition arguments begin bracket round js"><span>(</span></span><span class="string quoted single js"><span class="punctuation definition string begin js"><span>&#39;</span></span><span>myApp</span><span class="punctuation definition string end js"><span>&#39;</span></span></span><span class="meta delimiter object comma js"><span>,</span></span><span class="meta brace square js"><span>[</span><span>]</span></span><span class="punctuation definition arguments end bracket round js"><span>)</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta method-call js"><span class="meta delimiter method period js"><span>.</span></span><span class="entity name function js"><span>directive</span></span><span class="meta arguments js"><span class="punctuation definition arguments begin bracket round js"><span>(</span></span><span class="string quoted single js"><span class="punctuation definition string begin js"><span>&#39;</span></span><span>myDirective</span><span class="punctuation definition string end js"><span>&#39;</span></span></span><span class="meta delimiter object comma js"><span>,</span></span><span class="meta function js"><span class="storage type function js"><span>function</span></span><span class="meta parameters js"><span class="punctuation definition parameters begin bracket round js"><span>(</span></span><span class="punctuation definition parameters end bracket round js"><span>)</span></span></span></span><span class="punctuation definition function body begin bracket curly js"><span>{</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta method-call js"><span class="meta arguments js"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword control js"><span>return</span></span><span>&nbsp;</span><span class="meta brace curly js"><span>{</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta method-call js"><span class="meta arguments js"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;restrict</span><span class="keyword operator js"><span>:</span></span><span>&nbsp;</span><span class="string quoted single js"><span class="punctuation definition string begin js"><span>&#39;</span></span><span>A</span><span class="punctuation definition string end js"><span>&#39;</span></span></span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment line double-slash js"><span class="punctuation definition comment js"><span>//</span></span><span>混合使用&#39;EAC&#39;</span><span>&nbsp;</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta method-call js"><span class="meta arguments js"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta brace curly js"><span>}</span></span><span class="punctuation terminator statement js"><span>;</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta method-call js"><span class="meta arguments js"><span class="punctuation definition function body end bracket curly js"><span>}</span></span><span class="punctuation definition arguments end bracket round js"><span>)</span></span></span></span><span class="punctuation terminator statement js"><span>;</span></span></span></div></pre></p></li>
 </ul></p></li>
-<li><p class="line" data-line="160">priority(数值型)
+<li><p class="line" data-line="159">priority(数值型)
 <ul>
-<li><p class="line" data-line="161">功能：设置指令的优先级，默认0。在<code>compile</code>函数被调用之前对同一个元素上的指令进行排序，同一个元素上的多个指令，优先级高的优先运行，优先级相同的按声明顺序依次调用。Pre-link函数按该优先级顺序运行，但是post-link函数则按相反顺序运行。</p></li>
-<li><p class="line" data-line="162">ngRepeat是优先级最高的内置指令。</p></li>
+<li><p class="line" data-line="160">功能：设置指令的优先级，默认0。在<code>compile</code>函数被调用之前对同一个元素上的指令进行排序，同一个元素上的多个指令，优先级高的优先运行，优先级相同的按声明顺序依次调用。Pre-link函数按该优先级顺序运行，但是post-link函数则按相反顺序运行。</p></li>
+<li><p class="line" data-line="161">ngRepeat是优先级最高的内置指令。</p></li>
 </ul></p></li>
-<li><p class="line" data-line="163">terminal(布尔型)
+<li><p class="line" data-line="162">terminal(布尔型)
 <ul>
-<li><p class="line" data-line="164">功能：设置为<code>true</code>，则停止运行当前元素上比本指令优先级低的指令。</p></li>
+<li><p class="line" data-line="163">功能：设置为<code>true</code>，则停止运行当前元素上比本指令优先级低的指令。</p></li>
 </ul></p></li>
-<li><p class="line" data-line="165">template(字符串或函数)
+<li><p class="line" data-line="164">template(字符串或函数)
 <ul>
-<li><p class="line" data-line="166">功能：修改指令对应元素的内容，可能情况：
+<li><p class="line" data-line="165">功能：修改指令对应元素的内容，可能情况：
 <ol>
-<li><p class="line" data-line="167">替换指令对应元素内的内容；</p></li>
-<li><p class="line" data-line="168">替换指令对应元素本身</p></li>
-<li><p class="line" data-line="169">包裹指令对应元素的内容</p></li>
+<li><p class="line" data-line="166">替换指令对应元素内的内容；</p></li>
+<li><p class="line" data-line="167">替换指令对应元素本身</p></li>
+<li><p class="line" data-line="168">包裹指令对应元素的内容</p></li>
 </ol></p></li>
-<li><p class="line" data-line="170">可选值：
+<li><p class="line" data-line="169">可选值：
 <ol>
-<li><p class="line" data-line="171">HTML文本</p></li>
-<li><p class="line" data-line="172">接收两个参数的函数，参数为tElement和tAttrs，返回一个代表模板的字符串</p></li>
-</ol></p></li>
-</ul></p></li>
-<li><p class="line" data-line="173">templateUrl(字符串或函数)
-<ul>
-<li><p class="line" data-line="174">功能：与<code>template</code>相同</p></li>
-<li><p class="line" data-line="175">可选值：
-<ol>
-<li><p class="line" data-line="176">代表外部html文件路径的字符串</p></li>
-<li><p class="line" data-line="177">接收两个参数的函数，参数为tElement和tAttrs，返回一个外部html文件路径的字符串</p></li>
-</ol></p></li>
-<li><p class="line" data-line="178">注意问题：
-<ol>
-<li><p class="line" data-line="179">本地开发，需要本地服务器加载html模块，否则会出现Cross Origin Request Script(CORS)错误。</p></li>
-<li><p class="line" data-line="180">模板的加载时异步的，对指令的编译和链接要等模板加载后才能进行</p></li>
+<li><p class="line" data-line="170">HTML文本</p></li>
+<li><p class="line" data-line="171">接收两个参数的函数，参数为tElement和tAttrs，返回一个代表模板的字符串</p></li>
 </ol></p></li>
 </ul></p></li>
-<li><p class="line" data-line="181">templateNamespace(字符串)
+<li><p class="line" data-line="172">templateUrl(字符串或函数)
 <ul>
-<li><p class="line" data-line="182">功能：设置模板中使用的标记的文档类型，默认为<code>html</code>。angularjs需要这些信息因为当这些元素在常用容器（如<code>&lt;svg</code>和<code>&lt;math&gt;</code>）之外定义时需要以一种特殊的来创建和克隆。</p></li>
-<li><p class="line" data-line="183">可选值：
+<li><p class="line" data-line="173">功能：与<code>template</code>相同</p></li>
+<li><p class="line" data-line="174">可选值：
 <ol>
-<li><p class="line" data-line="184"><code>html</code>，模板中的所有根节点都为html，根节点也有可能是顶级元素（如<code>&lt;svg</code>或<code>&lt;math&gt;</code>）</p></li>
-<li><p class="line" data-line="185"><code>svg</code>，模板中的根节点为svg元素（包括<code>&lt;math&gt;</code>）</p></li>
-<li><p class="line" data-line="186"><code>math</code>，模板中的根节点为mathml元素（包括<code>&lt;svg&gt;</code>）</p></li>
+<li><p class="line" data-line="175">代表外部html文件路径的字符串</p></li>
+<li><p class="line" data-line="176">接收两个参数的函数，参数为tElement和tAttrs，返回一个外部html文件路径的字符串</p></li>
+</ol></p></li>
+<li><p class="line" data-line="177">注意问题：
+<ol>
+<li><p class="line" data-line="178">本地开发，需要本地服务器加载html模块，否则会出现Cross Origin Request Script(CORS)错误。</p></li>
+<li><p class="line" data-line="179">模板的加载时异步的，对指令的编译和链接要等模板加载后才能进行</p></li>
 </ol></p></li>
 </ul></p></li>
-<li><p class="line" data-line="187">replace(布尔型) <strong>已弃用</strong>
+<li><p class="line" data-line="180">templateNamespace(字符串)
 <ul>
-<li><p class="line" data-line="188">功能：如果设置为true,模板内容会替换调用此指令的元素</p></li>
-<li><p class="line" data-line="189">可选值：默认为false(模板作为子元素插入到调用指令的元素内部)</p></li>
-</ul></p></li>
-<li><p class="line" data-line="190">scope(布尔型或对象)
-<ul>
-<li><p class="line" data-line="191">功能：改变指令模板根元素的作用域，默认为false</p></li>
-<li><p class="line" data-line="192">可选值：
+<li><p class="line" data-line="181">功能：设置模板中使用的标记的文档类型，默认为<code>html</code>。angularjs需要这些信息因为当这些元素在常用容器（如<code>&lt;svg</code>和<code>&lt;math&gt;</code>）之外定义时需要以一种特殊的来创建和克隆。</p></li>
+<li><p class="line" data-line="182">可选值：
 <ol>
-<li><p class="line" data-line="193"><code>true</code>，从父作用域继承并创建一个新的作用域对象（继承作用域）</p></li>
-<li><p class="line" data-line="194"><code>{}</code>，设置为空对象，此时，指令的模板无法访问外部作用域 （隔离作用域）
+<li><p class="line" data-line="183"><code>html</code>，模板中的所有根节点都为html，根节点也有可能是顶级元素（如<code>&lt;svg</code>或<code>&lt;math&gt;</code>）</p></li>
+<li><p class="line" data-line="184"><code>svg</code>，模板中的根节点为svg元素（包括<code>&lt;math&gt;</code>）</p></li>
+<li><p class="line" data-line="185"><code>math</code>，模板中的根节点为mathml元素（包括<code>&lt;svg&gt;</code>）</p></li>
+</ol></p></li>
+</ul></p></li>
+<li><p class="line" data-line="186">replace(布尔型) <strong>已弃用</strong>
 <ul>
-<li><p class="line" data-line="195">一般不使用无数据的隔离作用域。</p></li>
-<li><p class="line" data-line="196">通过定义本地作用域属性集，将指令内部的隔离作用域同指令外部的作用域进行数据绑定</p></li>
-<li><p class="line" data-line="197">绑定方式:<code>{}</code>中值设置为<code>{key:value}</code>形式，key对应于隔离作用域中的本地属性名，value定义这个属性如何绑定到父级作用域，value可设置为以下几种情况（attr未指定，默认与key相同）：
+<li><p class="line" data-line="187">功能：如果设置为true,模板内容会替换调用此指令的元素</p></li>
+<li><p class="line" data-line="188">可选值：默认为false(模板作为子元素插入到调用指令的元素内部)</p></li>
+</ul></p></li>
+<li><p class="line" data-line="189">scope(布尔型或对象)
 <ul>
-<li><p class="line" data-line="198"><code>@(or @attr)</code>，<strong>插值绑定</strong>，将本地作用域属性同dom属性值进行绑定，本地作用域属性值一定为string。</p></li>
-<li><p class="line" data-line="199"><code>=(or =attr)</code>，<strong>双向绑定</strong>，将本地作用域属性同通过attr传递的表达式进行绑定，表达式的值在父级作用域的上下文中计算。</p></li>
-<li><p class="line" data-line="200"><code>&lt;(or &lt;attr)</code>，<strong>单向绑定</strong>，将本地作用域属性同通过attr传递的表达式进行绑定，表达式的值在父级作用域的上下文中计算。<em>注意：（1）单向绑定不是将父级作用域的值复制到隔离作用域，而是设置相同的值。如果绑定的值是对象，在隔离作用域对对象的属性进行修改后，父级作用域的对象属性也会发生改变。（2）单向绑定只检测父值得identity是否变化，如果绑定值是对象，那么在父级作用域对该对象的属性进行改变时，隔离作用域的对象属性不会发生变化，因为父值得identity没有改变，要想改变隔离作用域的值，需要将一个新的对象赋值给父级作用域的对象。</em></p></li>
-<li><p class="line" data-line="201"><code>&amp;(or &amp;attr)</code>，<strong>父级作用域绑定</strong>，提供在父级作用的上下文中执行表达式的方法，通常用于通过表达式将隔离作用域中的值传递给父级作用域。例如：<code>&lt;my-component my-attr=&quot;increment(amount)&quot;&gt;</code>，隔离作用域定义<code>scope:{localFn:'$myAttr'}</code>，那么，我们可以通过调用<code>localFn({amount:22})</code>来指定<code>amount</code>的值。</p></li>
+<li><p class="line" data-line="190">功能：改变指令模板根元素的作用域，默认为false</p></li>
+<li><p class="line" data-line="191">可选值：
+<ol>
+<li><p class="line" data-line="192"><code>true</code>，从父作用域继承并创建一个新的作用域对象（继承作用域）</p></li>
+<li><p class="line" data-line="193"><code>{}</code>，设置为空对象，此时，指令的模板无法访问外部作用域 （隔离作用域）
+<ul>
+<li><p class="line" data-line="194">一般不使用无数据的隔离作用域。</p></li>
+<li><p class="line" data-line="195">通过定义本地作用域属性集，将指令内部的隔离作用域同指令外部的作用域进行数据绑定</p></li>
+<li><p class="line" data-line="196">绑定方式:<code>{}</code>中值设置为<code>{key:value}</code>形式，key对应于隔离作用域中的本地属性名，value定义这个属性如何绑定到父级作用域，value可设置为以下几种情况（attr未指定，默认与key相同）：
+<ul>
+<li><p class="line" data-line="197"><code>@(or @attr)</code>，<strong>插值绑定</strong>，将本地作用域属性同dom属性值进行绑定，本地作用域属性值一定为string。</p></li>
+<li><p class="line" data-line="198"><code>=(or =attr)</code>，<strong>双向绑定</strong>，将本地作用域属性同通过attr传递的表达式进行绑定，表达式的值在父级作用域的上下文中计算。</p></li>
+<li><p class="line" data-line="199"><code>&lt;(or &lt;attr)</code>，<strong>单向绑定</strong>，将本地作用域属性同通过attr传递的表达式进行绑定，表达式的值在父级作用域的上下文中计算。<em>注意：（1）单向绑定不是将父级作用域的值复制到隔离作用域，而是设置相同的值。如果绑定的值是对象，在隔离作用域对对象的属性进行修改后，父级作用域的对象属性也会发生改变。（2）单向绑定只检测父值得identity是否变化，如果绑定值是对象，那么在父级作用域对该对象的属性进行改变时，隔离作用域的对象属性不会发生变化，因为父值得identity没有改变，要想改变隔离作用域的值，需要将一个新的对象赋值给父级作用域的对象。</em></p></li>
+<li><p class="line" data-line="200"><code>&amp;(or &amp;attr)</code>，<strong>父级作用域绑定</strong>，提供在父级作用的上下文中执行表达式的方法，通常用于通过表达式将隔离作用域中的值传递给父级作用域。例如：<code>&lt;my-component my-attr=&quot;increment(amount)&quot;&gt;</code>，隔离作用域定义<code>scope:{localFn:'$myAttr'}</code>，那么，我们可以通过调用<code>localFn({amount:22})</code>来指定<code>amount</code>的值。</p></li>
 </ul></p></li>
 </ul></p></li>
 </ol></p></li>
-<li><p class="line" data-line="202">当在同一个元素上定义了两个指令时，作用域遵循以下规则（多个指令可以类推）：
+<li><p class="line" data-line="201">当在同一个元素上定义了两个指令时，作用域遵循以下规则（多个指令可以类推）：
 <ol>
-<li><p class="line" data-line="203">无作用域+无作用域（即不指定）：直接使用父级作用域</p></li>
-<li><p class="line" data-line="204">无作用域+子作用域：都共享同一个子作用域</p></li>
-<li><p class="line" data-line="205">无作用域+隔离作用域：隔离作用域对应指令使用其自己创建的隔离作用域，另一个指令使用父级作用域</p></li>
-<li><p class="line" data-line="206">子作用域+子作用域：都共享同一个子作用域</p></li>
-<li><p class="line" data-line="207">子作用域+隔离作用域：<em>无法工作</em>，不能这样使用</p></li>
-<li><p class="line" data-line="208">隔离作用域+隔离作用域：<em>无法工作</em>，不能这样使用</p></li>
+<li><p class="line" data-line="202">无作用域+无作用域（即不指定）：直接使用父级作用域</p></li>
+<li><p class="line" data-line="203">无作用域+子作用域：都共享同一个子作用域</p></li>
+<li><p class="line" data-line="204">无作用域+隔离作用域：隔离作用域对应指令使用其自己创建的隔离作用域，另一个指令使用父级作用域</p></li>
+<li><p class="line" data-line="205">子作用域+子作用域：都共享同一个子作用域</p></li>
+<li><p class="line" data-line="206">子作用域+隔离作用域：<em>无法工作</em>，不能这样使用</p></li>
+<li><p class="line" data-line="207">隔离作用域+隔离作用域：<em>无法工作</em>，不能这样使用</p></li>
 </ol></p></li>
 </ul></p></li>
-<li><p class="line" data-line="209">transclude(布尔型)
+<li><p class="line" data-line="208">transclude(布尔型)
 <ul>
-<li><p class="line" data-line="210">功能：提取指令定义元素的内容为指令所用，提取内容被编译作为嵌入函数提供给指令</p></li>
-<li><p class="line" data-line="211">可选值：
+<li><p class="line" data-line="209">功能：提取指令定义元素的内容为指令所用，提取内容被编译作为嵌入函数提供给指令</p></li>
+<li><p class="line" data-line="210">可选值：
 <ol>
-<li><p class="line" data-line="212"><code>true</code>，嵌入指令的元素的内容（如子节点）。</p></li>
-<li><p class="line" data-line="213"><code>element</code>，嵌入该指令对应的整个元素， 包括所有在该元素上定义的优先级比当前指令低的指令，该情况下，<code>template</code>属性失效。</p></li>
-<li><p class="line" data-line="214"><code>{...}(对象哈希)</code>,将元素内容映射到模板的嵌入&quot;插槽&quot;。通过给<code>transclude</code>属性传递一个对象实现多位置嵌入，该对象为键值对，其中键是要填充的&quot;插槽&quot;名称，值是用于将html和&quot;插槽&quot;匹配的元素选择器，并且元素选择器必须为标准化格式（如：<code>myElement</code>），才能匹配标准的元素变量（如：<code>my-element</code>,<code>my:element</code>,<code>data-my-element</code>）。在元素选择器前加<code>?</code>前缀，来标注给&quot;插槽&quot;是可选的（如：<code>{slotA:'?myCustomElement'}</code>），如果元素选择器没有使用<code>?</code>前缀，并且嵌入内容中没有匹配元素时，会触发编译时错误。</p></li>
+<li><p class="line" data-line="211"><code>true</code>，嵌入指令的元素的内容（如子节点）。</p></li>
+<li><p class="line" data-line="212"><code>element</code>，嵌入该指令对应的整个元素， 包括所有在该元素上定义的优先级比当前指令低的指令，该情况下，<code>template</code>属性失效。</p></li>
+<li><p class="line" data-line="213"><code>{...}(对象哈希)</code>,将元素内容映射到模板的嵌入&quot;插槽&quot;。通过给<code>transclude</code>属性传递一个对象实现多位置嵌入，该对象为键值对，其中键是要填充的&quot;插槽&quot;名称，值是用于将html和&quot;插槽&quot;匹配的元素选择器，并且元素选择器必须为标准化格式（如：<code>myElement</code>），才能匹配标准的元素变量（如：<code>my-element</code>,<code>my:element</code>,<code>data-my-element</code>）。在元素选择器前加<code>?</code>前缀，来标注给&quot;插槽&quot;是可选的（如：<code>{slotA:'?myCustomElement'}</code>），如果元素选择器没有使用<code>?</code>前缀，并且嵌入内容中没有匹配元素时，会触发编译时错误。</p></li>
 </ol></p></li>
-<li><p class="line" data-line="215"><strong>附加内容：嵌入（Transclusion）</strong>
+<li><p class="line" data-line="214"><strong>附加内容：嵌入（Transclusion）</strong>
 <ol>
-<li><p class="line" data-line="216">嵌入是从dom的一部分中提取一个dom元素集然后复制到dom的另一部分的过程，此过程中保持它们与原本的angularjs作用域之间的关系不变。</p></li>
-<li><p class="line" data-line="217">嵌入用于将指令的元素的原本内容插入到指令模板的特定位置，通常与<code>ngTransclude</code>一起使用。</p></li>
-<li><p class="line" data-line="218">嵌入的好处在于嵌入内容能够访问它们被提取前的作用域，即使指令拥有隔离作用域。</p></li>
-<li><p class="line" data-line="219">如果你想知道一个可选&quot;插槽&quot;是否被填充了内容，你可以将transclude函数传入指令的link函数或者注入指令的控制器然后调用<code>$transclude.isSlotFilled(slotName)</code>。</p></li>
-<li><p class="line" data-line="220">嵌入函数：
+<li><p class="line" data-line="215">嵌入是从dom的一部分中提取一个dom元素集然后复制到dom的另一部分的过程，此过程中保持它们与原本的angularjs作用域之间的关系不变。</p></li>
+<li><p class="line" data-line="216">嵌入用于将指令的元素的原本内容插入到指令模板的特定位置，通常与<code>ngTransclude</code>一起使用。</p></li>
+<li><p class="line" data-line="217">嵌入的好处在于嵌入内容能够访问它们被提取前的作用域，即使指令拥有隔离作用域。</p></li>
+<li><p class="line" data-line="218">如果你想知道一个可选&quot;插槽&quot;是否被填充了内容，你可以将transclude函数传入指令的link函数或者注入指令的控制器然后调用<code>$transclude.isSlotFilled(slotName)</code>。</p></li>
+<li><p class="line" data-line="219">嵌入函数：
 <ul>
-<li><p class="line" data-line="221">当指令请求嵌入，编译器会提取它的内容然后给指令的<code>link</code>函数和<code>controller</code>提供嵌入函数。</p></li>
-<li><p class="line" data-line="222">嵌入函数是特殊的链接函数，其返回的编译后内容链接到嵌入作用域。</p></li>
-<li><p class="line" data-line="223">如果你使用<code>ngTransclude</code>，则不需要考虑嵌入函数，<code>ngTransclude</code>会为我们处理好这些。</p></li>
-<li><p class="line" data-line="224">如果你想手动控制指令的嵌入内容的插入和移除操作，你必须使用嵌入函数。</p></li>
-<li><p class="line" data-line="225">当你调用嵌入函数，它返回一个jqLite/jQuery对象，该对象包含的编译后的dom链接到当前嵌入作用域。</p></li>
-<li><p class="line" data-line="226">调用嵌入函数时，可以传入一个克隆附加函数，<code>function(clone,scope){...}</code>，<code>clone</code>是嵌入内容的最新编译后副本，<code>scope</code>是新创建的clone绑定的嵌入作用域。<em>推荐写法：调用嵌入函数时都提供克隆附加函数<code>cloneFn</code>来获取原始dom的最新副本和对新的嵌入作用域的访问权限</em></p></li>
-<li><p class="line" data-line="227">一般在克隆附加函数中将嵌入内容(<code>clone</code>)添加到dom中，在这之后，如果你要从dom中移除嵌入内容，你需要销毁相关的嵌入作用域。<em>推荐写法：如果你想在指令中手动添加和移除嵌入内容，那么你也应该在嵌入作用域中调用<code>$destroy</code>。</em></p>
+<li><p class="line" data-line="220">当指令请求嵌入，编译器会提取它的内容然后给指令的<code>link</code>函数和<code>controller</code>提供嵌入函数。</p></li>
+<li><p class="line" data-line="221">嵌入函数是特殊的链接函数，其返回的编译后内容链接到嵌入作用域。</p></li>
+<li><p class="line" data-line="222">如果你使用<code>ngTransclude</code>，则不需要考虑嵌入函数，<code>ngTransclude</code>会为我们处理好这些。</p></li>
+<li><p class="line" data-line="223">如果你想手动控制指令的嵌入内容的插入和移除操作，你必须使用嵌入函数。</p></li>
+<li><p class="line" data-line="224">当你调用嵌入函数，它返回一个jqLite/jQuery对象，该对象包含的编译后的dom链接到当前嵌入作用域。</p></li>
+<li><p class="line" data-line="225">调用嵌入函数时，可以传入一个克隆附加函数，<code>function(clone,scope){...}</code>，<code>clone</code>是嵌入内容的最新编译后副本，<code>scope</code>是新创建的clone绑定的嵌入作用域。<em>推荐写法：调用嵌入函数时都提供克隆附加函数<code>cloneFn</code>来获取原始dom的最新副本和对新的嵌入作用域的访问权限</em></p></li>
+<li><p class="line" data-line="226">一般在克隆附加函数中将嵌入内容(<code>clone</code>)添加到dom中，在这之后，如果你要从dom中移除嵌入内容，你需要销毁相关的嵌入作用域。<em>推荐写法：如果你想在指令中手动添加和移除嵌入内容，那么你也应该在嵌入作用域中调用<code>$destroy</code>。</em></p>
 <pre class="editor-colors lang-js"><div class="line"><span class="source js"><span class="storage type var js"><span>var</span></span><span>&nbsp;transcludedContent</span><span class="meta delimiter object comma js"><span>,</span></span><span>&nbsp;transclusionScope</span><span class="punctuation terminator statement js"><span>;</span></span></span></div><div class="line"><span class="source js"><span>&nbsp;</span></span></div><div class="line"><span class="source js"><span class="meta function-call js"><span class="entity name function js"><span>$transclude</span></span><span class="meta arguments js"><span class="punctuation definition arguments begin bracket round js"><span>(</span></span><span class="meta function js"><span class="storage type function js"><span>function</span></span><span class="meta parameters js"><span class="punctuation definition parameters begin bracket round js"><span>(</span></span><span class="variable parameter function js"><span>clone</span></span><span class="meta delimiter object comma js"><span>,</span></span><span>&nbsp;</span><span class="variable parameter function js"><span>scope</span></span><span class="punctuation definition parameters end bracket round js"><span>)</span></span></span></span><span>&nbsp;</span><span class="punctuation definition function body begin bracket curly js"><span>{</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta function-call js"><span class="meta arguments js"><span class="variable other object js"><span>element</span></span><span class="meta method-call js"><span class="meta delimiter method period js"><span>.</span></span><span class="entity name function js"><span>append</span></span><span class="meta arguments js"><span class="punctuation definition arguments begin bracket round js"><span>(</span></span><span>clone</span><span class="punctuation definition arguments end bracket round js"><span>)</span></span></span></span><span class="punctuation terminator statement js"><span>;</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta function-call js"><span class="meta arguments js"><span>transcludedContent&nbsp;</span><span class="keyword operator assignment js"><span>=</span></span><span>&nbsp;clone</span><span class="punctuation terminator statement js"><span>;</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta function-call js"><span class="meta arguments js"><span>transclusionScope&nbsp;</span><span class="keyword operator assignment js"><span>=</span></span><span>&nbsp;scope</span><span class="punctuation terminator statement js"><span>;</span></span></span></span></span></div><div class="line"><span class="source js"><span class="meta function-call js"><span class="meta arguments js"><span class="punctuation definition function body end bracket curly js"><span>}</span></span><span class="punctuation definition arguments end bracket round js"><span>)</span></span></span></span><span class="punctuation terminator statement js"><span>;</span></span></span></div></pre>
 <pre class="editor-colors lang-js"><div class="line"><span class="source js"><span class="variable other object js"><span>transcludedContent</span></span><span class="meta method-call js"><span class="meta delimiter method period js"><span>.</span></span><span class="entity name function js"><span>remove</span></span><span class="meta arguments js"><span class="punctuation definition arguments begin bracket round js"><span>(</span></span><span class="punctuation definition arguments end bracket round js"><span>)</span></span></span></span><span class="punctuation terminator statement js"><span>;</span></span></span></div><div class="line"><span class="source js"><span class="variable other object js"><span>transclusionScope</span></span><span class="meta method-call js"><span class="meta delimiter method period js"><span>.</span></span><span class="entity name function js"><span>$destroy</span></span><span class="meta arguments js"><span class="punctuation definition arguments begin bracket round js"><span>(</span></span><span class="punctuation definition arguments end bracket round js"><span>)</span></span></span></span><span class="punctuation terminator statement js"><span>;</span></span></span></div></pre></li>
-<li><p class="line" data-line="242">内置dom操作指令，像<code>ngIf</code>，<code>ngSwitch</code>和<code>ngRepeat</code>会自动销毁它们的嵌入作用域，所以在使用<code>ngTransclude</code>嵌入内容到你的指令中去无需担心这些问题。</p></li>
+<li><p class="line" data-line="241">内置dom操作指令，像<code>ngIf</code>，<code>ngSwitch</code>和<code>ngRepeat</code>会自动销毁它们的嵌入作用域，所以在使用<code>ngTransclude</code>嵌入内容到你的指令中去无需担心这些问题。</p></li>
 </ul></p></li>
-<li><p class="line" data-line="243">嵌入作用域：
+<li><p class="line" data-line="242">嵌入作用域：
 <ul>
-<li><p class="line" data-line="244">当你调用嵌入函数时，它返回一个dom片段，该冬眠片段已经预绑定到嵌入作用域的。嵌入作用域的特殊之处在于它指令的作用域的子作用域（指令作用域销毁时嵌入作用域自动销毁）但又继承了它被提取前所在所用域的相关属性。</p></li>
+<li><p class="line" data-line="243">当你调用嵌入函数时，它返回一个dom片段，该冬眠片段已经预绑定到嵌入作用域的。嵌入作用域的特殊之处在于它指令的作用域的子作用域（指令作用域销毁时嵌入作用域自动销毁）但又继承了它被提取前所在所用域的相关属性。</p></li>
 </ul></p></li>
 </ol></p></li>
 </ul></p></li>
