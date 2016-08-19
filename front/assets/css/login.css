@@ -1,0 +1,104 @@
+*{
+     font-family: "Microsoft YaHei", serif;  /*统一使用微软雅黑字体*/
+ }
+body{
+    margin: 0;
+    width: 100%;
+    min-width: 1200px;  /*预防缩放浏览器窗口带来的错误问题*/
+    background-color: #fff;
+}
+
+.header{
+    width: 100%;
+    min-width: 1200px;
+    height: 60px;
+
+}
+.header img{
+    margin-left: 50px;
+    width: 340px;
+    height: 60px;
+}
+.main-part{
+    width:100%;
+    min-width: 1200px;
+    height: 700px;
+    /*background: url("../images/login-bg.jpg") center 0 no-repeat;*/
+    border-top: 1px solid transparent;
+}
+.main-part>div{
+    width: 1200px;
+    margin: 0 auto;
+}
+.login-form{
+    margin: 100px auto 0;
+    width: 350px;
+    background-color: #f1f6ff;
+    padding:30px 20px;
+    border-radius: 5px;
+}
+.login-form .title{
+    font-size: 18px;
+    color: #333;
+}
+.login-form .input-group{
+    margin: 30px 0;
+}
+.login-form .input-group span{
+    height: 40px;
+    width: 50px;
+}
+.login-form .input-group input{
+    height: 40px;
+    width: 260px;
+}
+.login-form i{
+    font-size: 24px;
+}
+.login-form .btn-block{
+    background-color: #5C8CE6;
+    color: #fff;
+    font-size: 18px;
+}
+.login-form .btn-block:hover{
+    background-color: #3976E5;
+}
+.option{
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+.option a{
+    color: #333;
+    text-decoration: none;
+}
+.option a:hover{
+    color:#3976E5;
+}
+
+.alert{
+    margin-top: 10px;
+    height: 30px;
+    padding: 0 10px 0 0;
+    display: none;
+}
+.alert i{
+    font-size: 18px;
+    line-height: 30px;
+    margin: 0 10px;
+    color: #5C8CE6;
+}
+.footer{
+    width: 100%;
+    min-width: 1200px;
+    height: 50px;
+    background-color: #fff;
+    color: #333;
+    font-size: 12px;
+    line-height: 25px;
+    text-align: center;
+}
+.footer p{
+    margin:0 auto;
+    width: 670px;
+}

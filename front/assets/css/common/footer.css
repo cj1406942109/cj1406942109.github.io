@@ -1,0 +1,40 @@
+footer {
+    width: 100%;
+    min-width: 1200px;
+    height: 240px;
+    text-align: center;
+    color: #f2f4f5;
+    background-color: #386cca;
+    font-size: 14px;
+    font-family: "Microsoft YaHei", serif;
+}
+
+ul{
+    list-style-type: none;
+    padding: 0;
+}
+
+.foot-container{
+    margin: 0 auto;
+    width: 1200px;
+    padding-top: 60px;
+}
+.links{
+    font-size: 18px;
+}
+.links span{
+    margin-left: 10px;
+}
+.col-lg-3 ul{
+    padding-top: 10px;
+}
+.col-lg-3 ul li{
+    margin-top: 10px;
+}
+.col-lg-3 ul li a{
+    color: #f2f4f5;
+}
+#copyright {
+    position: relative;
+    margin-top: 14px;
+}

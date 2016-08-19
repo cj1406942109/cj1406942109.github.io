@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <link rel="shortcut icon" href="../images/logo.png" type="image/x-icon"/>
+    <title>PCR流程管理系统-首页</title>
+</head>
+<body>
+
+<!--公共头部开始-->
+<header class="navbar-fixed-top">
+
+    <link href="../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/fonts/Art-Reactor-master/dist/art-reactor.min.css" rel="stylesheet">
+    <link href="../assets/css/common/header.css" rel="stylesheet">
+
+    <div class="head-container">
+        <a class="logo" href="../pages/home-page.html">
+            <img src="../images/logo.png">
+        </a>
+        <div class="login">
+            <a class="btn btn-danger" href="place-order.html">我要下单</a>
+
+            <div class="btn-group">
+                <a class="btn btn-default" href="login.html">登录</a>
+                <a class="btn btn-primary" href="register.html">注册</a>
+            </div>
+        </div>
+    </div>
+
+
+</header>
+<!--公共头部结束-->
+
+<!--页面主体部分开始-->
+<section>
+    <div class="img-carousel">
+
+        <link href="../assets/css/home-page.css" rel="stylesheet">
+
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- 轮播（Carousel）指标 -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+            <div class="details">
+                <div class="instructions">
+                    <h3>古奥基因测评</h3>
+                    <img src="../images/logo-font.png">
+                    <i class="ar ar-gene"></i>
+                    <p>
+                        古奥基因产品为您提供一站式个性化全基因组健康报告，分析基因图谱中的遗传信息，为您的健康状况进行科学评估，协助您进行科学有效的健康管理。
+                    </p>
+                    <form class="order-number-search input-group" method="post" action="">
+                        <input type="text" id="order-num" name="orderId" class="form-control " placeholder="请输入您的订单号" aria-describedby="search-button">
+                        <input type="submit" style="display: none" id="hide-submit" value="submit">
+                        <span class="input-group-addon " id="search-button"><i class="ar ar-search"></i>&nbsp;搜索</span>
+                    </form>
+                </div>
+            </div>
+            <!-- 轮播（Carousel）项目 -->
+            <div class="carousel-inner">
+                <div class="item active" id="bg1">
+                    <img src="../images/homepage-bg1.jpg">
+                </div>
+                <div class="item" id="bg2">
+                    <img src="../images/homepage-bg2.jpg">
+                </div>
+                <div class="item" id="bg3">
+                    <img src="../images/homepage-bg3.jpg">
+                </div>
+            </div>
+        </div>
+    <!--
+       <div class="company">
+            <div>
+                <span>合作机构：</span>
+                <img src="../images/logo-haiyun.png">
+            </div>
+        </div>-->
+    </div>
+    <div class="content">
+        <div class="icon">
+            <div class="float-left" id="cloud">
+                <i class="ar ar-cloud"></i>
+                <p>云平台</p>
+            </div>
+            <div id="shield">
+                <i class="ar ar-shield"></i>
+                <p>
+                    古奥基因拥有专业管理中心和技术团队<br>
+                    为您的健康保驾护航
+                </p>
+            </div>
+            <div id="babysmile" class="float-right">
+                <i class="ar ar-babysmile-full"></i>
+                <p>贴心服务</p>
+            </div>
+        </div>
+        <div class="report-origin">
+            <img src="../images/homepage-img-1.jpg" class="float-left">
+            <img src="../images/homepage-img-02.jpg" class="float-right">
+            <div class="text-area">
+                <p>您的基因分析报告<br>从何而来？</p>
+                <hr>
+                <a href="JavaScript:;"><button>点击查看详情</button></a>
+            </div>
+        </div>
+        <div class="instructions-appendix">
+            <img src="../images/homepage-img-03.jpg" class="float-left">
+            <div class="text-area">
+                <p>如何正确阅读您的基因<br>分析报告？</p>
+                <hr>
+                <a href="JavaScript:;"><button>点击查看说明</button></a>
+            </div>
+        </div>
+        <div class="amino-acid-appendix">
+            <img src="../images/homepage-img-04.jpg" class="float-right">
+            <div class="text-area">
+                <p>报告相关氨基酸<br>附录</p>
+                <hr>
+                <a href="JavaScript:;"><button>点击查看详情</button></a>
+            </div>
+        </div>
+        <div class="disease-appendix">
+            <div class="text-area">
+                <p>报告相关病症知识附录</p>
+                <a href="JavaScript:;"><button>点击查看详情</button></a>
+            </div>
+        </div>
+    </div>
+</section>
+<!--页面开始部分结束-->
+
+<!--公共尾部开始-->
+<footer>
+    <link href="../assets/css/common/footer.css" rel="stylesheet">
+    <div class="row foot-container">
+        <div class="col-lg-3 col-xs-3">
+            <div class="links">
+                <i class="ar ar-info-b"></i><span>关于我们</span>
+            </div>
+            <ul>
+                <li><a href="#">网站免责声明</a></li>
+                <li><a href="#">网站使用条款</a></li>
+            </ul>
+        </div>
+        <div class="col-lg-3 col-xs-3">
+            <div class="links">
+                <i class="ar ar-envelope"></i><span>联系我们</span>
+            </div>
+            <ul>
+                <li><a href="#">service@geneapps.cn</a></li>
+            </ul>
+        </div>
+        <div class="col-lg-3 col-xs-3">
+            <div class="links">
+                <i class="ar ar-release-a"></i><span>帮助/反馈</span>
+            </div>
+            <ul>
+                <li><a href="#">service@geneapps.cn</a></li>
+            </ul>
+        </div>
+        <div class="col-lg-3 col-xs-3">
+            <div class="links">
+                <i class="ar ar-flag-angle-full"></i><span>友情链接</span>
+            </div>
+            <ul>
+                <li><a href="#">Geneapps</a></li>
+                <li><a href="#">高通量数据网站</a></li>
+            </ul>
+        </div>
+    </div>
+    <p id="copyright">
+        古奥基因 GooalGene &copy; 2015 版权所有.保留所有权利.
+    </p>
+</footer>
+<!--公共尾部结束-->
+
+
+<script src="../assets/js/common/require.min.js" rel="script" defer data-main="../assets/js/home-page-main"></script>
+
+</body>
+</html>

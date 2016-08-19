@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <link rel="shortcut icon" href="../images/logo.png" type="image/x-icon"/>
+    <title>PCR流程管理系统-下单</title>
+</head>
+<body>
+<!--公共头部开始-->
+<header class="navbar-fixed-top">
+
+    <link href="../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/fonts/Art-Reactor-master/dist/art-reactor.min.css" rel="stylesheet">
+    <link href="../assets/css/common/header.css" rel="stylesheet">
+
+    <div class="head-container">
+        <a class="logo" href="../pages/home-page.html">
+            <img src="../images/logo.png">
+        </a>
+        <div class="login">
+            <a class="btn btn-danger" href="place-order.html">我要下单</a>
+
+            <div class="btn-group">
+                <a class="btn btn-default" href="login.html">登录</a>
+                <a class="btn btn-primary" href="register.html">注册</a>
+            </div>
+        </div>
+    </div>
+
+</header>
+<!--公共头部结束-->
+
+<!--页面主体部分开始-->
+<section class="main-part">
+    <link href="../assets/font-awesome-4.6.2/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../assets/css/place-order.css" rel="stylesheet">
+    <div>
+        <div id="orderCategory"></div>
+        <div class="order-form">
+            <div>
+                <table class="table table-bordered" id="basicInfoTable">
+                    <form>
+                        <tbody>
+                        <tr>
+                            <td><label>姓名</label></td>
+                            <td><input type="text" id="name"></td>
+                            <td><label>邮箱</label></td>
+                            <td><input type="email" id="email"></td>
+                            <td><label>电话</label></td>
+                            <td><input type="text" id="telephone"></td>
+                        </tr>
+                        <tr>
+                            <td><label>科室负责人</label></td>
+                            <td><input type="text" id="responsibleParty"></td>
+                            <td><label>送达日期</label></td>
+                            <td><input type="date" id="submitDate"></td>
+                            <td><label>发票抬头</label></td>
+                            <td><input type="text" id="invoiceTitle"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>收样方式</label>
+                            </td>
+                            <td colspan="5">
+                                <input type="radio" class="accept-type" name="acceptType" value="1" checked>邮寄
+                                <input type="radio" class="accept-type" name="acceptType" value="2">上门取样
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label>备注</label></td>
+                            <td colspan="5"><textarea id="remark" placeholder="备注信息..." rows="3"></textarea></td>
+                        </tr>
+                        </tbody>
+                        <button type="reset" hidden id="realReset"></button>
+                    </form>
+                </table>
+
+                <table class="table table-bordered text-center" id="sampleTable">
+                    <thead>
+                    <tr>
+                        <td rowspan="2" width="80px">样品编号</td>
+                        <td width="100px">样品名称</td>
+                        <td width="60px">样品类型</td>
+                        <td>载体名称</td>
+                        <td width="60px">抗性</td>
+                        <td width="50px">片段长度</td>
+                        <td width="100px">测序引物类型及名称</td>
+                        <td rowspan="2" width="50px">测序要求</td>
+                        <td width="100px">备注</td>
+                        <td rowspan="2">操作</td>
+                    </tr><tr>
+                        <td>最好小于10个字符，无汉字、特殊字符（如：pENTR-01）</td>
+                        <td>其他请注明</td>
+                        <td>1.载体>10Kb时，请注明
+                            我们将采用特殊条件测序<br>
+                            2.载体上有多个MCS位点
+                            时请注明插入位点、酶切
+                            位点等信息。
+                        </td>
+                        <td>(Amp, Kan)</td>
+                        <td>单位<br>：bp</td>
+                        <td>若您的自带引物需要
+                            我们长期保存，请注明
+                        </td>
+                        <td>1.发夹环结构<br>
+                            2.GC含量高<br>
+                            3.重复序列<br>
+                            4.其它要求
+                        </td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" class="sample-id" name="sampleId" value="1" disabled></td>
+                            <td><input type="text" class="sample-name" name="sampleName"></td>
+                            <td>
+                                <select class="sample-type">
+                                    <option name="sampleType" value="1">质粒</option>
+                                    <option name="sampleType" value="2">PCR已纯化</option>
+                                    <option name="sampleType" value="3">菌液</option>
+                                    <option name="sampleType" value="4">PCR未纯化</option>
+                                    <option name="sampleType" value="5">其他（请注明）</option>
+                                </select>
+                            </td>
+                            <td><input type="text" class="carrier-name" name="carrierName"></td>
+                            <td><input type="text" class="resistance" name="resistance"></td>
+                            <td><input type="text" class="fragment-length" name="fragmentLength"></td>
+                            <td>
+                                <select class="primer-type">
+                                    <option name="primerType" value="1">自带引物</option>
+                                    <option name="primerType" value="2">通用引物</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select class="seq-requirements">
+                                    <option name="seqRequirements" value="1">正向</option>
+                                    <option name="seqRequirements" value="2">反向</option>
+                                    <option name="seqRequirements" value="3">双向</option>
+                                    <option name="seqRequirements" value="4">测通</option>
+                                </select>
+                            </td>
+                            <td>
+                                <textarea class="remark" cols="10"></textarea>
+                            </td>
+                            <td><i class="fa fa-trash" aria-hidden="true"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="btn btn-block btn-info" id="addSample" type="button"><i class="fa fa-plus" aria-hidden="true"></i>添加样品</button>
+
+                <div class="option-button">
+                    <button type="button" class="btn btn-primary" id="saveButton">保存</button>
+                    <button type="button" class="btn btn-success" id="saveSubmitButton">保存并下单</button>
+                    <button type="button" class="btn btn-danger" id="resetButton">重置</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!--页面主体部分结束-->
+
+<!--公共尾部开始-->
+<footer>
+    <link href="../assets/css/common/footer.css" rel="stylesheet">
+    <div class="row foot-container">
+        <div class="col-lg-3 col-xs-3">
+            <div class="links">
+                <i class="ar ar-info-b"></i><span>关于我们</span>
+            </div>
+            <ul>
+                <li><a href="#">网站免责声明</a></li>
+                <li><a href="#">网站使用条款</a></li>
+            </ul>
+        </div>
+        <div class="col-lg-3 col-xs-3">
+            <div class="links">
+                <i class="ar ar-envelope"></i><span>联系我们</span>
+            </div>
+            <ul>
+                <li><a href="#">service@geneapps.cn</a></li>
+            </ul>
+        </div>
+        <div class="col-lg-3 col-xs-3">
+            <div class="links">
+                <i class="ar ar-release-a"></i><span>帮助/反馈</span>
+            </div>
+            <ul>
+                <li><a href="#">service@geneapps.cn</a></li>
+            </ul>
+        </div>
+        <div class="col-lg-3 col-xs-3">
+            <div class="links">
+                <i class="ar ar-flag-angle-full"></i><span>友情链接</span>
+            </div>
+            <ul>
+                <li><a href="#">Geneapps</a></li>
+                <li><a href="#">高通量数据网站</a></li>
+            </ul>
+        </div>
+    </div>
+    <p id="copyright">
+        古奥基因 GooalGene &copy; 2015 版权所有.保留所有权利.
+    </p>
+</footer>
+<!--公共尾部结束-->
+
+<script src="../assets/js/common/require.min.js" rel="script" defer data-main="../assets/js/place-order-main"></script>
+
+</body>
+</html>
