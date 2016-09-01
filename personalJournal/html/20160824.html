@@ -1,4 +1,4 @@
-<!DOCTYPE html> <html> <head> <title>关于文档</title> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">  <style> .markdown-preview-enhanced pre, .markdown-preview-enhanced .host { color: rgb(171, 178, 191); background-color: rgb(40, 44, 52); }
+<!DOCTYPE html> <html> <head> <title>20160824</title> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">  <style> .markdown-preview-enhanced pre, .markdown-preview-enhanced .host { color: rgb(171, 178, 191); background-color: rgb(40, 44, 52); }
 .markdown-preview-enhanced pre .line.cursor-line, .markdown-preview-enhanced .host .line.cursor-line { background-color: rgba(153, 187, 255, 0.0392157); }
 .markdown-preview-enhanced pre .invisible, .markdown-preview-enhanced .host .invisible { color: rgb(171, 178, 191); }
 .markdown-preview-enhanced pre .cursor, .markdown-preview-enhanced .host .cursor { border-left-width: 2px; border-left-style: solid; border-left-color: rgb(82, 139, 255); }
@@ -893,49 +893,24 @@ div.mermaidTooltip {
   pointer-events: none;
   z-index: 100;
 }
- </style> <link rel="stylesheet" href="file:///C:\Users\dushang\.atom\packages\markdown-preview-enhanced\node_modules\katex\dist\katex.min.css">  </head> <body class="markdown-preview-enhanced" data-use-github-style data-use-github-syntax-theme > <h1 class="line" data-line="0" id="nodejs-v631&#x6587;&#x6863;">Node.js v6.3.1文档</h1>
+ </style> <link rel="stylesheet" href="file:///C:\Users\dushang\.atom\packages\markdown-preview-enhanced\node_modules\katex\dist\katex.min.css">  </head> <body class="markdown-preview-enhanced" data-use-github-style data-use-github-syntax-theme > <h1 class="line" data-line="0" id="20160824-wednesday">20160824–Wednesday</h1>
+<h3 class="line" data-line="2" id="&#x5DE5;&#x4F5C;&#x5185;&#x5BB9;">工作内容</h3>
+<h4 class="line" data-line="4" id="&#x519C;&#x4F5C;&#x7269;&#x4E13;&#x9879;&#x7F51;&#x7AD9;&#x9759;&#x6001;&#x9875;&#x9762;"><strong>农作物专项网站静态页面</strong></h4>
+<ol>
+<li><p class="line" data-line="5">完成度：5%</p></li>
+<li><p class="line" data-line="6">说明：UI未给出切图，查看效果图</p></li>
+<li><p class="line" data-line="7">详细信息：
 <ul>
-<li><p class="line" data-line="3"><a href="#nodejs-v631&#x6587;&#x6863;">Node.js v6.3.1文档</a></p></li>
-<li><p class="line" data-line="4"><a href="#&#x5173;&#x4E8E;&#x6587;&#x6863;">关于文档</a>
+<li><p class="line" data-line="8">风格与实验室网站类似</p></li>
+</ul></p></li>
+</ol>
+<hr>
+<h3 class="line" data-line="12" id="&#x5B66;&#x4E60;&#x5185;&#x5BB9;">学习内容</h3>
+<h4 class="line" data-line="14" id="&#x7FFB;&#x8BD1;nodejsv640&#x6587;&#x6863;"><strong>翻译Node.jsv6.4.0文档</strong></h4>
 <ul>
-<li><p class="line" data-line="5"><a href="#&#x7A33;&#x5B9A;&#x6307;&#x6570;">稳定指数</a></p></li>
-<li><p class="line" data-line="6"><a href="#json&#x8F93;&#x51FA;">JSON输出</a></p></li>
-<li><p class="line" data-line="7"><a href="#&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x548C;&#x5E2E;&#x52A9;&#x9875;&#x9762;">系统调用和帮助页面</a></p></li>
+<li><p class="line" data-line="15">子进程
+<ul>
+<li><p class="line" data-line="16">完成度：30%</p></li>
 </ul></p></li>
 </ul>
-<h1 class="line" data-line="10" id="&#x5173;&#x4E8E;&#x6587;&#x6863;">关于文档</h1>
-<p class="line" data-line="12">这个文档的目标是从参考和概念的观点上对<code>Node.js</code>的API进行概括性地阐述。每个部分都是对内置模块或高级概念的描述。</p>
-<p class="line" data-line="14">属性类型、方法参数和事件处理器所需的参数，其详细信息都在标题下面的列表里。</p>
-<p class="line" data-line="16">每个<code>.html</code>文档都有一个对应的<code>.json</code>文档以结构化的方式展示同样的信息。这个特性还在试验阶段，添加这个特性能够让IDE（集成开发环境）和其他想要对文档进行编程相关工作的工具从中受益。</p>
-<p class="line" data-line="18">每个<code>.html</code>和<code>.json</code>文件都是基于Node.js的源码树中<code>doc/api</code>文件夹下对应<code>.md</code>文件生成的。文档生成使用的是<code>tools/doc/generate.js</code>程序。HTML模板在<code>doc/template.html</code>。</p>
-<p class="line" data-line="20">如果你在该文档中发现错误，请<a href="https://github.com/nodejs/node/issues/new">提交问题</a>或者查看<a href="https://github.com/nodejs/node/blob/master/CONTRIBUTING.md">贡献指南</a>了解如何提交补丁。</p>
-<h2 class="line" data-line="22" id="&#x7A33;&#x5B9A;&#x6307;&#x6570;">稳定指数</h2>
-<p class="line" data-line="24">在整个文档中，你可以看到每个部分的稳定性标识。Node.js的API仍然在做微小地变动，随着API的逐渐成熟，某些部分会比其他部分要更加可靠。一些部分久经考验，值得信赖，它们可能永远都不会再改变。另一些部分是全新的并且实验性的，或者是在重新设计的过程中就已经确定是有风险的。</p>
-<p class="line" data-line="26">稳定性指数如下所示：</p>
-<blockquote>
-<p class="line" data-line="27"><strong>稳定性：0 - 废弃</strong><br>
-该特性是有问题的，并且计划对其进行修改。不要依赖它，使用该特性可能会产生警告。不要想着会向后兼容。</p>
-</blockquote>
-<blockquote>
-<p class="line" data-line="30"><strong>稳定性：1 - 实验</strong><br>
-该特性有改变的可能，由命令行标志进行封闭。在后续的版本中可能会对其修改或将其移除。</p>
-</blockquote>
-<blockquote>
-<p class="line" data-line="33"><strong>稳定性：2 - 稳定</strong><br>
-API已经证明其是满足要求的。与<code>npm</code>生态系统兼容是一个高优先级，除非绝对必要，否则不会对其进行修改。</p>
-</blockquote>
-<blockquote>
-<p class="line" data-line="36"><strong>稳定性：3 - 锁定</strong><br>
-只接受与安全性、性能、或bug修复相关的修复，不要建议修改此区域的API，会被拒绝的。</p>
-</blockquote>
-<h2 class="line" data-line="39" id="json&#x8F93;&#x51FA;">JSON输出</h2>
-<blockquote>
-<p class="line" data-line="41"><strong>稳定性：1 - 实验</strong></p>
-</blockquote>
-<p class="line" data-line="43">markdown中的每个HTML文件都有一个对应的数据相同的JSON文件。</p>
-<p class="line" data-line="45">这个特性在Node.js的v0.6.12中添加，是实验特性。</p>
-<h2 class="line" data-line="47" id="&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x548C;&#x5E2E;&#x52A9;&#x9875;&#x9762;">系统调用和帮助页面</h2>
-<p class="line" data-line="49">系统调用像<a href="man7.org/linux/man-pages/man2/open.2.html"><code>open(2)</code></a>和<a href="man7.org/linux/man-pages/man2/read.2.html"><code>read(2)</code></a>定义了用户程序和底层操作系统之间的接口。Node的函数像<code>fs.open()</code>对其进行了简单地封装。文档链接到对应的帮助页面（手册页面的简称），其描述了系统调用如何工作。</p>
-<p class="line" data-line="51"><strong><em>警告：</em></strong> 一些系统调用，像<a href="man7.org/linux/man-pages/man2/lchown.2.html"><code>lchown(2)</code></a>，是针对BSD的，这意味着，例如，<code>fs.lchown()</code>只能在MAC OS X和其他BSD驱动的系统上使用，在Linux上是无效的。</p>
-<p class="line" data-line="53">大多数Unix系统调用，在Windows上都有与之对应的版本，但是与Linux和OS X相比，行为可能会不太相同。举个例子，在Windows上有时无法替换Unix系统调用语义，详情查看<a href="https://github.com/nodejs/node/issues/4760">Node issue 4760</a>。</p>
  </body>  </html>

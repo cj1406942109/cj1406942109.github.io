@@ -894,108 +894,112 @@ div.mermaidTooltip {
   z-index: 100;
 }
  </style> <link rel="stylesheet" href="file:///C:\Users\dushang\.atom\packages\markdown-preview-enhanced\node_modules\katex\dist\katex.min.css">  </head> <body class="markdown-preview-enhanced" data-use-github-style data-use-github-syntax-theme > <h1 class="line" data-line="0" id="20160807-sunday">20160807–Sunday</h1>
-<h4 class="line" data-line="2" id="angularjs&#x5B66;&#x4E60;-angularjs&#x6743;&#x5A01;&#x6559;&#x7A0B;"><strong>AngularJS学习–AngularJS权威教程</strong></h4>
-<h5 class="line" data-line="4" id="&#x7B2C;&#x5341;&#x7AE0;&#x6307;&#x4EE4;&#x8BE6;&#x89E3;">第十章：指令详解</h5>
-<p class="line" data-line="6"><strong>个人总结</strong>(原书该章节发现很多错误：修正参考<a href="https://docs.angularjs.org/api/ng/service/$compile#">angularjs<code>$compile</code>服务</a>)</p>
+<h3 class="line" data-line="2" id="&#x5DE5;&#x4F5C;&#x5185;&#x5BB9;">工作内容</h3>
+<h4 class="line" data-line="3" id="&#x6682;&#x65E0;"><strong>暂无</strong></h4>
+<hr>
+<h3 class="line" data-line="7" id="&#x5B66;&#x4E60;&#x5185;&#x5BB9;">学习内容</h3>
+<h4 class="line" data-line="8" id="angularjs&#x5B66;&#x4E60;-angularjs&#x6743;&#x5A01;&#x6559;&#x7A0B;"><strong>AngularJS学习–AngularJS权威教程</strong></h4>
+<h5 class="line" data-line="10" id="&#x7B2C;&#x5341;&#x7AE0;&#x6307;&#x4EE4;&#x8BE6;&#x89E3;">第十章：指令详解</h5>
+<p class="line" data-line="12"><strong>个人总结</strong>(原书该章节发现很多错误：修正参考<a href="https://docs.angularjs.org/api/ng/service/$compile#">angularjs<code>$compile</code>服务</a>)</p>
 <ul>
-<li><p class="line" data-line="8"><strong>指令定义对象的属性详解</strong>
+<li><p class="line" data-line="14"><strong>指令定义对象的属性详解</strong>
 <ol start="11">
-<li><p class="line" data-line="9">bindToController(布尔型或对象)
+<li><p class="line" data-line="15">bindToController(布尔型或对象)
 <ul>
-<li><p class="line" data-line="10">功能：将作用域属性直接绑定到控制器，可设置为<code>true</code>或者和<code>scope</code>属性相同格式的哈希对象。另外，必须设置一个控制器别名，可以通过<code>controllerAs:'myAlias'</code>或者在控制器定义中指定<code>controller:'myCtrl as myAlias'</code>。</p></li>
-<li><p class="line" data-line="11">可选值：
+<li><p class="line" data-line="16">功能：将作用域属性直接绑定到控制器，可设置为<code>true</code>或者和<code>scope</code>属性相同格式的哈希对象。另外，必须设置一个控制器别名，可以通过<code>controllerAs:'myAlias'</code>或者在控制器定义中指定<code>controller:'myCtrl as myAlias'</code>。</p></li>
+<li><p class="line" data-line="17">可选值：
 <ol>
-<li><p class="line" data-line="12"><code>true</code>，当指令使用隔离作用域时，允许组件将属性绑定到控制器而不是作用域</p></li>
-<li><p class="line" data-line="13"><code>{...}</code>，格式与<code>scope</code>属性相同，设置作用域直接绑定到控制器。注意：<code>scope</code>仍可以用来定义创建的作用域类型。如果<code>bindToController</code>和<code>scope</code>都被定义并且有哈希对象,<code>bindToController</code>会覆盖<code>scope</code>。</p></li>
+<li><p class="line" data-line="18"><code>true</code>，当指令使用隔离作用域时，允许组件将属性绑定到控制器而不是作用域</p></li>
+<li><p class="line" data-line="19"><code>{...}</code>，格式与<code>scope</code>属性相同，设置作用域直接绑定到控制器。注意：<code>scope</code>仍可以用来定义创建的作用域类型。如果<code>bindToController</code>和<code>scope</code>都被定义并且有哈希对象,<code>bindToController</code>会覆盖<code>scope</code>。</p></li>
 </ol></p></li>
-<li><p class="line" data-line="14">说明：控制器被实例化之后，隔离作用域绑定的原始值会被绑定到控制器属性，你可以在这些绑定被实例化之后通过<code>$onInit</code>控制器方法进行访问。</p></li>
+<li><p class="line" data-line="20">说明：控制器被实例化之后，隔离作用域绑定的原始值会被绑定到控制器属性，你可以在这些绑定被实例化之后通过<code>$onInit</code>控制器方法进行访问。</p></li>
 </ul></p></li>
-<li><p class="line" data-line="15">controller(函数)
+<li><p class="line" data-line="21">controller(函数)
 <ul>
-<li><p class="line" data-line="16">功能： 控制器构造函数。控制器在pre-linking阶段之前被实例化，能够被其他指令访问。允许指令之间相互通信并且放大各自的行为。控制器可以通过以下本地变量进行注入（支持括号记法）：
+<li><p class="line" data-line="22">功能： 控制器构造函数。控制器在pre-linking阶段之前被实例化，能够被其他指令访问。允许指令之间相互通信并且放大各自的行为。控制器可以通过以下本地变量进行注入（支持括号记法）：
 <ol>
-<li><p class="line" data-line="17"><code>$scope</code>，与当前元素关联的作用域</p></li>
-<li><p class="line" data-line="18"><code>$element</code>，当前元素</p></li>
-<li><p class="line" data-line="19"><code>$attrs</code>，当前元素的属性对象</p></li>
-<li><p class="line" data-line="20"><code>$transclude</code>，预绑定到正确嵌入作用域的嵌入链接函数<code>function([scope],cloneLinkingFn,futureParentElement,slotName)</code>，其中：
+<li><p class="line" data-line="23"><code>$scope</code>，与当前元素关联的作用域</p></li>
+<li><p class="line" data-line="24"><code>$element</code>，当前元素</p></li>
+<li><p class="line" data-line="25"><code>$attrs</code>，当前元素的属性对象</p></li>
+<li><p class="line" data-line="26"><code>$transclude</code>，预绑定到正确嵌入作用域的嵌入链接函数<code>function([scope],cloneLinkingFn,futureParentElement,slotName)</code>，其中：
 <ul>
-<li><p class="line" data-line="21"><code>scope</code>，将作用域覆盖（可选值）</p></li>
-<li><p class="line" data-line="22"><code>cloneLinkingFn</code>，创建原始嵌入的内容的副本（可选值）</p></li>
-<li><p class="line" data-line="23"><code>futureParentElement</code>（可选值）:
+<li><p class="line" data-line="27"><code>scope</code>，将作用域覆盖（可选值）</p></li>
+<li><p class="line" data-line="28"><code>cloneLinkingFn</code>，创建原始嵌入的内容的副本（可选值）</p></li>
+<li><p class="line" data-line="29"><code>futureParentElement</code>（可选值）:
 <ul>
-<li><p class="line" data-line="24">定义<code>cloneLinkingFn</code>要把克隆元素添加到的父元素</p></li>
-<li><p class="line" data-line="25">默认值：<code>$element.parent()</code>，<code>transclude:'element'</code>为<code>$element</code>，<code>transclude:true</code></p></li>
-<li><p class="line" data-line="26">只有嵌入允许包含非html元素（如svg元素）才需要，当<code>cloneLinkingFn</code>被传递，定义在常用容器（如<code>&lt;svg&gt;</code>）外部的元素随之以特殊的方式被创建和克隆。</p></li>
-<li><p class="line" data-line="27">参照<code>directive.templateNamespace</code>属性</p></li>
+<li><p class="line" data-line="30">定义<code>cloneLinkingFn</code>要把克隆元素添加到的父元素</p></li>
+<li><p class="line" data-line="31">默认值：<code>$element.parent()</code>，<code>transclude:'element'</code>为<code>$element</code>，<code>transclude:true</code></p></li>
+<li><p class="line" data-line="32">只有嵌入允许包含非html元素（如svg元素）才需要，当<code>cloneLinkingFn</code>被传递，定义在常用容器（如<code>&lt;svg&gt;</code>）外部的元素随之以特殊的方式被创建和克隆。</p></li>
+<li><p class="line" data-line="33">参照<code>directive.templateNamespace</code>属性</p></li>
 </ul></p></li>
-<li><p class="line" data-line="28"><code>slotName</code>，嵌入&quot;插槽&quot;的名字，如果为假值（如：<code>null</code>,<code>undefined</code>或<code>''</code>），则使用默认嵌入。</p></li>
+<li><p class="line" data-line="34"><code>slotName</code>，嵌入&quot;插槽&quot;的名字，如果为假值（如：<code>null</code>,<code>undefined</code>或<code>''</code>），则使用默认嵌入。</p></li>
 </ul></p></li>
 </ol></p></li>
 </ul></p></li>
-<li><p class="line" data-line="29">controllerAs(字符串)
+<li><p class="line" data-line="35">controllerAs(字符串)
 <ul>
-<li><p class="line" data-line="30">功能：在指令的作用域中定义控制器的引用名，允许在指令模板中引用控制器。当指令作为组件（也就是隔离作用域）使用时该属性十分有用。在没有新作用域或隔离作用域的指令中同样可以使用该属性，但是你需要知道，<code>controllerAs</code>引用可能会覆盖父级作用域中已经存在的属性。</p></li>
+<li><p class="line" data-line="36">功能：在指令的作用域中定义控制器的引用名，允许在指令模板中引用控制器。当指令作为组件（也就是隔离作用域）使用时该属性十分有用。在没有新作用域或隔离作用域的指令中同样可以使用该属性，但是你需要知道，<code>controllerAs</code>引用可能会覆盖父级作用域中已经存在的属性。</p></li>
 </ul></p></li>
-<li><p class="line" data-line="31">require(字符串、数组或对象)
+<li><p class="line" data-line="37">require(字符串、数组或对象)
 <ul>
-<li><p class="line" data-line="32">功能：需要其他指令，并将其控制器作为第四个参数注入链接函数。</p></li>
-<li><p class="line" data-line="33">可选值：
+<li><p class="line" data-line="38">功能：需要其他指令，并将其控制器作为第四个参数注入链接函数。</p></li>
+<li><p class="line" data-line="39">可选值：
 <ol>
-<li><p class="line" data-line="34">字符串，要传入链接函数的指令名</p></li>
-<li><p class="line" data-line="35">数组，包含要传入链接函数的多个指令名。传递给链接函数的参数是控制器数组，其顺序与<code>require</code>属性中的顺序相同</p></li>
-<li><p class="line" data-line="36">对象，对象的属性值是要传入链接函数的指令名。 传递给连接函数的也是一个对象，其键一致，值为对应的控制器。</p></li>
+<li><p class="line" data-line="40">字符串，要传入链接函数的指令名</p></li>
+<li><p class="line" data-line="41">数组，包含要传入链接函数的多个指令名。传递给链接函数的参数是控制器数组，其顺序与<code>require</code>属性中的顺序相同</p></li>
+<li><p class="line" data-line="42">对象，对象的属性值是要传入链接函数的指令名。 传递给连接函数的也是一个对象，其键一致，值为对应的控制器。</p></li>
 </ol></p></li>
-<li><p class="line" data-line="37">说明：如果<code>require</code>属性设置为对象，并且<code>bindToController</code>也为真值，那么控制器将使用<code>require</code>属性的键来进行绑定，该绑定在所有控制器已经构建之后和<code>$onInit</code>被调用之前发生。如果需要的控制器名和键名相同，则控制器名可以省略（如：<code>{parentDir:'^^'}</code>和<code>{parentDir:'^^parentDir'}</code>等价）。控制器名可以添加以下前缀：
+<li><p class="line" data-line="43">说明：如果<code>require</code>属性设置为对象，并且<code>bindToController</code>也为真值，那么控制器将使用<code>require</code>属性的键来进行绑定，该绑定在所有控制器已经构建之后和<code>$onInit</code>被调用之前发生。如果需要的控制器名和键名相同，则控制器名可以省略（如：<code>{parentDir:'^^'}</code>和<code>{parentDir:'^^parentDir'}</code>等价）。控制器名可以添加以下前缀：
 <ul>
-<li><p class="line" data-line="38">无前缀：在当前元素上查找需要的控制器，如果没找到，抛出错误</p></li>
-<li><p class="line" data-line="39"><code>?</code>：在当前元素上查找需要的控制器，如果没找到，传递一个<code>null</code>给<code>link</code>函数</p></li>
-<li><p class="line" data-line="40"><code>^</code>：在当前元素和其父元素上查找需要的控制器，如果没找到，抛出错误</p></li>
-<li><p class="line" data-line="41"><code>^^</code>：在当前元素的父元素上查找需要的控制器，如果没找到，抛出错误</p></li>
-<li><p class="line" data-line="42"><code>?^</code>：在当前元素和其父元素上查找需要的控制器，如果没找到，传递一个<code>null</code>给<code>link</code>函数</p></li>
-<li><p class="line" data-line="43"><code>?^^</code>：在当前元素的父元素上查找需要的控制器，如果没找到，传递一个<code>null</code>给<code>link</code>函数</p></li>
+<li><p class="line" data-line="44">无前缀：在当前元素上查找需要的控制器，如果没找到，抛出错误</p></li>
+<li><p class="line" data-line="45"><code>?</code>：在当前元素上查找需要的控制器，如果没找到，传递一个<code>null</code>给<code>link</code>函数</p></li>
+<li><p class="line" data-line="46"><code>^</code>：在当前元素和其父元素上查找需要的控制器，如果没找到，抛出错误</p></li>
+<li><p class="line" data-line="47"><code>^^</code>：在当前元素的父元素上查找需要的控制器，如果没找到，抛出错误</p></li>
+<li><p class="line" data-line="48"><code>?^</code>：在当前元素和其父元素上查找需要的控制器，如果没找到，传递一个<code>null</code>给<code>link</code>函数</p></li>
+<li><p class="line" data-line="49"><code>?^^</code>：在当前元素的父元素上查找需要的控制器，如果没找到，传递一个<code>null</code>给<code>link</code>函数</p></li>
 </ul></p></li>
 </ul></p></li>
-<li><p class="line" data-line="44">compile(函数)
+<li><p class="line" data-line="50">compile(函数)
 <ul>
-<li><p class="line" data-line="45">功能：编译函数（<code>function compile(tElement,tAttrs,transclude){...}</code>）用于处理模板dom的转换。因为大多数指令不做模板转换，所有不常用。</p></li>
-<li><p class="line" data-line="46">编译函数的参数：
+<li><p class="line" data-line="51">功能：编译函数（<code>function compile(tElement,tAttrs,transclude){...}</code>）用于处理模板dom的转换。因为大多数指令不做模板转换，所有不常用。</p></li>
+<li><p class="line" data-line="52">编译函数的参数：
 <ol>
-<li><p class="line" data-line="47"><code>tElement</code>：模板元素，也就是指令声明所在的元素，只在该元素和其子元素上做模板转换比较安全</p></li>
-<li><p class="line" data-line="48"><code>tAttrs</code>：模板属性，在元素上声明的属性的标准化列表，所有指令的编译函数共享</p></li>
-<li><p class="line" data-line="49"><code>transclude</code>：嵌入链接函数<code>function(scope,cloneLinkingFn)</code>，<strong>已废弃</strong>，因为它不知道正确的外部作用域，请使用传入<code>link</code>函数的嵌入函数来替代。</p></li>
+<li><p class="line" data-line="53"><code>tElement</code>：模板元素，也就是指令声明所在的元素，只在该元素和其子元素上做模板转换比较安全</p></li>
+<li><p class="line" data-line="54"><code>tAttrs</code>：模板属性，在元素上声明的属性的标准化列表，所有指令的编译函数共享</p></li>
+<li><p class="line" data-line="55"><code>transclude</code>：嵌入链接函数<code>function(scope,cloneLinkingFn)</code>，<strong>已废弃</strong>，因为它不知道正确的外部作用域，请使用传入<code>link</code>函数的嵌入函数来替代。</p></li>
 </ol></p></li>
-<li><p class="line" data-line="50">说明：
+<li><p class="line" data-line="56">说明：
 <ul>
-<li><p class="line" data-line="51">如果模板被克隆了，那么模板实例和链接实例可能是不同的对象，因此，在编译函数对克隆后的dom节点进行dom转换以外的其他操作都是不安全的。特殊说明：dom监听器的注册应该在链接函数而不是编译函数中完成。</p></li>
-<li><p class="line" data-line="52">编译函数无法处理在模板或编译函数中递归调用自己的指令。编译这些指令会陷入死循环导致堆栈溢出错误。在<code>postLink</code>函数中使用<code>$compile</code>命令式编译指令模板来替代依赖使用<code>template</code>或<code>templateUrl</code>声明完成模板自动编译，或者在编译函数中手动进行编译，都可以避免这种情况。</p></li>
-<li><p class="line" data-line="53">编译函数可以返回一个函数或者对象
+<li><p class="line" data-line="57">如果模板被克隆了，那么模板实例和链接实例可能是不同的对象，因此，在编译函数对克隆后的dom节点进行dom转换以外的其他操作都是不安全的。特殊说明：dom监听器的注册应该在链接函数而不是编译函数中完成。</p></li>
+<li><p class="line" data-line="58">编译函数无法处理在模板或编译函数中递归调用自己的指令。编译这些指令会陷入死循环导致堆栈溢出错误。在<code>postLink</code>函数中使用<code>$compile</code>命令式编译指令模板来替代依赖使用<code>template</code>或<code>templateUrl</code>声明完成模板自动编译，或者在编译函数中手动进行编译，都可以避免这种情况。</p></li>
+<li><p class="line" data-line="59">编译函数可以返回一个函数或者对象
 <ul>
-<li><p class="line" data-line="54">返回一个（post-ink）函数，等价于在编译函数为空的情况下，通过配置对象的<code>link</code>属性注册一个链接函数。</p></li>
-<li><p class="line" data-line="55">返回一个对象，其函数通过<code>pre</code>和<code>post</code>属性注册，允许你在链接阶段调用链接函数时进行控制。</p></li>
+<li><p class="line" data-line="60">返回一个（post-ink）函数，等价于在编译函数为空的情况下，通过配置对象的<code>link</code>属性注册一个链接函数。</p></li>
+<li><p class="line" data-line="61">返回一个对象，其函数通过<code>pre</code>和<code>post</code>属性注册，允许你在链接阶段调用链接函数时进行控制。</p></li>
 </ul></p></li>
 </ul></p></li>
 </ul></p></li>
-<li><p class="line" data-line="56">link(函数)
+<li><p class="line" data-line="62">link(函数)
 <ul>
-<li><p class="line" data-line="57">功能：链接函数（<code>function link(scope,isElement,isAttrs,controller,transcludeFn){...}</code>），只有<code>compile</code>属性未定义时才能使用。用于注册dom监听器和更新dom，在模板克隆之后执行。大多数指令逻辑都放在这里。</p></li>
-<li><p class="line" data-line="58">链接函数的参数：
+<li><p class="line" data-line="63">功能：链接函数（<code>function link(scope,isElement,isAttrs,controller,transcludeFn){...}</code>），只有<code>compile</code>属性未定义时才能使用。用于注册dom监听器和更新dom，在模板克隆之后执行。大多数指令逻辑都放在这里。</p></li>
+<li><p class="line" data-line="64">链接函数的参数：
 <ol>
-<li><p class="line" data-line="59"><code>scope</code>：指令用于注册观察者的作用域</p></li>
-<li><p class="line" data-line="60"><code>isElement</code>：指令被使用所在的元素，只在<code>postLink</code>函数中操作该元素的子元素比较安全，因为子元素都已完成链接。</p></li>
-<li><p class="line" data-line="61"><code>isAttrs</code>：元素上声明的属性的标准化列表，由所有指令链接函数共享。</p></li>
-<li><p class="line" data-line="62"><code>controller</code>：指令需要的控制器实例（所有指令间共享），允许指令将控制器作为通信通道使用。具体值取决于指令的<code>require</code>属性：
+<li><p class="line" data-line="65"><code>scope</code>：指令用于注册观察者的作用域</p></li>
+<li><p class="line" data-line="66"><code>isElement</code>：指令被使用所在的元素，只在<code>postLink</code>函数中操作该元素的子元素比较安全，因为子元素都已完成链接。</p></li>
+<li><p class="line" data-line="67"><code>isAttrs</code>：元素上声明的属性的标准化列表，由所有指令链接函数共享。</p></li>
+<li><p class="line" data-line="68"><code>controller</code>：指令需要的控制器实例（所有指令间共享），允许指令将控制器作为通信通道使用。具体值取决于指令的<code>require</code>属性：
 <ul>
-<li><p class="line" data-line="63">不需要控制器：使用指令自己的控制器，如果没有则为<code>undefined</code></p></li>
-<li><p class="line" data-line="64"><code>string</code>：控制器实例</p></li>
-<li><p class="line" data-line="65"><code>array</code>：控制器实例数组</p></li>
+<li><p class="line" data-line="69">不需要控制器：使用指令自己的控制器，如果没有则为<code>undefined</code></p></li>
+<li><p class="line" data-line="70"><code>string</code>：控制器实例</p></li>
+<li><p class="line" data-line="71"><code>array</code>：控制器实例数组</p></li>
 </ul></p></li>
-<li><p class="line" data-line="66"><code>transcludeFn</code>：预绑定到正确的嵌入作用域的嵌入链接函数，与指令的控制器中<code>$transclude</code>参数相同<code>function([scope],cloneLinkingFn,futureParentElement)</code></p></li>
+<li><p class="line" data-line="72"><code>transcludeFn</code>：预绑定到正确的嵌入作用域的嵌入链接函数，与指令的控制器中<code>$transclude</code>参数相同<code>function([scope],cloneLinkingFn,futureParentElement)</code></p></li>
 </ol></p></li>
-<li><p class="line" data-line="67"><strong>补充内容：</strong>
+<li><p class="line" data-line="73"><strong>补充内容：</strong>
 <ol>
-<li><p class="line" data-line="68">pre-linking 函数<br>
+<li><p class="line" data-line="74">pre-linking 函数<br>
 在子元素被链接前执行，在该函数中进行dom转换时不安全的，因为编译链接函数无法正确的定位元素。</p></li>
-<li><p class="line" data-line="70">post-linking 函数<br>
+<li><p class="line" data-line="76">post-linking 函数<br>
 在子元素被链接后执行，注意：指令包含<code>templateUrl</code>的子元素不会被编译和链接。在该函数中对无需进行异步解析模板的元素进行dom转换是安全的。</p></li>
 </ol></p></li>
 </ul></p></li>

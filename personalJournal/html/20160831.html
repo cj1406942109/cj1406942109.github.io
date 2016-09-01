@@ -1,4 +1,4 @@
-<!DOCTYPE html> <html> <head> <title>20160811</title> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">  <style> .markdown-preview-enhanced pre, .markdown-preview-enhanced .host { color: rgb(171, 178, 191); background-color: rgb(40, 44, 52); }
+<!DOCTYPE html> <html> <head> <title>20160831</title> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">  <style> .markdown-preview-enhanced pre, .markdown-preview-enhanced .host { color: rgb(171, 178, 191); background-color: rgb(40, 44, 52); }
 .markdown-preview-enhanced pre .line.cursor-line, .markdown-preview-enhanced .host .line.cursor-line { background-color: rgba(153, 187, 255, 0.0392157); }
 .markdown-preview-enhanced pre .invisible, .markdown-preview-enhanced .host .invisible { color: rgb(171, 178, 191); }
 .markdown-preview-enhanced pre .cursor, .markdown-preview-enhanced .host .cursor { border-left-width: 2px; border-left-style: solid; border-left-color: rgb(82, 139, 255); }
@@ -893,25 +893,44 @@ div.mermaidTooltip {
   pointer-events: none;
   z-index: 100;
 }
- </style> <link rel="stylesheet" href="file:///C:\Users\dushang\.atom\packages\markdown-preview-enhanced\node_modules\katex\dist\katex.min.css">  </head> <body class="markdown-preview-enhanced" data-use-github-style data-use-github-syntax-theme > <h1 class="line" data-line="0" id="20160811-thursday">20160811–Thursday</h1>
+ </style> <link rel="stylesheet" href="file:///C:\Users\dushang\.atom\packages\markdown-preview-enhanced\node_modules\katex\dist\katex.min.css">  </head> <body class="markdown-preview-enhanced" data-use-github-style data-use-github-syntax-theme > <h1 class="line" data-line="0" id="20160831-wednesday">20160831–Wednesday</h1>
 <h3 class="line" data-line="2" id="&#x5DE5;&#x4F5C;&#x5185;&#x5BB9;">工作内容</h3>
-<h4 class="line" data-line="4" id="&#x4E91;&#x5E73;&#x53F0;&#x524D;&#x7AEF;&#x6587;&#x6863;&#x6574;&#x7406;"><strong>云平台前端文档整理</strong></h4>
-<ol>
-<li><p class="line" data-line="6">完成度：12%</p></li>
-<li><p class="line" data-line="7">说明：阅读用户模块相关代码，同时学习angularjs</p></li>
-<li><p class="line" data-line="8">详细信息：
+<h4 class="line" data-line="4" id="pcr&#x6D41;&#x7A0B;&#x7BA1;&#x7406;&#x7CFB;&#x7EDF;"><strong>PCR流程管理系统</strong></h4>
 <ul>
-<li><p class="line" data-line="9">home.html</p></li>
-<li><p class="line" data-line="10">homeController.js</p></li>
+<li><p class="line" data-line="5">修改登录页面样式</p></li>
+<li><p class="line" data-line="6">修复下单页面样品id可编辑问题</p></li>
+<li><p class="line" data-line="7">修复下单页面textarea可改变大小导致布局变化问题</p></li>
+<li><p class="line" data-line="8">修复edge浏览器下下单页面样表样式错乱</p></li>
+<li><p class="line" data-line="9">修复下单页面和编辑订单页面格式验证问题</p></li>
+<li><p class="line" data-line="10">解决保存按钮频繁点击带来的ajax请求重复提交问题</p></li>
+</ul>
+<hr>
+<h3 class="line" data-line="16" id="&#x5B66;&#x4E60;&#x5185;&#x5BB9;">学习内容</h3>
+<h4 class="line" data-line="18" id="jqueryeach"><strong>jQuery.each()</strong></h4>
+<blockquote>
+<p class="line" data-line="20">应用类型</p>
+</blockquote>
+<ul>
+<li><p class="line" data-line="21">$(selector).each()只能用于迭代jquery对象</p></li>
+<li><p class="line" data-line="22">$.each()可以用于迭代数组，对象等任意集合。</p></li>
+</ul>
+<blockquote>
+<p class="line" data-line="24"><strong>跳出循环</strong></p>
+</blockquote>
+<ul>
+<li><p class="line" data-line="25">在某次迭代中跳出整个each循环：在回调函数中返回<code>false</code>。</p></li>
+<li><p class="line" data-line="26">跳出当前迭代，立即进入到下一次迭代：在回调函数中返回一个<em>非错(non-false)</em>，其效果与for循环中的<code>continue</code>语句相同。</p></li>
+</ul>
+<h4 class="line" data-line="28" id="&#x9632;&#x6B62;ajax&#x8BF7;&#x6C42;&#x91CD;&#x590D;&#x63D0;&#x4EA4;"><strong>防止ajax请求重复提交</strong></h4>
+<ol>
+<li><p class="line" data-line="29">正在发送ajax请求时，将触发ajax请求的按钮禁用，请求结束后再恢复
+<ul>
+<li><p class="line" data-line="30">问题：需要针对不同的出错情况，对提交按钮进行恢复</p></li>
+</ul></p></li>
+<li><p class="line" data-line="31">使用<code>setTimeout</code>+<code>clearTimeout</code>，延迟发送ajax请求，连续点击会把上次的点击清除掉。
+<ul>
+<li><p class="line" data-line="32">问题：当点击间隔超过timeout值时，若ajax请求还未完成，则还是会重复提交<br>
+3.其他框架等处理方法</p></li>
 </ul></p></li>
 </ol>
-<hr>
-<h3 class="line" data-line="15" id="&#x5B66;&#x4E60;&#x5185;&#x5BB9;">学习内容</h3>
-<h4 class="line" data-line="17" id="&#x7FFB;&#x8BD1;nodejsv640&#x6587;&#x6863;"><strong>翻译Node.jsv6.4.0文档</strong></h4>
-<ul>
-<li><p class="line" data-line="18">缓冲
-<ul>
-<li><p class="line" data-line="19">完成度：40%</p></li>
-</ul></p></li>
-</ul>
  </body>  </html>
