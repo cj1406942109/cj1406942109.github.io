@@ -7,6 +7,9 @@
 .markdown-preview-enhanced pre .invisible-character, .markdown-preview-enhanced .host .invisible-character { color: rgba(171, 178, 191, 0.14902); }
 .markdown-preview-enhanced pre .indent-guide, .markdown-preview-enhanced .host .indent-guide { color: rgba(171, 178, 191, 0.14902); }
 .markdown-preview-enhanced pre .wrap-guide, .markdown-preview-enhanced .host .wrap-guide { background-color: rgba(171, 178, 191, 0.14902); }
+.markdown-preview-enhanced pre .find-result .region.region.region, .markdown-preview-enhanced .host .find-result .region.region.region, .markdown-preview-enhanced pre .current-result .region.region.region, .markdown-preview-enhanced .host .current-result .region.region.region { border-radius: 0px; transition: border-color 0.4s; background-color: rgba(82, 139, 255, 0.239216); }
+.markdown-preview-enhanced pre .find-result .region.region.region, .markdown-preview-enhanced .host .find-result .region.region.region { border: 2px solid transparent; }
+.markdown-preview-enhanced pre .current-result .region.region.region, .markdown-preview-enhanced .host .current-result .region.region.region { border: 2px solid rgb(82, 139, 255); transition-duration: 0.1s; }
 .markdown-preview-enhanced pre .gutter .line-number, .markdown-preview-enhanced .host .gutter .line-number { color: rgb(99, 109, 131); -webkit-font-smoothing: antialiased; }
 .markdown-preview-enhanced pre .gutter .line-number.cursor-line, .markdown-preview-enhanced .host .gutter .line-number.cursor-line { color: rgb(171, 178, 191); background-color: rgb(44, 49, 58); }
 .markdown-preview-enhanced pre .gutter .line-number.cursor-line-no-selection, .markdown-preview-enhanced .host .gutter .line-number.cursor-line-no-selection { background-color: transparent; }
@@ -296,6 +299,23 @@ pre.editor-colors .wrap-guide,
 .host .wrap-guide {
   background-color: rgba(171, 178, 191, 0.15);
 }
+pre.editor-colors .find-result .region.region.region,
+.host .find-result .region.region.region,
+pre.editor-colors .current-result .region.region.region,
+.host .current-result .region.region.region {
+  border-radius: 0px;
+  background-color: rgba(82, 139, 255, 0.24);
+  transition: border-color 0.4s;
+}
+pre.editor-colors .find-result .region.region.region,
+.host .find-result .region.region.region {
+  border: 2px solid transparent;
+}
+pre.editor-colors .current-result .region.region.region,
+.host .current-result .region.region.region {
+  border: 2px solid #528bff;
+  transition-duration: .1s;
+}
 pre.editor-colors .gutter .line-number,
 .host .gutter .line-number {
   color: #636d83;
@@ -568,6 +588,9 @@ pre.editor-colors .fold-marker:after,
 .source.gfm .link .entity {
   color: #61afef;
 }
+.source.go .storage.type.string {
+  color: #c678dd;
+}
 .source.ini .keyword.other.definition.ini {
   color: #e06c75;
 }
@@ -576,6 +599,9 @@ pre.editor-colors .fold-marker:after,
 }
 .source.java .storage.type {
   color: #e5c07b;
+}
+.source.java .keyword.operator.instanceof {
+  color: #c678dd;
 }
 .source.java-properties .meta.key-pair {
   color: #e06c75;
