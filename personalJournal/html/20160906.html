@@ -1,0 +1,1041 @@
+<!DOCTYPE html> <html> <head> <title>20160906</title> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">  <style> .markdown-preview-enhanced pre, .markdown-preview-enhanced .host { color: rgb(171, 178, 191); background-color: rgb(40, 44, 52); }
+.markdown-preview-enhanced pre .line.cursor-line, .markdown-preview-enhanced .host .line.cursor-line { background-color: rgba(153, 187, 255, 0.0392157); }
+.markdown-preview-enhanced pre .invisible, .markdown-preview-enhanced .host .invisible { color: rgb(171, 178, 191); }
+.markdown-preview-enhanced pre .cursor, .markdown-preview-enhanced .host .cursor { border-left-width: 2px; border-left-style: solid; border-left-color: rgb(82, 139, 255); }
+.markdown-preview-enhanced pre .selection .region, .markdown-preview-enhanced .host .selection .region { background-color: rgb(62, 68, 81); }
+.markdown-preview-enhanced pre .bracket-matcher .region, .markdown-preview-enhanced .host .bracket-matcher .region { border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(82, 139, 255); box-sizing: border-box; }
+.markdown-preview-enhanced pre .invisible-character, .markdown-preview-enhanced .host .invisible-character { color: rgba(171, 178, 191, 0.14902); }
+.markdown-preview-enhanced pre .indent-guide, .markdown-preview-enhanced .host .indent-guide { color: rgba(171, 178, 191, 0.14902); }
+.markdown-preview-enhanced pre .wrap-guide, .markdown-preview-enhanced .host .wrap-guide { background-color: rgba(171, 178, 191, 0.14902); }
+.markdown-preview-enhanced pre .find-result .region.region.region, .markdown-preview-enhanced .host .find-result .region.region.region, .markdown-preview-enhanced pre .current-result .region.region.region, .markdown-preview-enhanced .host .current-result .region.region.region { border-radius: 0px; transition: border-color 0.4s; background-color: rgba(82, 139, 255, 0.239216); }
+.markdown-preview-enhanced pre .find-result .region.region.region, .markdown-preview-enhanced .host .find-result .region.region.region { border: 2px solid transparent; }
+.markdown-preview-enhanced pre .current-result .region.region.region, .markdown-preview-enhanced .host .current-result .region.region.region { border: 2px solid rgb(82, 139, 255); transition-duration: 0.1s; }
+.markdown-preview-enhanced pre .gutter .line-number, .markdown-preview-enhanced .host .gutter .line-number { color: rgb(99, 109, 131); -webkit-font-smoothing: antialiased; }
+.markdown-preview-enhanced pre .gutter .line-number.cursor-line, .markdown-preview-enhanced .host .gutter .line-number.cursor-line { color: rgb(171, 178, 191); background-color: rgb(44, 49, 58); }
+.markdown-preview-enhanced pre .gutter .line-number.cursor-line-no-selection, .markdown-preview-enhanced .host .gutter .line-number.cursor-line-no-selection { background-color: transparent; }
+.markdown-preview-enhanced pre .gutter .line-number .icon-right, .markdown-preview-enhanced .host .gutter .line-number .icon-right { color: rgb(171, 178, 191); }
+.markdown-preview-enhanced pre .gutter:not(.git-diff-icon) .line-number.git-line-removed.git-line-removed::before, .markdown-preview-enhanced .host .gutter:not(.git-diff-icon) .line-number.git-line-removed.git-line-removed::before { bottom: -3px; }
+.markdown-preview-enhanced pre .gutter:not(.git-diff-icon) .line-number.git-line-removed::after, .markdown-preview-enhanced .host .gutter:not(.git-diff-icon) .line-number.git-line-removed::after { content: ""; position: absolute; left: 0px; bottom: 0px; width: 25px; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: rgba(224, 82, 82, 0.498039); pointer-events: none; }
+.markdown-preview-enhanced pre .gutter .line-number.folded, .markdown-preview-enhanced .host .gutter .line-number.folded, .markdown-preview-enhanced pre .gutter .line-number::after, .markdown-preview-enhanced .host .gutter .line-number::after, .markdown-preview-enhanced pre .fold-marker::after, .markdown-preview-enhanced .host .fold-marker::after { color: rgb(171, 178, 191); }
+.markdown-preview-enhanced { font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif; font-size: 16px; line-height: 1.6; color: rgb(171, 178, 191); overflow: initial; margin: 10px 13px; padding: 2em; background-color: rgb(40, 44, 52); }
+.markdown-preview-enhanced[data-use-github-style] { color: rgb(51, 51, 51); background-color: rgb(255, 255, 255); }
+.markdown-preview-enhanced > :first-child { margin-top: 0px; }
+.markdown-preview-enhanced[is="space-pen-div"] { width: 100%; margin: 0px; z-index: 999; overflow: scroll; font-size: 16px; display: block; box-sizing: border-box; position: absolute; }
+.markdown-preview-enhanced[is="space-pen-div"]::-webkit-scrollbar { display: none; }
+.markdown-preview-enhanced h1, .markdown-preview-enhanced h2, .markdown-preview-enhanced h3, .markdown-preview-enhanced h4, .markdown-preview-enhanced h5, .markdown-preview-enhanced h6 { line-height: 1.2; margin-top: 1em; margin-bottom: 16px; color: rgb(255, 255, 255); }
+.markdown-preview-enhanced[data-use-github-style] h1, .markdown-preview-enhanced[data-use-github-style] h2, .markdown-preview-enhanced[data-use-github-style] h3, .markdown-preview-enhanced[data-use-github-style] h4, .markdown-preview-enhanced[data-use-github-style] h5, .markdown-preview-enhanced[data-use-github-style] h6 { color: rgb(51, 51, 51); }
+.markdown-preview-enhanced h1 { font-size: 2.4em; font-weight: 300; padding-bottom: 0.3em; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(75, 83, 98); }
+.markdown-preview-enhanced h2 { font-size: 1.8em; font-weight: 400; padding-bottom: 0.3em; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(75, 83, 98); }
+.markdown-preview-enhanced h3 { font-size: 1.5em; font-weight: 500; }
+.markdown-preview-enhanced h4 { font-size: 1.2em; font-weight: 600; }
+.markdown-preview-enhanced h5 { font-size: 1.1em; font-weight: 600; }
+.markdown-preview-enhanced h6 { font-size: 1em; font-weight: 600; }
+.markdown-preview-enhanced[data-use-github-style] h1, .markdown-preview-enhanced[data-use-github-style] h2 { border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(231, 231, 231); }
+.markdown-preview-enhanced strong { color: rgb(255, 255, 255); }
+.markdown-preview-enhanced[data-use-github-style] strong { color: rgb(51, 51, 51); }
+.markdown-preview-enhanced del { color: rgb(124, 135, 156); }
+.markdown-preview-enhanced a:not([href]) { color: inherit; text-decoration: none; }
+.markdown-preview-enhanced a { color: rgb(0, 136, 204); text-decoration: none; }
+.markdown-preview-enhanced a:hover { color: rgb(0, 80, 163); text-decoration: none; }
+.markdown-preview-enhanced img { max-width: 100%; }
+.markdown-preview-enhanced > p { margin-top: 0px; margin-bottom: 16px; word-wrap: break-word; }
+.markdown-preview-enhanced > ul, .markdown-preview-enhanced > ol { margin-bottom: 16px; }
+.markdown-preview-enhanced ul, .markdown-preview-enhanced ol { padding-left: 2em; }
+.markdown-preview-enhanced ul.no-list, .markdown-preview-enhanced ol.no-list { padding: 0px; list-style-type: none; }
+.markdown-preview-enhanced ul ul, .markdown-preview-enhanced ul ol, .markdown-preview-enhanced ol ol, .markdown-preview-enhanced ol ul { margin-top: 0px; margin-bottom: 0px; }
+.markdown-preview-enhanced li { margin-bottom: 0px; }
+.markdown-preview-enhanced li.task-list-item { list-style: none; }
+.markdown-preview-enhanced li > p { margin-top: 0px; margin-bottom: 0px; }
+.markdown-preview-enhanced .task-list-item-checkbox { margin: 0px 0.2em 0.25em -1.6em; vertical-align: middle; }
+.markdown-preview-enhanced .task-list-item-checkbox:hover { cursor: pointer; }
+.markdown-preview-enhanced blockquote { margin: 16px 0px; font-size: inherit; padding: 0px 15px; color: rgb(124, 135, 156); border-left-width: 4px; border-left-style: solid; border-left-color: rgb(75, 83, 98); }
+.markdown-preview-enhanced blockquote > :first-child { margin-top: 0px; }
+.markdown-preview-enhanced blockquote > :last-child { margin-bottom: 0px; }
+.markdown-preview-enhanced[data-use-github-style] blockquote { color: rgb(119, 119, 119); border-left-width: 4px; border-left-style: solid; border-left-color: rgb(221, 221, 221); }
+.markdown-preview-enhanced hr { height: 4px; margin: 32px 0px; border: 0px none; background-color: rgb(75, 83, 98); }
+.markdown-preview-enhanced[data-use-github-style] hr { background-color: rgb(231, 231, 231); }
+.markdown-preview-enhanced table { margin: 10px 0px 15px; border-collapse: collapse; }
+.markdown-preview-enhanced table th { font-weight: bold; color: rgb(255, 255, 255); }
+.markdown-preview-enhanced table td, .markdown-preview-enhanced table th { border: 1px solid rgb(75, 83, 98); padding: 5px 10px; }
+.markdown-preview-enhanced table th { padding: 5px 10px; }
+.markdown-preview-enhanced[data-use-github-style] th { color: rgb(51, 51, 51); }
+.markdown-preview-enhanced[data-use-github-style] td, .markdown-preview-enhanced[data-use-github-style] th { border: 1px solid rgb(221, 221, 221); }
+.markdown-preview-enhanced code { font-family: Menlo, Monaco, Consolas, 'Courier New', monospace; color: rgb(255, 255, 255); font-size: 0.85em !important; background-color: rgb(58, 63, 75); }
+.markdown-preview-enhanced[data-use-github-style] code { color: inherit; background-color: rgba(0, 0, 0, 0.0392157); }
+.markdown-preview-enhanced pre > code { padding: 0px; margin: 0px; word-break: normal; white-space: pre; border: 0px; font-size: 0.85em !important; background: transparent; }
+.markdown-preview-enhanced .highlight { margin-bottom: 16px; }
+.markdown-preview-enhanced .highlight pre, .markdown-preview-enhanced pre { font-family: Menlo, Monaco, Consolas, 'Courier New', monospace; padding: 16px; overflow: auto; line-height: 1.45; color: rgb(171, 178, 191); border: rgb(75, 83, 98); border-radius: 3px; font-size: 0.85em !important; background-color: rgb(49, 54, 63); }
+.markdown-preview-enhanced .highlight pre { margin-bottom: 0px; word-break: normal; }
+.markdown-preview-enhanced pre { word-wrap: break-word; white-space: normal; word-break: break-all; }
+.markdown-preview-enhanced pre .section { opacity: 1; }
+.markdown-preview-enhanced pre code, .markdown-preview-enhanced pre tt { display: inline; max-width: initial; padding: 0px; margin: 0px; overflow: initial; line-height: inherit; word-wrap: normal; border: 0px; background-color: transparent; }
+.markdown-preview-enhanced pre code::before, .markdown-preview-enhanced pre tt::before, .markdown-preview-enhanced pre code::after, .markdown-preview-enhanced pre tt::after { content: normal; }
+.markdown-preview-enhanced p, .markdown-preview-enhanced blockquote, .markdown-preview-enhanced ul, .markdown-preview-enhanced ol, .markdown-preview-enhanced dl, .markdown-preview-enhanced pre { margin-top: 0px; margin-bottom: 16px; }
+.markdown-preview-enhanced pre.editor-colors { margin: 16px 0px; padding: 1em; font-size: 0.92em; border-radius: 3px; background-color: rgb(49, 54, 63); }
+.markdown-preview-enhanced kbd { color: rgb(255, 255, 255); border-width: 1px 1px 2px; border-style: solid; border-color: rgb(75, 83, 98) rgb(75, 83, 98) rgb(62, 68, 81); background-color: rgb(58, 63, 75); }
+.markdown-preview-enhanced[data-use-github-style] kbd { color: rgb(51, 51, 51); border-style: solid; border-width: 1px; border-color: rgb(204, 204, 204) rgb(204, 204, 204) rgb(187, 187, 187); border-radius: 3px; box-shadow: rgb(187, 187, 187) 0px -1px 0px inset; background-color: rgb(252, 252, 252); }
+.markdown-preview-enhanced .pagebreak, .markdown-preview-enhanced .newpage { page-break-before: always; }
+@media screen and (min-width: 914px) { 
+  .markdown-preview-enhanced { width: 854px; margin: 10px auto; background: rgb(40, 44, 52); }
+}
+@media screen and (max-width: 400px) { 
+  .markdown-preview-enhanced { font-size: 14px; }
+}
+@media screen and (min-width: 914px) { 
+  .markdown-preview-enhanced[data-use-github-style] { background: rgb(255, 255, 255); }
+}
+@media print { 
+  .markdown-preview-enhanced { background-color: rgb(40, 44, 52); }
+  .markdown-preview-enhanced h1, .markdown-preview-enhanced h2, .markdown-preview-enhanced h3, .markdown-preview-enhanced h4, .markdown-preview-enhanced h5, .markdown-preview-enhanced h6 { color: rgb(255, 255, 255); }
+  .markdown-preview-enhanced blockquote { color: rgb(124, 135, 156); }
+  .markdown-preview-enhanced table, .markdown-preview-enhanced pre { page-break-inside: avoid; }
+  .markdown-preview-enhanced img { display: block; max-width: 100%; max-height: 100%; }
+  .markdown-preview-enhanced pre, .markdown-preview-enhanced code { word-wrap: break-word; white-space: normal; }
+}
+@media print { 
+  .markdown-preview-enhanced[data-use-github-style] { background-color: rgb(255, 255, 255); }
+  .markdown-preview-enhanced[data-use-github-style] h1, .markdown-preview-enhanced[data-use-github-style] h2, .markdown-preview-enhanced[data-use-github-style] h3, .markdown-preview-enhanced[data-use-github-style] h4, .markdown-preview-enhanced[data-use-github-style] h5, .markdown-preview-enhanced[data-use-github-style] h6 { color: rgb(34, 34, 34); }
+  .markdown-preview-enhanced[data-use-github-style] blockquote { color: rgb(119, 119, 119); }
+  .markdown-preview-enhanced[data-use-github-style] pre { border: 2px solid rgb(246, 246, 246); }
+}
+.markdown-preview-enhanced .mermaid { margin-bottom: 16px; }
+.markdown-preview-enhanced .mermaid .edgePath .path { stroke: rgb(255, 255, 255); }
+.markdown-preview-enhanced .mermaid .edgePath marker path { fill: rgb(255, 255, 255) !important; opacity: 1 !important; }
+.markdown-preview-enhanced .mermaid line, .markdown-preview-enhanced .mermaid marker { stroke: rgb(255, 255, 255) !important; opacity: 1 !important; }
+.markdown-preview-enhanced .mermaid .messageText { fill: rgb(255, 255, 255); }
+.markdown-preview-enhanced[data-use-github-style] .mermaid .edgePath .path { stroke: rgb(51, 51, 51); }
+.markdown-preview-enhanced[data-use-github-style] .mermaid marker path { fill: rgb(51, 51, 51) !important; opacity: 1 !important; }
+.markdown-preview-enhanced[data-use-github-style] line, .markdown-preview-enhanced[data-use-github-style] marker { stroke: rgb(51, 51, 51) !important; opacity: 1 !important; }
+.markdown-preview-enhanced[data-use-github-style] .messageText { fill: rgb(51, 51, 51); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors, .markdown-preview-enhanced .github-syntax-theme .host { color: rgb(51, 51, 51); background-color: rgb(247, 247, 247); }
+.markdown-preview-enhanced .github-syntax-theme pre { color: rgb(51, 51, 51); background-color: rgb(247, 247, 247); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .gutter, .markdown-preview-enhanced .github-syntax-theme .host .gutter { color: rgb(179, 179, 179); background-color: rgb(255, 255, 255); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .gutter .line-number.cursor-line, .markdown-preview-enhanced .github-syntax-theme .host .gutter .line-number.cursor-line { color: rgb(77, 77, 77); background-color: rgb(245, 245, 245); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .gutter .line-number.cursor-line-no-selection, .markdown-preview-enhanced .github-syntax-theme .host .gutter .line-number.cursor-line-no-selection { color: rgb(77, 77, 77); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .wrap-guide, .markdown-preview-enhanced .github-syntax-theme .host .wrap-guide { color: rgb(223, 223, 223); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .indent-guide, .markdown-preview-enhanced .github-syntax-theme .host .indent-guide { color: rgb(223, 223, 223); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .invisible-character, .markdown-preview-enhanced .github-syntax-theme .host .invisible-character { color: rgb(223, 223, 223); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .search-results .marker .region, .markdown-preview-enhanced .github-syntax-theme .host .search-results .marker .region { border: rgb(0, 0, 0); background-color: transparent; }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .search-results .marker.current-result .region, .markdown-preview-enhanced .github-syntax-theme .host .search-results .marker.current-result .region { border: rgb(0, 0, 0); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors.is-focused .cursor, .markdown-preview-enhanced .github-syntax-theme .host(.is-focused) .cursor { border-color: rgb(0, 0, 0); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors.is-focused .selection .region, .markdown-preview-enhanced .github-syntax-theme .host(.is-focused) .selection .region { background-color: rgba(178, 215, 255, 0.4); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors.is-focused .line-number.cursor-line-no-selection, .markdown-preview-enhanced .github-syntax-theme pre.editor-colors.is-focused .line.cursor-line, .markdown-preview-enhanced .github-syntax-theme .host(.is-focused) .line-number.cursor-line-no-selection, .markdown-preview-enhanced .github-syntax-theme .host(.is-focused) .line.cursor-line { background-color: rgba(240, 240, 240, 0.498039); }
+.markdown-preview-enhanced .github-syntax-theme .comment, .markdown-preview-enhanced .github-syntax-theme .punctuation.comment { color: rgb(176, 176, 176); }
+.markdown-preview-enhanced .github-syntax-theme .string, .markdown-preview-enhanced .github-syntax-theme .string .constant.character.escape { color: rgb(34, 115, 195); }
+.markdown-preview-enhanced .github-syntax-theme .constant.numeric { color: rgb(0, 153, 204); }
+.markdown-preview-enhanced .github-syntax-theme .constant.language { color: rgb(0, 153, 204); }
+.markdown-preview-enhanced .github-syntax-theme .constant.character, .markdown-preview-enhanced .github-syntax-theme .constant.other.rgb-value { color: rgb(0, 153, 204); }
+.markdown-preview-enhanced .github-syntax-theme .constant.numeric.line-number.find-in-files, .markdown-preview-enhanced .github-syntax-theme .constant.numeric.line-number.match.find-in-files { color: rgb(171, 176, 179); }
+.markdown-preview-enhanced .github-syntax-theme .entity.name.class { color: rgb(0, 153, 204); }
+.markdown-preview-enhanced .github-syntax-theme .entity.other.inherited-class { color: rgb(0, 153, 204); }
+.markdown-preview-enhanced .github-syntax-theme .meta.tag.any.html, .markdown-preview-enhanced .github-syntax-theme .meta.tag.block.any.html { color: rgb(171, 176, 179); }
+.markdown-preview-enhanced .github-syntax-theme .entity.name.tag { color: rgb(99, 163, 92); }
+.markdown-preview-enhanced .github-syntax-theme .entity.name.function { color: rgb(133, 103, 181); }
+.markdown-preview-enhanced .github-syntax-theme .entity.other.attribute-name, .markdown-preview-enhanced .github-syntax-theme .entity.other.attribute-name .punctuation.definition.entity.scss, .markdown-preview-enhanced .github-syntax-theme .entity.other.attribute-name.id.css, .markdown-preview-enhanced .github-syntax-theme .entity.other.attribute-name.id.css .punctuation.definition.entity.css, .markdown-preview-enhanced .github-syntax-theme .entity.other.attribute-name.class.css .punctuation.definition.entity.css { color: rgb(133, 103, 181); }
+.markdown-preview-enhanced .github-syntax-theme .punctuation.definition.tag.begin.html, .markdown-preview-enhanced .github-syntax-theme .punctuation.definition.tag.end.html, .markdown-preview-enhanced .github-syntax-theme .punctuation.definition.tag.html, .markdown-preview-enhanced .github-syntax-theme .meta.tag.block.any.html { color: rgb(51, 51, 51); }
+.markdown-preview-enhanced .github-syntax-theme .keyword.control { color: rgb(173, 28, 93); }
+.markdown-preview-enhanced .github-syntax-theme .keyword.operator { color: rgb(133, 103, 181); }
+.markdown-preview-enhanced .github-syntax-theme .storage { color: rgb(173, 28, 93); }
+.markdown-preview-enhanced .github-syntax-theme .storage.type { color: rgb(173, 28, 93); }
+.markdown-preview-enhanced .github-syntax-theme .support.function { color: rgb(0, 153, 204); }
+.markdown-preview-enhanced .github-syntax-theme .support.constant { color: rgb(0, 153, 204); }
+.markdown-preview-enhanced .github-syntax-theme .support.type, .markdown-preview-enhanced .github-syntax-theme .support.class, .markdown-preview-enhanced .github-syntax-theme .meta.property-name.scss { color: rgb(0, 153, 204); }
+.markdown-preview-enhanced .github-syntax-theme .support.other.variable { color: rgb(0, 0, 0); }
+.markdown-preview-enhanced .github-syntax-theme .invalid, .markdown-preview-enhanced .github-syntax-theme .invalid.illegal { color: rgb(248, 248, 248); background-color: rgb(181, 42, 29); }
+.markdown-preview-enhanced .github-syntax-theme .invalid.deprecated { color: rgb(181, 42, 29); background-color: rgb(255, 255, 255); }
+.markdown-preview-enhanced .github-syntax-theme .entity.name.filename.find-in-files { color: rgb(0, 0, 0); }
+.markdown-preview-enhanced .github-syntax-theme .source.css .punctuation.definition.entity, .markdown-preview-enhanced .github-syntax-theme .punctuation.terminator.rule.scss { color: rgb(0, 0, 0); }
+.markdown-preview-enhanced .github-syntax-theme .source.css .entity.other.attribute-name.pseudo-class, .markdown-preview-enhanced .github-syntax-theme .source.css .entity.other.attribute-name.pseudo-element { color: rgb(173, 28, 93); }
+.markdown-preview-enhanced .github-syntax-theme .source.css .meta.value, .markdown-preview-enhanced .github-syntax-theme .source.css .support.constant, .markdown-preview-enhanced .github-syntax-theme .source.css .support.function { color: rgb(99, 163, 92); }
+.markdown-preview-enhanced .github-syntax-theme .source.scss .entity.other.attribute-name.pseudo-class, .markdown-preview-enhanced .github-syntax-theme .source.scss .entity.other.attribute-name.pseudo-element { color: rgb(173, 28, 93); }
+.markdown-preview-enhanced .github-syntax-theme .support.constant.property-value, .markdown-preview-enhanced .github-syntax-theme .source.scss .support.function, .markdown-preview-enhanced .github-syntax-theme .meta.property-value.scss { color: rgb(99, 163, 92); }
+.markdown-preview-enhanced .github-syntax-theme .variable, .markdown-preview-enhanced .github-syntax-theme .source.scss .variable, .markdown-preview-enhanced .github-syntax-theme .variable.interpolation.scss, .markdown-preview-enhanced .github-syntax-theme .source.scss .meta.set.variable { color: rgb(222, 104, 173); }
+.markdown-preview-enhanced .github-syntax-theme .keyword.control.else.scss, .markdown-preview-enhanced .github-syntax-theme .keyword.control.if.scss, .markdown-preview-enhanced .github-syntax-theme .keyword.control.content.scss { color: rgb(99, 163, 92); }
+.markdown-preview-enhanced .github-syntax-theme .keyword.other.unit { color: rgb(173, 28, 93); }
+.markdown-preview-enhanced .github-syntax-theme .keyword.other.important { color: rgb(235, 69, 53); }
+.markdown-preview-enhanced .github-syntax-theme .entity.name.tag.reference.scss { color: rgb(181, 127, 0); }
+.markdown-preview-enhanced .github-syntax-theme .entity.name.type.new.js { color: rgb(133, 103, 181); }
+.markdown-preview-enhanced .github-syntax-theme .variable.language.js { color: rgb(238, 106, 66); }
+.markdown-preview-enhanced .github-syntax-theme .variable.parameter.function { color: rgb(181, 127, 0); }
+.markdown-preview-enhanced .github-syntax-theme .source.js .meta.function .entity.name.function, .markdown-preview-enhanced .github-syntax-theme .source.js .entity.name.function .meta.function { color: rgb(133, 103, 181); }
+.markdown-preview-enhanced .github-syntax-theme .source.php .entity.name.type.class { color: rgb(238, 106, 66); }
+.markdown-preview-enhanced .github-syntax-theme .punctuation.definition.heading.markdown, .markdown-preview-enhanced .github-syntax-theme .punctuation.definition.italic.markdown, .markdown-preview-enhanced .github-syntax-theme .punctuation.definition.bold.markdown, .markdown-preview-enhanced .github-syntax-theme .punctuation.definition.string.begin.markdown, .markdown-preview-enhanced .github-syntax-theme .punctuation.definition.string.end.markdown, .markdown-preview-enhanced .github-syntax-theme .punctuation.definition.metadata.markdown, .markdown-preview-enhanced .github-syntax-theme .punctuation.definition.link.markdown, .markdown-preview-enhanced .github-syntax-theme .punctuation.definition.blockquote.markdown, .markdown-preview-enhanced .github-syntax-theme .punctuation.definition.raw.markdown { color: rgb(173, 28, 93); }
+.markdown-preview-enhanced .github-syntax-theme .punctuation.section.function.scss { color: rgb(99, 163, 92); }
+.markdown-preview-enhanced .github-syntax-theme .punctuation, .markdown-preview-enhanced .github-syntax-theme .meta.method-call, .markdown-preview-enhanced .github-syntax-theme .meta.method { color: rgb(51, 51, 51); }
+.markdown-preview-enhanced .github-syntax-theme .text.html.markdown .meta.separator { color: rgb(179, 179, 179); }
+.markdown-preview-enhanced .github-syntax-theme .text.html.markdown .markup.raw.block { color: rgb(0, 0, 0); }
+.markdown-preview-enhanced .github-syntax-theme .text.html.markdown .markup.raw.inline { color: rgb(0, 0, 0); }
+.markdown-preview-enhanced .github-syntax-theme .text.html.markdown .meta.link, .markdown-preview-enhanced .github-syntax-theme .text.html.markdown .meta.image { color: rgb(65, 131, 196); }
+.markdown-preview-enhanced .github-syntax-theme .text.html.markdown .markup.underline.link, .markdown-preview-enhanced .github-syntax-theme .text.html.markdown .constant.other.reference { font-style: italic; }
+.markdown-preview-enhanced .github-syntax-theme .text.html.markdown .markup.list { color: rgb(238, 106, 66); }
+.markdown-preview-enhanced .github-syntax-theme .text.html.markdown .markup.bold { font-weight: bold; }
+.markdown-preview-enhanced .github-syntax-theme .text.html.markdown .markup.italic { font-style: italic; }
+.markdown-preview-enhanced .github-syntax-theme .text.html.markdown .markup.bold .markup.italic { font-weight: bold; font-style: italic; }
+.markdown-preview-enhanced .github-syntax-theme .text.html.markdown .markup.italic .markup.bold { font-weight: bold; font-style: italic; }
+.markdown-preview-enhanced .github-syntax-theme .string.quoted.double.html .invalid.illegal.bad-ampersand.html { color: rgb(34, 115, 195); background-color: rgb(255, 255, 255); }
+.markdown-preview-enhanced .github-syntax-theme .bracket-matcher .region { border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgba(240, 192, 0, 0.8); z-index: 100; background-color: rgba(255, 214, 51, 0.0980392); }
+.markdown-preview-enhanced .github-syntax-theme .meta.tag.template.angular { color: rgb(34, 115, 195); }
+.markdown-preview-enhanced .github-syntax-theme .meta.tag.template.angular .punctuation.definition.block.begin.angular, .markdown-preview-enhanced .github-syntax-theme .meta.tag.template.angular .punctuation.definition.block.end.angular, .markdown-preview-enhanced .github-syntax-theme .meta.tag.template.angular .meta.brace.curly.js { color: rgb(173, 28, 93); }
+.markdown-preview-enhanced .github-syntax-theme .entity.other.attribute-name.html.angular, .markdown-preview-enhanced .github-syntax-theme .meta.attribute.html.angular { color: rgb(133, 103, 181) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors, .markdown-preview-enhanced[data-use-github-syntax-theme] .host { color: rgb(51, 51, 51) !important; background-color: rgb(247, 247, 247) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre { color: rgb(51, 51, 51) !important; background-color: rgb(247, 247, 247) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .gutter, .markdown-preview-enhanced[data-use-github-syntax-theme] .host .gutter { color: rgb(179, 179, 179) !important; background-color: rgb(255, 255, 255) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .gutter .line-number.cursor-line, .markdown-preview-enhanced[data-use-github-syntax-theme] .host .gutter .line-number.cursor-line { color: rgb(77, 77, 77) !important; background-color: rgb(245, 245, 245) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .gutter .line-number.cursor-line-no-selection, .markdown-preview-enhanced[data-use-github-syntax-theme] .host .gutter .line-number.cursor-line-no-selection { color: rgb(77, 77, 77) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .wrap-guide, .markdown-preview-enhanced[data-use-github-syntax-theme] .host .wrap-guide { color: rgb(223, 223, 223) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .indent-guide, .markdown-preview-enhanced[data-use-github-syntax-theme] .host .indent-guide { color: rgb(223, 223, 223) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .invisible-character, .markdown-preview-enhanced[data-use-github-syntax-theme] .host .invisible-character { color: rgb(223, 223, 223) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .search-results .marker .region, .markdown-preview-enhanced[data-use-github-syntax-theme] .host .search-results .marker .region { border: rgb(0, 0, 0) !important; background-color: transparent !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .search-results .marker.current-result .region, .markdown-preview-enhanced[data-use-github-syntax-theme] .host .search-results .marker.current-result .region { border: rgb(0, 0, 0) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors.is-focused .cursor, .markdown-preview-enhanced[data-use-github-syntax-theme] .host(.is-focused) .cursor { border-color: rgb(0, 0, 0) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors.is-focused .selection .region, .markdown-preview-enhanced[data-use-github-syntax-theme] .host(.is-focused) .selection .region { background-color: rgba(178, 215, 255, 0.4) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors.is-focused .line-number.cursor-line-no-selection, .markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors.is-focused .line.cursor-line, .markdown-preview-enhanced[data-use-github-syntax-theme] .host(.is-focused) .line-number.cursor-line-no-selection, .markdown-preview-enhanced[data-use-github-syntax-theme] .host(.is-focused) .line.cursor-line { background-color: rgba(240, 240, 240, 0.498039) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .comment, .markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.comment { color: rgb(176, 176, 176) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .string, .markdown-preview-enhanced[data-use-github-syntax-theme] .string .constant.character.escape { color: rgb(34, 115, 195) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .constant.numeric { color: rgb(0, 153, 204) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .constant.language { color: rgb(0, 153, 204) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .constant.character, .markdown-preview-enhanced[data-use-github-syntax-theme] .constant.other.rgb-value { color: rgb(0, 153, 204) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .constant.numeric.line-number.find-in-files, .markdown-preview-enhanced[data-use-github-syntax-theme] .constant.numeric.line-number.match.find-in-files { color: rgb(171, 176, 179) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .entity.name.class { color: rgb(0, 153, 204) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .entity.other.inherited-class { color: rgb(0, 153, 204) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .meta.tag.any.html, .markdown-preview-enhanced[data-use-github-syntax-theme] .meta.tag.block.any.html { color: rgb(171, 176, 179) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .entity.name.tag { color: rgb(99, 163, 92) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .entity.name.function { color: rgb(133, 103, 181) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .entity.other.attribute-name, .markdown-preview-enhanced[data-use-github-syntax-theme] .entity.other.attribute-name .punctuation.definition.entity.scss, .markdown-preview-enhanced[data-use-github-syntax-theme] .entity.other.attribute-name.id.css, .markdown-preview-enhanced[data-use-github-syntax-theme] .entity.other.attribute-name.id.css .punctuation.definition.entity.css, .markdown-preview-enhanced[data-use-github-syntax-theme] .entity.other.attribute-name.class.css .punctuation.definition.entity.css { color: rgb(133, 103, 181) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.definition.tag.begin.html, .markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.definition.tag.end.html, .markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.definition.tag.html, .markdown-preview-enhanced[data-use-github-syntax-theme] .meta.tag.block.any.html { color: rgb(51, 51, 51) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .keyword.control { color: rgb(173, 28, 93) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .keyword.operator { color: rgb(133, 103, 181) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .storage { color: rgb(173, 28, 93) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .storage.type { color: rgb(173, 28, 93) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .support.function { color: rgb(0, 153, 204) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .support.constant { color: rgb(0, 153, 204) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .support.type, .markdown-preview-enhanced[data-use-github-syntax-theme] .support.class, .markdown-preview-enhanced[data-use-github-syntax-theme] .meta.property-name.scss { color: rgb(0, 153, 204) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .support.other.variable { color: rgb(0, 0, 0) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .invalid, .markdown-preview-enhanced[data-use-github-syntax-theme] .invalid.illegal { color: rgb(248, 248, 248) !important; background-color: rgb(181, 42, 29) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .invalid.deprecated { color: rgb(181, 42, 29) !important; background-color: rgb(255, 255, 255) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .entity.name.filename.find-in-files { color: rgb(0, 0, 0) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .source.css .punctuation.definition.entity, .markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.terminator.rule.scss { color: rgb(0, 0, 0) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .source.css .entity.other.attribute-name.pseudo-class, .markdown-preview-enhanced[data-use-github-syntax-theme] .source.css .entity.other.attribute-name.pseudo-element { color: rgb(173, 28, 93) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .source.css .meta.value, .markdown-preview-enhanced[data-use-github-syntax-theme] .source.css .support.constant, .markdown-preview-enhanced[data-use-github-syntax-theme] .source.css .support.function { color: rgb(99, 163, 92) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .source.scss .entity.other.attribute-name.pseudo-class, .markdown-preview-enhanced[data-use-github-syntax-theme] .source.scss .entity.other.attribute-name.pseudo-element { color: rgb(173, 28, 93) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .support.constant.property-value, .markdown-preview-enhanced[data-use-github-syntax-theme] .source.scss .support.function, .markdown-preview-enhanced[data-use-github-syntax-theme] .meta.property-value.scss { color: rgb(99, 163, 92) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .variable, .markdown-preview-enhanced[data-use-github-syntax-theme] .source.scss .variable, .markdown-preview-enhanced[data-use-github-syntax-theme] .variable.interpolation.scss, .markdown-preview-enhanced[data-use-github-syntax-theme] .source.scss .meta.set.variable { color: rgb(222, 104, 173) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .keyword.control.else.scss, .markdown-preview-enhanced[data-use-github-syntax-theme] .keyword.control.if.scss, .markdown-preview-enhanced[data-use-github-syntax-theme] .keyword.control.content.scss { color: rgb(99, 163, 92) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .keyword.other.unit { color: rgb(173, 28, 93) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .keyword.other.important { color: rgb(235, 69, 53) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .entity.name.tag.reference.scss { color: rgb(181, 127, 0) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .entity.name.type.new.js { color: rgb(133, 103, 181) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .variable.language.js { color: rgb(238, 106, 66) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .variable.parameter.function { color: rgb(181, 127, 0) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .source.js .meta.function .entity.name.function, .markdown-preview-enhanced[data-use-github-syntax-theme] .source.js .entity.name.function .meta.function { color: rgb(133, 103, 181) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .source.php .entity.name.type.class { color: rgb(238, 106, 66) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.definition.heading.markdown, .markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.definition.italic.markdown, .markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.definition.bold.markdown, .markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.definition.string.begin.markdown, .markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.definition.string.end.markdown, .markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.definition.metadata.markdown, .markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.definition.link.markdown, .markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.definition.blockquote.markdown, .markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.definition.raw.markdown { color: rgb(173, 28, 93) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.section.function.scss { color: rgb(99, 163, 92) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation, .markdown-preview-enhanced[data-use-github-syntax-theme] .meta.method-call, .markdown-preview-enhanced[data-use-github-syntax-theme] .meta.method { color: rgb(51, 51, 51) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .text.html.markdown .meta.separator { color: rgb(179, 179, 179) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .text.html.markdown .markup.raw.block { color: rgb(0, 0, 0) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .text.html.markdown .markup.raw.inline { color: rgb(0, 0, 0) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .text.html.markdown .meta.link, .markdown-preview-enhanced[data-use-github-syntax-theme] .text.html.markdown .meta.image { color: rgb(65, 131, 196) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .text.html.markdown .markup.underline.link, .markdown-preview-enhanced[data-use-github-syntax-theme] .text.html.markdown .constant.other.reference { font-style: italic !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .text.html.markdown .markup.list { color: rgb(238, 106, 66) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .text.html.markdown .markup.bold { font-weight: bold !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .text.html.markdown .markup.italic { font-style: italic !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .text.html.markdown .markup.bold .markup.italic { font-weight: bold !important; font-style: italic !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .text.html.markdown .markup.italic .markup.bold { font-weight: bold !important; font-style: italic !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .string.quoted.double.html .invalid.illegal.bad-ampersand.html { color: rgb(34, 115, 195) !important; background-color: rgb(255, 255, 255) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .bracket-matcher .region { border-bottom-width: 1px !important; border-bottom-style: solid !important; border-bottom-color: rgba(240, 192, 0, 0.8) !important; z-index: 100 !important; background-color: rgba(255, 214, 51, 0.0980392) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .meta.tag.template.angular { color: rgb(34, 115, 195) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .meta.tag.template.angular .punctuation.definition.block.begin.angular, .markdown-preview-enhanced[data-use-github-syntax-theme] .meta.tag.template.angular .punctuation.definition.block.end.angular, .markdown-preview-enhanced[data-use-github-syntax-theme] .meta.tag.template.angular .meta.brace.curly.js { color: rgb(173, 28, 93) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .entity.other.attribute-name.html.angular, .markdown-preview-enhanced[data-use-github-syntax-theme] .meta.attribute.html.angular { color: rgb(133, 103, 181) !important; }
+.markdown-preview-enhanced[data-presentation-mode] { font-size: 24px; width: 100%; box-sizing: border-box; margin: 0px; padding: 0px; }
+.markdown-preview-enhanced[data-presentation-mode] h1, .markdown-preview-enhanced[data-presentation-mode] h2, .markdown-preview-enhanced[data-presentation-mode] h3, .markdown-preview-enhanced[data-presentation-mode] h4, .markdown-preview-enhanced[data-presentation-mode] h5, .markdown-preview-enhanced[data-presentation-mode] h6 { margin-top: 0px; }
+.markdown-preview-enhanced[data-presentation-mode] strong { font-weight: bold; }
+.markdown-preview-enhanced[data-presentation-mode]::-webkit-scrollbar { display: none; }
+.markdown-preview-enhanced .slides { text-align: left !important; }
+.bracket-matcher .region {
+  border-bottom: 1px dotted lime;
+  position: absolute;
+}
+
+.spell-check-misspelling .region {
+  border-bottom: 2px dotted rgba(255, 51, 51, 0.75);
+}
+
+pre.editor-colors,
+.host {
+  background-color: #282c34;
+  color: #abb2bf;
+}
+pre.editor-colors .line.cursor-line,
+.host .line.cursor-line {
+  background-color: rgba(153, 187, 255, 0.04);
+}
+pre.editor-colors .invisible,
+.host .invisible {
+  color: #abb2bf;
+}
+pre.editor-colors .cursor,
+.host .cursor {
+  border-left: 2px solid #528bff;
+}
+pre.editor-colors .selection .region,
+.host .selection .region {
+  background-color: #3e4451;
+}
+pre.editor-colors .bracket-matcher .region,
+.host .bracket-matcher .region {
+  border-bottom: 1px solid #528bff;
+  box-sizing: border-box;
+}
+pre.editor-colors .invisible-character,
+.host .invisible-character {
+  color: rgba(171, 178, 191, 0.15);
+}
+pre.editor-colors .indent-guide,
+.host .indent-guide {
+  color: rgba(171, 178, 191, 0.15);
+}
+pre.editor-colors .wrap-guide,
+.host .wrap-guide {
+  background-color: rgba(171, 178, 191, 0.15);
+}
+pre.editor-colors .find-result .region.region.region,
+.host .find-result .region.region.region,
+pre.editor-colors .current-result .region.region.region,
+.host .current-result .region.region.region {
+  border-radius: 0px;
+  background-color: rgba(82, 139, 255, 0.24);
+  transition: border-color 0.4s;
+}
+pre.editor-colors .find-result .region.region.region,
+.host .find-result .region.region.region {
+  border: 2px solid transparent;
+}
+pre.editor-colors .current-result .region.region.region,
+.host .current-result .region.region.region {
+  border: 2px solid #528bff;
+  transition-duration: .1s;
+}
+pre.editor-colors .gutter .line-number,
+.host .gutter .line-number {
+  color: #636d83;
+  -webkit-font-smoothing: antialiased;
+}
+pre.editor-colors .gutter .line-number.cursor-line,
+.host .gutter .line-number.cursor-line {
+  color: #abb2bf;
+  background-color: #2c313a;
+}
+pre.editor-colors .gutter .line-number.cursor-line-no-selection,
+.host .gutter .line-number.cursor-line-no-selection {
+  background-color: transparent;
+}
+pre.editor-colors .gutter .line-number .icon-right,
+.host .gutter .line-number .icon-right {
+  color: #abb2bf;
+}
+pre.editor-colors .gutter:not(.git-diff-icon) .line-number.git-line-removed.git-line-removed::before,
+.host .gutter:not(.git-diff-icon) .line-number.git-line-removed.git-line-removed::before {
+  bottom: -3px;
+}
+pre.editor-colors .gutter:not(.git-diff-icon) .line-number.git-line-removed::after,
+.host .gutter:not(.git-diff-icon) .line-number.git-line-removed::after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 25px;
+  border-bottom: 1px dotted rgba(224, 82, 82, 0.5);
+  pointer-events: none;
+}
+pre.editor-colors .gutter .line-number.folded,
+.host .gutter .line-number.folded,
+pre.editor-colors .gutter .line-number:after,
+.host .gutter .line-number:after,
+pre.editor-colors .fold-marker:after,
+.host .fold-marker:after {
+  color: #abb2bf;
+}
+.comment {
+  color: #5c6370;
+  font-style: italic;
+}
+.comment .markup.link {
+  color: #5c6370;
+}
+.entity.name.type {
+  color: #e5c07b;
+}
+.entity.other.inherited-class {
+  color: #98c379;
+}
+.keyword {
+  color: #c678dd;
+}
+.keyword.control {
+  color: #c678dd;
+}
+.keyword.operator {
+  color: #abb2bf;
+}
+.keyword.other.special-method {
+  color: #61afef;
+}
+.keyword.other.unit {
+  color: #d19a66;
+}
+.storage {
+  color: #c678dd;
+}
+.storage.type.annotation,
+.storage.type.primitive {
+  color: #c678dd;
+}
+.storage.modifier.package,
+.storage.modifier.import {
+  color: #abb2bf;
+}
+.constant {
+  color: #d19a66;
+}
+.constant.variable {
+  color: #d19a66;
+}
+.constant.character.escape {
+  color: #56b6c2;
+}
+.constant.numeric {
+  color: #d19a66;
+}
+.constant.other.color {
+  color: #56b6c2;
+}
+.constant.other.symbol {
+  color: #56b6c2;
+}
+.variable {
+  color: #e06c75;
+}
+.variable.interpolation {
+  color: #be5046;
+}
+.variable.parameter {
+  color: #abb2bf;
+}
+.string {
+  color: #98c379;
+}
+.string.regexp {
+  color: #56b6c2;
+}
+.string.regexp .source.ruby.embedded {
+  color: #e5c07b;
+}
+.string.other.link {
+  color: #e06c75;
+}
+.punctuation.definition.comment {
+  color: #5c6370;
+}
+.punctuation.definition.method-parameters,
+.punctuation.definition.function-parameters,
+.punctuation.definition.parameters,
+.punctuation.definition.separator,
+.punctuation.definition.seperator,
+.punctuation.definition.array {
+  color: #abb2bf;
+}
+.punctuation.definition.heading,
+.punctuation.definition.identity {
+  color: #61afef;
+}
+.punctuation.definition.bold {
+  color: #e5c07b;
+  font-weight: bold;
+}
+.punctuation.definition.italic {
+  color: #c678dd;
+  font-style: italic;
+}
+.punctuation.section.embedded {
+  color: #be5046;
+}
+.punctuation.section.method,
+.punctuation.section.class,
+.punctuation.section.inner-class {
+  color: #abb2bf;
+}
+.support.class {
+  color: #e5c07b;
+}
+.support.type {
+  color: #56b6c2;
+}
+.support.function {
+  color: #56b6c2;
+}
+.support.function.any-method {
+  color: #61afef;
+}
+.entity.name.function {
+  color: #61afef;
+}
+.entity.name.class,
+.entity.name.type.class {
+  color: #e5c07b;
+}
+.entity.name.section {
+  color: #61afef;
+}
+.entity.name.tag {
+  color: #e06c75;
+}
+.entity.other.attribute-name {
+  color: #d19a66;
+}
+.entity.other.attribute-name.id {
+  color: #61afef;
+}
+.meta.class {
+  color: #e5c07b;
+}
+.meta.class.body {
+  color: #abb2bf;
+}
+.meta.method-call,
+.meta.method {
+  color: #abb2bf;
+}
+.meta.definition.variable {
+  color: #e06c75;
+}
+.meta.link {
+  color: #d19a66;
+}
+.meta.require {
+  color: #61afef;
+}
+.meta.selector {
+  color: #c678dd;
+}
+.meta.separator {
+  background-color: #373b41;
+  color: #abb2bf;
+}
+.meta.tag {
+  color: #abb2bf;
+}
+.underline {
+  text-decoration: underline;
+}
+.none {
+  color: #abb2bf;
+}
+.invalid.deprecated {
+  color: #523d14 !important;
+  background-color: #e0c285 !important;
+}
+.invalid.illegal {
+  color: #ffffff !important;
+  background-color: #e05252 !important;
+}
+.markup.bold {
+  color: #d19a66;
+  font-weight: bold;
+}
+.markup.changed {
+  color: #c678dd;
+}
+.markup.deleted {
+  color: #e06c75;
+}
+.markup.italic {
+  color: #c678dd;
+  font-style: italic;
+}
+.markup.heading {
+  color: #e06c75;
+}
+.markup.heading .punctuation.definition.heading {
+  color: #61afef;
+}
+.markup.link {
+  color: #c678dd;
+}
+.markup.inserted {
+  color: #98c379;
+}
+.markup.quote {
+  color: #d19a66;
+}
+.markup.raw {
+  color: #98c379;
+}
+.source.cs .keyword.operator {
+  color: #c678dd;
+}
+.source.css .property-name,
+.source.css .property-value {
+  color: #828997;
+}
+.source.css .property-name.support,
+.source.css .property-value.support {
+  color: #abb2bf;
+}
+.source.gfm .markup {
+  -webkit-font-smoothing: auto;
+}
+.source.gfm .link .entity {
+  color: #61afef;
+}
+.source.go .storage.type.string {
+  color: #c678dd;
+}
+.source.ini .keyword.other.definition.ini {
+  color: #e06c75;
+}
+.source.java .storage.modifier.import {
+  color: #e5c07b;
+}
+.source.java .storage.type {
+  color: #e5c07b;
+}
+.source.java .keyword.operator.instanceof {
+  color: #c678dd;
+}
+.source.java-properties .meta.key-pair {
+  color: #e06c75;
+}
+.source.java-properties .meta.key-pair > .punctuation {
+  color: #abb2bf;
+}
+.source.js .keyword.operator {
+  color: #56b6c2;
+}
+.source.js .keyword.operator.delete,
+.source.js .keyword.operator.in,
+.source.js .keyword.operator.of,
+.source.js .keyword.operator.instanceof,
+.source.js .keyword.operator.new,
+.source.js .keyword.operator.typeof,
+.source.js .keyword.operator.void {
+  color: #c678dd;
+}
+.source.json .meta.structure.dictionary.json > .string.quoted.json {
+  color: #e06c75;
+}
+.source.json .meta.structure.dictionary.json > .string.quoted.json > .punctuation.string {
+  color: #e06c75;
+}
+.source.json .meta.structure.dictionary.json > .value.json > .string.quoted.json,
+.source.json .meta.structure.array.json > .value.json > .string.quoted.json,
+.source.json .meta.structure.dictionary.json > .value.json > .string.quoted.json > .punctuation,
+.source.json .meta.structure.array.json > .value.json > .string.quoted.json > .punctuation {
+  color: #98c379;
+}
+.source.json .meta.structure.dictionary.json > .constant.language.json,
+.source.json .meta.structure.array.json > .constant.language.json {
+  color: #56b6c2;
+}
+.source.ruby .constant.other.symbol > .punctuation {
+  color: inherit;
+}
+.source.python .keyword.operator.logical.python {
+  color: #c678dd;
+}
+.source.python .variable.parameter {
+  color: #d19a66;
+}
+ /* Flowchart variables */
+/* Sequence Diagram variables */
+/* Gantt chart variables */
+.mermaid .label {
+  color: #333;
+}
+.node rect,
+.node circle,
+.node ellipse,
+.node polygon {
+  fill: #ECECFF;
+  stroke: #CCCCFF;
+  stroke-width: 1px;
+}
+.edgePath .path {
+  stroke: #333333;
+}
+.edgeLabel {
+  background-color: #e8e8e8;
+}
+.cluster rect {
+  fill: #ffffde !important;
+  rx: 4 !important;
+  stroke: #aaaa33 !important;
+  stroke-width: 1px !important;
+}
+.cluster text {
+  fill: #333;
+}
+.actor {
+  stroke: #CCCCFF;
+  fill: #ECECFF;
+}
+text.actor {
+  fill: black;
+  stroke: none;
+}
+.actor-line {
+  stroke: grey;
+}
+.messageLine0 {
+  stroke-width: 1.5;
+  stroke-dasharray: "2 2";
+  marker-end: "url(#arrowhead)";
+  stroke: #333;
+}
+.messageLine1 {
+  stroke-width: 1.5;
+  stroke-dasharray: "2 2";
+  stroke: #333;
+}
+#arrowhead {
+  fill: #333;
+}
+#crosshead path {
+  fill: #333 !important;
+  stroke: #333 !important;
+}
+.messageText {
+  fill: #333;
+  stroke: none;
+}
+.labelBox {
+  stroke: #CCCCFF;
+  fill: #ECECFF;
+}
+.labelText {
+  fill: black;
+  stroke: none;
+}
+.loopText {
+  fill: black;
+  stroke: none;
+}
+.loopLine {
+  stroke-width: 2;
+  stroke-dasharray: "2 2";
+  marker-end: "url(#arrowhead)";
+  stroke: #CCCCFF;
+}
+.note {
+  stroke: #aaaa33;
+  fill: #fff5ad;
+}
+.noteText {
+  fill: black;
+  stroke: none;
+  font-family: 'trebuchet ms', verdana, arial;
+  font-size: 14px;
+}
+/** Section styling */
+.section {
+  stroke: none;
+  opacity: 0.2;
+}
+.section0 {
+  fill: rgba(102, 102, 255, 0.49);
+}
+.section2 {
+  fill: #fff400;
+}
+.section1,
+.section3 {
+  fill: white;
+  opacity: 0.2;
+}
+.sectionTitle0 {
+  fill: #333;
+}
+.sectionTitle1 {
+  fill: #333;
+}
+.sectionTitle2 {
+  fill: #333;
+}
+.sectionTitle3 {
+  fill: #333;
+}
+.sectionTitle {
+  text-anchor: start;
+  font-size: 11px;
+  text-height: 14px;
+}
+/* Grid and axis */
+.grid .tick {
+  stroke: lightgrey;
+  opacity: 0.3;
+  shape-rendering: crispEdges;
+}
+.grid path {
+  stroke-width: 0;
+}
+/* Today line */
+.today {
+  fill: none;
+  stroke: red;
+  stroke-width: 2px;
+}
+/* Task styling */
+/* Default task */
+.task {
+  stroke-width: 2;
+}
+.taskText {
+  text-anchor: middle;
+  font-size: 11px;
+}
+.taskTextOutsideRight {
+  fill: black;
+  text-anchor: start;
+  font-size: 11px;
+}
+.taskTextOutsideLeft {
+  fill: black;
+  text-anchor: end;
+  font-size: 11px;
+}
+/* Specific task settings for the sections*/
+.taskText0,
+.taskText1,
+.taskText2,
+.taskText3 {
+  fill: white;
+}
+.task0,
+.task1,
+.task2,
+.task3 {
+  fill: #8a90dd;
+  stroke: #534fbc;
+}
+.taskTextOutside0,
+.taskTextOutside2 {
+  fill: black;
+}
+.taskTextOutside1,
+.taskTextOutside3 {
+  fill: black;
+}
+/* Active task */
+.active0,
+.active1,
+.active2,
+.active3 {
+  fill: #bfc7ff;
+  stroke: #534fbc;
+}
+.activeText0,
+.activeText1,
+.activeText2,
+.activeText3 {
+  fill: black !important;
+}
+/* Completed task */
+.done0,
+.done1,
+.done2,
+.done3 {
+  stroke: grey;
+  fill: lightgrey;
+  stroke-width: 2;
+}
+.doneText0,
+.doneText1,
+.doneText2,
+.doneText3 {
+  fill: black !important;
+}
+/* Tasks on the critical line */
+.crit0,
+.crit1,
+.crit2,
+.crit3 {
+  stroke: #ff8888;
+  fill: red;
+  stroke-width: 2;
+}
+.activeCrit0,
+.activeCrit1,
+.activeCrit2,
+.activeCrit3 {
+  stroke: #ff8888;
+  fill: #bfc7ff;
+  stroke-width: 2;
+}
+.doneCrit0,
+.doneCrit1,
+.doneCrit2,
+.doneCrit3 {
+  stroke: #ff8888;
+  fill: lightgrey;
+  stroke-width: 2;
+  cursor: pointer;
+  shape-rendering: crispEdges;
+}
+.doneCritText0,
+.doneCritText1,
+.doneCritText2,
+.doneCritText3 {
+  fill: black !important;
+}
+.activeCritText0,
+.activeCritText1,
+.activeCritText2,
+.activeCritText3 {
+  fill: black !important;
+}
+.titleText {
+  text-anchor: middle;
+  font-size: 18px;
+  fill: black;
+}
+/*
+
+
+*/
+.node text {
+  font-family: 'trebuchet ms', verdana, arial;
+  font-size: 14px;
+}
+div.mermaidTooltip {
+  position: absolute;
+  text-align: center;
+  max-width: 200px;
+  padding: 2px;
+  font-family: 'trebuchet ms', verdana, arial;
+  font-size: 12px;
+  background: #ffffde;
+  border: 1px solid #aaaa33;
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 100;
+}
+ </style> <link rel="stylesheet" href="file:///C:\Users\dushang\.atom\packages\markdown-preview-enhanced\node_modules\katex\dist\katex.min.css">  </head> <body class="markdown-preview-enhanced" data-use-github-style data-use-github-syntax-theme > <h1 class="line" data-line="0" id="20160906-tuesday">20160906–Tuesday</h1>
+<h3 class="line" data-line="2" id="&#x5DE5;&#x4F5C;&#x5185;&#x5BB9;">工作内容</h3>
+<h4 class="line" data-line="4" id="&#x6682;&#x65E0;"><strong>暂无</strong></h4>
+<hr>
+<h3 class="line" data-line="8" id="&#x5B66;&#x4E60;&#x5185;&#x5BB9;">学习内容</h3>
+<h4 class="line" data-line="10" id="jquery-mobile&#x5B66;&#x4E60;"><strong>jQuery Mobile学习</strong></h4>
+<h5 class="line" data-line="12" id="&#x9875;&#x9762;">页面</h5>
+<pre class="editor-colors lang-html"><div class="line"><span class="text html basic"><span class="meta tag block any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag block any html"><span>div</span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>data-role</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>page</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div><div class="line"><span class="text html basic"><span>&nbsp;</span></span></div><div class="line"><span class="text html basic"><span>&nbsp;&nbsp;</span><span class="meta tag block any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag block any html"><span>div</span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>data-role</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>header</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div><div class="line"><span class="text html basic"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta tag block any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag block any html"><span>h1</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span><span>欢迎来到我的主页</span><span class="meta tag block any html"><span class="punctuation definition tag begin html"><span>&lt;/</span></span><span class="entity name tag block any html"><span>h1</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div><div class="line"><span class="text html basic"><span>&nbsp;&nbsp;</span><span class="meta tag block any html"><span class="punctuation definition tag begin html"><span>&lt;/</span></span><span class="entity name tag block any html"><span>div</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div><div class="line"><span class="text html basic"><span>&nbsp;</span></span></div><div class="line"><span class="text html basic"><span>&nbsp;&nbsp;</span><span class="meta tag block any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag block any html"><span>div</span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>data-role</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>main</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>class</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>ui-content</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div><div class="line"><span class="text html basic"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta tag block any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag block any html"><span>p</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span><span>我现在是一个移动端开发者!!</span><span class="meta tag block any html"><span class="punctuation definition tag begin html"><span>&lt;/</span></span><span class="entity name tag block any html"><span>p</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div><div class="line"><span class="text html basic"><span>&nbsp;&nbsp;</span><span class="meta tag block any html"><span class="punctuation definition tag begin html"><span>&lt;/</span></span><span class="entity name tag block any html"><span>div</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div><div class="line"><span class="text html basic"><span>&nbsp;</span></span></div><div class="line"><span class="text html basic"><span>&nbsp;&nbsp;</span><span class="meta tag block any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag block any html"><span>div</span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>data-role</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>footer</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div><div class="line"><span class="text html basic"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta tag block any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag block any html"><span>h1</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span><span>底部文本</span><span class="meta tag block any html"><span class="punctuation definition tag begin html"><span>&lt;/</span></span><span class="entity name tag block any html"><span>h1</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div><div class="line"><span class="text html basic"><span>&nbsp;&nbsp;</span><span class="meta tag block any html"><span class="punctuation definition tag begin html"><span>&lt;/</span></span><span class="entity name tag block any html"><span>div</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div><div class="line"><span class="text html basic"><span>&nbsp;</span></span></div><div class="line"><span class="text html basic"><span class="meta tag block any html"><span class="punctuation definition tag begin html"><span>&lt;/</span></span><span class="entity name tag block any html"><span>div</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div></pre>
+<ul>
+<li><p class="line" data-line="31"><code>data-role=&quot;page&quot;</code>是在浏览器中显示的页面。</p></li>
+<li><p class="line" data-line="32"><code>data-role=&quot;header&quot;</code> 是在页面顶部创建的工具条 (通常用于标题或者搜索按钮)</p></li>
+<li><p class="line" data-line="33"><code>data-role=&quot;main&quot;</code> 定义了页面的内容，比如文本， 图片，表单，按钮等。</p></li>
+<li><p class="line" data-line="34"><code>&quot;ui-content&quot;</code>类用于在页面添加内边距和外边距。</p></li>
+<li><p class="line" data-line="35"><code>data-role=&quot;footer&quot;</code> 用于创建页面底部工具条。</p></li>
+</ul>
+<blockquote>
+<p class="line" data-line="37"><strong>可以在单个html文件中创建多个页面，使用<code>href</code>属性区分</strong></p>
+</blockquote>
+<pre class="editor-colors lang-html"><div class="line"><span class="text html basic"><span class="meta tag block any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag block any html"><span>div</span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>data-role</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>page</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span>&nbsp;</span><span class="meta attribute-with-value id html"><span class="entity other attribute-name id html"><span>id</span></span><span class="punctuation separator key-value html"><span>=</span></span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span class="meta toc-list id html"><span>pageone</span></span><span class="punctuation definition string end html"><span>&quot;</span></span></span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div><div class="line"><span class="text html basic"><span>&nbsp;&nbsp;</span><span class="meta tag block any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag block any html"><span>div</span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>data-role</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>main</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>class</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>ui-content</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div><div class="line"><span class="text html basic"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag inline any html"><span>a</span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>href</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>#pagetwo</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span><span>跳转到第二个页面</span><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;/</span></span><span class="entity name tag inline any html"><span>a</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div><div class="line"><span class="text html basic"><span>&nbsp;&nbsp;</span><span class="meta tag block any html"><span class="punctuation definition tag begin html"><span>&lt;/</span></span><span class="entity name tag block any html"><span>div</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div><div class="line"><span class="text html basic"><span class="meta tag block any html"><span class="punctuation definition tag begin html"><span>&lt;/</span></span><span class="entity name tag block any html"><span>div</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div><div class="line"><span class="text html basic"><span>&nbsp;</span></span></div><div class="line"><span class="text html basic"><span class="meta tag block any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag block any html"><span>div</span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>data-role</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>page</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span>&nbsp;</span><span class="meta attribute-with-value id html"><span class="entity other attribute-name id html"><span>id</span></span><span class="punctuation separator key-value html"><span>=</span></span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span class="meta toc-list id html"><span>pagetwo</span></span><span class="punctuation definition string end html"><span>&quot;</span></span></span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div><div class="line"><span class="text html basic"><span>&nbsp;&nbsp;</span><span class="meta tag block any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag block any html"><span>div</span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>data-role</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>main</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>class</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>ui-content</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div><div class="line"><span class="text html basic"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag inline any html"><span>a</span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>href</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>#pageone</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span><span>跳转到第一个页面</span><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;/</span></span><span class="entity name tag inline any html"><span>a</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div><div class="line"><span class="text html basic"><span>&nbsp;&nbsp;</span><span class="meta tag block any html"><span class="punctuation definition tag begin html"><span>&lt;/</span></span><span class="entity name tag block any html"><span>div</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div><div class="line"><span class="text html basic"><span class="meta tag block any html"><span class="punctuation definition tag begin html"><span>&lt;/</span></span><span class="entity name tag block any html"><span>div</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div></pre>
+<p class="line" data-line="51"><em>注意：当web应用有大量内容（文本、图片、脚本等）将会严重影响加载时间，可以使用外部文件</em></p>
+<pre class="editor-colors lang-html"><div class="line"><span class="text html basic"><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag inline any html"><span>a</span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>href</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>externalfile.html</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span><span>访问外部文件</span><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;/</span></span><span class="entity name tag inline any html"><span>a</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div></pre>
+<blockquote>
+<p class="line" data-line="56"><strong>可以将页面作为对话框使用</strong></p>
+</blockquote>
+<ol>
+<li><p class="line" data-line="58">在链接中添加<code>data-rel=&quot;dialog&quot;</code>，用户点击链接时弹出对话框</p></li>
+</ol>
+<pre class="editor-colors lang-html"><div class="line"><span class="text html basic"><span class="meta tag block any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag block any html"><span>div</span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>data-role</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>main</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>class</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>ui-content</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div><div class="line"><span class="text html basic"><span>&nbsp;&nbsp;</span><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag inline any html"><span>a</span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>href</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>#pagetwo</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>data-rel</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>dialog</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span><span>弹出对话框</span><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;/</span></span><span class="entity name tag inline any html"><span>a</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div><div class="line"><span class="text html basic"><span class="meta tag block any html"><span class="punctuation definition tag begin html"><span>&lt;/</span></span><span class="entity name tag block any html"><span>div</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div></pre>
+<ol start="2">
+<li><p class="line" data-line="64">在弹出页面上添加<code>data-dialog=&quot;true&quot;</code></p></li>
+</ol>
+<pre class="editor-colors lang-html"><div class="line"><span class="text html basic"><span class="meta tag block any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag block any html"><span>div</span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>data-role</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>page</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>data-dialog</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>true</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span>&nbsp;</span><span class="meta attribute-with-value id html"><span class="entity other attribute-name id html"><span>id</span></span><span class="punctuation separator key-value html"><span>=</span></span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span class="meta toc-list id html"><span>pagetwo</span></span><span class="punctuation definition string end html"><span>&quot;</span></span></span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div><div class="line"><span class="text html basic"><span>&nbsp;&nbsp;</span><span class="meta tag block any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag block any html"><span>div</span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>data-role</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>main</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>class</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>ui-content</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div><div class="line"><span class="text html basic"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag inline any html"><span>a</span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>href</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>#pageone</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span><span>跳转到第一个页面</span><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;/</span></span><span class="entity name tag inline any html"><span>a</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div><div class="line"><span class="text html basic"><span>&nbsp;&nbsp;</span><span class="meta tag block any html"><span class="punctuation definition tag begin html"><span>&lt;/</span></span><span class="entity name tag block any html"><span>div</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div><div class="line"><span class="text html basic"><span class="meta tag block any html"><span class="punctuation definition tag begin html"><span>&lt;/</span></span><span class="entity name tag block any html"><span>div</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div></pre>
+<h5 class="line" data-line="73" id="&#x9875;&#x9762;&#x5207;&#x6362;&#x6548;&#x679C;">页面切换效果</h5>
+<p class="line" data-line="74"><em>注意：页面切换效果需要浏览器支持CSS3 3D切换</em></p>
+<blockquote>
+<p class="line" data-line="76"><strong>页面切换效果可被应用于任何使用 data-transition 属性的链接或表单提交</strong></p>
+</blockquote>
+<pre class="editor-colors lang-html"><div class="line"><span class="text html basic"><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag inline any html"><span>a</span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>href</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>#anylink</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>data-transition</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>slide</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span><span>切换到第二个页面</span><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;/</span></span><span class="entity name tag inline any html"><span>a</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div></pre>
+<p class="line" data-line="82"><code>data-transition</code>属性可选值：</p>
+<table>
+<thead>
+<tr><th style="text-align:center">值</th><th style="text-align:center">描述</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:center"><code>&quot;fade&quot;</code></td><td style="text-align:center">默认，淡入到下一页</td></tr>
+<tr><td style="text-align:center"><code>&quot;flip&quot;</code></td><td style="text-align:center">从后向前翻转到下一页</td></tr>
+<tr><td style="text-align:center"><code>&quot;flow&quot;</code></td><td style="text-align:center">抛出当前页，进入下一页</td></tr>
+<tr><td style="text-align:center"><code>&quot;pop&quot;</code></td><td style="text-align:center">像弹出窗口那样转到下一页</td></tr>
+<tr><td style="text-align:center"><code>&quot;slide&quot;</code></td><td style="text-align:center">从右向左滑动到下一页</td></tr>
+<tr><td style="text-align:center"><code>&quot;slidefade&quot;</code></td><td style="text-align:center">从右向左滑动并淡入到下一页</td></tr>
+<tr><td style="text-align:center"><code>&quot;slideup&quot;</code></td><td style="text-align:center">从下到上滑动到下一页</td></tr>
+<tr><td style="text-align:center"><code>&quot;slidedown&quot;</code></td><td style="text-align:center">从上到下滑动到下一页</td></tr>
+<tr><td style="text-align:center"><code>&quot;turn&quot;</code></td><td style="text-align:center">转向下一页</td></tr>
+<tr><td style="text-align:center"><code>&quot;none&quot;</code></td><td style="text-align:center">无过渡效果</td></tr>
+</tbody>
+</table>
+<p class="line" data-line="96"><em>在jquery mobile的所有链接上，默认使用淡入淡出效果</em></p>
+<p class="line" data-line="98"><em>所有的切换效果都支持后退行为，如页面从左往右滑动改为从右往左滑动，可以使用<code>data-direction=&quot;reverse&quot;</code>，这在后退按钮上是默认的</em></p>
+<pre class="editor-colors lang-html"><div class="line"><span class="text html basic"><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag inline any html"><span>a</span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>href</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>#pagetwo</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>data-transition</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>slide</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>data-direction</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>reverse</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span><span>切换</span><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;/</span></span><span class="entity name tag inline any html"><span>a</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div></pre>
+<h5 class="line" data-line="104" id="&#x6309;&#x94AE;">按钮</h5>
+<blockquote>
+<p class="line" data-line="105"><strong>创建按钮</strong></p>
+</blockquote>
+<ul>
+<li><p class="line" data-line="107">使用&lt;button&gt;元素</p></li>
+</ul>
+<pre class="editor-colors lang-html"><div class="line"><span class="text html basic"><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag inline any html"><span>button</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span><span>按钮</span><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;/</span></span><span class="entity name tag inline any html"><span>button</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div></pre>
+<ul>
+<li><p class="line" data-line="111">使用&lt;input&gt;元素</p></li>
+</ul>
+<pre class="editor-colors lang-html"><div class="line"><span class="text html basic"><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag inline any html"><span>input</span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>type</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>button</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>value</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>按钮</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div></pre>
+<ul>
+<li><p class="line" data-line="115">使用&lt;a&gt;元素</p></li>
+</ul>
+<pre class="editor-colors lang-html"><div class="line"><span class="text html basic"><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag inline any html"><span>a</span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>href</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>#</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>data-role</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>button</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span><span>按钮</span><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;/</span></span><span class="entity name tag inline any html"><span>a</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div></pre>
+<p class="line" data-line="119"><em>默认情况下 &lt;input&gt; 按钮有圆角及阴影效果。 &lt;a&gt; 和 &lt;button&gt; 元素没有</em></p>
+<p class="line" data-line="121"><strong>推荐使用带有 data-role=&quot;button&quot; 的 &lt;a&gt; 元素在页面间进行链接，使用 &lt;input&gt; 或 &lt;button&gt; 元素进行表单提交</strong></p>
+<blockquote>
+<p class="line" data-line="123"><strong>内联按钮</strong></p>
+</blockquote>
+<p class="line" data-line="125">默认情况，按钮占满整个屏幕宽度，如果想要并排显示多个按钮，可以添加<code>data-inline=&quot;true&quot;</code></p>
+<pre class="editor-colors lang-html"><div class="line"><span class="text html basic"><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag inline any html"><span>a</span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>href</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>#pagetwo</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>data-role</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>button</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>data-inline</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>true</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span><span>访问第二个页面</span><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;/</span></span><span class="entity name tag inline any html"><span>a</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div></pre>
+<blockquote>
+<p class="line" data-line="131"><strong>组合按钮</strong></p>
+</blockquote>
+<p class="line" data-line="133">使用<code>data-role=&quot;controlgroup&quot;</code>属性和<code>data-type=&quot;horizontal|vertical&quot;</code>属性定义组合按钮</p>
+<pre class="editor-colors lang-html"><div class="line"><span class="text html basic"><span class="meta tag block any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag block any html"><span>div</span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>data-role</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>controlgroup</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>data-type</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>horizontal</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div><div class="line"><span class="text html basic"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag inline any html"><span>a</span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>href</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>#anylink</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>data-role</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>button</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span><span>按钮&nbsp;1</span><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;/</span></span><span class="entity name tag inline any html"><span>a</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div><div class="line"><span class="text html basic"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag inline any html"><span>a</span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>href</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>#anylink</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>data-role</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>button</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span><span>按钮&nbsp;2</span><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;/</span></span><span class="entity name tag inline any html"><span>a</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div><div class="line"><span class="text html basic"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag inline any html"><span>a</span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>href</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>#anylink</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>data-role</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>button</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span><span>按钮&nbsp;3</span><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;/</span></span><span class="entity name tag inline any html"><span>a</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div><div class="line"><span class="text html basic"><span class="meta tag block any html"><span class="punctuation definition tag begin html"><span>&lt;/</span></span><span class="entity name tag block any html"><span>div</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div></pre>
+<p class="line" data-line="141"><em>默认情况，组合按钮是垂直的</em></p>
+<blockquote>
+<p class="line" data-line="143"><strong>后退按钮</strong></p>
+</blockquote>
+<p class="line" data-line="145">使用<code>data-rel=&quot;back&quot;</code>属性创建后退按钮</p>
+<pre class="editor-colors lang-html"><div class="line"><span class="text html basic"><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag inline any html"><span>a</span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>href</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>#</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>data-role</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>button</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>data-rel</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>back</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span><span>返回</span><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;/</span></span><span class="entity name tag inline any html"><span>a</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div></pre>
+<h5 class="line" data-line="150" id="&#x6309;&#x94AE;&#x56FE;&#x6807;">按钮图标</h5>
+<blockquote>
+<p class="line" data-line="152"><strong>使用<code>ui-icon</code>类将图标添加到按钮上</strong></p>
+</blockquote>
+<pre class="editor-colors lang-html"><div class="line"><span class="text html basic"><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag inline any html"><span>a</span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>href</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>#anylink</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>class</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>ui-btn&nbsp;ui-icon-search&nbsp;ui-btn-icon-left</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span><span>Search</span><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;/</span></span><span class="entity name tag inline any html"><span>a</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div></pre>
+<blockquote>
+<p class="line" data-line="158"><strong>定位图标</strong></p>
+</blockquote>
+<p class="line" data-line="160">使用<code>ui-btn-icon</code>属性指定图标在按钮上的显示位置</p>
+<pre class="editor-colors lang-html"><div class="line"><span class="text html basic"><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag inline any html"><span>a</span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>href</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>#anylink</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>class</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>ui-btn&nbsp;ui-icon-search&nbsp;ui-btn-icon-top</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span><span>顶部</span><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;/</span></span><span class="entity name tag inline any html"><span>a</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div><div class="line"><span class="text html basic"><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag inline any html"><span>a</span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>href</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>#anylink</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>class</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>ui-btn&nbsp;ui-icon-search&nbsp;ui-btn-icon-right</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span><span>右侧</span><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;/</span></span><span class="entity name tag inline any html"><span>a</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div><div class="line"><span class="text html basic"><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag inline any html"><span>a</span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>href</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>#anylink</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>class</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>ui-btn&nbsp;ui-icon-search&nbsp;ui-btn-icon-bottom</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span><span>底部</span><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;/</span></span><span class="entity name tag inline any html"><span>a</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div><div class="line"><span class="text html basic"><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag inline any html"><span>a</span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>href</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>#anylink</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>class</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>ui-btn&nbsp;ui-icon-search&nbsp;ui-btn-icon-left</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span><span>左侧</span><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;/</span></span><span class="entity name tag inline any html"><span>a</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div></pre>
+<p class="line" data-line="169"><em>注意：如果未指定图标的显示位置，图标将不显示</em></p>
+<blockquote>
+<p class="line" data-line="171"><strong>只显示图标</strong></p>
+</blockquote>
+<p class="line" data-line="173">可以使用<code>&quot;notext&quot;</code>，值显示图标，不显示按钮上的文字</p>
+<pre class="editor-colors lang-html"><div class="line"><span class="text html basic"><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag inline any html"><span>a</span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>href</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>#anylink</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>class</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>ui-btn&nbsp;ui-icon-search&nbsp;ui-btn-icon-notext</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span><span>搜索</span><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;/</span></span><span class="entity name tag inline any html"><span>a</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div></pre>
+<blockquote>
+<p class="line" data-line="178"><strong>移除圆圈</strong></p>
+</blockquote>
+<p class="line" data-line="180">默认情况下，所有图标都有一个灰色的圆圈，可以添加<code>ui-nodisc-icon</code>类将其移除</p>
+<pre class="editor-colors lang-html"><div class="line"><span class="text html basic"><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag inline any html"><span>a</span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>href</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>#anylink</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>class</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>ui-btn&nbsp;ui-icon-search&nbsp;ui-btn-icon-left</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span><span>使用圆圈&nbsp;(默认)</span><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;/</span></span><span class="entity name tag inline any html"><span>a</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div><div class="line"><span class="text html basic"><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag inline any html"><span>a</span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>href</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>#anylink</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>class</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>ui-btn&nbsp;ui-icon-search&nbsp;ui-btn-icon-left&nbsp;ui-nodisc-icon</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span><span>去掉圆圈</span><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;/</span></span><span class="entity name tag inline any html"><span>a</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div></pre>
+<blockquote>
+<p class="line" data-line="186"><strong>改变图标颜色</strong></p>
+</blockquote>
+<p class="line" data-line="188">默认情况下，所有图标都是白色的，可以添加<code>ui-alt-icon</code>类将其改变为黑色</p>
+<pre class="editor-colors lang-html"><div class="line"><span class="text html basic"><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag inline any html"><span>a</span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>href</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>#anylink</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>class</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>ui-btn&nbsp;ui-icon-search&nbsp;ui-btn-icon-left</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span><span>白色</span><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;/</span></span><span class="entity name tag inline any html"><span>a</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div><div class="line"><span class="text html basic"><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;</span></span><span class="entity name tag inline any html"><span>a</span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>href</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>#anylink</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span>&nbsp;</span><span class="entity other attribute-name html"><span>class</span></span><span>=</span><span class="string quoted double html"><span class="punctuation definition string begin html"><span>&quot;</span></span><span>ui-btn&nbsp;ui-icon-search&nbsp;ui-btn-icon-left&nbsp;ui-alt-icon</span><span class="punctuation definition string end html"><span>&quot;</span></span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span><span>黑色</span><span class="meta tag inline any html"><span class="punctuation definition tag begin html"><span>&lt;/</span></span><span class="entity name tag inline any html"><span>a</span></span><span class="punctuation definition tag end html"><span>&gt;</span></span></span></span></div></pre>
+ </body>  </html>

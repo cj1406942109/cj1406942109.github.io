@@ -1,0 +1,1067 @@
+<!DOCTYPE html> <html> <head> <title>命令行参数</title> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">  <style> .markdown-preview-enhanced pre, .markdown-preview-enhanced .host { color: rgb(171, 178, 191); background-color: rgb(40, 44, 52); }
+.markdown-preview-enhanced pre .line.cursor-line, .markdown-preview-enhanced .host .line.cursor-line { background-color: rgba(153, 187, 255, 0.0392157); }
+.markdown-preview-enhanced pre .invisible, .markdown-preview-enhanced .host .invisible { color: rgb(171, 178, 191); }
+.markdown-preview-enhanced pre .cursor, .markdown-preview-enhanced .host .cursor { border-left-width: 2px; border-left-style: solid; border-left-color: rgb(82, 139, 255); }
+.markdown-preview-enhanced pre .selection .region, .markdown-preview-enhanced .host .selection .region { background-color: rgb(62, 68, 81); }
+.markdown-preview-enhanced pre .bracket-matcher .region, .markdown-preview-enhanced .host .bracket-matcher .region { border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(82, 139, 255); box-sizing: border-box; }
+.markdown-preview-enhanced pre .invisible-character, .markdown-preview-enhanced .host .invisible-character { color: rgba(171, 178, 191, 0.14902); }
+.markdown-preview-enhanced pre .indent-guide, .markdown-preview-enhanced .host .indent-guide { color: rgba(171, 178, 191, 0.14902); }
+.markdown-preview-enhanced pre .wrap-guide, .markdown-preview-enhanced .host .wrap-guide { background-color: rgba(171, 178, 191, 0.14902); }
+.markdown-preview-enhanced pre .find-result .region.region.region, .markdown-preview-enhanced .host .find-result .region.region.region, .markdown-preview-enhanced pre .current-result .region.region.region, .markdown-preview-enhanced .host .current-result .region.region.region { border-radius: 0px; transition: border-color 0.4s; background-color: rgba(82, 139, 255, 0.239216); }
+.markdown-preview-enhanced pre .find-result .region.region.region, .markdown-preview-enhanced .host .find-result .region.region.region { border: 2px solid transparent; }
+.markdown-preview-enhanced pre .current-result .region.region.region, .markdown-preview-enhanced .host .current-result .region.region.region { border: 2px solid rgb(82, 139, 255); transition-duration: 0.1s; }
+.markdown-preview-enhanced pre .gutter .line-number, .markdown-preview-enhanced .host .gutter .line-number { color: rgb(99, 109, 131); -webkit-font-smoothing: antialiased; }
+.markdown-preview-enhanced pre .gutter .line-number.cursor-line, .markdown-preview-enhanced .host .gutter .line-number.cursor-line { color: rgb(171, 178, 191); background-color: rgb(44, 49, 58); }
+.markdown-preview-enhanced pre .gutter .line-number.cursor-line-no-selection, .markdown-preview-enhanced .host .gutter .line-number.cursor-line-no-selection { background-color: transparent; }
+.markdown-preview-enhanced pre .gutter .line-number .icon-right, .markdown-preview-enhanced .host .gutter .line-number .icon-right { color: rgb(171, 178, 191); }
+.markdown-preview-enhanced pre .gutter:not(.git-diff-icon) .line-number.git-line-removed.git-line-removed::before, .markdown-preview-enhanced .host .gutter:not(.git-diff-icon) .line-number.git-line-removed.git-line-removed::before { bottom: -3px; }
+.markdown-preview-enhanced pre .gutter:not(.git-diff-icon) .line-number.git-line-removed::after, .markdown-preview-enhanced .host .gutter:not(.git-diff-icon) .line-number.git-line-removed::after { content: ""; position: absolute; left: 0px; bottom: 0px; width: 25px; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: rgba(224, 82, 82, 0.498039); pointer-events: none; }
+.markdown-preview-enhanced pre .gutter .line-number.folded, .markdown-preview-enhanced .host .gutter .line-number.folded, .markdown-preview-enhanced pre .gutter .line-number::after, .markdown-preview-enhanced .host .gutter .line-number::after, .markdown-preview-enhanced pre .fold-marker::after, .markdown-preview-enhanced .host .fold-marker::after { color: rgb(171, 178, 191); }
+.markdown-preview-enhanced { font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif; font-size: 16px; line-height: 1.6; color: rgb(171, 178, 191); overflow: initial; margin: 10px 13px; padding: 2em; background-color: rgb(40, 44, 52); }
+.markdown-preview-enhanced[data-use-github-style] { color: rgb(51, 51, 51); background-color: rgb(255, 255, 255); }
+.markdown-preview-enhanced > :first-child { margin-top: 0px; }
+.markdown-preview-enhanced[is="space-pen-div"] { width: 100%; margin: 0px; z-index: 999; overflow: scroll; font-size: 16px; display: block; box-sizing: border-box; position: absolute; }
+.markdown-preview-enhanced[is="space-pen-div"]::-webkit-scrollbar { display: none; }
+.markdown-preview-enhanced h1, .markdown-preview-enhanced h2, .markdown-preview-enhanced h3, .markdown-preview-enhanced h4, .markdown-preview-enhanced h5, .markdown-preview-enhanced h6 { line-height: 1.2; margin-top: 1em; margin-bottom: 16px; color: rgb(255, 255, 255); }
+.markdown-preview-enhanced[data-use-github-style] h1, .markdown-preview-enhanced[data-use-github-style] h2, .markdown-preview-enhanced[data-use-github-style] h3, .markdown-preview-enhanced[data-use-github-style] h4, .markdown-preview-enhanced[data-use-github-style] h5, .markdown-preview-enhanced[data-use-github-style] h6 { color: rgb(51, 51, 51); }
+.markdown-preview-enhanced h1 { font-size: 2.4em; font-weight: 300; padding-bottom: 0.3em; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(75, 83, 98); }
+.markdown-preview-enhanced h2 { font-size: 1.8em; font-weight: 400; padding-bottom: 0.3em; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(75, 83, 98); }
+.markdown-preview-enhanced h3 { font-size: 1.5em; font-weight: 500; }
+.markdown-preview-enhanced h4 { font-size: 1.2em; font-weight: 600; }
+.markdown-preview-enhanced h5 { font-size: 1.1em; font-weight: 600; }
+.markdown-preview-enhanced h6 { font-size: 1em; font-weight: 600; }
+.markdown-preview-enhanced[data-use-github-style] h1, .markdown-preview-enhanced[data-use-github-style] h2 { border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(231, 231, 231); }
+.markdown-preview-enhanced strong { color: rgb(255, 255, 255); }
+.markdown-preview-enhanced[data-use-github-style] strong { color: rgb(51, 51, 51); }
+.markdown-preview-enhanced del { color: rgb(124, 135, 156); }
+.markdown-preview-enhanced a:not([href]) { color: inherit; text-decoration: none; }
+.markdown-preview-enhanced a { color: rgb(0, 136, 204); text-decoration: none; }
+.markdown-preview-enhanced a:hover { color: rgb(0, 80, 163); text-decoration: none; }
+.markdown-preview-enhanced img { max-width: 100%; }
+.markdown-preview-enhanced > p { margin-top: 0px; margin-bottom: 16px; word-wrap: break-word; }
+.markdown-preview-enhanced > ul, .markdown-preview-enhanced > ol { margin-bottom: 16px; }
+.markdown-preview-enhanced ul, .markdown-preview-enhanced ol { padding-left: 2em; }
+.markdown-preview-enhanced ul.no-list, .markdown-preview-enhanced ol.no-list { padding: 0px; list-style-type: none; }
+.markdown-preview-enhanced ul ul, .markdown-preview-enhanced ul ol, .markdown-preview-enhanced ol ol, .markdown-preview-enhanced ol ul { margin-top: 0px; margin-bottom: 0px; }
+.markdown-preview-enhanced li { margin-bottom: 0px; }
+.markdown-preview-enhanced li.task-list-item { list-style: none; }
+.markdown-preview-enhanced li > p { margin-top: 0px; margin-bottom: 0px; }
+.markdown-preview-enhanced .task-list-item-checkbox { margin: 0px 0.2em 0.25em -1.6em; vertical-align: middle; }
+.markdown-preview-enhanced .task-list-item-checkbox:hover { cursor: pointer; }
+.markdown-preview-enhanced blockquote { margin: 16px 0px; font-size: inherit; padding: 0px 15px; color: rgb(124, 135, 156); border-left-width: 4px; border-left-style: solid; border-left-color: rgb(75, 83, 98); }
+.markdown-preview-enhanced blockquote > :first-child { margin-top: 0px; }
+.markdown-preview-enhanced blockquote > :last-child { margin-bottom: 0px; }
+.markdown-preview-enhanced[data-use-github-style] blockquote { color: rgb(119, 119, 119); border-left-width: 4px; border-left-style: solid; border-left-color: rgb(221, 221, 221); }
+.markdown-preview-enhanced hr { height: 4px; margin: 32px 0px; border: 0px none; background-color: rgb(75, 83, 98); }
+.markdown-preview-enhanced[data-use-github-style] hr { background-color: rgb(231, 231, 231); }
+.markdown-preview-enhanced table { margin: 10px 0px 15px; border-collapse: collapse; }
+.markdown-preview-enhanced table th { font-weight: bold; color: rgb(255, 255, 255); }
+.markdown-preview-enhanced table td, .markdown-preview-enhanced table th { border: 1px solid rgb(75, 83, 98); padding: 5px 10px; }
+.markdown-preview-enhanced table th { padding: 5px 10px; }
+.markdown-preview-enhanced[data-use-github-style] th { color: rgb(51, 51, 51); }
+.markdown-preview-enhanced[data-use-github-style] td, .markdown-preview-enhanced[data-use-github-style] th { border: 1px solid rgb(221, 221, 221); }
+.markdown-preview-enhanced code { font-family: Menlo, Monaco, Consolas, 'Courier New', monospace; color: rgb(255, 255, 255); font-size: 0.85em !important; background-color: rgb(58, 63, 75); }
+.markdown-preview-enhanced[data-use-github-style] code { color: inherit; background-color: rgba(0, 0, 0, 0.0392157); }
+.markdown-preview-enhanced pre > code { padding: 0px; margin: 0px; word-break: normal; white-space: pre; border: 0px; font-size: 0.85em !important; background: transparent; }
+.markdown-preview-enhanced .highlight { margin-bottom: 16px; }
+.markdown-preview-enhanced .highlight pre, .markdown-preview-enhanced pre { font-family: Menlo, Monaco, Consolas, 'Courier New', monospace; padding: 16px; overflow: auto; line-height: 1.45; color: rgb(171, 178, 191); border: rgb(75, 83, 98); border-radius: 3px; font-size: 0.85em !important; background-color: rgb(49, 54, 63); }
+.markdown-preview-enhanced .highlight pre { margin-bottom: 0px; word-break: normal; }
+.markdown-preview-enhanced pre { word-wrap: break-word; white-space: normal; word-break: break-all; }
+.markdown-preview-enhanced pre .section { opacity: 1; }
+.markdown-preview-enhanced pre code, .markdown-preview-enhanced pre tt { display: inline; max-width: initial; padding: 0px; margin: 0px; overflow: initial; line-height: inherit; word-wrap: normal; border: 0px; background-color: transparent; }
+.markdown-preview-enhanced pre code::before, .markdown-preview-enhanced pre tt::before, .markdown-preview-enhanced pre code::after, .markdown-preview-enhanced pre tt::after { content: normal; }
+.markdown-preview-enhanced p, .markdown-preview-enhanced blockquote, .markdown-preview-enhanced ul, .markdown-preview-enhanced ol, .markdown-preview-enhanced dl, .markdown-preview-enhanced pre { margin-top: 0px; margin-bottom: 16px; }
+.markdown-preview-enhanced pre.editor-colors { margin: 16px 0px; padding: 1em; font-size: 0.92em; border-radius: 3px; background-color: rgb(49, 54, 63); }
+.markdown-preview-enhanced kbd { color: rgb(255, 255, 255); border-width: 1px 1px 2px; border-style: solid; border-color: rgb(75, 83, 98) rgb(75, 83, 98) rgb(62, 68, 81); background-color: rgb(58, 63, 75); }
+.markdown-preview-enhanced[data-use-github-style] kbd { color: rgb(51, 51, 51); border-style: solid; border-width: 1px; border-color: rgb(204, 204, 204) rgb(204, 204, 204) rgb(187, 187, 187); border-radius: 3px; box-shadow: rgb(187, 187, 187) 0px -1px 0px inset; background-color: rgb(252, 252, 252); }
+.markdown-preview-enhanced .pagebreak, .markdown-preview-enhanced .newpage { page-break-before: always; }
+@media screen and (min-width: 914px) { 
+  .markdown-preview-enhanced { width: 854px; margin: 10px auto; background: rgb(40, 44, 52); }
+}
+@media screen and (max-width: 400px) { 
+  .markdown-preview-enhanced { font-size: 14px; }
+}
+@media screen and (min-width: 914px) { 
+  .markdown-preview-enhanced[data-use-github-style] { background: rgb(255, 255, 255); }
+}
+@media print { 
+  .markdown-preview-enhanced { background-color: rgb(40, 44, 52); }
+  .markdown-preview-enhanced h1, .markdown-preview-enhanced h2, .markdown-preview-enhanced h3, .markdown-preview-enhanced h4, .markdown-preview-enhanced h5, .markdown-preview-enhanced h6 { color: rgb(255, 255, 255); }
+  .markdown-preview-enhanced blockquote { color: rgb(124, 135, 156); }
+  .markdown-preview-enhanced table, .markdown-preview-enhanced pre { page-break-inside: avoid; }
+  .markdown-preview-enhanced img { display: block; max-width: 100%; max-height: 100%; }
+  .markdown-preview-enhanced pre, .markdown-preview-enhanced code { word-wrap: break-word; white-space: normal; }
+}
+@media print { 
+  .markdown-preview-enhanced[data-use-github-style] { background-color: rgb(255, 255, 255); }
+  .markdown-preview-enhanced[data-use-github-style] h1, .markdown-preview-enhanced[data-use-github-style] h2, .markdown-preview-enhanced[data-use-github-style] h3, .markdown-preview-enhanced[data-use-github-style] h4, .markdown-preview-enhanced[data-use-github-style] h5, .markdown-preview-enhanced[data-use-github-style] h6 { color: rgb(34, 34, 34); }
+  .markdown-preview-enhanced[data-use-github-style] blockquote { color: rgb(119, 119, 119); }
+  .markdown-preview-enhanced[data-use-github-style] pre { border: 2px solid rgb(246, 246, 246); }
+}
+.markdown-preview-enhanced .mermaid { margin-bottom: 16px; }
+.markdown-preview-enhanced .mermaid .edgePath .path { stroke: rgb(255, 255, 255); }
+.markdown-preview-enhanced .mermaid .edgePath marker path { fill: rgb(255, 255, 255) !important; opacity: 1 !important; }
+.markdown-preview-enhanced .mermaid line, .markdown-preview-enhanced .mermaid marker { stroke: rgb(255, 255, 255) !important; opacity: 1 !important; }
+.markdown-preview-enhanced .mermaid .messageText { fill: rgb(255, 255, 255); }
+.markdown-preview-enhanced[data-use-github-style] .mermaid .edgePath .path { stroke: rgb(51, 51, 51); }
+.markdown-preview-enhanced[data-use-github-style] .mermaid marker path { fill: rgb(51, 51, 51) !important; opacity: 1 !important; }
+.markdown-preview-enhanced[data-use-github-style] line, .markdown-preview-enhanced[data-use-github-style] marker { stroke: rgb(51, 51, 51) !important; opacity: 1 !important; }
+.markdown-preview-enhanced[data-use-github-style] .messageText { fill: rgb(51, 51, 51); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors, .markdown-preview-enhanced .github-syntax-theme .host { color: rgb(51, 51, 51); background-color: rgb(247, 247, 247); }
+.markdown-preview-enhanced .github-syntax-theme pre { color: rgb(51, 51, 51); background-color: rgb(247, 247, 247); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .gutter, .markdown-preview-enhanced .github-syntax-theme .host .gutter { color: rgb(179, 179, 179); background-color: rgb(255, 255, 255); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .gutter .line-number.cursor-line, .markdown-preview-enhanced .github-syntax-theme .host .gutter .line-number.cursor-line { color: rgb(77, 77, 77); background-color: rgb(245, 245, 245); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .gutter .line-number.cursor-line-no-selection, .markdown-preview-enhanced .github-syntax-theme .host .gutter .line-number.cursor-line-no-selection { color: rgb(77, 77, 77); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .wrap-guide, .markdown-preview-enhanced .github-syntax-theme .host .wrap-guide { color: rgb(223, 223, 223); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .indent-guide, .markdown-preview-enhanced .github-syntax-theme .host .indent-guide { color: rgb(223, 223, 223); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .invisible-character, .markdown-preview-enhanced .github-syntax-theme .host .invisible-character { color: rgb(223, 223, 223); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .search-results .marker .region, .markdown-preview-enhanced .github-syntax-theme .host .search-results .marker .region { border: rgb(0, 0, 0); background-color: transparent; }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .search-results .marker.current-result .region, .markdown-preview-enhanced .github-syntax-theme .host .search-results .marker.current-result .region { border: rgb(0, 0, 0); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors.is-focused .cursor, .markdown-preview-enhanced .github-syntax-theme .host(.is-focused) .cursor { border-color: rgb(0, 0, 0); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors.is-focused .selection .region, .markdown-preview-enhanced .github-syntax-theme .host(.is-focused) .selection .region { background-color: rgba(178, 215, 255, 0.4); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors.is-focused .line-number.cursor-line-no-selection, .markdown-preview-enhanced .github-syntax-theme pre.editor-colors.is-focused .line.cursor-line, .markdown-preview-enhanced .github-syntax-theme .host(.is-focused) .line-number.cursor-line-no-selection, .markdown-preview-enhanced .github-syntax-theme .host(.is-focused) .line.cursor-line { background-color: rgba(240, 240, 240, 0.498039); }
+.markdown-preview-enhanced .github-syntax-theme .comment, .markdown-preview-enhanced .github-syntax-theme .punctuation.comment { color: rgb(176, 176, 176); }
+.markdown-preview-enhanced .github-syntax-theme .string, .markdown-preview-enhanced .github-syntax-theme .string .constant.character.escape { color: rgb(34, 115, 195); }
+.markdown-preview-enhanced .github-syntax-theme .constant.numeric { color: rgb(0, 153, 204); }
+.markdown-preview-enhanced .github-syntax-theme .constant.language { color: rgb(0, 153, 204); }
+.markdown-preview-enhanced .github-syntax-theme .constant.character, .markdown-preview-enhanced .github-syntax-theme .constant.other.rgb-value { color: rgb(0, 153, 204); }
+.markdown-preview-enhanced .github-syntax-theme .constant.numeric.line-number.find-in-files, .markdown-preview-enhanced .github-syntax-theme .constant.numeric.line-number.match.find-in-files { color: rgb(171, 176, 179); }
+.markdown-preview-enhanced .github-syntax-theme .entity.name.class { color: rgb(0, 153, 204); }
+.markdown-preview-enhanced .github-syntax-theme .entity.other.inherited-class { color: rgb(0, 153, 204); }
+.markdown-preview-enhanced .github-syntax-theme .meta.tag.any.html, .markdown-preview-enhanced .github-syntax-theme .meta.tag.block.any.html { color: rgb(171, 176, 179); }
+.markdown-preview-enhanced .github-syntax-theme .entity.name.tag { color: rgb(99, 163, 92); }
+.markdown-preview-enhanced .github-syntax-theme .entity.name.function { color: rgb(133, 103, 181); }
+.markdown-preview-enhanced .github-syntax-theme .entity.other.attribute-name, .markdown-preview-enhanced .github-syntax-theme .entity.other.attribute-name .punctuation.definition.entity.scss, .markdown-preview-enhanced .github-syntax-theme .entity.other.attribute-name.id.css, .markdown-preview-enhanced .github-syntax-theme .entity.other.attribute-name.id.css .punctuation.definition.entity.css, .markdown-preview-enhanced .github-syntax-theme .entity.other.attribute-name.class.css .punctuation.definition.entity.css { color: rgb(133, 103, 181); }
+.markdown-preview-enhanced .github-syntax-theme .punctuation.definition.tag.begin.html, .markdown-preview-enhanced .github-syntax-theme .punctuation.definition.tag.end.html, .markdown-preview-enhanced .github-syntax-theme .punctuation.definition.tag.html, .markdown-preview-enhanced .github-syntax-theme .meta.tag.block.any.html { color: rgb(51, 51, 51); }
+.markdown-preview-enhanced .github-syntax-theme .keyword.control { color: rgb(173, 28, 93); }
+.markdown-preview-enhanced .github-syntax-theme .keyword.operator { color: rgb(133, 103, 181); }
+.markdown-preview-enhanced .github-syntax-theme .storage { color: rgb(173, 28, 93); }
+.markdown-preview-enhanced .github-syntax-theme .storage.type { color: rgb(173, 28, 93); }
+.markdown-preview-enhanced .github-syntax-theme .support.function { color: rgb(0, 153, 204); }
+.markdown-preview-enhanced .github-syntax-theme .support.constant { color: rgb(0, 153, 204); }
+.markdown-preview-enhanced .github-syntax-theme .support.type, .markdown-preview-enhanced .github-syntax-theme .support.class, .markdown-preview-enhanced .github-syntax-theme .meta.property-name.scss { color: rgb(0, 153, 204); }
+.markdown-preview-enhanced .github-syntax-theme .support.other.variable { color: rgb(0, 0, 0); }
+.markdown-preview-enhanced .github-syntax-theme .invalid, .markdown-preview-enhanced .github-syntax-theme .invalid.illegal { color: rgb(248, 248, 248); background-color: rgb(181, 42, 29); }
+.markdown-preview-enhanced .github-syntax-theme .invalid.deprecated { color: rgb(181, 42, 29); background-color: rgb(255, 255, 255); }
+.markdown-preview-enhanced .github-syntax-theme .entity.name.filename.find-in-files { color: rgb(0, 0, 0); }
+.markdown-preview-enhanced .github-syntax-theme .source.css .punctuation.definition.entity, .markdown-preview-enhanced .github-syntax-theme .punctuation.terminator.rule.scss { color: rgb(0, 0, 0); }
+.markdown-preview-enhanced .github-syntax-theme .source.css .entity.other.attribute-name.pseudo-class, .markdown-preview-enhanced .github-syntax-theme .source.css .entity.other.attribute-name.pseudo-element { color: rgb(173, 28, 93); }
+.markdown-preview-enhanced .github-syntax-theme .source.css .meta.value, .markdown-preview-enhanced .github-syntax-theme .source.css .support.constant, .markdown-preview-enhanced .github-syntax-theme .source.css .support.function { color: rgb(99, 163, 92); }
+.markdown-preview-enhanced .github-syntax-theme .source.scss .entity.other.attribute-name.pseudo-class, .markdown-preview-enhanced .github-syntax-theme .source.scss .entity.other.attribute-name.pseudo-element { color: rgb(173, 28, 93); }
+.markdown-preview-enhanced .github-syntax-theme .support.constant.property-value, .markdown-preview-enhanced .github-syntax-theme .source.scss .support.function, .markdown-preview-enhanced .github-syntax-theme .meta.property-value.scss { color: rgb(99, 163, 92); }
+.markdown-preview-enhanced .github-syntax-theme .variable, .markdown-preview-enhanced .github-syntax-theme .source.scss .variable, .markdown-preview-enhanced .github-syntax-theme .variable.interpolation.scss, .markdown-preview-enhanced .github-syntax-theme .source.scss .meta.set.variable { color: rgb(222, 104, 173); }
+.markdown-preview-enhanced .github-syntax-theme .keyword.control.else.scss, .markdown-preview-enhanced .github-syntax-theme .keyword.control.if.scss, .markdown-preview-enhanced .github-syntax-theme .keyword.control.content.scss { color: rgb(99, 163, 92); }
+.markdown-preview-enhanced .github-syntax-theme .keyword.other.unit { color: rgb(173, 28, 93); }
+.markdown-preview-enhanced .github-syntax-theme .keyword.other.important { color: rgb(235, 69, 53); }
+.markdown-preview-enhanced .github-syntax-theme .entity.name.tag.reference.scss { color: rgb(181, 127, 0); }
+.markdown-preview-enhanced .github-syntax-theme .entity.name.type.new.js { color: rgb(133, 103, 181); }
+.markdown-preview-enhanced .github-syntax-theme .variable.language.js { color: rgb(238, 106, 66); }
+.markdown-preview-enhanced .github-syntax-theme .variable.parameter.function { color: rgb(181, 127, 0); }
+.markdown-preview-enhanced .github-syntax-theme .source.js .meta.function .entity.name.function, .markdown-preview-enhanced .github-syntax-theme .source.js .entity.name.function .meta.function { color: rgb(133, 103, 181); }
+.markdown-preview-enhanced .github-syntax-theme .source.php .entity.name.type.class { color: rgb(238, 106, 66); }
+.markdown-preview-enhanced .github-syntax-theme .punctuation.definition.heading.markdown, .markdown-preview-enhanced .github-syntax-theme .punctuation.definition.italic.markdown, .markdown-preview-enhanced .github-syntax-theme .punctuation.definition.bold.markdown, .markdown-preview-enhanced .github-syntax-theme .punctuation.definition.string.begin.markdown, .markdown-preview-enhanced .github-syntax-theme .punctuation.definition.string.end.markdown, .markdown-preview-enhanced .github-syntax-theme .punctuation.definition.metadata.markdown, .markdown-preview-enhanced .github-syntax-theme .punctuation.definition.link.markdown, .markdown-preview-enhanced .github-syntax-theme .punctuation.definition.blockquote.markdown, .markdown-preview-enhanced .github-syntax-theme .punctuation.definition.raw.markdown { color: rgb(173, 28, 93); }
+.markdown-preview-enhanced .github-syntax-theme .punctuation.section.function.scss { color: rgb(99, 163, 92); }
+.markdown-preview-enhanced .github-syntax-theme .punctuation, .markdown-preview-enhanced .github-syntax-theme .meta.method-call, .markdown-preview-enhanced .github-syntax-theme .meta.method { color: rgb(51, 51, 51); }
+.markdown-preview-enhanced .github-syntax-theme .text.html.markdown .meta.separator { color: rgb(179, 179, 179); }
+.markdown-preview-enhanced .github-syntax-theme .text.html.markdown .markup.raw.block { color: rgb(0, 0, 0); }
+.markdown-preview-enhanced .github-syntax-theme .text.html.markdown .markup.raw.inline { color: rgb(0, 0, 0); }
+.markdown-preview-enhanced .github-syntax-theme .text.html.markdown .meta.link, .markdown-preview-enhanced .github-syntax-theme .text.html.markdown .meta.image { color: rgb(65, 131, 196); }
+.markdown-preview-enhanced .github-syntax-theme .text.html.markdown .markup.underline.link, .markdown-preview-enhanced .github-syntax-theme .text.html.markdown .constant.other.reference { font-style: italic; }
+.markdown-preview-enhanced .github-syntax-theme .text.html.markdown .markup.list { color: rgb(238, 106, 66); }
+.markdown-preview-enhanced .github-syntax-theme .text.html.markdown .markup.bold { font-weight: bold; }
+.markdown-preview-enhanced .github-syntax-theme .text.html.markdown .markup.italic { font-style: italic; }
+.markdown-preview-enhanced .github-syntax-theme .text.html.markdown .markup.bold .markup.italic { font-weight: bold; font-style: italic; }
+.markdown-preview-enhanced .github-syntax-theme .text.html.markdown .markup.italic .markup.bold { font-weight: bold; font-style: italic; }
+.markdown-preview-enhanced .github-syntax-theme .string.quoted.double.html .invalid.illegal.bad-ampersand.html { color: rgb(34, 115, 195); background-color: rgb(255, 255, 255); }
+.markdown-preview-enhanced .github-syntax-theme .bracket-matcher .region { border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgba(240, 192, 0, 0.8); z-index: 100; background-color: rgba(255, 214, 51, 0.0980392); }
+.markdown-preview-enhanced .github-syntax-theme .meta.tag.template.angular { color: rgb(34, 115, 195); }
+.markdown-preview-enhanced .github-syntax-theme .meta.tag.template.angular .punctuation.definition.block.begin.angular, .markdown-preview-enhanced .github-syntax-theme .meta.tag.template.angular .punctuation.definition.block.end.angular, .markdown-preview-enhanced .github-syntax-theme .meta.tag.template.angular .meta.brace.curly.js { color: rgb(173, 28, 93); }
+.markdown-preview-enhanced .github-syntax-theme .entity.other.attribute-name.html.angular, .markdown-preview-enhanced .github-syntax-theme .meta.attribute.html.angular { color: rgb(133, 103, 181) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors, .markdown-preview-enhanced[data-use-github-syntax-theme] .host { color: rgb(51, 51, 51) !important; background-color: rgb(247, 247, 247) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre { color: rgb(51, 51, 51) !important; background-color: rgb(247, 247, 247) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .gutter, .markdown-preview-enhanced[data-use-github-syntax-theme] .host .gutter { color: rgb(179, 179, 179) !important; background-color: rgb(255, 255, 255) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .gutter .line-number.cursor-line, .markdown-preview-enhanced[data-use-github-syntax-theme] .host .gutter .line-number.cursor-line { color: rgb(77, 77, 77) !important; background-color: rgb(245, 245, 245) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .gutter .line-number.cursor-line-no-selection, .markdown-preview-enhanced[data-use-github-syntax-theme] .host .gutter .line-number.cursor-line-no-selection { color: rgb(77, 77, 77) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .wrap-guide, .markdown-preview-enhanced[data-use-github-syntax-theme] .host .wrap-guide { color: rgb(223, 223, 223) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .indent-guide, .markdown-preview-enhanced[data-use-github-syntax-theme] .host .indent-guide { color: rgb(223, 223, 223) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .invisible-character, .markdown-preview-enhanced[data-use-github-syntax-theme] .host .invisible-character { color: rgb(223, 223, 223) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .search-results .marker .region, .markdown-preview-enhanced[data-use-github-syntax-theme] .host .search-results .marker .region { border: rgb(0, 0, 0) !important; background-color: transparent !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .search-results .marker.current-result .region, .markdown-preview-enhanced[data-use-github-syntax-theme] .host .search-results .marker.current-result .region { border: rgb(0, 0, 0) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors.is-focused .cursor, .markdown-preview-enhanced[data-use-github-syntax-theme] .host(.is-focused) .cursor { border-color: rgb(0, 0, 0) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors.is-focused .selection .region, .markdown-preview-enhanced[data-use-github-syntax-theme] .host(.is-focused) .selection .region { background-color: rgba(178, 215, 255, 0.4) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors.is-focused .line-number.cursor-line-no-selection, .markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors.is-focused .line.cursor-line, .markdown-preview-enhanced[data-use-github-syntax-theme] .host(.is-focused) .line-number.cursor-line-no-selection, .markdown-preview-enhanced[data-use-github-syntax-theme] .host(.is-focused) .line.cursor-line { background-color: rgba(240, 240, 240, 0.498039) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .comment, .markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.comment { color: rgb(176, 176, 176) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .string, .markdown-preview-enhanced[data-use-github-syntax-theme] .string .constant.character.escape { color: rgb(34, 115, 195) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .constant.numeric { color: rgb(0, 153, 204) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .constant.language { color: rgb(0, 153, 204) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .constant.character, .markdown-preview-enhanced[data-use-github-syntax-theme] .constant.other.rgb-value { color: rgb(0, 153, 204) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .constant.numeric.line-number.find-in-files, .markdown-preview-enhanced[data-use-github-syntax-theme] .constant.numeric.line-number.match.find-in-files { color: rgb(171, 176, 179) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .entity.name.class { color: rgb(0, 153, 204) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .entity.other.inherited-class { color: rgb(0, 153, 204) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .meta.tag.any.html, .markdown-preview-enhanced[data-use-github-syntax-theme] .meta.tag.block.any.html { color: rgb(171, 176, 179) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .entity.name.tag { color: rgb(99, 163, 92) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .entity.name.function { color: rgb(133, 103, 181) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .entity.other.attribute-name, .markdown-preview-enhanced[data-use-github-syntax-theme] .entity.other.attribute-name .punctuation.definition.entity.scss, .markdown-preview-enhanced[data-use-github-syntax-theme] .entity.other.attribute-name.id.css, .markdown-preview-enhanced[data-use-github-syntax-theme] .entity.other.attribute-name.id.css .punctuation.definition.entity.css, .markdown-preview-enhanced[data-use-github-syntax-theme] .entity.other.attribute-name.class.css .punctuation.definition.entity.css { color: rgb(133, 103, 181) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.definition.tag.begin.html, .markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.definition.tag.end.html, .markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.definition.tag.html, .markdown-preview-enhanced[data-use-github-syntax-theme] .meta.tag.block.any.html { color: rgb(51, 51, 51) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .keyword.control { color: rgb(173, 28, 93) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .keyword.operator { color: rgb(133, 103, 181) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .storage { color: rgb(173, 28, 93) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .storage.type { color: rgb(173, 28, 93) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .support.function { color: rgb(0, 153, 204) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .support.constant { color: rgb(0, 153, 204) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .support.type, .markdown-preview-enhanced[data-use-github-syntax-theme] .support.class, .markdown-preview-enhanced[data-use-github-syntax-theme] .meta.property-name.scss { color: rgb(0, 153, 204) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .support.other.variable { color: rgb(0, 0, 0) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .invalid, .markdown-preview-enhanced[data-use-github-syntax-theme] .invalid.illegal { color: rgb(248, 248, 248) !important; background-color: rgb(181, 42, 29) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .invalid.deprecated { color: rgb(181, 42, 29) !important; background-color: rgb(255, 255, 255) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .entity.name.filename.find-in-files { color: rgb(0, 0, 0) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .source.css .punctuation.definition.entity, .markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.terminator.rule.scss { color: rgb(0, 0, 0) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .source.css .entity.other.attribute-name.pseudo-class, .markdown-preview-enhanced[data-use-github-syntax-theme] .source.css .entity.other.attribute-name.pseudo-element { color: rgb(173, 28, 93) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .source.css .meta.value, .markdown-preview-enhanced[data-use-github-syntax-theme] .source.css .support.constant, .markdown-preview-enhanced[data-use-github-syntax-theme] .source.css .support.function { color: rgb(99, 163, 92) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .source.scss .entity.other.attribute-name.pseudo-class, .markdown-preview-enhanced[data-use-github-syntax-theme] .source.scss .entity.other.attribute-name.pseudo-element { color: rgb(173, 28, 93) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .support.constant.property-value, .markdown-preview-enhanced[data-use-github-syntax-theme] .source.scss .support.function, .markdown-preview-enhanced[data-use-github-syntax-theme] .meta.property-value.scss { color: rgb(99, 163, 92) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .variable, .markdown-preview-enhanced[data-use-github-syntax-theme] .source.scss .variable, .markdown-preview-enhanced[data-use-github-syntax-theme] .variable.interpolation.scss, .markdown-preview-enhanced[data-use-github-syntax-theme] .source.scss .meta.set.variable { color: rgb(222, 104, 173) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .keyword.control.else.scss, .markdown-preview-enhanced[data-use-github-syntax-theme] .keyword.control.if.scss, .markdown-preview-enhanced[data-use-github-syntax-theme] .keyword.control.content.scss { color: rgb(99, 163, 92) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .keyword.other.unit { color: rgb(173, 28, 93) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .keyword.other.important { color: rgb(235, 69, 53) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .entity.name.tag.reference.scss { color: rgb(181, 127, 0) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .entity.name.type.new.js { color: rgb(133, 103, 181) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .variable.language.js { color: rgb(238, 106, 66) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .variable.parameter.function { color: rgb(181, 127, 0) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .source.js .meta.function .entity.name.function, .markdown-preview-enhanced[data-use-github-syntax-theme] .source.js .entity.name.function .meta.function { color: rgb(133, 103, 181) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .source.php .entity.name.type.class { color: rgb(238, 106, 66) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.definition.heading.markdown, .markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.definition.italic.markdown, .markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.definition.bold.markdown, .markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.definition.string.begin.markdown, .markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.definition.string.end.markdown, .markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.definition.metadata.markdown, .markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.definition.link.markdown, .markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.definition.blockquote.markdown, .markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.definition.raw.markdown { color: rgb(173, 28, 93) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.section.function.scss { color: rgb(99, 163, 92) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation, .markdown-preview-enhanced[data-use-github-syntax-theme] .meta.method-call, .markdown-preview-enhanced[data-use-github-syntax-theme] .meta.method { color: rgb(51, 51, 51) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .text.html.markdown .meta.separator { color: rgb(179, 179, 179) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .text.html.markdown .markup.raw.block { color: rgb(0, 0, 0) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .text.html.markdown .markup.raw.inline { color: rgb(0, 0, 0) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .text.html.markdown .meta.link, .markdown-preview-enhanced[data-use-github-syntax-theme] .text.html.markdown .meta.image { color: rgb(65, 131, 196) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .text.html.markdown .markup.underline.link, .markdown-preview-enhanced[data-use-github-syntax-theme] .text.html.markdown .constant.other.reference { font-style: italic !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .text.html.markdown .markup.list { color: rgb(238, 106, 66) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .text.html.markdown .markup.bold { font-weight: bold !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .text.html.markdown .markup.italic { font-style: italic !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .text.html.markdown .markup.bold .markup.italic { font-weight: bold !important; font-style: italic !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .text.html.markdown .markup.italic .markup.bold { font-weight: bold !important; font-style: italic !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .string.quoted.double.html .invalid.illegal.bad-ampersand.html { color: rgb(34, 115, 195) !important; background-color: rgb(255, 255, 255) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .bracket-matcher .region { border-bottom-width: 1px !important; border-bottom-style: solid !important; border-bottom-color: rgba(240, 192, 0, 0.8) !important; z-index: 100 !important; background-color: rgba(255, 214, 51, 0.0980392) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .meta.tag.template.angular { color: rgb(34, 115, 195) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .meta.tag.template.angular .punctuation.definition.block.begin.angular, .markdown-preview-enhanced[data-use-github-syntax-theme] .meta.tag.template.angular .punctuation.definition.block.end.angular, .markdown-preview-enhanced[data-use-github-syntax-theme] .meta.tag.template.angular .meta.brace.curly.js { color: rgb(173, 28, 93) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .entity.other.attribute-name.html.angular, .markdown-preview-enhanced[data-use-github-syntax-theme] .meta.attribute.html.angular { color: rgb(133, 103, 181) !important; }
+.markdown-preview-enhanced[data-presentation-mode] { font-size: 24px; width: 100%; box-sizing: border-box; margin: 0px; padding: 0px; }
+.markdown-preview-enhanced[data-presentation-mode] h1, .markdown-preview-enhanced[data-presentation-mode] h2, .markdown-preview-enhanced[data-presentation-mode] h3, .markdown-preview-enhanced[data-presentation-mode] h4, .markdown-preview-enhanced[data-presentation-mode] h5, .markdown-preview-enhanced[data-presentation-mode] h6 { margin-top: 0px; }
+.markdown-preview-enhanced[data-presentation-mode] strong { font-weight: bold; }
+.markdown-preview-enhanced[data-presentation-mode]::-webkit-scrollbar { display: none; }
+.markdown-preview-enhanced .slides { text-align: left !important; }
+.bracket-matcher .region {
+  border-bottom: 1px dotted lime;
+  position: absolute;
+}
+
+.spell-check-misspelling .region {
+  border-bottom: 2px dotted rgba(255, 51, 51, 0.75);
+}
+
+pre.editor-colors,
+.host {
+  background-color: #282c34;
+  color: #abb2bf;
+}
+pre.editor-colors .line.cursor-line,
+.host .line.cursor-line {
+  background-color: rgba(153, 187, 255, 0.04);
+}
+pre.editor-colors .invisible,
+.host .invisible {
+  color: #abb2bf;
+}
+pre.editor-colors .cursor,
+.host .cursor {
+  border-left: 2px solid #528bff;
+}
+pre.editor-colors .selection .region,
+.host .selection .region {
+  background-color: #3e4451;
+}
+pre.editor-colors .bracket-matcher .region,
+.host .bracket-matcher .region {
+  border-bottom: 1px solid #528bff;
+  box-sizing: border-box;
+}
+pre.editor-colors .invisible-character,
+.host .invisible-character {
+  color: rgba(171, 178, 191, 0.15);
+}
+pre.editor-colors .indent-guide,
+.host .indent-guide {
+  color: rgba(171, 178, 191, 0.15);
+}
+pre.editor-colors .wrap-guide,
+.host .wrap-guide {
+  background-color: rgba(171, 178, 191, 0.15);
+}
+pre.editor-colors .find-result .region.region.region,
+.host .find-result .region.region.region,
+pre.editor-colors .current-result .region.region.region,
+.host .current-result .region.region.region {
+  border-radius: 0px;
+  background-color: rgba(82, 139, 255, 0.24);
+  transition: border-color 0.4s;
+}
+pre.editor-colors .find-result .region.region.region,
+.host .find-result .region.region.region {
+  border: 2px solid transparent;
+}
+pre.editor-colors .current-result .region.region.region,
+.host .current-result .region.region.region {
+  border: 2px solid #528bff;
+  transition-duration: .1s;
+}
+pre.editor-colors .gutter .line-number,
+.host .gutter .line-number {
+  color: #636d83;
+  -webkit-font-smoothing: antialiased;
+}
+pre.editor-colors .gutter .line-number.cursor-line,
+.host .gutter .line-number.cursor-line {
+  color: #abb2bf;
+  background-color: #2c313a;
+}
+pre.editor-colors .gutter .line-number.cursor-line-no-selection,
+.host .gutter .line-number.cursor-line-no-selection {
+  background-color: transparent;
+}
+pre.editor-colors .gutter .line-number .icon-right,
+.host .gutter .line-number .icon-right {
+  color: #abb2bf;
+}
+pre.editor-colors .gutter:not(.git-diff-icon) .line-number.git-line-removed.git-line-removed::before,
+.host .gutter:not(.git-diff-icon) .line-number.git-line-removed.git-line-removed::before {
+  bottom: -3px;
+}
+pre.editor-colors .gutter:not(.git-diff-icon) .line-number.git-line-removed::after,
+.host .gutter:not(.git-diff-icon) .line-number.git-line-removed::after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 25px;
+  border-bottom: 1px dotted rgba(224, 82, 82, 0.5);
+  pointer-events: none;
+}
+pre.editor-colors .gutter .line-number.folded,
+.host .gutter .line-number.folded,
+pre.editor-colors .gutter .line-number:after,
+.host .gutter .line-number:after,
+pre.editor-colors .fold-marker:after,
+.host .fold-marker:after {
+  color: #abb2bf;
+}
+.comment {
+  color: #5c6370;
+  font-style: italic;
+}
+.comment .markup.link {
+  color: #5c6370;
+}
+.entity.name.type {
+  color: #e5c07b;
+}
+.entity.other.inherited-class {
+  color: #98c379;
+}
+.keyword {
+  color: #c678dd;
+}
+.keyword.control {
+  color: #c678dd;
+}
+.keyword.operator {
+  color: #abb2bf;
+}
+.keyword.other.special-method {
+  color: #61afef;
+}
+.keyword.other.unit {
+  color: #d19a66;
+}
+.storage {
+  color: #c678dd;
+}
+.storage.type.annotation,
+.storage.type.primitive {
+  color: #c678dd;
+}
+.storage.modifier.package,
+.storage.modifier.import {
+  color: #abb2bf;
+}
+.constant {
+  color: #d19a66;
+}
+.constant.variable {
+  color: #d19a66;
+}
+.constant.character.escape {
+  color: #56b6c2;
+}
+.constant.numeric {
+  color: #d19a66;
+}
+.constant.other.color {
+  color: #56b6c2;
+}
+.constant.other.symbol {
+  color: #56b6c2;
+}
+.variable {
+  color: #e06c75;
+}
+.variable.interpolation {
+  color: #be5046;
+}
+.variable.parameter {
+  color: #abb2bf;
+}
+.string {
+  color: #98c379;
+}
+.string.regexp {
+  color: #56b6c2;
+}
+.string.regexp .source.ruby.embedded {
+  color: #e5c07b;
+}
+.string.other.link {
+  color: #e06c75;
+}
+.punctuation.definition.comment {
+  color: #5c6370;
+}
+.punctuation.definition.method-parameters,
+.punctuation.definition.function-parameters,
+.punctuation.definition.parameters,
+.punctuation.definition.separator,
+.punctuation.definition.seperator,
+.punctuation.definition.array {
+  color: #abb2bf;
+}
+.punctuation.definition.heading,
+.punctuation.definition.identity {
+  color: #61afef;
+}
+.punctuation.definition.bold {
+  color: #e5c07b;
+  font-weight: bold;
+}
+.punctuation.definition.italic {
+  color: #c678dd;
+  font-style: italic;
+}
+.punctuation.section.embedded {
+  color: #be5046;
+}
+.punctuation.section.method,
+.punctuation.section.class,
+.punctuation.section.inner-class {
+  color: #abb2bf;
+}
+.support.class {
+  color: #e5c07b;
+}
+.support.type {
+  color: #56b6c2;
+}
+.support.function {
+  color: #56b6c2;
+}
+.support.function.any-method {
+  color: #61afef;
+}
+.entity.name.function {
+  color: #61afef;
+}
+.entity.name.class,
+.entity.name.type.class {
+  color: #e5c07b;
+}
+.entity.name.section {
+  color: #61afef;
+}
+.entity.name.tag {
+  color: #e06c75;
+}
+.entity.other.attribute-name {
+  color: #d19a66;
+}
+.entity.other.attribute-name.id {
+  color: #61afef;
+}
+.meta.class {
+  color: #e5c07b;
+}
+.meta.class.body {
+  color: #abb2bf;
+}
+.meta.method-call,
+.meta.method {
+  color: #abb2bf;
+}
+.meta.definition.variable {
+  color: #e06c75;
+}
+.meta.link {
+  color: #d19a66;
+}
+.meta.require {
+  color: #61afef;
+}
+.meta.selector {
+  color: #c678dd;
+}
+.meta.separator {
+  background-color: #373b41;
+  color: #abb2bf;
+}
+.meta.tag {
+  color: #abb2bf;
+}
+.underline {
+  text-decoration: underline;
+}
+.none {
+  color: #abb2bf;
+}
+.invalid.deprecated {
+  color: #523d14 !important;
+  background-color: #e0c285 !important;
+}
+.invalid.illegal {
+  color: #ffffff !important;
+  background-color: #e05252 !important;
+}
+.markup.bold {
+  color: #d19a66;
+  font-weight: bold;
+}
+.markup.changed {
+  color: #c678dd;
+}
+.markup.deleted {
+  color: #e06c75;
+}
+.markup.italic {
+  color: #c678dd;
+  font-style: italic;
+}
+.markup.heading {
+  color: #e06c75;
+}
+.markup.heading .punctuation.definition.heading {
+  color: #61afef;
+}
+.markup.link {
+  color: #c678dd;
+}
+.markup.inserted {
+  color: #98c379;
+}
+.markup.quote {
+  color: #d19a66;
+}
+.markup.raw {
+  color: #98c379;
+}
+.source.cs .keyword.operator {
+  color: #c678dd;
+}
+.source.css .property-name,
+.source.css .property-value {
+  color: #828997;
+}
+.source.css .property-name.support,
+.source.css .property-value.support {
+  color: #abb2bf;
+}
+.source.gfm .markup {
+  -webkit-font-smoothing: auto;
+}
+.source.gfm .link .entity {
+  color: #61afef;
+}
+.source.go .storage.type.string {
+  color: #c678dd;
+}
+.source.ini .keyword.other.definition.ini {
+  color: #e06c75;
+}
+.source.java .storage.modifier.import {
+  color: #e5c07b;
+}
+.source.java .storage.type {
+  color: #e5c07b;
+}
+.source.java .keyword.operator.instanceof {
+  color: #c678dd;
+}
+.source.java-properties .meta.key-pair {
+  color: #e06c75;
+}
+.source.java-properties .meta.key-pair > .punctuation {
+  color: #abb2bf;
+}
+.source.js .keyword.operator {
+  color: #56b6c2;
+}
+.source.js .keyword.operator.delete,
+.source.js .keyword.operator.in,
+.source.js .keyword.operator.of,
+.source.js .keyword.operator.instanceof,
+.source.js .keyword.operator.new,
+.source.js .keyword.operator.typeof,
+.source.js .keyword.operator.void {
+  color: #c678dd;
+}
+.source.json .meta.structure.dictionary.json > .string.quoted.json {
+  color: #e06c75;
+}
+.source.json .meta.structure.dictionary.json > .string.quoted.json > .punctuation.string {
+  color: #e06c75;
+}
+.source.json .meta.structure.dictionary.json > .value.json > .string.quoted.json,
+.source.json .meta.structure.array.json > .value.json > .string.quoted.json,
+.source.json .meta.structure.dictionary.json > .value.json > .string.quoted.json > .punctuation,
+.source.json .meta.structure.array.json > .value.json > .string.quoted.json > .punctuation {
+  color: #98c379;
+}
+.source.json .meta.structure.dictionary.json > .constant.language.json,
+.source.json .meta.structure.array.json > .constant.language.json {
+  color: #56b6c2;
+}
+.source.ruby .constant.other.symbol > .punctuation {
+  color: inherit;
+}
+.source.python .keyword.operator.logical.python {
+  color: #c678dd;
+}
+.source.python .variable.parameter {
+  color: #d19a66;
+}
+ /* Flowchart variables */
+/* Sequence Diagram variables */
+/* Gantt chart variables */
+.mermaid .label {
+  color: #333;
+}
+.node rect,
+.node circle,
+.node ellipse,
+.node polygon {
+  fill: #ECECFF;
+  stroke: #CCCCFF;
+  stroke-width: 1px;
+}
+.edgePath .path {
+  stroke: #333333;
+}
+.edgeLabel {
+  background-color: #e8e8e8;
+}
+.cluster rect {
+  fill: #ffffde !important;
+  rx: 4 !important;
+  stroke: #aaaa33 !important;
+  stroke-width: 1px !important;
+}
+.cluster text {
+  fill: #333;
+}
+.actor {
+  stroke: #CCCCFF;
+  fill: #ECECFF;
+}
+text.actor {
+  fill: black;
+  stroke: none;
+}
+.actor-line {
+  stroke: grey;
+}
+.messageLine0 {
+  stroke-width: 1.5;
+  stroke-dasharray: "2 2";
+  marker-end: "url(#arrowhead)";
+  stroke: #333;
+}
+.messageLine1 {
+  stroke-width: 1.5;
+  stroke-dasharray: "2 2";
+  stroke: #333;
+}
+#arrowhead {
+  fill: #333;
+}
+#crosshead path {
+  fill: #333 !important;
+  stroke: #333 !important;
+}
+.messageText {
+  fill: #333;
+  stroke: none;
+}
+.labelBox {
+  stroke: #CCCCFF;
+  fill: #ECECFF;
+}
+.labelText {
+  fill: black;
+  stroke: none;
+}
+.loopText {
+  fill: black;
+  stroke: none;
+}
+.loopLine {
+  stroke-width: 2;
+  stroke-dasharray: "2 2";
+  marker-end: "url(#arrowhead)";
+  stroke: #CCCCFF;
+}
+.note {
+  stroke: #aaaa33;
+  fill: #fff5ad;
+}
+.noteText {
+  fill: black;
+  stroke: none;
+  font-family: 'trebuchet ms', verdana, arial;
+  font-size: 14px;
+}
+/** Section styling */
+.section {
+  stroke: none;
+  opacity: 0.2;
+}
+.section0 {
+  fill: rgba(102, 102, 255, 0.49);
+}
+.section2 {
+  fill: #fff400;
+}
+.section1,
+.section3 {
+  fill: white;
+  opacity: 0.2;
+}
+.sectionTitle0 {
+  fill: #333;
+}
+.sectionTitle1 {
+  fill: #333;
+}
+.sectionTitle2 {
+  fill: #333;
+}
+.sectionTitle3 {
+  fill: #333;
+}
+.sectionTitle {
+  text-anchor: start;
+  font-size: 11px;
+  text-height: 14px;
+}
+/* Grid and axis */
+.grid .tick {
+  stroke: lightgrey;
+  opacity: 0.3;
+  shape-rendering: crispEdges;
+}
+.grid path {
+  stroke-width: 0;
+}
+/* Today line */
+.today {
+  fill: none;
+  stroke: red;
+  stroke-width: 2px;
+}
+/* Task styling */
+/* Default task */
+.task {
+  stroke-width: 2;
+}
+.taskText {
+  text-anchor: middle;
+  font-size: 11px;
+}
+.taskTextOutsideRight {
+  fill: black;
+  text-anchor: start;
+  font-size: 11px;
+}
+.taskTextOutsideLeft {
+  fill: black;
+  text-anchor: end;
+  font-size: 11px;
+}
+/* Specific task settings for the sections*/
+.taskText0,
+.taskText1,
+.taskText2,
+.taskText3 {
+  fill: white;
+}
+.task0,
+.task1,
+.task2,
+.task3 {
+  fill: #8a90dd;
+  stroke: #534fbc;
+}
+.taskTextOutside0,
+.taskTextOutside2 {
+  fill: black;
+}
+.taskTextOutside1,
+.taskTextOutside3 {
+  fill: black;
+}
+/* Active task */
+.active0,
+.active1,
+.active2,
+.active3 {
+  fill: #bfc7ff;
+  stroke: #534fbc;
+}
+.activeText0,
+.activeText1,
+.activeText2,
+.activeText3 {
+  fill: black !important;
+}
+/* Completed task */
+.done0,
+.done1,
+.done2,
+.done3 {
+  stroke: grey;
+  fill: lightgrey;
+  stroke-width: 2;
+}
+.doneText0,
+.doneText1,
+.doneText2,
+.doneText3 {
+  fill: black !important;
+}
+/* Tasks on the critical line */
+.crit0,
+.crit1,
+.crit2,
+.crit3 {
+  stroke: #ff8888;
+  fill: red;
+  stroke-width: 2;
+}
+.activeCrit0,
+.activeCrit1,
+.activeCrit2,
+.activeCrit3 {
+  stroke: #ff8888;
+  fill: #bfc7ff;
+  stroke-width: 2;
+}
+.doneCrit0,
+.doneCrit1,
+.doneCrit2,
+.doneCrit3 {
+  stroke: #ff8888;
+  fill: lightgrey;
+  stroke-width: 2;
+  cursor: pointer;
+  shape-rendering: crispEdges;
+}
+.doneCritText0,
+.doneCritText1,
+.doneCritText2,
+.doneCritText3 {
+  fill: black !important;
+}
+.activeCritText0,
+.activeCritText1,
+.activeCritText2,
+.activeCritText3 {
+  fill: black !important;
+}
+.titleText {
+  text-anchor: middle;
+  font-size: 18px;
+  fill: black;
+}
+/*
+
+
+*/
+.node text {
+  font-family: 'trebuchet ms', verdana, arial;
+  font-size: 14px;
+}
+div.mermaidTooltip {
+  position: absolute;
+  text-align: center;
+  max-width: 200px;
+  padding: 2px;
+  font-family: 'trebuchet ms', verdana, arial;
+  font-size: 12px;
+  background: #ffffde;
+  border: 1px solid #aaaa33;
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 100;
+}
+ </style> <link rel="stylesheet" href="file:///C:\Users\dushang\.atom\packages\markdown-preview-enhanced\node_modules\katex\dist\katex.min.css">  </head> <body class="markdown-preview-enhanced" data-use-github-style data-use-github-syntax-theme > <h1 class="line" data-line="0" id="nodejs-v640&#x6587;&#x6863;">Node.js v6.4.0文档</h1>
+<ul>
+<li><p class="line" data-line="4"><a href="#nodejs-v640&#x6587;&#x6863;">Node.js v6.4.0文档</a></p></li>
+<li><p class="line" data-line="5"><a href="#&#x547D;&#x4EE4;&#x884C;&#x53C2;&#x6570;">命令行参数</a>
+<ul>
+<li><p class="line" data-line="6"><a href="#&#x6458;&#x8981;">摘要</a></p></li>
+<li><p class="line" data-line="7"><a href="#&#x53C2;&#x6570;">参数</a>
+<ul>
+<li><p class="line" data-line="8"><a href="#-v-version"><code>-v，--version</code></a></p></li>
+<li><p class="line" data-line="9"><a href="#-h-help"><code>-h，--help</code></a></p></li>
+<li><p class="line" data-line="10"><a href="#-e-eval-script"><code>-e，--eval &quot;script&quot;</code></a></p></li>
+<li><p class="line" data-line="11"><a href="#-p-print-script"><code>-p，--print &quot;script&quot;</code></a></p></li>
+<li><p class="line" data-line="12"><a href="#-c-check"><code>-c，--check</code></a></p></li>
+<li><p class="line" data-line="13"><a href="#-i-interactive"><code>-i，--interactive</code></a></p></li>
+<li><p class="line" data-line="14"><a href="#-r-require-&#x6A21;&#x5757;"><code>-r，--require 模块</code></a></p></li>
+<li><p class="line" data-line="15"><a href="#-no-deprecation"><code>--no-deprecation</code></a></p></li>
+<li><p class="line" data-line="16"><a href="#-trace-deprecation"><code>--trace-deprecation</code></a></p></li>
+<li><p class="line" data-line="17"><a href="#-throw-deprecation"><code>--throw-deprecation</code></a></p></li>
+<li><p class="line" data-line="18"><a href="#-no-warnings"><code>--no-warnings</code></a></p></li>
+<li><p class="line" data-line="19"><a href="#-trace-warnings"><code>--trace-warnings</code></a></p></li>
+<li><p class="line" data-line="20"><a href="#-trace-sync-io"><code>--trace-sync-io</code></a></p></li>
+<li><p class="line" data-line="21"><a href="#-zero-fill-buffers"><code>--zero-fill-buffers</code></a></p></li>
+<li><p class="line" data-line="22"><a href="#-preserve-symlinks"><code>--preserve-symlinks</code></a></p></li>
+<li><p class="line" data-line="23"><a href="#-track-heap-objects"><code>--track-heap-objects</code></a></p></li>
+<li><p class="line" data-line="24"><a href="#-prof-process"><code>--prof-process</code></a></p></li>
+<li><p class="line" data-line="25"><a href="#-v8-options"><code>--v8-options</code></a></p></li>
+<li><p class="line" data-line="26"><a href="#-tls-cipher-listlist"><code>--tls-cipher-list=list</code></a></p></li>
+<li><p class="line" data-line="27"><a href="#-enable-fips"><code>--enable-fips</code></a></p></li>
+<li><p class="line" data-line="28"><a href="#-force-fips"><code>--force-fips</code></a></p></li>
+<li><p class="line" data-line="29"><a href="#-icu-data-dirfile"><code>--icu-data-dir=file</code></a></p></li>
+</ul></p></li>
+<li><p class="line" data-line="30"><a href="#&#x73AF;&#x5883;&#x53D8;&#x91CF;">环境变量</a>
+<ul>
+<li><p class="line" data-line="31"><a href="#node_debugmodule"><code>NODE_DEBUG=module[,...]</code></a></p></li>
+<li><p class="line" data-line="32"><a href="#node_pathpath"><code>NODE_PATH=path[:...]</code></a></p></li>
+<li><p class="line" data-line="33"><a href="#node_disable_color1"><code>NODE_DISABLE_COLOR=1</code></a></p></li>
+<li><p class="line" data-line="34"><a href="#node_icu_datalife"><code>NODE_ICU_DATA=life</code></a></p></li>
+<li><p class="line" data-line="35"><a href="#node_repl_historyfile"><code>NODE_REPL_HISTORY=file</code></a></p></li>
+<li><p class="line" data-line="36"><a href="#node_tty_unsafe_async1"><code>NODE_TTY_UNSAFE_ASYNC=1</code></a></p></li>
+</ul></p></li>
+</ul></p></li>
+</ul>
+<h1 class="line" data-line="41" id="&#x547D;&#x4EE4;&#x884C;&#x53C2;&#x6570;">命令行参数</h1>
+<p class="line" data-line="42">Node.js包含各种各样的命令行界面参数。这些参数包括内置的调试、多种执行脚本的方式和其他一些有用的运行时参数。</p>
+<p class="line" data-line="44">如果想要将该文档作为手册在你的终端查看，运行<code>man node</code>。</p>
+<h2 class="line" data-line="46" id="&#x6458;&#x8981;">摘要</h2>
+<p class="line" data-line="48"><code>node [options] [v8 options] [script.js | -e &quot;script&quot;] [arguments]</code></p>
+<p class="line" data-line="50"><code>node debug [script.js | -e &quot;script&quot; | &lt;host&gt;:&lt;port&gt;] …</code></p>
+<p class="line" data-line="52"><code>node --v8-options</code></p>
+<p class="line" data-line="54">不携带参数执行可以启动<a href="https://nodejs.org/dist/latest-v6.x/docs/api/repl.html">REPL</a></p>
+<p class="line" data-line="56">获取更多<code>node debug</code>相关信息，请查看<a href="https://nodejs.org/dist/latest-v6.x/docs/api/debugger.html">debugger</a>文档。</p>
+<h2 class="line" data-line="58" id="&#x53C2;&#x6570;">参数</h2>
+<h3 class="line" data-line="60" id="-v-version"><code>-v，--version</code></h3>
+<p class="line" data-line="61">添加于v0.1.3</p>
+<p class="line" data-line="63">打印出Node.js的版本。</p>
+<h3 class="line" data-line="65" id="-h-help"><code>-h，--help</code></h3>
+<p class="line" data-line="66">添加于v0.1.3</p>
+<p class="line" data-line="68">打印出node命令行参数。该参数的输出内容没有该文档内容详细。</p>
+<h3 class="line" data-line="70" id="-e-eval-script"><code>-e，--eval &quot;script&quot;</code></h3>
+<p class="line" data-line="71">添加于v0.5.2</p>
+<p class="line" data-line="73">将后面的参数作为JavaScript执行。在REPL中预先定义的模块也可以在<code>script</code>中使用。</p>
+<h3 class="line" data-line="75" id="-p-print-script"><code>-p，--print &quot;script&quot;</code></h3>
+<p class="line" data-line="76">添加于v0.6.4</p>
+<p class="line" data-line="78">与<code>-e</code>相同，但打印出结果。</p>
+<h3 class="line" data-line="80" id="-c-check"><code>-c，--check</code></h3>
+<p class="line" data-line="81">添加于v5.0.0</p>
+<p class="line" data-line="83">不执行脚本的情况下进行语法检查。</p>
+<h3 class="line" data-line="85" id="-i-interactive"><code>-i，--interactive</code></h3>
+<p class="line" data-line="86">添加于v0.7.7</p>
+<p class="line" data-line="88">打开REPL即使标准输入不是一个终端。</p>
+<h3 class="line" data-line="90" id="-r-require-&#x6A21;&#x5757;"><code>-r，--require 模块</code></h3>
+<p class="line" data-line="91">添加于v1.6.0</p>
+<p class="line" data-line="93">在启动时预先加载指定的模块。</p>
+<p class="line" data-line="95">参数后面跟随需要的模块解决规则。<code>module</code>可以是文件路径或者node模块名。</p>
+<h3 class="line" data-line="97" id="-no-deprecation"><code>--no-deprecation</code></h3>
+<p class="line" data-line="98">添加于v0.8.0</p>
+<p class="line" data-line="100">压制弃用警告信息。</p>
+<h3 class="line" data-line="102" id="-trace-deprecation"><code>--trace-deprecation</code></h3>
+<p class="line" data-line="103">添加于v0.8.0</p>
+<p class="line" data-line="105">为弃用打印堆栈跟踪。</p>
+<h3 class="line" data-line="107" id="-throw-deprecation"><code>--throw-deprecation</code></h3>
+<p class="line" data-line="108">添加于v0.11.14</p>
+<p class="line" data-line="110">为弃用抛出错误。</p>
+<h3 class="line" data-line="112" id="-no-warnings"><code>--no-warnings</code></h3>
+<p class="line" data-line="113">添加于v6.0.0</p>
+<p class="line" data-line="115">压制所有的进程警告信息（包括弃用）。</p>
+<h3 class="line" data-line="117" id="-trace-warnings"><code>--trace-warnings</code></h3>
+<p class="line" data-line="118">添加于v6.0.0</p>
+<p class="line" data-line="120">为进程警告信息（包括弃用）打印堆栈跟踪。</p>
+<h3 class="line" data-line="122" id="-trace-sync-io"><code>--trace-sync-io</code></h3>
+<p class="line" data-line="123">添加于v2.1.0</p>
+<p class="line" data-line="125">第一次打开时间循环后，每当何时检测到同步I/O，则打印堆栈跟踪。</p>
+<h3 class="line" data-line="127" id="-zero-fill-buffers"><code>--zero-fill-buffers</code></h3>
+<p class="line" data-line="128">添加于v6.0.0</p>
+<p class="line" data-line="130">自动以零填充所有的新分配的<a href="https://nodejs.org/dist/latest-v6.x/docs/api/buffer.html#buffer_buffer">Buffer</a>和<a href="https://nodejs.org/dist/latest-v6.x/docs/api/buffer.html#buffer_class_slowbuffer">SlowBuffer</a>实例。</p>
+<h3 class="line" data-line="132" id="-preserve-symlinks"><code>--preserve-symlinks</code></h3>
+<p class="line" data-line="133">添加于v6.3.0</p>
+<p class="line" data-line="135">当解析和缓冲模块时，指导模块加载器保存符号链接。</p>
+<p class="line" data-line="137">默认情况下，当Node.js从一个符号链接到磁盘不同位置的路径加载一个模块，Node.js会解除链接的引用并使用模块的实际的磁盘真实路径作为标识符和一个根路径来定位其他依赖模块。大多数情况下，这种默认行为都是可接受的。但是，当使用符号链接对等的依赖，如下例所示，如果<code>modualA</code>企图将<code>modualB</code>作为对等的依赖引入，默认行为会导致一个异常抛出。</p>
+<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>{appDir}</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span><span class="meta paragraph text"><span>├──&nbsp;app</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&nbsp;│&nbsp;&nbsp;&nbsp;├──&nbsp;index.js</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&nbsp;│&nbsp;&nbsp;&nbsp;└──&nbsp;node_modules</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;moduleA&nbsp;-&gt;&nbsp;{appDir}/moduleA</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;moduleB</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;index.js</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;package.json</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&nbsp;└──&nbsp;moduleA</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta paragraph text"><span>├──&nbsp;index.js</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;package.json</span></span></span></div></pre>
+<p class="line" data-line="151"><code>--preserve-symlinks</code>命令行标志指导Node.js为模块使用相对于真实路径的符号链接路径，允许找到符号链接对等依赖。</p>
+<p class="line" data-line="153">注意，使用<code>--preserve-symlinks</code>可能会有其他副作用。准确地说，符号链接的本地模块如果是从依赖树的不止一个位置，则模块加载会失败（Node.js会将其视为两个分离的模块，并会企图加载多次，导致抛出异常）。</p>
+<h3 class="line" data-line="155" id="-track-heap-objects"><code>--track-heap-objects</code></h3>
+<p class="line" data-line="156">添加于v2.4.0</p>
+<p class="line" data-line="158">追踪堆快照的堆对象分配。</p>
+<h3 class="line" data-line="160" id="-prof-process"><code>--prof-process</code></h3>
+<p class="line" data-line="161">添加于v6.0.0</p>
+<p class="line" data-line="163">处理用v8选项<code>--prof</code>产生的v8分析器输出。</p>
+<h3 class="line" data-line="165" id="-v8-options"><code>--v8-options</code></h3>
+<p class="line" data-line="166">添加于v0.1.3</p>
+<p class="line" data-line="168">打印出v8命令行参数。</p>
+<p class="line" data-line="170">注意：v8参数允许使用破折号(<code>-</code>)或者下划线(<code>_</code>)分隔单词。</p>
+<p class="line" data-line="172">例如：<code>--stack-trace-limit</code>与<code>--stack_trace_limit</code>等价。</p>
+<h3 class="line" data-line="174" id="-tls-cipher-listlist"><code>--tls-cipher-list=list</code></h3>
+<p class="line" data-line="175">添加于v4.0.0</p>
+<p class="line" data-line="177">指定一个可选的默认TLS密码表。（需要Node.js使用加密支持构建。（默认情况））</p>
+<h3 class="line" data-line="179" id="-enable-fips"><code>--enable-fips</code></h3>
+<p class="line" data-line="180">添加于v6.0.0</p>
+<p class="line" data-line="182">在启动时启用顺从FIPS加密。（需要Node.js使用<code>./configure --openssl-fips</code>构建）</p>
+<h3 class="line" data-line="184" id="-force-fips"><code>--force-fips</code></h3>
+<p class="line" data-line="185">添加于v6.0.0</p>
+<p class="line" data-line="187">在启动时强制使用顺从FIPS加密。（不能在脚本代码中关闭。）（需求与<code>--enable-fips</code>相同）</p>
+<h3 class="line" data-line="189" id="-icu-data-dirfile"><code>--icu-data-dir=file</code></h3>
+<p class="line" data-line="190">添加于v0.11.15</p>
+<p class="line" data-line="192">指定ICU数据加载路径。（覆盖<code>NODE_ICU_DATA</code>）</p>
+<h2 class="line" data-line="194" id="&#x73AF;&#x5883;&#x53D8;&#x91CF;">环境变量</h2>
+<h3 class="line" data-line="195" id="node_debugmodule"><code>NODE_DEBUG=module[,...]</code></h3>
+<p class="line" data-line="196">添加于v0.1.32</p>
+<p class="line" data-line="198">使用<code>,</code>分隔的核心模块列表应该打印调试信息。</p>
+<h3 class="line" data-line="200" id="node_pathpath"><code>NODE_PATH=path[:...]</code></h3>
+<p class="line" data-line="201">添加于v0.1.32</p>
+<p class="line" data-line="203">使用<code>:</code>分隔的目录列表作为前缀添加到模块搜索路径。</p>
+<p class="line" data-line="205">注意：在Windows下，使用<code>;</code>替代作为分隔符。</p>
+<h3 class="line" data-line="207" id="node_disable_color1"><code>NODE_DISABLE_COLOR=1</code></h3>
+<p class="line" data-line="208">添加于v0.3.0</p>
+<p class="line" data-line="210">设置为<code>1</code>时，不会在REPL中使用颜色。</p>
+<h3 class="line" data-line="212" id="node_icu_datalife"><code>NODE_ICU_DATA=life</code></h3>
+<p class="line" data-line="213">添加于v0.11.15</p>
+<p class="line" data-line="215">ICU（国际的对象）数据的数据路径。当使用支持small-icu编译时，会扩展连接内数据。</p>
+<h3 class="line" data-line="217" id="node_repl_historyfile"><code>NODE_REPL_HISTORY=file</code></h3>
+<p class="line" data-line="218">添加于v3.0.0</p>
+<p class="line" data-line="220">用于保存持久化REPL历史的文件路径。默认路径是<code>~/.node_repl_history</code>，会被该变量覆盖。将该值设置为空字符串（<code>&quot;&quot;</code>或者<code>''</code>），则关闭持久化REPL历史功能。</p>
+<h3 class="line" data-line="222" id="node_tty_unsafe_async1"><code>NODE_TTY_UNSAFE_ASYNC=1</code></h3>
+<p class="line" data-line="223">添加于v6.4.0</p>
+<p class="line" data-line="225">设置为<code>1</code>时，当在支持异步标准输入输出的平台上输出到一个电传打字机时，写入到<code>stdout</code>和<code>stderr</code>将会是非阻塞和异步的。设置这个将会使任何保证无效，标准输入输出将不会隔行扫描，或在程序退出时抛弃。<strong>不推荐使用该模式。</strong></p>
+ </body>  </html>
