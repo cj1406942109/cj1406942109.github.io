@@ -6,5 +6,4 @@
 ```
 
 * 解决方法：使用`ssh`的方式进行仓库的克隆
-* 另： 如果已经使用`https`的方式克隆了，不需要删除本地项目重新克隆，只需要 **修改`.git/config`文件中的`url`，将`https://github.com/{username}/{projectname}.git`改为`git://github.com/{username}/{projectname}.git`**即可。
-
+* 另： 如果已经使用`https`的方式克隆了，不需要删除本地项目重新克隆，只需要 **修改`.git/config`文件中的`url`，将`https://github.com/{username}/{projectname}.git`改为`git@github.com:{username}/{projectname}.git`**即可。
