@@ -1,4 +1,6 @@
 # git本地修改恢复（尚未本地commit）
+> 记录时间：2016-12-28
+
 ```git
 git checkout file1      //恢复file1文件的修改
 git checkout *.html     //恢复所有的.html文件

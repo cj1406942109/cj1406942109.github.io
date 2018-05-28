@@ -1,4 +1,5 @@
 # C(Creation)操作
+> 记录时间：2017-01-11
 
 - db.collection.insert()
 - db.collection.insertOne()

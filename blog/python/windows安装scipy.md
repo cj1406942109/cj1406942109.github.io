@@ -1,4 +1,5 @@
 # windows下安装scipy
+> 记录时间：2018-04-12
 
 > windows正常通过pip命令安装numpy和scipy的时候：
 

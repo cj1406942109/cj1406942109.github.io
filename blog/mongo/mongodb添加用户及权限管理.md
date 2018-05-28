@@ -1,4 +1,5 @@
 # mongo添加用户
+> 记录时间：2018-05-23
 
 ## 创建管理员用户流程
 参考资料：https://docs.mongodb.com/manual/tutorial/enable-authentication
