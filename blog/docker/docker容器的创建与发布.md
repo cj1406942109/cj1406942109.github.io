@@ -101,7 +101,7 @@
           
           <h3>Hello World!</h3><b>Hostname:</b> 8fc990912a14<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i>
         ```
-    **注意：** 在windows系统下，使用`CTRL+C`命令，不会停止容器，需要显示地停止容器，步骤如下：    
+    **注意：** 在windows系统下，使用`CTRL+C`命令，不会停止容器，需要显式地停止容器，步骤如下：    
 
       1. 使用`CTRL+C`命令回到命令行，或者重新打开一个shell
       2. 输入`docker container ls`查看正在运行的容器
