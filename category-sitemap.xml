@@ -15,13 +15,6 @@
     </url>
 
     <url>
-        <loc>http://cj1406942109.github.io/categories/CSS/</loc>
-        <lastmod>2018-11-19T17:24:29.202Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://cj1406942109.github.io/categories/Docker/</loc>
         <lastmod>2018-11-20T02:51:09.141Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -66,6 +59,13 @@
     <url>
         <loc>http://cj1406942109.github.io/categories/JavaScript/</loc>
         <lastmod>2018-12-13T09:28:52.172Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://cj1406942109.github.io/categories/CSS/</loc>
+        <lastmod>2018-12-14T08:46:58.833Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
