@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[CSS 实现元素垂直居中方法总结]]></title>
+    <url>%2F2018%2F12%2F21%2FCSS%E5%AE%9E%E7%8E%B0%E5%85%83%E7%B4%A0%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93%2F</url>
+    <content type="text"><![CDATA[在进行页面布局时，经常会遇到需要对元素进行垂直居中显示的情况，相比于水平居中，垂直居中的实现稍微复杂一点。很多时候只是在开发时查一下解决方案，解燃眉之急，但是要让你真正地手动实现，又可能会有点难度或是无从下手，比较实现的方法有很多。 本文就用代码和图示，对 CSS 实现元素居中的方法进行一个总结，分别对块级元素和行内元素单独进行详细说明。 块级元素垂直居中首先对块级元素垂直居中的方法进行总结。 父元素高度已知当父元素高度已知的情况下，要使该块级元素垂直居中，实现起来是比较简单的。 先来上代码： 以下块级元素垂直居中示例均使用上面的 HTML 结构。 对于父元素高度已知的情况下，从上面的代码可以看到，只需根据父元素高度设置块级元素的竖直方向偏移值即可。 块级元素高度已知，margin-top上面的代码，给出的结果是块级元素高度已知的情况。 此时竖直方向偏移值计算方法为： $$ \frac{height_{parent} - height_{child}}{2} $$ 对应上面的代码就是： $$ \frac{300 - 100}{2} = 100 $$ 因此要实现垂直居中，只需设置块级元素 margin-top: 100px 即可。 块级元素高度未知，margin-top + transform对于不知道块级元素高度的情况，同样也可以实现垂直居中。 方法很简单，先看代码： 这里用到了 CSS3 中的 transform 属性，对块级元素做转换处理，这里使用的值是 translateY 作 2D 转换，因为是垂直居中，只做了 Y 方向的处理。 注意： 需要浏览器支持 transform 属性。 其实现思路与上面一种情况基本相同，设置块级元素的竖直方向偏移值。 为什么在不知道块级元素高度的情况下，还可以通过设置竖直方向的偏移值来实现呢？ 这是因为，translateY 属性设置为50%，这里的百分比，是相对于元素本身的，也就是说，这里的translateY(-50%)，与上面一种情况的$- height_{child} / 2$ 结果完全相同。 两种情况对比首先看一下 margin-top 的值：两种情况下，由父元素的高度决定的偏移值部分是不变的，都是$$ \frac{height_{parent}}{2} = \frac{300}{2} = 150 $$ 再来看一下块级元素引起的偏移值： 块级元素高度已知时，那么也可以通过margin-top，在原基础上再向上偏移$- height_{child} / 2$即可，因此，俩个值叠加之后，就是第一种情况的结果。 12345678/* 父元素高度决定的偏移 */margin-top: 150px;/* 在此基础上，在加上块级元素本身高度决定的偏移 */margin-top: -50px;/* 这里只是为了示例讲解，请勿同时书写多个属性，后者会覆盖前者 *//* 因为属性相同，叠加之后的最终结果 */margin-top: 100px; 块级元素高度未知时，父元素部分不变，块级元素本身的偏移，通过 CSS3 的 transform 属性实现，也就是第二种情况的结果。 1234/* 父元素高度决定的偏移 */margin-top: 150px;/* 块级元素本身的偏移 */transform: translateY(-50%); 这里使用 margin-top 属性，来控制父元素引起的偏移，只是其中一种方法，当然可以在父元素上添加 padding-top 或其他方式实现，这里只是提供一种思路，可以根据具体需要再做调整。 父元素高度未知对于父元素高度未知的情况，看看以下一些具体情境。 块级元素与父元素高度相同这种情况，非常简单，看代码： 直接给父元素设置 padding 属性即可。虽然这种情况看起来很简单，但是需要注意，确保父元素的高度由内容撑起来，或者设置一个刚好与块级元素实际高度相同的值（对于标准盒子模型，需要考虑 border，padding，margin属性）。 虽然简单，但是遇到这种场景，用起来还是很不错的。 块级元素与父元素高度无关系父元素高度不知道，并且块级元素高度与父元素高度没有相关关系，也有很多种方式来实现块级元素的垂直居中。 下面一一列举： 以下均使用了绝对定位，虽然放在父元素高度不知道的情况，这里的意思是父元素的高度不会对 CSS 的写法产生影响，但是还是需要给父元素指定一个高度。 使用绝对定位加负边距参考代码： 这种情况下，注意，父元素要设置 position: relative 属性，这样，块级元素的绝对定位才会相对父元素的位置做偏移。 使用绝对定位加transform这种情况也可以考虑块级元素高度已知和高度未知两种情况。上面是块级元素高度已知的情况，高度未知的情况，同理，可以使用 transform 属性。 代码如下，就不做详细阐述了。 使用绝对定位加margin这两种情况与已知父元素高度的情况类似，下面看一个使用绝对定位配合 margin: auto 实现垂直居中的方式。 注意：这种情况下，需要给块级元素 height 设置一个值，当然这个值是任意的，如果不设置，就会与父元素高度相同；并且，要设置块级元素的 top 和 bottom 属性，确保两者值相等，我这里设置的都是 0 ，然后使用margin，在垂直方向上设置auto即可，当然水平方向同理也可实现。 使用 flex 布局这种方式，是我用的最多也最喜欢用的一种方式，能够灵活的对元素布局进行控制。 flex 布局也叫弹性盒子布局，使用该方式，能够轻松地实现元素垂直居中。 目前，该属性的浏览器兼容性已经很好了，除非要适配 IE 9 及以下的浏览器。 元素放在垂直方向我们来看一下代码： 这种情况，通过 justify-content: center 来实现垂直居中的。 这是元素放在垂直方向的情况，还可以放在水平方向。 元素放在水平方向 元素放在水平方向时，通过 align-items: center 来实现垂直居中。 flex 属性里的知识点还有很多，而且非常实用，这里只讲解实现垂直居中的内容，想要了解更多，可以查看博客Flex 布局教程：语法篇，阮一峰老师还是强啊！ 块级元素的垂直居中方法就先列举这么多，后面如果有其他实现方式再做补充。 下面来看一下行内元素的垂直居中方法。 行内元素垂直居中下面我们来看一下行内元素垂直居中的实现方法。 以下行内元素垂直居中示例均使用上面的 HTML 结构。 父元素高度已知同样，我们先来看父元素高度已知的情况。 line-height 属性 很简单的一种实现方式，直接将行内元素的line-height属性值设置为父元素的高度即可。也是我使用最多的一种方式。 父元素上使用 line-height 属性 另一种使用line-height属性的方式是，在父元素上设置 line-height，值与父元素的高度相同，然后在行内元素上设置 vertical-align: middle。 这在对图片进行垂直居中的时候，非常好用。 父元素高度未知我们再来看看父元素高度未知的情况。 display: table-cell 通过对父元素设置display: table-cell和vertical-align: middle，也可实现行内元素的垂直居中。 绝对定位 实现方式与块级元素的情况基本相同，不做赘述。 flex 布局 flex 布局的上面两种写法与块级元素的情况基本相同，不做赘述。 我们来看一下第三种写法： 设置元素水平方向放置，并设置垂直方向 margin: auto 即可。 先列举这些吧，有需要再做补充。 总结简单总结一下，主要分块级元素和行内元素两种情况。 块级元素 父元素高度已知时，可使用margin和transform实现 父元素高度未知时，可使用padding，绝对定位和 flex 布局实现 行内元素 父元素高度已知时，可使用line-height实现 父元素高度未知时，可使用table-cell，绝对定位和 flex 布局实现 当然，对行内元素添加 display: block/inline-block 时，可参考块级元素的实现，不做详述。]]></content>
+      <categories>
+        <category>CSS</category>
+      </categories>
+      <tags>
+        <tag>CSS 布局</tag>
+        <tag>垂直居中</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[标准盒子模型与 IE 盒子模型]]></title>
     <url>%2F2018%2F12%2F13%2F%E6%A0%87%E5%87%86%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%E4%B8%8EIE%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%2F</url>
     <content type="text"><![CDATA[本文主要对标准（W3C）盒子模型和 IE 盒子模型之间的异同做详细介绍，并说明如何通过 CSS 的 box-sizing属性去控制两种盒子模型之间的切换。 盒子模型的其他内容这里就不做叙述了，重点讲解 W3C 盒子模型与 IE 盒子模型的差异与转换，不想看具体内容的可直接跳到总结部分。 盒子模型图示我们直接通过两张图来做一下比较。 标准盒子模型 IE 盒子模型 差异很容易看到，两者的差异体现在盒子的width和height属性的计算方式。 标准盒子模型：width = content 的宽度即：在 CSS 中设置的width属性，就是 content 的宽度，height同理。 IE 盒子模型：width = border-left + padding-left + content 的宽度 + padding-right + border-right即：在 CSS 中设置的width属性，为 content 的宽度加上两侧border和padding的宽度，height同理。 两种盒子模型的转换对于标准盒子模型和 IE 盒子模型，CSS 中提供了 box-sizing 属性，可以方便地进行切换。 其实 IE 盒子模型的设计更符合常理。并且在某些情况下更方便好用（如：你想要一个框占窗口宽度的50%，但边界和内边距是用像素来表示时）。 box-sizing 属性box-sizing 属性用于更改用于计算元素宽度和高度的默认的 CSS 盒子模型。可以使用此属性来模拟不正确支持 CSS 盒子模型规范的浏览器的行为。 对于标准盒子模型，在 CSS 中，你设置一个元素的 width 与 height 只会应用到这个元素的内容区。如果这个元素有任何的 border 或 padding ，绘制到屏幕上时的盒子宽度和高度会加上设置的边框和内边距值。这意味着当你调整一个元素的宽度和高度时需要时刻注意到这个元素的边框和内边距。当我们实现响应式布局时，这个特点尤其烦人。 这个时候可以用 box-sizing 属性可以被用来调整这些表现： content-box：默认值，对应标准盒子模型 border-box：对应 IE 盒子模型 看下面的图示： 总结简单总结一下，本文只有两个重要知识点： 标准盒子模型与 IE 盒子模型计算 width 和 height 的方式不同。CSS 中设置的盒子 width（ height 同理）： 对于标准盒子模型，就是内容的宽度 对于 IE 盒子模型，是内容的宽度加上两侧 border 和 padding 的宽度 可以使用 CSS 的 box-sizing 属性进行盒子模型的切换： content-box 对应标准盒子模型，也是默认值 border-box 对应 IE 盒子模型 参考链接 MDN - 盒子模型 MDN - box-sizing 属性]]></content>
@@ -81,9 +93,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Babel 配置]]></title>
-    <url>%2F2018%2F10%2F31%2FBabel%20%E9%85%8D%E7%BD%AE%2F</url>
-    <content type="text"><![CDATA[Babel 是可以配置的。很多其他的工具都有着类似地配置：ESLint（.eslintrc），Prettier（.prettierrc）。 查看所有的 Babel API 选项。 你的应用场景是什么？ 你希望以编程方式创建配置？ 你想编译node_modules？ 那么使用babel.config.js吧。 你的静态配置只应用于简单的单个包? 那么使用.babelrc吧。 babel.config.js在你的项目根目录下创建一个名为babel.config.js的文件，包含以下内容：123456789module.exports = function () &#123; const presets = [ ... ]; const plugins = [ ... ]; return &#123; presets, plugins &#125;;&#125; 查看 babel.config.js 文档浏览更多配置选项。 .babelrc在项目中创建一个名为.babelrc的文件，包含以下内容：1234&#123; "presets": [...], "plugins": [...]&#125; 查看 .babelrc 文档浏览更多配置选项。 package.json你也可以在package.json文件中指定.babelrc配置：12345678&#123; "name": "my-package", "version": "1.0.0", "babel": &#123; "presets": [ ... ], "plugins": [ ... ], &#125;&#125; .babelrc.js除了你可以使用 JavaScript 编写之外，其他配置和.babelrc一样：1234const presets = [ ... ];const plugins = [ ... ];module.exports = &#123; presets, plugins &#125;; 你可以访问任何 Node.js 的 API ，例如基于进程的环境进行动态配置：12345678const presets = [ ... ];const plugins = [ ... ];if (process.env["ENV"] === "prod") &#123; plugins.push(...);&#125;module.exports = &#123; presets, plugins &#125;; 使用 CLI（@babel/cli）1babel --plugins @babel/plugin-transform-arrow-functions script.js 查看 babel-cli 文档浏览更多配置选项。 使用 API（@babel/core）123require("@babel/core").transform("code", &#123; plugins: ["@babel/plugin-transform-arrow-functions"]&#125;); 查看 babel-core 文档浏览更多配置选项。]]></content>
+    <title><![CDATA[Babel Preset 详解]]></title>
+    <url>%2F2018%2F10%2F31%2FBabel%20preset%20%E8%AF%A6%E8%A7%A3%2F</url>
+    <content type="text"><![CDATA[我们在转换代码时，可能会用到很多其他的 ES2015+ 的特性，此时，为了避免一个一个的添加插件，我们可以使用preset，这是一个预先确定的插件集。 就像使用插件一样，你也可以创建自己的 Preset 来共享你需要的任何插件组合。 不想组装自己的插件集？没问题！ Preset 可以作为一个 Babel 插件数组，甚至一个可共享的选项配置。 对于我们这里的用例，有一个非常好的 Preset 名为env。 123npm install --save-dev @babel/preset-env./node_modules/.bin/babel src --out-dir lib --presets=@babel/env 没有任何配置的情况下，该preset会包含所有的插件来支持现代化 JavaScript （ES2015，ES2016，…）。当然，Preset 也可以配置选项。除了从命令行同时传递cli和preset选项，我们可以使用配置文件传递配置选项。 配置 Preset创建一个包含以下内容的babel.config.js文件：123456789101112131415const presets = [ [ "@babel/env", &#123; targets: &#123; edge: "17", firefox: "60", chrome: "67", safari: "11.1", &#125;, &#125;, ],];module.exports = &#123; presets &#125;; 现在，env Preset 只会加载我们指定的浏览器不包含的一些特性的转换插件。 官方 Presets官方为常见的环境组装了一些： @babel/preset-env @babel/preset-flow @babel/preset-react @babel/preset-typescript 许多其他社区维护的 Preset 在 npm 上可用! stage-X (实验性 Preset)stage-x Presets 中的任何转换都是对尚未被批准作为 Javascript 版本（如 ES6/ES2015）的一部分的语言的更改。 这些提议可能会改变，所以使用时要格外小心，尤其是对于任何准备阶段3的项目。我们计划在每次 TC39 会议后，当提案改变时，更新 stage-x 预设。 TC39 将提议分为以下阶段: Stage 0 - Strawman: 只是一个想法，可能是 Babel 插件 Stage 1 - Proposal: 这是值得努力的 Stage 2 - Draft: 最初的规范 Stage 3 - Candidate: 完整的规范和最初的浏览器实现 Stage 4 - Finished: 将添加到下一个年度版本 创建一个 Preset创建你自己的 Preset，只需要导出一个配置，返回一个插件的数组：123456789module.exports = function() &#123; return &#123; plugins: [ "pluginA", "pluginB", "pluginC", ] &#125;;&#125; Preset 可以包含其他的 Preset 和带选项的插件：123456789module.exports = () =&gt; (&#123; presets: [ require("@babel/preset-env"), ], plugins: [ [require("@babel/plugin-proposal-class-properties"), &#123; loose: true &#125;], require("@babel/plugin-proposal-object-rest-spread"), ],&#125;); Preset 路径如果在 npm 上，你可以传入 Preset 的名称，Babel 将检查它是否安装在 node_modules 中：123&#123; "presets": ["babel-preset-myPreset"]&#125; 也可以指定 Preset 的相对路径或绝对路径：123&#123; "presets": ["./myProject/myPreset"]&#125; Preset 缩写如果包名的前缀为babel-preset-，可以使用缩写：123456&#123; "presets": [ "myPreset", "babel-preset-myPreset" // equivalent ]&#125; 123456&#123; "presets": [ "@org/babel-preset-name", "@org/name" // equivalent ]&#125; Preset 排序Preset 的排序是逆向的，从最后一个到第一个。1234567&#123; "presets": [ "a", "b", "c" ]&#125; 将会按c，b，a的顺序运行。]]></content>
       <categories>
         <category>JavaScript</category>
       </categories>
@@ -92,9 +104,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Babel Preset 详解]]></title>
-    <url>%2F2018%2F10%2F31%2FBabel%20preset%20%E8%AF%A6%E8%A7%A3%2F</url>
-    <content type="text"><![CDATA[我们在转换代码时，可能会用到很多其他的 ES2015+ 的特性，此时，为了避免一个一个的添加插件，我们可以使用preset，这是一个预先确定的插件集。 就像使用插件一样，你也可以创建自己的 Preset 来共享你需要的任何插件组合。 不想组装自己的插件集？没问题！ Preset 可以作为一个 Babel 插件数组，甚至一个可共享的选项配置。 对于我们这里的用例，有一个非常好的 Preset 名为env。 123npm install --save-dev @babel/preset-env./node_modules/.bin/babel src --out-dir lib --presets=@babel/env 没有任何配置的情况下，该preset会包含所有的插件来支持现代化 JavaScript （ES2015，ES2016，…）。当然，Preset 也可以配置选项。除了从命令行同时传递cli和preset选项，我们可以使用配置文件传递配置选项。 配置 Preset创建一个包含以下内容的babel.config.js文件：123456789101112131415const presets = [ [ "@babel/env", &#123; targets: &#123; edge: "17", firefox: "60", chrome: "67", safari: "11.1", &#125;, &#125;, ],];module.exports = &#123; presets &#125;; 现在，env Preset 只会加载我们指定的浏览器不包含的一些特性的转换插件。 官方 Presets官方为常见的环境组装了一些： @babel/preset-env @babel/preset-flow @babel/preset-react @babel/preset-typescript 许多其他社区维护的 Preset 在 npm 上可用! stage-X (实验性 Preset)stage-x Presets 中的任何转换都是对尚未被批准作为 Javascript 版本（如 ES6/ES2015）的一部分的语言的更改。 这些提议可能会改变，所以使用时要格外小心，尤其是对于任何准备阶段3的项目。我们计划在每次 TC39 会议后，当提案改变时，更新 stage-x 预设。 TC39 将提议分为以下阶段: Stage 0 - Strawman: 只是一个想法，可能是 Babel 插件 Stage 1 - Proposal: 这是值得努力的 Stage 2 - Draft: 最初的规范 Stage 3 - Candidate: 完整的规范和最初的浏览器实现 Stage 4 - Finished: 将添加到下一个年度版本 创建一个 Preset创建你自己的 Preset，只需要导出一个配置，返回一个插件的数组：123456789module.exports = function() &#123; return &#123; plugins: [ "pluginA", "pluginB", "pluginC", ] &#125;;&#125; Preset 可以包含其他的 Preset 和带选项的插件：123456789module.exports = () =&gt; (&#123; presets: [ require("@babel/preset-env"), ], plugins: [ [require("@babel/plugin-proposal-class-properties"), &#123; loose: true &#125;], require("@babel/plugin-proposal-object-rest-spread"), ],&#125;); Preset 路径如果在 npm 上，你可以传入 Preset 的名称，Babel 将检查它是否安装在 node_modules 中：123&#123; "presets": ["babel-preset-myPreset"]&#125; 也可以指定 Preset 的相对路径或绝对路径：123&#123; "presets": ["./myProject/myPreset"]&#125; Preset 缩写如果包名的前缀为babel-preset-，可以使用缩写：123456&#123; "presets": [ "myPreset", "babel-preset-myPreset" // equivalent ]&#125; 123456&#123; "presets": [ "@org/babel-preset-name", "@org/name" // equivalent ]&#125; Preset 排序Preset 的排序是逆向的，从最后一个到第一个。1234567&#123; "presets": [ "a", "b", "c" ]&#125; 将会按c，b，a的顺序运行。]]></content>
+    <title><![CDATA[Babel Plugin 详解]]></title>
+    <url>%2F2018%2F10%2F31%2FBabel%20plugin%20%E8%AF%A6%E8%A7%A3%2F</url>
+    <content type="text"><![CDATA[本文将对 Babel 的插件进行详细讲解。 Babel 是一个编译器（源代码 =&gt; 输出代码）。与许多其他编译器一样，它运行在三个阶段:解析、转译和输出。 你需要为 Babel 添加插件以完成这些过程。 Babel 插件分为转译插件和语法插件。 转译插件转译以插件的形式出现，插件是一些小的 JavaScript 程序，用来指导 Babel 如何对代码进行转译。你也可以写自己的插件对你的代码进行转译。 如：123npm install --save-dev @babel/plugin-transform-arrow-functions./node_modules/.bin/babel src --out-dir lib --plugins=@babel/plugin-transform-arrow-functions 这样，代码中的所有箭头函数都会被转译成 ES5 兼容的函数表达式：1234567const fn = () =&gt; 1;// converted tovar fn = function fn() &#123; return 1;&#125;; 这些插件将转译应用到代码中。 转译插件将启用相应的语法插件，因此你不必同时指定这两个插件。 ES3 member-expression-literals property-literals reserved-words ES5 property-mutators ES2015 arrow-functions block-scoped-functions block-scoping classes computed-properties destructuring duplicate-keys for-of function-name instanceof literals new-target object-super parameters shorthand-properties spread sticky-regex template-literals typeof-symbol unicode-regex ES2016 exponentiation-operator ES2017 async-to-generator ES2018 async-generator-functions dotall-regex object-rest-spread optional-catch-binding unicode-property-regex Modules modules-amd modules-commonjs modules-systemjs modules-umd Experimental class-properties decorators do-expressions export-default-from export-namespace-from function-bind function-sent logical-assignment-operators nullish-coalescing-operator numeric-separator optional-chaining pipeline-operator throw-expressions Minification查看 minifier based on Babel 。以下是 minify 仓库中的插件： inline-consecutive-adds inline-environment-variables member-expression-literals merge-sibling-variables minify-booleans minify-builtins minify-constant-folding minify-dead-code-elimination minify-flip-comparisons minify-guarded-expressions minify-infinity minify-mangle-names minify-numeric-literals minify-replace minify-simplify minify-type-constructors node-env-inline property-literals regexp-constructors remove-console remove-debugger remove-undefined simplify-comparison-operators undefined-to-void React react-constant-elements react-display-name react-inline-elements react-jsx react-jsx-compat react-jsx-self react-jsx-source Other external-helpers flow-strip-types jscript object-assign object-set-prototype-of-to-assign proto-to-assign regenerator runtime strict-mode 语法插件这些插件只允许 Babel 解析特定类型的语法（不做转译）。 注意: 转译插件自动启用语法插件。因此，如果已经使用了相应的转译插件，就不需要指定语法插件。 .bablerc：12345&#123; "parserOpts": &#123; "plugins": ["jsx", "flow"] &#125;&#125; 插件路径如果插件在 npm 中，可以直接使用插件的名字，Babel 会在node_modules中寻找安装的插件：123&#123; "plugins": ["babel-plugin-myPlugin"]&#125; 你也可以指定插件的相对路径或绝对路径：123&#123; "plugins": ["./node_modules/asdf/plugin"]&#125; 插件缩写如果插件的名字前缀是babel-plugin-，你可以使用缩写：123456&#123; "plugins": [ "myPlugin", "babel-plugin-myPlugin" // equivalent ]&#125; 这对于作用域包同样有效：123456&#123; "plugins": [ "@org/babel-plugin-name", "@org/name" // equivalent ]&#125; 插件排序对于插件中的每一个元素，排序是很重要的。 这意味着如果两个转译都访问“程序”节点，转译将以 Plugin 或 Preset 的顺序运行。 plugin 在 Preset 之前运行 plugin 按从第一个到最后一个排序 preset 按相反的顺序，从最后一个到第一个 如：123456&#123; "plugins": [ "transform-decorators-legacy", "transform-class-properties" ]&#125; 会先执行transform-decorators-legacy然后执行transform-class-properties。 而在preset中，这个顺序是相反的1234567&#123; "presets": [ "es2015", "react", "stage-2" ]&#125; 会按state-2，react，es2015的顺序执行。 这主要是为确保向后兼容性,因为大多数用户在”state-0”之前列出”es2015”。]]></content>
       <categories>
         <category>JavaScript</category>
       </categories>
@@ -114,9 +126,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Babel Plugin 详解]]></title>
-    <url>%2F2018%2F10%2F31%2FBabel%20plugin%20%E8%AF%A6%E8%A7%A3%2F</url>
-    <content type="text"><![CDATA[本文将对 Babel 的插件进行详细讲解。 Babel 是一个编译器（源代码 =&gt; 输出代码）。与许多其他编译器一样，它运行在三个阶段:解析、转译和输出。 你需要为 Babel 添加插件以完成这些过程。 Babel 插件分为转译插件和语法插件。 转译插件转译以插件的形式出现，插件是一些小的 JavaScript 程序，用来指导 Babel 如何对代码进行转译。你也可以写自己的插件对你的代码进行转译。 如：123npm install --save-dev @babel/plugin-transform-arrow-functions./node_modules/.bin/babel src --out-dir lib --plugins=@babel/plugin-transform-arrow-functions 这样，代码中的所有箭头函数都会被转译成 ES5 兼容的函数表达式：1234567const fn = () =&gt; 1;// converted tovar fn = function fn() &#123; return 1;&#125;; 这些插件将转译应用到代码中。 转译插件将启用相应的语法插件，因此你不必同时指定这两个插件。 ES3 member-expression-literals property-literals reserved-words ES5 property-mutators ES2015 arrow-functions block-scoped-functions block-scoping classes computed-properties destructuring duplicate-keys for-of function-name instanceof literals new-target object-super parameters shorthand-properties spread sticky-regex template-literals typeof-symbol unicode-regex ES2016 exponentiation-operator ES2017 async-to-generator ES2018 async-generator-functions dotall-regex object-rest-spread optional-catch-binding unicode-property-regex Modules modules-amd modules-commonjs modules-systemjs modules-umd Experimental class-properties decorators do-expressions export-default-from export-namespace-from function-bind function-sent logical-assignment-operators nullish-coalescing-operator numeric-separator optional-chaining pipeline-operator throw-expressions Minification查看 minifier based on Babel 。以下是 minify 仓库中的插件： inline-consecutive-adds inline-environment-variables member-expression-literals merge-sibling-variables minify-booleans minify-builtins minify-constant-folding minify-dead-code-elimination minify-flip-comparisons minify-guarded-expressions minify-infinity minify-mangle-names minify-numeric-literals minify-replace minify-simplify minify-type-constructors node-env-inline property-literals regexp-constructors remove-console remove-debugger remove-undefined simplify-comparison-operators undefined-to-void React react-constant-elements react-display-name react-inline-elements react-jsx react-jsx-compat react-jsx-self react-jsx-source Other external-helpers flow-strip-types jscript object-assign object-set-prototype-of-to-assign proto-to-assign regenerator runtime strict-mode 语法插件这些插件只允许 Babel 解析特定类型的语法（不做转译）。 注意: 转译插件自动启用语法插件。因此，如果已经使用了相应的转译插件，就不需要指定语法插件。 .bablerc：12345&#123; "parserOpts": &#123; "plugins": ["jsx", "flow"] &#125;&#125; 插件路径如果插件在 npm 中，可以直接使用插件的名字，Babel 会在node_modules中寻找安装的插件：123&#123; "plugins": ["babel-plugin-myPlugin"]&#125; 你也可以指定插件的相对路径或绝对路径：123&#123; "plugins": ["./node_modules/asdf/plugin"]&#125; 插件缩写如果插件的名字前缀是babel-plugin-，你可以使用缩写：123456&#123; "plugins": [ "myPlugin", "babel-plugin-myPlugin" // equivalent ]&#125; 这对于作用域包同样有效：123456&#123; "plugins": [ "@org/babel-plugin-name", "@org/name" // equivalent ]&#125; 插件排序对于插件中的每一个元素，排序是很重要的。 这意味着如果两个转译都访问“程序”节点，转译将以 Plugin 或 Preset 的顺序运行。 plugin 在 Preset 之前运行 plugin 按从第一个到最后一个排序 preset 按相反的顺序，从最后一个到第一个 如：123456&#123; "plugins": [ "transform-decorators-legacy", "transform-class-properties" ]&#125; 会先执行transform-decorators-legacy然后执行transform-class-properties。 而在preset中，这个顺序是相反的1234567&#123; "presets": [ "es2015", "react", "stage-2" ]&#125; 会按state-2，react，es2015的顺序执行。 这主要是为确保向后兼容性,因为大多数用户在”state-0”之前列出”es2015”。]]></content>
+    <title><![CDATA[Babel 配置]]></title>
+    <url>%2F2018%2F10%2F31%2FBabel%20%E9%85%8D%E7%BD%AE%2F</url>
+    <content type="text"><![CDATA[Babel 是可以配置的。很多其他的工具都有着类似地配置：ESLint（.eslintrc），Prettier（.prettierrc）。 查看所有的 Babel API 选项。 你的应用场景是什么？ 你希望以编程方式创建配置？ 你想编译node_modules？ 那么使用babel.config.js吧。 你的静态配置只应用于简单的单个包? 那么使用.babelrc吧。 babel.config.js在你的项目根目录下创建一个名为babel.config.js的文件，包含以下内容：123456789module.exports = function () &#123; const presets = [ ... ]; const plugins = [ ... ]; return &#123; presets, plugins &#125;;&#125; 查看 babel.config.js 文档浏览更多配置选项。 .babelrc在项目中创建一个名为.babelrc的文件，包含以下内容：1234&#123; "presets": [...], "plugins": [...]&#125; 查看 .babelrc 文档浏览更多配置选项。 package.json你也可以在package.json文件中指定.babelrc配置：12345678&#123; "name": "my-package", "version": "1.0.0", "babel": &#123; "presets": [ ... ], "plugins": [ ... ], &#125;&#125; .babelrc.js除了你可以使用 JavaScript 编写之外，其他配置和.babelrc一样：1234const presets = [ ... ];const plugins = [ ... ];module.exports = &#123; presets, plugins &#125;; 你可以访问任何 Node.js 的 API ，例如基于进程的环境进行动态配置：12345678const presets = [ ... ];const plugins = [ ... ];if (process.env["ENV"] === "prod") &#123; plugins.push(...);&#125;module.exports = &#123; presets, plugins &#125;; 使用 CLI（@babel/cli）1babel --plugins @babel/plugin-transform-arrow-functions script.js 查看 babel-cli 文档浏览更多配置选项。 使用 API（@babel/core）123require("@babel/core").transform("code", &#123; plugins: ["@babel/plugin-transform-arrow-functions"]&#125;); 查看 babel-core 文档浏览更多配置选项。]]></content>
       <categories>
         <category>JavaScript</category>
       </categories>
@@ -216,9 +228,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[JavaScript 数字和操作符]]></title>
-    <url>%2F2018%2F08%2F29%2FJavaScript%20%E6%95%B0%E5%AD%97%E5%92%8C%E6%93%8D%E4%BD%9C%E7%AC%A6%2F</url>
-    <content type="text"><![CDATA[本文将简单总结 JavaScript 中的数字和操作符。 数字类型 整数（Integer）：例如 10, 400, 或者 -5。 浮点数（Float）：有小数点或小数位，例如 12.5，和 56.7786543。 双精度（Double）：双精度是一种特定类型的浮点数，它们具有比标准浮点数更高的精度（这意味着它们精确到更大的小数位数）。 算数运算符 +：加法，6 + 9 = 15 -：减法，20 - 15 = 5 *：乘法，3 * 7 = 21 /：除法，10 / 5 = 2 %：求余（取模），8 % 3 = 2 递增递减运算符123456789101112131415161718192021// 运算符放在后面 // 递增 var num1 = 4; num1++; // 4 num1; // 5 // 递减 var num2 = 4; num2--; // 4 num2; // 3// 运算符放在前面 // 递增 var num1 = 4; ++num1; // 5 num1; // 5 // 递减 var num2 = 4; --num2; // 3 num2; // 3 操作运算符 +=：加法赋值，右边的数值加上左边的变量，然后再返回新的变量。x = 3; x += 4;，等价于x = 3; x = x + 4;。 -=：减法赋值，左边的变量减去右边的数值，然后再返回新的变量。x = 6; x -= 3;，等价于x = 6; x = x - 4;。 *=：乘法赋值，左边的变量乘以右边的数值，然后再返回新的变量。x = 2; x *= 3;，等价于x = 2; x = x * 3;。 /=：除法赋值，左边的变量除以右边的数值，然后再返回新的变量。x = 10; x /= 5;，等价于x = 10; x = x / 5;。 123var x = 3; // x 包含值 3var y = 4; // y 包含值 4x *= y; // x 现在包含值 12 比较运算符 ===：严格等于 !==：严格不等于 &lt;：小于 &gt;：大于 &lt;=：小于等于 &gt;=：大于等于 注意： ==与!=也可以表示相等和不相等，它们与===和!==的不同之处在于，前者测试值是否相同，但是数据类型可能不同，而后者严格测试值和数据类型是否相同。建议使用===和!==。125 == '5' // true5 === '5' // false]]></content>
+    <title><![CDATA[JavaScript 变量提升]]></title>
+    <url>%2F2018%2F08%2F29%2FJavaScript%20%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87%2F</url>
+    <content type="text"><![CDATA[因为变量声明在任何代码执行之前被处理，所以在变量作用域的任何地方声明一个变量等同于在变量作用域的顶部声明该变量。 因此，一个变量可以在它被声明之前使用，这种行为，就叫 变量提升（hoisting），其表现就是变量声明会被移动到函数或者全局代码的顶部。 由于该原因，建议始终在变量的作用域（全局代码或函数）顶部声明该变量，这样能够很清晰地看到哪些变量是局部变量，哪些事全局变量。 注意： 变量提升会影响变量声明，但是不会影响变量值得初始化。 12345678910111213function do_something() &#123; console.log(bar); // undefined var bar = 111; console.log(bar); // 111&#125;// is implicitly understood as: function do_something() &#123; var bar; console.log(bar); // undefined bar = 111; console.log(bar); // 111&#125;]]></content>
       <categories>
         <category>JavaScript</category>
       </categories>
@@ -238,9 +250,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[JavaScript 变量提升]]></title>
-    <url>%2F2018%2F08%2F29%2FJavaScript%20%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87%2F</url>
-    <content type="text"><![CDATA[因为变量声明在任何代码执行之前被处理，所以在变量作用域的任何地方声明一个变量等同于在变量作用域的顶部声明该变量。 因此，一个变量可以在它被声明之前使用，这种行为，就叫 变量提升（hoisting），其表现就是变量声明会被移动到函数或者全局代码的顶部。 由于该原因，建议始终在变量的作用域（全局代码或函数）顶部声明该变量，这样能够很清晰地看到哪些变量是局部变量，哪些事全局变量。 注意： 变量提升会影响变量声明，但是不会影响变量值得初始化。 12345678910111213function do_something() &#123; console.log(bar); // undefined var bar = 111; console.log(bar); // 111&#125;// is implicitly understood as: function do_something() &#123; var bar; console.log(bar); // undefined bar = 111; console.log(bar); // 111&#125;]]></content>
+    <title><![CDATA[JavaScript 变量类型]]></title>
+    <url>%2F2018%2F08%2F29%2FJavaScript%20%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B%2F</url>
+    <content type="text"><![CDATA[本文将对 JavaScript 中的变量类型做简单总结。 可以为变量设置不同的数据类型。 Number12var myAge = 17;typeof myAge; // "number" String12var dolphinGoodbye = 'So long and thanks for all the fish';typeof dolphinGoodbye; // "string" Boolean12var iAmAlive = true;typefof iAmAlive; // "boolean" Object数组是一个单个对象，其中包含很多值，方括号括起来，并用逗号分隔。 12var myNameArray = ['Chris', 'Bob', 'Jim'];typeof myNameArray; // "object" 在编程中，对象是现实生活中的模型的一种代码结构。12var dog = &#123; name : 'Spot', breed : 'Dalmatian' &#125;;typeof dog; // "object" 动态类型JavaScript是一种“动态类型语言”，它不同于C，Java等语言，不需要指定变量的数据类型。]]></content>
       <categories>
         <category>JavaScript</category>
       </categories>
@@ -249,9 +261,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[JavaScript 变量类型]]></title>
-    <url>%2F2018%2F08%2F29%2FJavaScript%20%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B%2F</url>
-    <content type="text"><![CDATA[本文将对 JavaScript 中的变量类型做简单总结。 可以为变量设置不同的数据类型。 Number12var myAge = 17;typeof myAge; // "number" String12var dolphinGoodbye = 'So long and thanks for all the fish';typeof dolphinGoodbye; // "string" Boolean12var iAmAlive = true;typefof iAmAlive; // "boolean" Object数组是一个单个对象，其中包含很多值，方括号括起来，并用逗号分隔。 12var myNameArray = ['Chris', 'Bob', 'Jim'];typeof myNameArray; // "object" 在编程中，对象是现实生活中的模型的一种代码结构。12var dog = &#123; name : 'Spot', breed : 'Dalmatian' &#125;;typeof dog; // "object" 动态类型JavaScript是一种“动态类型语言”，它不同于C，Java等语言，不需要指定变量的数据类型。]]></content>
+    <title><![CDATA[JavaScript 数字和操作符]]></title>
+    <url>%2F2018%2F08%2F29%2FJavaScript%20%E6%95%B0%E5%AD%97%E5%92%8C%E6%93%8D%E4%BD%9C%E7%AC%A6%2F</url>
+    <content type="text"><![CDATA[本文将简单总结 JavaScript 中的数字和操作符。 数字类型 整数（Integer）：例如 10, 400, 或者 -5。 浮点数（Float）：有小数点或小数位，例如 12.5，和 56.7786543。 双精度（Double）：双精度是一种特定类型的浮点数，它们具有比标准浮点数更高的精度（这意味着它们精确到更大的小数位数）。 算数运算符 +：加法，6 + 9 = 15 -：减法，20 - 15 = 5 *：乘法，3 * 7 = 21 /：除法，10 / 5 = 2 %：求余（取模），8 % 3 = 2 递增递减运算符123456789101112131415161718192021// 运算符放在后面 // 递增 var num1 = 4; num1++; // 4 num1; // 5 // 递减 var num2 = 4; num2--; // 4 num2; // 3// 运算符放在前面 // 递增 var num1 = 4; ++num1; // 5 num1; // 5 // 递减 var num2 = 4; --num2; // 3 num2; // 3 操作运算符 +=：加法赋值，右边的数值加上左边的变量，然后再返回新的变量。x = 3; x += 4;，等价于x = 3; x = x + 4;。 -=：减法赋值，左边的变量减去右边的数值，然后再返回新的变量。x = 6; x -= 3;，等价于x = 6; x = x - 4;。 *=：乘法赋值，左边的变量乘以右边的数值，然后再返回新的变量。x = 2; x *= 3;，等价于x = 2; x = x * 3;。 /=：除法赋值，左边的变量除以右边的数值，然后再返回新的变量。x = 10; x /= 5;，等价于x = 10; x = x / 5;。 123var x = 3; // x 包含值 3var y = 4; // y 包含值 4x *= y; // x 现在包含值 12 比较运算符 ===：严格等于 !==：严格不等于 &lt;：小于 &gt;：大于 &lt;=：小于等于 &gt;=：大于等于 注意： ==与!=也可以表示相等和不相等，它们与===和!==的不同之处在于，前者测试值是否相同，但是数据类型可能不同，而后者严格测试值和数据类型是否相同。建议使用===和!==。125 == '5' // true5 === '5' // false]]></content>
       <categories>
         <category>JavaScript</category>
       </categories>
@@ -298,17 +310,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[CSS 样式层叠继承规则]]></title>
-    <url>%2F2018%2F08%2F13%2FCSS%20%E6%A0%B7%E5%BC%8F%E5%B1%82%E5%8F%A0%E7%BB%A7%E6%89%BF%E8%A7%84%E5%88%99%2F</url>
-    <content type="text"><![CDATA[本文将详细介绍 CSS 中的样式层叠规则，主要从重要性、专用性和源码顺序进行说明计算的规则。 层叠CSS 是 Cascading Style Sheets 的缩写，这暗示层叠（cascade）的概念是很重要的。在最基本的层面上，它表明 CSS 规则的顺序很重要，但它比那更复杂。什么选择器在层叠中胜出取决于三个因素（这些都是按重量级顺序排列的——前面的的一种会否决后一种）： 重要性（Importance） 专用性（Specificity） 源代码次序（Source order） 重要性在 CSS 中，有一个特别的语法可以让一条规则总是优先于其他规则：!important。 知道 !important 存在是很有用的，这样当你在别人的代码中遇到它时，你就知道它是什么了。但是！我们建议你千万不要使用它，除非你绝对必须使用它。您可能不得不使用它的一种情况是，当您在CMS中工作时，您不能编辑核心的CSS模块，并且您确实想要重写一种不能以其他方式覆盖的样式。 但是，如果你能避免的话，不要使用它。由于 !important 改变了层叠正常工作的方式，因此调试CSS问题，尤其是在大型样式表中，会变得非常困难。 专用性专用性基本上是衡量选择器的具体程度的一种方法——它能匹配多少元素。如上面所示的示例所示，元素选择器具有很低的专用性。类选择器具有更高的专用性，所以将战胜元素选择器。ID 选择器有甚至更高的专用性, 所以将战胜类选择器. 战胜 ID 选择器的唯一方法是使用 !important。 一个选择器具有的专用性的量是用四种不同的值（或组件）来衡量的，它们可以被认为是千位，百位，十位和个位——在四个列中的四个简单数字： 千位：如果声明是在 style 属性中该列加1分（这样的声明没有选择器，所以它们的专用性总是1000。）否则为0。 百位：在整个选择器中每包含一个ID选择器就在该列中加1分。 十位：在整个选择器中每包含一个类选择器、属性选择器、或者伪类就在该列中加1分。 个位：在整个选择器中每包含一个元素选择器或伪元素就在该列中加1分。 注意： 通用选择器（*）, 复合选择器（+, &gt;, ~, ‘ ‘）和否定伪类 （:not）在专用性中无影响。 示例：| 选择器 | 千位 | 百位 | 十位 | 个位 | 合计值 || — | — | — | — | — | — || h1 | 0 | 0 | 0 | 1 | 0001 || #indentifier | 0 | 1 | 0 | 0 | 0100 || h1 + p::first-letter | 0 | 0 | 0 | 3 | 0003 || li &gt; a[href*=”zh-CN”] &gt; .inline-warning | 0 | 0 | 2 | 2 | 0022 || 没有选择器, 规则在一个元素的 &lt;style&gt; 属性里 | 1 | 0 | 0 | 0 | 1000 | 注意： 如果多个选择器具有相同的重要性和专用性，则选择哪一个选择器取决于源码顺序。 源码顺序如果多个相互竞争的选择器具有相同的重要性和专用性，那么第三个因素将帮助决定哪一个规则获胜——后面的规则将战胜先前的规则。例如:12345678p &#123; color: blue;&#125;/* This rule will win over the first one */p &#123; color: red;&#125; 规则混合的注意事项在考虑所有这些层叠理论和什么样式优先于其他样式被应用时，你应该记住的一件事是，所有这些都发生在属性级别上——属性覆盖其他属性，但你不会让整个规则凌驾于其他规则之上。 也就是说，当多个 CSS 规则匹配相同的元素时，它们都被应用到该元素中。只有在这之后，任何相互冲突的属性才会使用以上的覆盖规则。 继承CSS 继承是我们需要研究的最后一部分，以获取所有信息并了解什么样式应用于元素。其思想是，应用于某个元素的一些属性值将由该元素的子元素继承，而有些则不会。 哪些属性默认被继承哪些不被继承大部分符合常识。如果你想确定，你可以参考 CSS 参考资料—— 每个单独的属性页都会从一个汇总表开始，其中包含有关该元素的各种详细信息，包括是否被继承。 CSS 为处理继承提供了四种特殊的通用属性值： inherit： 该值将应用到选定元素的属性值设置为与其父元素一样。 initial ：该值将应用到选定元素的属性值设置为与浏览器默认样式表中该元素设置的值一样。如果浏览器默认样式表中没有设置值，并且该属性是自然继承的，那么该属性值就被设置为 inherit。 unset ：该值将属性重置为其自然值，即如果属性是自然继承的，那么它就表现得像 inherit，否则就是表现得像 initial。 revert ：如果当前的节点没有应用任何样式，则将该属性恢复到它所拥有的值。换句话说，属性值被设置成自定义样式所定义的属性（如果被设置）， 否则属性值被设置成用户代理的默认样式。 注意： initial 和 unset 不被IE支持。]]></content>
-      <categories>
-        <category>CSS</category>
-      </categories>
-      <tags>
-        <tag>CSS 布局</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[CSS 常见的布局方式]]></title>
     <url>%2F2018%2F08%2F13%2FCSS%20%E5%B8%B8%E8%A7%81%E7%9A%84%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F%2F</url>
     <content type="text"><![CDATA[CSS 页面布局技术允许我们拾取网页中的元素，并且控制它们相对正常布局流、周边元素、父容器或者主视口/窗口的位置。 主要布局技术有： 浮动 定位 CSS 表格 弹性盒子 网格 正常布局流正常布局流中，HTML 元素完全按照源码中出现的先后次序显示。 布局技术会覆盖默认的布局行为： position属性：正常布局流中，默认为 static ，使用其它值会引起元素不同的布局方式，例如将元素固定到浏览器视口的左上角。 浮动：应用 float 值，诸如 left 能够让块级元素互相并排成一行，而不是一个堆叠在另一个上面。 display属性：标准值 block, inline 或 inline-block 会改变元素在正常布局流中的行为方式。 浮动浮动技术允许元素浮动到另外一个元素的左侧或右侧，而不是默认的一个堆叠另一个。float 的主要用途是布置出多个列并且浮动文字以环绕图片。 float 属性有四个可能的值： left — 将元素浮动到左侧。 right — 将元素浮动到右侧。 none — 默认值, 不浮动。 inherit — 继承父元素的浮动属性。 清除浮动关于浮动带来的问题：所有在浮动下面的自身不浮动的内容都将围绕浮动元素进行包装，如果没有处理这些元素，就会变得很糟糕。 幸运的是，有一种简单的方法可以解决这个问题—— clear 属性。当你把这个应用到一个元素上时，它主要意味着”此处停止浮动”——这个元素和源码中后面的元素将不浮动，除非您稍后将一个新的 float 声明应用到此后的另一个元素。 浮动问题浮动的元素存在于正常的文档布局流之外，在某些方面的行为相当奇怪： 首先，他们在父元素中所占的面积的有效高度为0。这个可以通过很多方式解决，但是我们所依赖的是在父容器的底部清除浮动，如我们在我们的当前示例所做的那样。 如果检查当前示例中正文的高度，您应该看它的高度是行为本身。 其次，非浮动元素的外边距不能用于它们和浮动元素之间来创建空间。 还有一些关于浮动的奇怪的事情——Chris Coyier优秀的关于 Floats 的文章概述了浮动的使用以及问题的修复。 定位定位技术（Position）允许我们将一个元素从它在页面的原始位置准确地移动到另外一个位置。 定位类型有四种： 静态定位（Static Positioning）是每个元素默认的属性——它表示“将元素放在文档布局流的默认位置——没有什么特殊的地方”。 相对定位（Relative Positioning）允许我们相对元素在正常的文档流中的位置移动它——包括将两个元素叠放在页面上。这对于微调和精准设计(design pinpointing)非常有用。 绝对定位（Absolute Positioning）将元素完全从页面的正常布局流中移出，类似将它单独放在一个图层中. 我们可以将元素相对于页面的 元素边缘固定，或者相对于离元素最近的被定位的祖先元素（ancestor element）。绝对定位在创建复杂布局效果时非常有用，例如通过标签显示和隐藏的内容面板或者通过按钮控制滑动到屏幕中的信息面板. 固定定位（Fixed Positioning）与绝对定位非常类似，除了它是将一个元素相对浏览器视口固定，而不是相对另外一个元素。 在创建类似页面滚动总是处于页面上方的导航菜单时非常有用。 静态定位静态定位是每个元素获取的默认值——它只是意味着“将元素放入它在文档布局流中的正常位置 ——这里没有什么特别的。静态定位是默认行为！ 相对定位它与静态定位非常相似，占据在正常的文档流中，除了你仍然可以修改它的最终位置，包括让它与页面上的其他元素重叠。 绝对定位绝对定位带来了非常不同的结果。绝对定位的元素不再存在于正常文档布局流中。相反，它坐在它自己的层独立于一切。这是非常有用的：这意味着我们可以创建不干扰页面上其他元素的位置的隔离的UI功能 。例如，弹出信息框和控制菜单；翻转面板；可以在页面上的任何地方拖放的UI功能…… 定位上下文哪个元素是绝对定位元素的“包含元素”？ 默认情况下，它是&lt;html&gt;元素——定位的元素是被嵌套在&lt;body&gt;中的HTML源代码，这更准确地称为元素的定位上下文。 我们可以改变定位上下文——绝对定位的元素相对于其定位的元素。 这是通过在元素的其他祖先之一上设置定位（position 属性）来实现的。 z-index网页也有一个 z 轴：一条从屏幕表面到你的脸（或者在屏幕前面你喜欢的任何其他东西）的虚线。z-index 值影响定位元素位于该轴上的位置；正值将它们移动到堆栈上方，负值将它们向下移动到堆栈中。默认情况下，定位的元素都具有 z-index 为auto，实际上为0。 固定定位还有一种类型的定位覆盖——fixed。 这与绝对定位的工作方式完全相同，只有一个主要区别：绝对定位固定元素是相对于 &lt;html&gt; 元素或其最近的定位祖先，而固定定位固定元素则是相对于浏览器视口本身。 这意味着您可以创建固定的有用的UI项目，如持久导航菜单。 粘性定位盒位置根据正常流计算（这称为正常流动中的位置），然后相对于该元素在流中的 flow root（BFC）和 containing block（最近的块级祖先元素）定位。在所有情况下（即便被定位元素为 table 时），该元素定位均不对后续元素造成影响。当元素 B 被粘性定位时，后续元素的位置仍按照 B 未定位时的位置来确定。position: sticky 对 table 元素的效果与 position: relative 相同。 CSS表格在浏览器中支持基本的CSS之前——web开发人员过去也常常使用表格来完成整个网页布局——将它们的页眉、页脚、不同的列等等放在不同的表行和列中。这在当时是有效的，但它有很多问题——表布局是不灵活的，非常重的标记，难以调试和语义上的错误（比如，屏幕阅读器用户在导航表布局方面有问题）。 CSS表格的存在是为了让您能够像表格一样布局元素，而不需要上面描述的任何问题——这听起来可能有些奇怪，您应该使用表格元素作为表格数据，但有时这可能是有用的。例如，您可能想要列出一个表单，其中有标签和文本输入；这可能很棘手，但是CSS表使其变得容易。 弹性盒子传统的老式布局方法，如 float 和 positioning 工作，但有时它们会感觉比他们需要的更复杂、更灵活、更有弹性。例如，如果你想要： 垂直中心盒子的内容（不仅仅是文本；line-height 将会失效）。 制作几列有相同的高度包含不同数量内容的列，不使用固定的高度，或用背景图像伪装。 在一行中创建几个盒子，占用相同数量的可用空间，不管有多少个，并且如果它们有内边距，外边距等就应用它。 上面的例子几乎不可能通过常规的CSS实现——弹性盒子（或flexbox）是为了让这些东西更容易实现而被发明的。 网格布局这里提到的最具实验性的特性是CSS网格，它在浏览器中还没有得到广泛的支持。Web页面通常使用网格系统布局，与打印媒体相同，这里的想法是通过定义一个网格来简化这个过程，然后定义内容的哪些部分位于网格的每个区域。]]></content>
@@ -320,20 +321,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[CSS 样式层叠继承规则]]></title>
-    <url>%2F2018%2F08%2F13%2FCSS%20%E6%A0%BC%E5%BC%8F%E9%AA%8C%E8%AF%81%E5%B7%A5%E5%85%B7%2F</url>
-    <content type="text"><![CDATA[本文将提供 CSS 格式验证工具的访问地址。 CSS 格式验证工具可以访问 CSS Validation Service 用以检查 CSS 是否有效。 OnlineWebCheck.com 也提供 CSS 验证服务。]]></content>
-      <categories>
-        <category>CSS</category>
-      </categories>
-      <tags>
-        <tag>CSS 工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[CSS 外边距坍塌（margin collapsing）详解]]></title>
-    <url>%2F2018%2F08%2F13%2FCSS%20%E5%A4%96%E8%BE%B9%E8%B7%9D%E5%9D%8D%E5%A1%8C%EF%BC%88margin%20collapsing%EF%BC%89%E8%AF%A6%E8%A7%A3%2F</url>
-    <content type="text"><![CDATA[本文将详细讲解 CSS 布局中遇到的外边距坍塌现象， 分析其出现的原因和场景，以及对应的处理方式。 块级元素的上外边距和下外边距有时会合并（或折叠）为一个外边距，其大小取其中的最大者，这种行为称为外边距折叠（margin collapsing），有时也翻译为外边距合并，外边距坍塌。 出现外边距坍塌的三种基本情况 相邻元素之间毗邻的两个元素之间的外边距会折叠，除非有一个元素需要清除之前的浮动 父元素与其第一个或最后一个子元素之间如果在父元素（更准确的说是父元素的上边距）与其第一个子元素之间不存在边框、内边距、行内内容，也没有创建块格式化上下文、或者清除浮动将两者的 margin-top 分开；或者在父元素（更准确的说是父元素的下边距）与其最后一个子元素之间不存在边框、内边距、行内内容、height、min-height、max-height 将两者的 margin-bottom 分开，那么这两对外边距之间会产生折叠。此时子元素的外边距会“溢出”到父元素的外面。 空的块级元素如果一个块级元素中不包含任何内容，并且在其 margin-top 与 margin-bottom 之间没有边框、内边距、行内内容、height、min-height 将两者分开（即上下边距直接相连），则该元素的上下外边距会折叠。 注意： 上述情况的组合会产生更复杂的外边距折叠。 即使某一外边距为0，这些规则仍然适用。因此就算父元素的外边距是0，第一个或最后一个子元素的外边距仍然会“溢出”到父元素的外面。 如果参与折叠的外边距中包含负值，折叠后的外边距的值为最大的正边距与最小的负边距（即绝对值最大的负边距）的和。 如果所有参与折叠的外边距都为负，折叠后的外边距的值为最小的负边距的值。这一规则适用于相邻元素和嵌套元素。]]></content>
+    <title><![CDATA[CSS 选择器详解]]></title>
+    <url>%2F2018%2F08%2F13%2FCSS%20%E9%80%89%E6%8B%A9%E5%99%A8%E8%AF%A6%E8%A7%A3%2F</url>
+    <content type="text"><![CDATA[本文将详细讲解 CSS 中的一大重要知识点，选择器。 在 CSS 中，选择器用于定位我们想要样式化的网页 HTML 元素。各种各样可用的 CSS 选择器允许我们精确选择要样式化的元素。 选择器分类 简单选择器：通过元素类型、class 或 id 匹配一个或多个元素。 属性选择器：通过 属性 / 属性值 匹配一个或多个元素。 伪类：匹配处于确定状态的一个或多个元素，比如被鼠标指针悬停的元素，或当前被选中或未选中的复选框，或元素是 DOM 树中一父节点的第一个子节点。 伪元素：匹配处于相关的确定位置的一个或多个元素，例如每个段落的第一个字，或者某个元素之前生成的内容。 组合器：以有效的方式组合两个或更多的选择器用于非常特定的选择的方法。例如，你可以只选择divs的直系子节点的段落，或者直接跟在 headings 后面的段落。 多重选择器：将以逗号分隔开的多个选择器放在一个 CSS 规则下面， 以将一组声明应用于由这些选择器选择的所有元素。 简单选择器简单选择器基于元素的类型（或其 class或 id）直接匹配文档的一个或多个元素。 类型选择器（元素选择器）此选择器只是一个选择器名和指定的HTML元素名的不区分大小写的匹配。这是选择所有指定类型的最简单方式。 类选择器类选择器由一个点“.”以及类后面的类名组成。类名是在 HTML class 文档元素属性中没有空格的任何值。由你自己选择一个名字。同样值得一提的是，文档中的多个元素可以具有相同的类名，而单个元素可以有多个类名(以空格分开多个类名的形式书写)。 ID 选择器ID 选择器由哈希/磅符号（#）组成，后面是给定元素的 ID 名称。 任何元素都可以使用 id 属性设置唯一的 ID 名称。 由你自己选择的 ID 是什么。 这是选择单个元素的最有效的方式。 注意： 一个 ID 名称必须在文件中是唯一的。关于重复ID的行为是不可预测的，比如在一些浏览器只是第一个实例计算，其余的将被忽略。 通用选择器通用选择（*）是最终的王牌。它允许选择在一个页面中的所有元素。由于给每个元素应用同样的规则几乎没有什么实际价值，更常见的做法是与其他选择器结合使用。 注意： 使用通用选择时小心。因为它适用于所有的元素，在大型网页利用它可以对性能有明显的影响：网页可以显示比预期要慢。大多数情况下，不要使用这个选择器。 属性选择器属性选择器是一种特殊类型的选择器，它根据元素的 属性 和属性值来匹配元素。它们的通用语法由方括号 ([]) 组成，其中包含属性名称，后跟可选条件以匹配属性的值。 属性选择器可以根据其匹配属性值的方式分为两类： 存在和值属性选择器和子串值属性选择器。 存在和值（Presence and value）属性选择器这些属性选择器尝试匹配精确的属性值： [attr]：该选择器选择包含 attr 属性的所有元素，不论 attr 的值为何。 [attr=val]：该选择器仅选择 attr 属性被赋值为 val 的所有元素。 [attr~=val]：该选择器仅选择具有 attr 属性的元素，而且要求 val 值是 attr 值包含的被空格分隔的取值列表里中的一个。 子串值（Substring value）属性选择器这种情况的属性选择器也被称为“伪正则选择器”，因为它们提供类似正则的灵活匹配方式（但请注意，这些选择器并不是真正的正则表达式）： [attr|=val]：选择attr属性的值是 val 或值以 val- 开头的元素（注意，这里的 “-” 不是一个错误，这是用来处理语言编码的）。 [attr^=val]：选择attr属性的值以 val 开头（包括 val）的元素。 [attr$=val]：选择attr属性的值以 val 结尾（包括 val）的元素。 [attr*=val]：选择attr属性的值中包含子字符串 val 的元素（一个子字符串就是一个字符串的一部分而已，例如，”cat“ 是 字符串 ”caterpillar“ 的子字符串）。 伪类一个 CSS 伪类（pseudo-class） 是一个以冒号（:）作为前缀，被添加到一个选择器末尾的关键字，当你希望样式在特定状态下才被呈现到指定的元素时，你可以往元素的选择器后面加上对应的伪类（pseudo-class）。你可能希望某个元素在处于某种状态下呈现另一种样式，例如当鼠标悬停在元素上面时，或者当一个复选框被禁用或被勾选时，又或者当一个元素是它在 DOM 树中父元素的第一个子元素时。如： :link :visited :hover :active 更多请参考 CSS 伪类 伪元素伪元素（Pseudo-element）跟伪类很像，但它们又有不同的地方。它们都是关键字，但这次伪元素前缀是两个冒号 (::) ， 同样是添加到选择器后面去选择某个元素的某个部分。如： ::after ::before ::first-letter 更多请参考 CSS 伪元素 组合器虽然一次使用一个选择器就很有用，但在某些情形中却可能效率低下。 CSS 选择器在你开始组合他们进行细粒度选择的时候变得更具使用价值。基于元素之间的相互关联关系，CSS 提供了几种方法来对元素进行选择。下表使用连接符展示了这些关联关系（A 和 B 代表前文所述的任意选择器）: 组合 选择结果 A , B 匹配满足 A（和/或）B 的任意元素 A B 后代选择器：匹配任意元素，满足条件：B 是 A 的后代结点（B 是 A 的子节点，或者 A 的子节点的子节点） A &gt; B 子选择器：匹配任意元素，满足条件：B 是 A 的直接子节点 A + B 相邻兄弟选择器：匹配任意元素，满足条件：B 是 A 的下一个兄弟节点（AB 有相同的父结点，并且 B 紧跟在 A 的后面） A ~ B 普通兄弟选择器：匹配任意元素，满足条件：B是A之后的兄弟节点中的任意一个（AB 有相同的父节点，B 在 A 之后，但不一定是紧挨着 A） 多重选择器通过相互间用逗号分隔的多个选择器所形成的组，可以一次性将同一规则同时应用到多组选定元素。]]></content>
       <categories>
         <category>CSS</category>
       </categories>
@@ -354,9 +344,31 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[CSS 选择器详解]]></title>
-    <url>%2F2018%2F08%2F13%2FCSS%20%E9%80%89%E6%8B%A9%E5%99%A8%E8%AF%A6%E8%A7%A3%2F</url>
-    <content type="text"><![CDATA[本文将详细讲解 CSS 中的一大重要知识点，选择器。 在 CSS 中，选择器用于定位我们想要样式化的网页 HTML 元素。各种各样可用的 CSS 选择器允许我们精确选择要样式化的元素。 选择器分类 简单选择器：通过元素类型、class 或 id 匹配一个或多个元素。 属性选择器：通过 属性 / 属性值 匹配一个或多个元素。 伪类：匹配处于确定状态的一个或多个元素，比如被鼠标指针悬停的元素，或当前被选中或未选中的复选框，或元素是 DOM 树中一父节点的第一个子节点。 伪元素：匹配处于相关的确定位置的一个或多个元素，例如每个段落的第一个字，或者某个元素之前生成的内容。 组合器：以有效的方式组合两个或更多的选择器用于非常特定的选择的方法。例如，你可以只选择divs的直系子节点的段落，或者直接跟在 headings 后面的段落。 多重选择器：将以逗号分隔开的多个选择器放在一个 CSS 规则下面， 以将一组声明应用于由这些选择器选择的所有元素。 简单选择器简单选择器基于元素的类型（或其 class或 id）直接匹配文档的一个或多个元素。 类型选择器（元素选择器）此选择器只是一个选择器名和指定的HTML元素名的不区分大小写的匹配。这是选择所有指定类型的最简单方式。 类选择器类选择器由一个点“.”以及类后面的类名组成。类名是在 HTML class 文档元素属性中没有空格的任何值。由你自己选择一个名字。同样值得一提的是，文档中的多个元素可以具有相同的类名，而单个元素可以有多个类名(以空格分开多个类名的形式书写)。 ID 选择器ID 选择器由哈希/磅符号（#）组成，后面是给定元素的 ID 名称。 任何元素都可以使用 id 属性设置唯一的 ID 名称。 由你自己选择的 ID 是什么。 这是选择单个元素的最有效的方式。 注意： 一个 ID 名称必须在文件中是唯一的。关于重复ID的行为是不可预测的，比如在一些浏览器只是第一个实例计算，其余的将被忽略。 通用选择器通用选择（*）是最终的王牌。它允许选择在一个页面中的所有元素。由于给每个元素应用同样的规则几乎没有什么实际价值，更常见的做法是与其他选择器结合使用。 注意： 使用通用选择时小心。因为它适用于所有的元素，在大型网页利用它可以对性能有明显的影响：网页可以显示比预期要慢。大多数情况下，不要使用这个选择器。 属性选择器属性选择器是一种特殊类型的选择器，它根据元素的 属性 和属性值来匹配元素。它们的通用语法由方括号 ([]) 组成，其中包含属性名称，后跟可选条件以匹配属性的值。 属性选择器可以根据其匹配属性值的方式分为两类： 存在和值属性选择器和子串值属性选择器。 存在和值（Presence and value）属性选择器这些属性选择器尝试匹配精确的属性值： [attr]：该选择器选择包含 attr 属性的所有元素，不论 attr 的值为何。 [attr=val]：该选择器仅选择 attr 属性被赋值为 val 的所有元素。 [attr~=val]：该选择器仅选择具有 attr 属性的元素，而且要求 val 值是 attr 值包含的被空格分隔的取值列表里中的一个。 子串值（Substring value）属性选择器这种情况的属性选择器也被称为“伪正则选择器”，因为它们提供类似正则的灵活匹配方式（但请注意，这些选择器并不是真正的正则表达式）： [attr|=val]：选择attr属性的值是 val 或值以 val- 开头的元素（注意，这里的 “-” 不是一个错误，这是用来处理语言编码的）。 [attr^=val]：选择attr属性的值以 val 开头（包括 val）的元素。 [attr$=val]：选择attr属性的值以 val 结尾（包括 val）的元素。 [attr*=val]：选择attr属性的值中包含子字符串 val 的元素（一个子字符串就是一个字符串的一部分而已，例如，”cat“ 是 字符串 ”caterpillar“ 的子字符串）。 伪类一个 CSS 伪类（pseudo-class） 是一个以冒号（:）作为前缀，被添加到一个选择器末尾的关键字，当你希望样式在特定状态下才被呈现到指定的元素时，你可以往元素的选择器后面加上对应的伪类（pseudo-class）。你可能希望某个元素在处于某种状态下呈现另一种样式，例如当鼠标悬停在元素上面时，或者当一个复选框被禁用或被勾选时，又或者当一个元素是它在 DOM 树中父元素的第一个子元素时。如： :link :visited :hover :active 更多请参考 CSS 伪类 伪元素伪元素（Pseudo-element）跟伪类很像，但它们又有不同的地方。它们都是关键字，但这次伪元素前缀是两个冒号 (::) ， 同样是添加到选择器后面去选择某个元素的某个部分。如： ::after ::before ::first-letter 更多请参考 CSS 伪元素 组合器虽然一次使用一个选择器就很有用，但在某些情形中却可能效率低下。 CSS 选择器在你开始组合他们进行细粒度选择的时候变得更具使用价值。基于元素之间的相互关联关系，CSS 提供了几种方法来对元素进行选择。下表使用连接符展示了这些关联关系（A 和 B 代表前文所述的任意选择器）: 组合 选择结果 A , B 匹配满足 A（和/或）B 的任意元素 A B 后代选择器：匹配任意元素，满足条件：B 是 A 的后代结点（B 是 A 的子节点，或者 A 的子节点的子节点） A &gt; B 子选择器：匹配任意元素，满足条件：B 是 A 的直接子节点 A + B 相邻兄弟选择器：匹配任意元素，满足条件：B 是 A 的下一个兄弟节点（AB 有相同的父结点，并且 B 紧跟在 A 的后面） A ~ B 普通兄弟选择器：匹配任意元素，满足条件：B是A之后的兄弟节点中的任意一个（AB 有相同的父节点，B 在 A 之后，但不一定是紧挨着 A） 多重选择器通过相互间用逗号分隔的多个选择器所形成的组，可以一次性将同一规则同时应用到多组选定元素。]]></content>
+    <title><![CDATA[CSS 外边距坍塌（margin collapsing）详解]]></title>
+    <url>%2F2018%2F08%2F13%2FCSS%20%E5%A4%96%E8%BE%B9%E8%B7%9D%E5%9D%8D%E5%A1%8C%EF%BC%88margin%20collapsing%EF%BC%89%E8%AF%A6%E8%A7%A3%2F</url>
+    <content type="text"><![CDATA[本文将详细讲解 CSS 布局中遇到的外边距坍塌现象， 分析其出现的原因和场景，以及对应的处理方式。 块级元素的上外边距和下外边距有时会合并（或折叠）为一个外边距，其大小取其中的最大者，这种行为称为外边距折叠（margin collapsing），有时也翻译为外边距合并，外边距坍塌。 出现外边距坍塌的三种基本情况 相邻元素之间毗邻的两个元素之间的外边距会折叠，除非有一个元素需要清除之前的浮动 父元素与其第一个或最后一个子元素之间如果在父元素（更准确的说是父元素的上边距）与其第一个子元素之间不存在边框、内边距、行内内容，也没有创建块格式化上下文、或者清除浮动将两者的 margin-top 分开；或者在父元素（更准确的说是父元素的下边距）与其最后一个子元素之间不存在边框、内边距、行内内容、height、min-height、max-height 将两者的 margin-bottom 分开，那么这两对外边距之间会产生折叠。此时子元素的外边距会“溢出”到父元素的外面。 空的块级元素如果一个块级元素中不包含任何内容，并且在其 margin-top 与 margin-bottom 之间没有边框、内边距、行内内容、height、min-height 将两者分开（即上下边距直接相连），则该元素的上下外边距会折叠。 注意： 上述情况的组合会产生更复杂的外边距折叠。 即使某一外边距为0，这些规则仍然适用。因此就算父元素的外边距是0，第一个或最后一个子元素的外边距仍然会“溢出”到父元素的外面。 如果参与折叠的外边距中包含负值，折叠后的外边距的值为最大的正边距与最小的负边距（即绝对值最大的负边距）的和。 如果所有参与折叠的外边距都为负，折叠后的外边距的值为最小的负边距的值。这一规则适用于相邻元素和嵌套元素。]]></content>
+      <categories>
+        <category>CSS</category>
+      </categories>
+      <tags>
+        <tag>CSS 布局</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[CSS 样式层叠继承规则]]></title>
+    <url>%2F2018%2F08%2F13%2FCSS%20%E6%A0%BC%E5%BC%8F%E9%AA%8C%E8%AF%81%E5%B7%A5%E5%85%B7%2F</url>
+    <content type="text"><![CDATA[本文将提供 CSS 格式验证工具的访问地址。 CSS 格式验证工具可以访问 CSS Validation Service 用以检查 CSS 是否有效。 OnlineWebCheck.com 也提供 CSS 验证服务。]]></content>
+      <categories>
+        <category>CSS</category>
+      </categories>
+      <tags>
+        <tag>CSS 工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[CSS 样式层叠继承规则]]></title>
+    <url>%2F2018%2F08%2F13%2FCSS%20%E6%A0%B7%E5%BC%8F%E5%B1%82%E5%8F%A0%E7%BB%A7%E6%89%BF%E8%A7%84%E5%88%99%2F</url>
+    <content type="text"><![CDATA[本文将详细介绍 CSS 中的样式层叠规则，主要从重要性、专用性和源码顺序进行说明计算的规则。 层叠CSS 是 Cascading Style Sheets 的缩写，这暗示层叠（cascade）的概念是很重要的。在最基本的层面上，它表明 CSS 规则的顺序很重要，但它比那更复杂。什么选择器在层叠中胜出取决于三个因素（这些都是按重量级顺序排列的——前面的的一种会否决后一种）： 重要性（Importance） 专用性（Specificity） 源代码次序（Source order） 重要性在 CSS 中，有一个特别的语法可以让一条规则总是优先于其他规则：!important。 知道 !important 存在是很有用的，这样当你在别人的代码中遇到它时，你就知道它是什么了。但是！我们建议你千万不要使用它，除非你绝对必须使用它。您可能不得不使用它的一种情况是，当您在CMS中工作时，您不能编辑核心的CSS模块，并且您确实想要重写一种不能以其他方式覆盖的样式。 但是，如果你能避免的话，不要使用它。由于 !important 改变了层叠正常工作的方式，因此调试CSS问题，尤其是在大型样式表中，会变得非常困难。 专用性专用性基本上是衡量选择器的具体程度的一种方法——它能匹配多少元素。如上面所示的示例所示，元素选择器具有很低的专用性。类选择器具有更高的专用性，所以将战胜元素选择器。ID 选择器有甚至更高的专用性, 所以将战胜类选择器. 战胜 ID 选择器的唯一方法是使用 !important。 一个选择器具有的专用性的量是用四种不同的值（或组件）来衡量的，它们可以被认为是千位，百位，十位和个位——在四个列中的四个简单数字： 千位：如果声明是在 style 属性中该列加1分（这样的声明没有选择器，所以它们的专用性总是1000。）否则为0。 百位：在整个选择器中每包含一个ID选择器就在该列中加1分。 十位：在整个选择器中每包含一个类选择器、属性选择器、或者伪类就在该列中加1分。 个位：在整个选择器中每包含一个元素选择器或伪元素就在该列中加1分。 注意： 通用选择器（*）, 复合选择器（+, &gt;, ~, ‘ ‘）和否定伪类 （:not）在专用性中无影响。 示例：| 选择器 | 千位 | 百位 | 十位 | 个位 | 合计值 || — | — | — | — | — | — || h1 | 0 | 0 | 0 | 1 | 0001 || #indentifier | 0 | 1 | 0 | 0 | 0100 || h1 + p::first-letter | 0 | 0 | 0 | 3 | 0003 || li &gt; a[href*=”zh-CN”] &gt; .inline-warning | 0 | 0 | 2 | 2 | 0022 || 没有选择器, 规则在一个元素的 &lt;style&gt; 属性里 | 1 | 0 | 0 | 0 | 1000 | 注意： 如果多个选择器具有相同的重要性和专用性，则选择哪一个选择器取决于源码顺序。 源码顺序如果多个相互竞争的选择器具有相同的重要性和专用性，那么第三个因素将帮助决定哪一个规则获胜——后面的规则将战胜先前的规则。例如:12345678p &#123; color: blue;&#125;/* This rule will win over the first one */p &#123; color: red;&#125; 规则混合的注意事项在考虑所有这些层叠理论和什么样式优先于其他样式被应用时，你应该记住的一件事是，所有这些都发生在属性级别上——属性覆盖其他属性，但你不会让整个规则凌驾于其他规则之上。 也就是说，当多个 CSS 规则匹配相同的元素时，它们都被应用到该元素中。只有在这之后，任何相互冲突的属性才会使用以上的覆盖规则。 继承CSS 继承是我们需要研究的最后一部分，以获取所有信息并了解什么样式应用于元素。其思想是，应用于某个元素的一些属性值将由该元素的子元素继承，而有些则不会。 哪些属性默认被继承哪些不被继承大部分符合常识。如果你想确定，你可以参考 CSS 参考资料—— 每个单独的属性页都会从一个汇总表开始，其中包含有关该元素的各种详细信息，包括是否被继承。 CSS 为处理继承提供了四种特殊的通用属性值： inherit： 该值将应用到选定元素的属性值设置为与其父元素一样。 initial ：该值将应用到选定元素的属性值设置为与浏览器默认样式表中该元素设置的值一样。如果浏览器默认样式表中没有设置值，并且该属性是自然继承的，那么该属性值就被设置为 inherit。 unset ：该值将属性重置为其自然值，即如果属性是自然继承的，那么它就表现得像 inherit，否则就是表现得像 initial。 revert ：如果当前的节点没有应用任何样式，则将该属性恢复到它所拥有的值。换句话说，属性值被设置成自定义样式所定义的属性（如果被设置）， 否则属性值被设置成用户代理的默认样式。 注意： initial 和 unset 不被IE支持。]]></content>
       <categories>
         <category>CSS</category>
       </categories>
@@ -410,14 +422,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Latex 文档编译方法]]></title>
-    <url>%2F2018%2F07%2F04%2FLatex%20%E6%96%87%E6%A1%A3%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95%2F</url>
-    <content type="text"><![CDATA[几种常见的编译方式: XeLaTeX， pdfLaTeX， LaTeX。 推荐使用XeLaTeX， pdfLaTeX 编译， 直接得到pdf 文档。 不同的编译方法， 对应的源文件一般略有不同。 使用pdfLATEX 编译得到的pdf 文件， 其中文是乱码。 需要增加UTF8 选项：1234\documentclass[UTF8]&#123;ctexart&#125;\begin&#123;document&#125; 中文文档测试。\end&#123;document&#125; 正反向搜索TeX 文档和PDF 文件之间的正反向搜索， 使得文档的修改、调试非常方便。 WinEdt 工具栏有(PDF Preview) 和(PDF Search) 两个按钮。编译TeX 文档后， 点击(PDF Preview) 按钮即可查阅生成的PDF 文件， 在PDF 页面上双击某行， 即可跳转至TeX 文档的对应源码处， 这是反向搜索功能。正向搜索功能是指先将鼠标停留在TeX 文档的某处， 然后点击(PDF Search)按钮， 即可跳转至PDF 页面上对应的位置(用浅蓝色标明某行。 标识的时间很短， 近乎一闪而过)。当然， 用(PDF Search)预览文档， 也可以实现反向搜索。 TeXworks 中实现该功能的方法: 用Ctrl + 鼠标单击左键， 即可实现正、反向搜索。 中文文档中文的实现, 推荐使用ctex宏集。 CTEX 宏集是由CTEX 社区发起并维护的LATEX 宏包和文档类的集合。社区另有发布名为CTEX 套装的TEX 发行版, 与CTEX 宏集并非是同一事物。 LaTeX 中文文档的排版有各种方式，例如CCT，CJK，xeCJK 等等。目前最优秀的方式是用ctex 文档类来排版中文文档，它在其它各种方式的基础上以一致的方式解决了中文排版的问题。例如：1234\documentclass[UTF8]&#123;ctexart&#125;\begin&#123;document&#125; 中文内容测试！\end&#123;document&#125; 使用这种方式，只需要将文档类从英文的article 改成ctexart，所有中文环境和章节编号等等都已经按照中文习惯设置好了，简单易行。另外，对于book 和report 文档类，也有对应的ctexbook 和ctexrep 中文文档类，其用法类似。]]></content>
+    <title><![CDATA[Latex 文档基本构成]]></title>
+    <url>%2F2018%2F07%2F04%2FLatex%20%E6%96%87%E6%A1%A3%E5%9F%BA%E6%9C%AC%E6%9E%84%E6%88%90%2F</url>
+    <content type="text"><![CDATA[一篇LATEX 文档, 由三个部分组成: 文档类声明, 导言区, 正文。12345\documentclass&#123;article&#125;\usepackage&#123;hyperref&#125;\begin&#123;document&#125; Hello World!\end&#123;document&#125; 文档类：\documentclass{...}，里面声明你要书写什么样式的文档，常用的有：article，book，report。可以自己定义一个新的文档类， 对文章的总体样式和各个细节进行声明， 或者定义自己的命令。 latex指明文档类的基本命令：\documentclass[选项]{文档类}：文档类 article 排版科技期刊、短报告、程序文档、邀请函等。 report 排版多章节的长报告、短篇的书籍、博士论文等。 book 排版书籍。 slides 排版幻灯片。其中使用了较大的 sans serif 字体。也可以考虑使用 FoilTEX 来得到相同的效果。 选项 纸张大小（a4paper，a5paper，b4paper，letterpaper，legalpaper，executivepaper）：默认的letterpaper 纸张常见于美国，和国内常用的A4 纸张的大小稍有差别，建议自己指定。 字体大小（10pt，11pt，12pt）：默认为10pt。 纸张方向（portrait，landscape）：默认为portrait（纵向），在屏幕阅读也许landscape（横向）更方便。 草稿定稿（draft，final）：默认为final（定稿）；如果是draft（草稿），页面内容有溢出时会显示粗黑条。 单面双面（oneside，twoside）：对于article 和report 文档类，默认设置为单面，页码总是在右边；对于book 文档类，默认设置为双面，奇数页页码在右边，偶数页页码在左边，这样双面打印时页码总在外侧。 新章开始（openright，openany）：仅对book 文档类有效，默认值为openright，即每章都从奇数页开始；如果设置为openany，则每章仅从新的一页开始，不管奇偶页。 正文：即\begin{document}和\end{document}之间的部分。 导言区： 夹在\documentclass{...}和\begin{document}之间的部分，放置需要使用的宏包，或者自己规定一些新的命令。如： 12345\documentclass&#123;article&#125;\newcommand&#123;\wuda&#125;&#123;中国湖北省武汉市武汉大学&#125;\begin&#123;document&#125; 你好，我来自\wuda。\end&#123;document&#125; 定义了一个新命令\wuda，得到的正文内容就是你好，我来自中国湖北省武汉市武汉大学。 可能你需要定义的东西太多，这时，可以将它们写在一个文档里，这种文档就是宏包，使用时，只需要在导言区用\usepackage{...}，即可插入该文档的内容。 例如，我们想书写一个数学符号⊵，该数学符号已经由宏包 amssymb 定义过了， 这样只需要在导言区写上\usepackage{amssymb}， 加载该宏包即可。 12345\documentclass&#123;ctexart&#125;\usepackage&#123;amssymb&#125;\begin&#123;document&#125; $\unrhd$\end&#123;document&#125;]]></content>
       <categories>
         <category>Latex</category>
       </categories>
       <tags>
-        <tag>Latex 编译</tag>
+        <tag>Latex 文档</tag>
       </tags>
   </entry>
   <entry>
@@ -435,26 +447,25 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Latex 文档基本构成]]></title>
-    <url>%2F2018%2F07%2F04%2FLatex%20%E6%96%87%E6%A1%A3%E5%9F%BA%E6%9C%AC%E6%9E%84%E6%88%90%2F</url>
-    <content type="text"><![CDATA[一篇LATEX 文档, 由三个部分组成: 文档类声明, 导言区, 正文。12345\documentclass&#123;article&#125;\usepackage&#123;hyperref&#125;\begin&#123;document&#125; Hello World!\end&#123;document&#125; 文档类：\documentclass{...}，里面声明你要书写什么样式的文档，常用的有：article，book，report。可以自己定义一个新的文档类， 对文章的总体样式和各个细节进行声明， 或者定义自己的命令。 latex指明文档类的基本命令：\documentclass[选项]{文档类}：文档类 article 排版科技期刊、短报告、程序文档、邀请函等。 report 排版多章节的长报告、短篇的书籍、博士论文等。 book 排版书籍。 slides 排版幻灯片。其中使用了较大的 sans serif 字体。也可以考虑使用 FoilTEX 来得到相同的效果。 选项 纸张大小（a4paper，a5paper，b4paper，letterpaper，legalpaper，executivepaper）：默认的letterpaper 纸张常见于美国，和国内常用的A4 纸张的大小稍有差别，建议自己指定。 字体大小（10pt，11pt，12pt）：默认为10pt。 纸张方向（portrait，landscape）：默认为portrait（纵向），在屏幕阅读也许landscape（横向）更方便。 草稿定稿（draft，final）：默认为final（定稿）；如果是draft（草稿），页面内容有溢出时会显示粗黑条。 单面双面（oneside，twoside）：对于article 和report 文档类，默认设置为单面，页码总是在右边；对于book 文档类，默认设置为双面，奇数页页码在右边，偶数页页码在左边，这样双面打印时页码总在外侧。 新章开始（openright，openany）：仅对book 文档类有效，默认值为openright，即每章都从奇数页开始；如果设置为openany，则每章仅从新的一页开始，不管奇偶页。 正文：即\begin{document}和\end{document}之间的部分。 导言区： 夹在\documentclass{...}和\begin{document}之间的部分，放置需要使用的宏包，或者自己规定一些新的命令。如： 12345\documentclass&#123;article&#125;\newcommand&#123;\wuda&#125;&#123;中国湖北省武汉市武汉大学&#125;\begin&#123;document&#125; 你好，我来自\wuda。\end&#123;document&#125; 定义了一个新命令\wuda，得到的正文内容就是你好，我来自中国湖北省武汉市武汉大学。 可能你需要定义的东西太多，这时，可以将它们写在一个文档里，这种文档就是宏包，使用时，只需要在导言区用\usepackage{...}，即可插入该文档的内容。 例如，我们想书写一个数学符号⊵，该数学符号已经由宏包 amssymb 定义过了， 这样只需要在导言区写上\usepackage{amssymb}， 加载该宏包即可。 12345\documentclass&#123;ctexart&#125;\usepackage&#123;amssymb&#125;\begin&#123;document&#125; $\unrhd$\end&#123;document&#125;]]></content>
+    <title><![CDATA[Latex 文档编译方法]]></title>
+    <url>%2F2018%2F07%2F04%2FLatex%20%E6%96%87%E6%A1%A3%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[几种常见的编译方式: XeLaTeX， pdfLaTeX， LaTeX。 推荐使用XeLaTeX， pdfLaTeX 编译， 直接得到pdf 文档。 不同的编译方法， 对应的源文件一般略有不同。 使用pdfLATEX 编译得到的pdf 文件， 其中文是乱码。 需要增加UTF8 选项：1234\documentclass[UTF8]&#123;ctexart&#125;\begin&#123;document&#125; 中文文档测试。\end&#123;document&#125; 正反向搜索TeX 文档和PDF 文件之间的正反向搜索， 使得文档的修改、调试非常方便。 WinEdt 工具栏有(PDF Preview) 和(PDF Search) 两个按钮。编译TeX 文档后， 点击(PDF Preview) 按钮即可查阅生成的PDF 文件， 在PDF 页面上双击某行， 即可跳转至TeX 文档的对应源码处， 这是反向搜索功能。正向搜索功能是指先将鼠标停留在TeX 文档的某处， 然后点击(PDF Search)按钮， 即可跳转至PDF 页面上对应的位置(用浅蓝色标明某行。 标识的时间很短， 近乎一闪而过)。当然， 用(PDF Search)预览文档， 也可以实现反向搜索。 TeXworks 中实现该功能的方法: 用Ctrl + 鼠标单击左键， 即可实现正、反向搜索。 中文文档中文的实现, 推荐使用ctex宏集。 CTEX 宏集是由CTEX 社区发起并维护的LATEX 宏包和文档类的集合。社区另有发布名为CTEX 套装的TEX 发行版, 与CTEX 宏集并非是同一事物。 LaTeX 中文文档的排版有各种方式，例如CCT，CJK，xeCJK 等等。目前最优秀的方式是用ctex 文档类来排版中文文档，它在其它各种方式的基础上以一致的方式解决了中文排版的问题。例如：1234\documentclass[UTF8]&#123;ctexart&#125;\begin&#123;document&#125; 中文内容测试！\end&#123;document&#125; 使用这种方式，只需要将文档类从英文的article 改成ctexart，所有中文环境和章节编号等等都已经按照中文习惯设置好了，简单易行。另外，对于book 和report 文档类，也有对应的ctexbook 和ctexrep 中文文档类，其用法类似。]]></content>
       <categories>
         <category>Latex</category>
       </categories>
       <tags>
-        <tag>Latex 文档</tag>
+        <tag>Latex 编译</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Git 远程仓库]]></title>
-    <url>%2F2018%2F07%2F03%2FGit%20%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%2F</url>
-    <content type="text"><![CDATA[在本地创建了一个 Git 仓库后，想要在 GitHub 创建一个 Git 仓库，并且让这两个仓库进行远程同步，这样，GitHub 上的仓库既可以作为备份，又可以让其他人通过该仓库来协作，真是一举多得。 在 Github 上创建了空仓库之后，可以从该仓库克隆出新的仓库，也可以把一个已有的本地仓库与之关联，然后，把本地仓库的内容推送到 GitHub 仓库。 关联1git remote add origin git@github.com:&#123;username&#125;/&#123;repositoryname&#125;.git 注意：上面的username和repositoryname分别是你的用户名和新创建的仓库名。 推送下一步，就可以把本地仓库的所有内容推送到远程仓库上 1git push -u origin master 把本地库的内容推送到远程，用git push命令，实际上是把当前分支master推送到远程。 由于远程仓库是空的，我们第一次推送时，加上了-u参数，Git 不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。 推送成功后，可以立刻在 GitHub 页面中看到远程库的内容已经和本地一模一样。 从现在起，只要本地做了提交，就可以使用命令git push origin master把本地master分支的最新修改推送至 GitHub。]]></content>
+    <title><![CDATA[Git 工作区和暂存区]]></title>
+    <url>%2F2018%2F07%2F03%2FGit%20%E5%B7%A5%E4%BD%9C%E5%8C%BA%E5%92%8C%E6%9A%82%E5%AD%98%E5%8C%BA%2F</url>
+    <content type="text"><![CDATA[本文将对 Git 的工作区和暂存区做简单介绍。 工作区电脑里面能看到的目录，就是工作区。 版本库工作区有一个隐藏目录.git，不算工作区，而是 Git 的版本库。 暂存区Git 的版本库里面存了很多东西，其中最重要的就是暂存区，称为stage或者index，还有 Git 为我们自动创建的第一个分支master，以及指向master的一个指针HEAD。 git add命令实际上是把要提交的所有修改放到暂存区（stage），然后执行git commit命令，就可以将暂存区的所有修改提交到分支。 Git 跟踪管理修改而不是文件如果进行以下操作： 第一次修改 -&gt; git add -&gt; 第二次修改 -&gt; git commit 最终的结果是，第一次的修改被提交，而第二次的修改未被提交。 如果要提交第二次修改，可以继续使用git add和git commit命令。 当然，你还可以不进行第一次提交，进行以下操作: 第一次修改 -&gt; git add -&gt; 第二次修改 -&gt; git add -&gt; git commit 相当于把两次修改合并提交了。]]></content>
       <categories>
         <category>Git</category>
       </categories>
       <tags>
         <tag>Git</tag>
-        <tag>GitHub</tag>
       </tags>
   </entry>
   <entry>
@@ -480,14 +491,15 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Git 工作区和暂存区]]></title>
-    <url>%2F2018%2F07%2F03%2FGit%20%E5%B7%A5%E4%BD%9C%E5%8C%BA%E5%92%8C%E6%9A%82%E5%AD%98%E5%8C%BA%2F</url>
-    <content type="text"><![CDATA[本文将对 Git 的工作区和暂存区做简单介绍。 工作区电脑里面能看到的目录，就是工作区。 版本库工作区有一个隐藏目录.git，不算工作区，而是 Git 的版本库。 暂存区Git 的版本库里面存了很多东西，其中最重要的就是暂存区，称为stage或者index，还有 Git 为我们自动创建的第一个分支master，以及指向master的一个指针HEAD。 git add命令实际上是把要提交的所有修改放到暂存区（stage），然后执行git commit命令，就可以将暂存区的所有修改提交到分支。 Git 跟踪管理修改而不是文件如果进行以下操作： 第一次修改 -&gt; git add -&gt; 第二次修改 -&gt; git commit 最终的结果是，第一次的修改被提交，而第二次的修改未被提交。 如果要提交第二次修改，可以继续使用git add和git commit命令。 当然，你还可以不进行第一次提交，进行以下操作: 第一次修改 -&gt; git add -&gt; 第二次修改 -&gt; git add -&gt; git commit 相当于把两次修改合并提交了。]]></content>
+    <title><![CDATA[Git 远程仓库]]></title>
+    <url>%2F2018%2F07%2F03%2FGit%20%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%2F</url>
+    <content type="text"><![CDATA[在本地创建了一个 Git 仓库后，想要在 GitHub 创建一个 Git 仓库，并且让这两个仓库进行远程同步，这样，GitHub 上的仓库既可以作为备份，又可以让其他人通过该仓库来协作，真是一举多得。 在 Github 上创建了空仓库之后，可以从该仓库克隆出新的仓库，也可以把一个已有的本地仓库与之关联，然后，把本地仓库的内容推送到 GitHub 仓库。 关联1git remote add origin git@github.com:&#123;username&#125;/&#123;repositoryname&#125;.git 注意：上面的username和repositoryname分别是你的用户名和新创建的仓库名。 推送下一步，就可以把本地仓库的所有内容推送到远程仓库上 1git push -u origin master 把本地库的内容推送到远程，用git push命令，实际上是把当前分支master推送到远程。 由于远程仓库是空的，我们第一次推送时，加上了-u参数，Git 不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。 推送成功后，可以立刻在 GitHub 页面中看到远程库的内容已经和本地一模一样。 从现在起，只要本地做了提交，就可以使用命令git push origin master把本地master分支的最新修改推送至 GitHub。]]></content>
       <categories>
         <category>Git</category>
       </categories>
       <tags>
         <tag>Git</tag>
+        <tag>GitHub</tag>
       </tags>
   </entry>
   <entry>
@@ -572,17 +584,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[分析 HTML 文档]]></title>
-    <url>%2F2017%2F03%2F27%2F%E5%88%86%E6%9E%90%20HTML%20%E6%96%87%E6%A1%A3%2F</url>
-    <content type="text"><![CDATA[本文将对 HTML 中出现的标签做一个详细分析。 &lt;!DOCTYPE html&gt;用于声明文档类型。 很久以前，早期的 HTML (大约1991年2月)，文档类型声明类似于链接，规定了 HTML 页面必须遵从的良好规则，能自动检测错误和其他有用的东西。使用如下：12&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt; 然而现在没有人再这样写，需要保证每一个东西都正常工作已成为历史。你只需要知道&lt;!DOCTYPE html&gt;是最短的有效的文档声明。 &lt;head&gt;这个元素是一个容器，它包含了所有你想要包含在html页面中但不想在html页面中显示的内容。包括： 你想在搜索结果中出现的关键字和页面描述 CSS样式 字符集声明 … &lt;meta chareset=&quot;utf-8&quot;&gt;设置文档使用utf-8字符集编码。 utf-8字符集包含了人类大部分的文字，基本上能够识别所有的文本内容，使用它，可以在以后避免很多其他问题。name特性指定了meta元素的类型，说明该元素包含了什么类型的信息。content指定了实际的元数据内容。 如：12&lt;meta name="author" content="Chris Mills"&gt;&lt;meta name="description" content="The MDN Learning Area aims to provide complete beginners to the Web with all they need to know to getstarted with developing web sites and applications."&gt; 指定作者在某些情况下是很有用的：如果你需要联系页面的作者，问一些关于页面内容的问题。 一些内容管理系统能够自动获取页面作者的信息，然后用于某种目的。 指定包含关于页面内容的关键字的页面内容的描述是很有用的，因为它可能或让你的页面在搜索引擎的相关的搜索出现得更多 HTML 中的空白无论你用了多少空白(包括空白字符，包括换行), 当渲染这些代码的时候，HTML 解释器会将连续出现的空白字符减少为一个单独的空格符。那么为什么我们会使用那么多的空白呢? 答案就是为了可读性 —— 如果你的代码被很好地进行格式化，那么就很容易理解你的代码是怎么回事, 反之就只有聚做一团的混乱. 在我们的 HTML 代码中，我们让每一个嵌套的元素以两个空格缩进。 你使用什么风格来格式化你的代码取决于你 (比如所对于每层缩进使用多少个空格),但是你应该坚持使用某种风格。 实体引用在 HTML 中包含特殊字符。 在html中，字符&lt;，&gt;，&quot;，&#39;和&amp;是特殊字符。他们是html语法自身的一部分，如果要在文本中使用，而不想让它被浏览器视为代码并被解释，我们必须使用字符引用，来表示字符的特殊编码。如： 原字符 字符引用 &lt; &lt; &gt; &gt; “ &quot; ‘ &apos; &amp; &amp; &lt;link&gt;元素CSS使用&lt;link&gt;元素，位于文档头部，有两个属性： rel=&quot;stylesheet&quot;，表明这是文档的样式表 href=&quot;&quot;my-css-file.css，包含了样式表文件的路径 &lt;script&gt;元素JavaScript 使用&lt;script&gt;元素，最好放在文档尾部（&lt;/body&gt;标签之前），这样可以保证在加载脚本之前浏览器已经解析了 HTML 内容。 为文档设定主语言可以通过添加lang属性到&lt;html&gt;标签上来实现为你的站点设定语言，如：&lt;html lang=&quot;en-US&quot;&gt; 这在很多方面都很有用。如果你的 HTML 文档的语言设置好了，那么你的 HTML 文档就会被搜索引擎更有效地索引 (例如，允许它在特定于语言的结果中正确显示),对于那些使用屏幕阅读器的视障人士也很有用(比如, 法语和英语中都有“six”这个单词，但是发音却完全不同)。 还可以将文档分段设置为不同的语言，如：1&lt;p&gt;Japanese example: &lt;span lang="jp"&gt;ご飯が熱い。&lt;/span&gt;.&lt;/p&gt; &lt;em&gt;元素 &lt;em&gt;元素（emphasis），通过将文字写成斜体来强调它。 这样做可以让文档被屏幕阅读器识别出来，并以不同的语调发出。浏览器的默认风格为斜体，但是不应该为了纯粹获得斜体风格而使用该标签。 &lt;strong&gt;元素&lt;strong&gt;（strong importance），通过粗体字来达到强调的效果。 这样做可以让文档被屏幕阅读器识别出来，并以不同的语调发出。浏览器的默认风格为粗体，但是不应该为了纯粹获得粗体风格而使用该标签。 表象元素&lt;b&gt;, &lt;i&gt;, 和 &lt;u&gt; 们出现于人们要在文本中使用粗体、斜体、下划线但 CSS 仍然不被完全支持的时期。这些元素仅仅影响表象而没有语义，称为表象元素（persentational elements）。 超链接当链接到要下载的资源而不是在浏览器中打开时，可以使用下载属性来提供一个默认的保存文件名。123&lt;a href="https://download.mozilla.org/?product=firefox-39.0-SSL&amp;os=win&amp;lang=en-US" download="firefox-39-installer.exe"&gt;Download Firefox 39 for Windows&lt;/a&gt; 引用 块引用：使用&lt;blockquote&gt;元素包裹一个块级内容，表示从其他地方引用，并在cite属性中用 URL 来指向引用的资源。 行内引用：使用&lt;q&gt;元素表示行内引用。 引文：cite属性的内容听起来很有用，但不幸的是，浏览器、屏幕阅读器等等不会真的关心它，如果不使用 JavaScript 或 CSS，浏览器不会显示cite的内容。 缩略语使用&lt;abbr&gt;元素来包裹一个缩略语或缩写，并且提供缩写的解释（包含在title属性中），如：123&lt;p&gt;We use &lt;abbr title="Hypertext Markup Language"&gt;HTML&lt;/abbr&gt; to structure our web documents.&lt;/p&gt;&lt;p&gt;I think &lt;abbr title="Reverend"&gt;Rev.&lt;/abbr&gt; Green did it in the kitchen with the chainsaw.&lt;/p&gt; 标记联系方式使用&lt;address&gt;元素用于标记联系方式,&lt;address&gt;元素是为了标记编写 HTML 文档的人的联系方式，而不是任何其他的内容。如：123&lt;address&gt; &lt;p&gt;Chris Mills, Manchester, The Grim North, UK&lt;/p&gt;&lt;/address&gt; 上标和下标使用&lt;sup&gt;和&lt;sub&gt;元素来表示上标和下标，在使用日期、化学方程式、数学公式时可能会用到。如：123&lt;p&gt;My birthday is on the 25&lt;sup&gt;th&lt;/sup&gt; of May 2001.&lt;/p&gt;&lt;p&gt;Caffeine's chemical formula is C&lt;sub&gt;8&lt;/sub&gt;H&lt;sub&gt;10&lt;/sub&gt;N&lt;sub&gt;4&lt;/sub&gt;O&lt;sub&gt;2&lt;/sub&gt;.&lt;/p&gt;&lt;p&gt;If x&lt;sup&gt;2&lt;/sup&gt; is 9, x must equal 3 or -3.&lt;/p&gt; 展示计算机代码 &lt;code&gt;：用于标记计算机通用代码。 &lt;pre&gt;：用于标记固定宽度的文本块，其中保留空格（通常是代码块）。 &lt;var&gt;：用于标记具体变量名。 &lt;kbd&gt;：用于标记输入电脑的键盘（或其他类型）输入。 &lt;samp&gt;：用于标记计算机程序的输出。 标记时间和日期HTML 还支持将时间和日期标记为可供机器识别的格式的&lt;time&gt;元素。 不同格式的时间不容易被电脑识别 — 假如你想自动抓取页面上所有事件的日期并将它们插入到日历中，&lt;time&gt;元素允许你附上清晰的、可被机器识别的 时间/日期来实现这种需求。 布尔属性有时你会看到没有值的属性，它是合法的。这些属性被称为布尔属性，他们只能有跟它的属性名一样的属性值。123&lt;input type="text" disabled="disabled"&gt;&lt;!-- 采用如下简写更佳 --&gt;&lt;input type="text" disabled&gt;]]></content>
-      <categories>
-        <category>HTML</category>
-      </categories>
-      <tags>
-        <tag>HTML 元素</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[HTML 格式验证工具]]></title>
     <url>%2F2017%2F03%2F27%2FHTML%20%E6%A0%BC%E5%BC%8F%E9%AA%8C%E8%AF%81%E5%B7%A5%E5%85%B7%2F</url>
     <content type="text"><![CDATA[可以访问 Markup Validation Service 来验证你的网页格式是否正确，这个网页将 HTML 文档作为输入,并运行 ，然后给你一个报告,告诉你你的 HTML 有哪些错误.]]></content>
@@ -591,6 +592,17 @@
       </categories>
       <tags>
         <tag>HTML 工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[分析 HTML 文档]]></title>
+    <url>%2F2017%2F03%2F27%2F%E5%88%86%E6%9E%90%20HTML%20%E6%96%87%E6%A1%A3%2F</url>
+    <content type="text"><![CDATA[本文将对 HTML 中出现的标签做一个详细分析。 &lt;!DOCTYPE html&gt;用于声明文档类型。 很久以前，早期的 HTML (大约1991年2月)，文档类型声明类似于链接，规定了 HTML 页面必须遵从的良好规则，能自动检测错误和其他有用的东西。使用如下：12&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt; 然而现在没有人再这样写，需要保证每一个东西都正常工作已成为历史。你只需要知道&lt;!DOCTYPE html&gt;是最短的有效的文档声明。 &lt;head&gt;这个元素是一个容器，它包含了所有你想要包含在html页面中但不想在html页面中显示的内容。包括： 你想在搜索结果中出现的关键字和页面描述 CSS样式 字符集声明 … &lt;meta chareset=&quot;utf-8&quot;&gt;设置文档使用utf-8字符集编码。 utf-8字符集包含了人类大部分的文字，基本上能够识别所有的文本内容，使用它，可以在以后避免很多其他问题。name特性指定了meta元素的类型，说明该元素包含了什么类型的信息。content指定了实际的元数据内容。 如：12&lt;meta name="author" content="Chris Mills"&gt;&lt;meta name="description" content="The MDN Learning Area aims to provide complete beginners to the Web with all they need to know to getstarted with developing web sites and applications."&gt; 指定作者在某些情况下是很有用的：如果你需要联系页面的作者，问一些关于页面内容的问题。 一些内容管理系统能够自动获取页面作者的信息，然后用于某种目的。 指定包含关于页面内容的关键字的页面内容的描述是很有用的，因为它可能或让你的页面在搜索引擎的相关的搜索出现得更多 HTML 中的空白无论你用了多少空白(包括空白字符，包括换行), 当渲染这些代码的时候，HTML 解释器会将连续出现的空白字符减少为一个单独的空格符。那么为什么我们会使用那么多的空白呢? 答案就是为了可读性 —— 如果你的代码被很好地进行格式化，那么就很容易理解你的代码是怎么回事, 反之就只有聚做一团的混乱. 在我们的 HTML 代码中，我们让每一个嵌套的元素以两个空格缩进。 你使用什么风格来格式化你的代码取决于你 (比如所对于每层缩进使用多少个空格),但是你应该坚持使用某种风格。 实体引用在 HTML 中包含特殊字符。 在html中，字符&lt;，&gt;，&quot;，&#39;和&amp;是特殊字符。他们是html语法自身的一部分，如果要在文本中使用，而不想让它被浏览器视为代码并被解释，我们必须使用字符引用，来表示字符的特殊编码。如： 原字符 字符引用 &lt; &lt; &gt; &gt; “ &quot; ‘ &apos; &amp; &amp; &lt;link&gt;元素CSS使用&lt;link&gt;元素，位于文档头部，有两个属性： rel=&quot;stylesheet&quot;，表明这是文档的样式表 href=&quot;&quot;my-css-file.css，包含了样式表文件的路径 &lt;script&gt;元素JavaScript 使用&lt;script&gt;元素，最好放在文档尾部（&lt;/body&gt;标签之前），这样可以保证在加载脚本之前浏览器已经解析了 HTML 内容。 为文档设定主语言可以通过添加lang属性到&lt;html&gt;标签上来实现为你的站点设定语言，如：&lt;html lang=&quot;en-US&quot;&gt; 这在很多方面都很有用。如果你的 HTML 文档的语言设置好了，那么你的 HTML 文档就会被搜索引擎更有效地索引 (例如，允许它在特定于语言的结果中正确显示),对于那些使用屏幕阅读器的视障人士也很有用(比如, 法语和英语中都有“six”这个单词，但是发音却完全不同)。 还可以将文档分段设置为不同的语言，如：1&lt;p&gt;Japanese example: &lt;span lang="jp"&gt;ご飯が熱い。&lt;/span&gt;.&lt;/p&gt; &lt;em&gt;元素 &lt;em&gt;元素（emphasis），通过将文字写成斜体来强调它。 这样做可以让文档被屏幕阅读器识别出来，并以不同的语调发出。浏览器的默认风格为斜体，但是不应该为了纯粹获得斜体风格而使用该标签。 &lt;strong&gt;元素&lt;strong&gt;（strong importance），通过粗体字来达到强调的效果。 这样做可以让文档被屏幕阅读器识别出来，并以不同的语调发出。浏览器的默认风格为粗体，但是不应该为了纯粹获得粗体风格而使用该标签。 表象元素&lt;b&gt;, &lt;i&gt;, 和 &lt;u&gt; 们出现于人们要在文本中使用粗体、斜体、下划线但 CSS 仍然不被完全支持的时期。这些元素仅仅影响表象而没有语义，称为表象元素（persentational elements）。 超链接当链接到要下载的资源而不是在浏览器中打开时，可以使用下载属性来提供一个默认的保存文件名。123&lt;a href="https://download.mozilla.org/?product=firefox-39.0-SSL&amp;os=win&amp;lang=en-US" download="firefox-39-installer.exe"&gt;Download Firefox 39 for Windows&lt;/a&gt; 引用 块引用：使用&lt;blockquote&gt;元素包裹一个块级内容，表示从其他地方引用，并在cite属性中用 URL 来指向引用的资源。 行内引用：使用&lt;q&gt;元素表示行内引用。 引文：cite属性的内容听起来很有用，但不幸的是，浏览器、屏幕阅读器等等不会真的关心它，如果不使用 JavaScript 或 CSS，浏览器不会显示cite的内容。 缩略语使用&lt;abbr&gt;元素来包裹一个缩略语或缩写，并且提供缩写的解释（包含在title属性中），如：123&lt;p&gt;We use &lt;abbr title="Hypertext Markup Language"&gt;HTML&lt;/abbr&gt; to structure our web documents.&lt;/p&gt;&lt;p&gt;I think &lt;abbr title="Reverend"&gt;Rev.&lt;/abbr&gt; Green did it in the kitchen with the chainsaw.&lt;/p&gt; 标记联系方式使用&lt;address&gt;元素用于标记联系方式,&lt;address&gt;元素是为了标记编写 HTML 文档的人的联系方式，而不是任何其他的内容。如：123&lt;address&gt; &lt;p&gt;Chris Mills, Manchester, The Grim North, UK&lt;/p&gt;&lt;/address&gt; 上标和下标使用&lt;sup&gt;和&lt;sub&gt;元素来表示上标和下标，在使用日期、化学方程式、数学公式时可能会用到。如：123&lt;p&gt;My birthday is on the 25&lt;sup&gt;th&lt;/sup&gt; of May 2001.&lt;/p&gt;&lt;p&gt;Caffeine's chemical formula is C&lt;sub&gt;8&lt;/sub&gt;H&lt;sub&gt;10&lt;/sub&gt;N&lt;sub&gt;4&lt;/sub&gt;O&lt;sub&gt;2&lt;/sub&gt;.&lt;/p&gt;&lt;p&gt;If x&lt;sup&gt;2&lt;/sup&gt; is 9, x must equal 3 or -3.&lt;/p&gt; 展示计算机代码 &lt;code&gt;：用于标记计算机通用代码。 &lt;pre&gt;：用于标记固定宽度的文本块，其中保留空格（通常是代码块）。 &lt;var&gt;：用于标记具体变量名。 &lt;kbd&gt;：用于标记输入电脑的键盘（或其他类型）输入。 &lt;samp&gt;：用于标记计算机程序的输出。 标记时间和日期HTML 还支持将时间和日期标记为可供机器识别的格式的&lt;time&gt;元素。 不同格式的时间不容易被电脑识别 — 假如你想自动抓取页面上所有事件的日期并将它们插入到日历中，&lt;time&gt;元素允许你附上清晰的、可被机器识别的 时间/日期来实现这种需求。 布尔属性有时你会看到没有值的属性，它是合法的。这些属性被称为布尔属性，他们只能有跟它的属性名一样的属性值。123&lt;input type="text" disabled="disabled"&gt;&lt;!-- 采用如下简写更佳 --&gt;&lt;input type="text" disabled&gt;]]></content>
+      <categories>
+        <category>HTML</category>
+      </categories>
+      <tags>
+        <tag>HTML 元素</tag>
       </tags>
   </entry>
   <entry>
@@ -652,33 +664,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Ubuntu 文件操作说明]]></title>
-    <url>%2F2016%2F11%2F10%2FUbuntu%20%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E8%AF%B4%E6%98%8E%2F</url>
-    <content type="text"><![CDATA[本文将对 Ubuntu 系统中常用的文件操作命令做简单介绍。 文件及目录移动12345678# 将file1的文件名改为file2mv file1 file2# 将file1文件移动到目录dir1下，文件名仍为file1mv file1 dir1# 若目录dir2存在，则将目录dir1及其所有文件和子目录，移动到目录dir2下，新目录名仍为dir1。若目录dir2 不存在，则将dir1的目录名改为dir2mv dir1 dir2 创建一个空文件及目录12345# 创建一个空文件，名为filenametouch filename# 创建一个目录，名为dirnamemkdir dirname 删除文件及目录1234567891011121314# 删除一个空目录rmdir emptydir# 删除一个或多个文件rm file1 file2# 强制删除一个文件rm -f file# 删除一个非空目录下的所有文件rm -r dir# 强制删除非空目录下的所有文件，不提醒rm -rf dir 文件重命名12# //将file1.txt的文件名改为file2.txtrename 's/file1/file2' *.txt 详细信息见博客]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Ubuntu</tag>
-        <tag>mv</tag>
-        <tag>mkdir</tag>
-        <tag>rmdir</tag>
-        <tag>rm</tag>
-        <tag>rename</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[tar 压缩解压操作说明]]></title>
-    <url>%2F2016%2F11%2F10%2Ftar%20%E5%8E%8B%E7%BC%A9%E8%A7%A3%E5%8E%8B%E6%93%8D%E4%BD%9C%E8%AF%B4%E6%98%8E%2F</url>
-    <content type="text"><![CDATA[tar 是 Linux 系统中常用的压缩解压命令，本文将对其使用方法和参数说明做简单介绍。 使用方法12345678910 Usage: tar [OPTION...] [FILE]... Examples:# Create archive.tar from files foo and bar.tar -cf archive.tar foo bar# List all files in archive.tar verbosely.tar -tvf archive.tar# Extract all files from archive.tar.tar -xf archive.tar 必选参数 必选其中的一个参数，并且一次只能使用其中一个，不能同时使用多个 12345-c：创建一个压缩文件(create 的意思)-x：解压一个压缩文件-t：查看压缩文件里面的内容-r：向压缩文件末尾追加文件-u：更新原压缩文件中的内容 可选参数12345678910111213141516171819202122-z：有gzip属性，即需要用 gzip 压缩-j：有bz2属性，即需要用 bzip2 压缩-Z：有compress属性的-v ：压缩的过程中显示文件(显示所有过程)！这个常用，但不建议在后台执行时使用-O：将文件解开到标准输出-f ：使用文档名，请注意，在 f 之后要立即接文档名！不要再加参数！例如使用『 tar -zcvfP tfile sfile』就是错误的写法，要写成『 tar -zcvPf tfile sfile』才对喔！-p ：使用原文件的原来属性（属性不会依据使用者而变）-P ：可以使用绝对路径来压缩-N ：比后面接的日期(yyyy/mm/dd)还要新的才会被打包进新建的文件中--exclude FILE：在压缩的过程中，不要将 FILE 打包-f: 使用档案名字，切记，这个参数是最后一个参数，后面只能接档案名# 将所有.jpg的文件打成一个名为all.tar的包。-c是表示产生新的包，-f指定包的文件名tar -cf all.tar *.jpg# 将所有.gif的文件增加到all.tar的包里面去。-r是表示增加文件tar -rf all.tar *.gif# 更新原来tar包all.tar中logo.gif文件，-u是表示更新文件tar -uf all.tar logo.gif# 列出all.tar包中所有文件，-t是列出文件tar -tf all.tar# 解出all.tar包中所有文件，-x是解压tar -xf all.tar 查看12# 在不解压的情况下查看压缩包的内容tar -tf a.tar.gz 压缩1234567891011# 将目录里所有jpg文件打包成jpg.tartar –cvf jpg.tar *.jpg# 将目录里所有jpg文件打包成jpg.tar后，并且将其用gzip压缩，生成一个gzip压缩过的包，命名为jpg.tar.gztar –czf jpg.tar.gz *.jpg# 将目录里所有jpg文件打包成jpg.tar后，并且将其用bzip2压缩，生成一个bzip2压缩过的包，命名为jpg.tar.bz2tar –cjf jpg.tar.bz2 *.jpg# 将目录里所有jpg文件打包成jpg.tar后，并且将其用compress压缩，生成一个umcompress压缩过的包，命名为jpg.tar.Ztar –cZf jpg.tar.Z *.jpg 解压1234567*.tar 用 tar –xvf 解压*.gz 用 gzip -d 或者 gunzip 解压*.tar.gz 和 *.tgz 用 tar –xzf 解压*.bz2 用 bzip2 -d 或者 bunzip2 解压*.tar.bz2 用 tar –xjf 解压*.Z 用 uncompress 解压*.tar.Z 用 tar –xZf 解压]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>tar</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[deb 格式文件操作说明]]></title>
     <url>%2F2016%2F11%2F10%2Fdeb%20%E6%A0%BC%E5%BC%8F%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E8%AF%B4%E6%98%8E%2F</url>
     <content type="text"><![CDATA[deb 是 Debian 软件包格式的文件扩展名，dpkg 命令是 Debian Linux 系统用来安装、创建和管理软件包的实用工具。 基本语法1dpkg(选项)(参数) 选项12345678-i：安装软件包-r：删除软件包-P：删除软件包的同时删除其配置文件-L：显示于软件包关联的文件-l：显示已安装软件包列表--unpack：解开软件包-c：显示软件包内文件列表--confiugre：配置软件包 参数1Deb软件包：指定要操作的.deb软件包 示例12345678910dpkg -i package.deb #安装包dpkg -r package #删除包dpkg -P package #删除包（包括配置文件）dpkg -L package #列出与该包关联的文件dpkg -l package #显示该包的版本dpkg --unpack package.deb #解开deb包的内容dpkg -S keyword #搜索所属的包内容dpkg -l #列出当前已安装的包dpkg -c package.deb #列出deb包的内容dpkg --configure package #配置包]]></content>
@@ -701,6 +686,33 @@
       <tags>
         <tag>Ubuntu</tag>
         <tag>系统目录</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[tar 压缩解压操作说明]]></title>
+    <url>%2F2016%2F11%2F10%2Ftar%20%E5%8E%8B%E7%BC%A9%E8%A7%A3%E5%8E%8B%E6%93%8D%E4%BD%9C%E8%AF%B4%E6%98%8E%2F</url>
+    <content type="text"><![CDATA[tar 是 Linux 系统中常用的压缩解压命令，本文将对其使用方法和参数说明做简单介绍。 使用方法12345678910 Usage: tar [OPTION...] [FILE]... Examples:# Create archive.tar from files foo and bar.tar -cf archive.tar foo bar# List all files in archive.tar verbosely.tar -tvf archive.tar# Extract all files from archive.tar.tar -xf archive.tar 必选参数 必选其中的一个参数，并且一次只能使用其中一个，不能同时使用多个 12345-c：创建一个压缩文件(create 的意思)-x：解压一个压缩文件-t：查看压缩文件里面的内容-r：向压缩文件末尾追加文件-u：更新原压缩文件中的内容 可选参数12345678910111213141516171819202122-z：有gzip属性，即需要用 gzip 压缩-j：有bz2属性，即需要用 bzip2 压缩-Z：有compress属性的-v ：压缩的过程中显示文件(显示所有过程)！这个常用，但不建议在后台执行时使用-O：将文件解开到标准输出-f ：使用文档名，请注意，在 f 之后要立即接文档名！不要再加参数！例如使用『 tar -zcvfP tfile sfile』就是错误的写法，要写成『 tar -zcvPf tfile sfile』才对喔！-p ：使用原文件的原来属性（属性不会依据使用者而变）-P ：可以使用绝对路径来压缩-N ：比后面接的日期(yyyy/mm/dd)还要新的才会被打包进新建的文件中--exclude FILE：在压缩的过程中，不要将 FILE 打包-f: 使用档案名字，切记，这个参数是最后一个参数，后面只能接档案名# 将所有.jpg的文件打成一个名为all.tar的包。-c是表示产生新的包，-f指定包的文件名tar -cf all.tar *.jpg# 将所有.gif的文件增加到all.tar的包里面去。-r是表示增加文件tar -rf all.tar *.gif# 更新原来tar包all.tar中logo.gif文件，-u是表示更新文件tar -uf all.tar logo.gif# 列出all.tar包中所有文件，-t是列出文件tar -tf all.tar# 解出all.tar包中所有文件，-x是解压tar -xf all.tar 查看12# 在不解压的情况下查看压缩包的内容tar -tf a.tar.gz 压缩1234567891011# 将目录里所有jpg文件打包成jpg.tartar –cvf jpg.tar *.jpg# 将目录里所有jpg文件打包成jpg.tar后，并且将其用gzip压缩，生成一个gzip压缩过的包，命名为jpg.tar.gztar –czf jpg.tar.gz *.jpg# 将目录里所有jpg文件打包成jpg.tar后，并且将其用bzip2压缩，生成一个bzip2压缩过的包，命名为jpg.tar.bz2tar –cjf jpg.tar.bz2 *.jpg# 将目录里所有jpg文件打包成jpg.tar后，并且将其用compress压缩，生成一个umcompress压缩过的包，命名为jpg.tar.Ztar –cZf jpg.tar.Z *.jpg 解压1234567*.tar 用 tar –xvf 解压*.gz 用 gzip -d 或者 gunzip 解压*.tar.gz 和 *.tgz 用 tar –xzf 解压*.bz2 用 bzip2 -d 或者 bunzip2 解压*.tar.bz2 用 tar –xjf 解压*.Z 用 uncompress 解压*.tar.Z 用 tar –xZf 解压]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>tar</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Ubuntu 文件操作说明]]></title>
+    <url>%2F2016%2F11%2F10%2FUbuntu%20%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E8%AF%B4%E6%98%8E%2F</url>
+    <content type="text"><![CDATA[本文将对 Ubuntu 系统中常用的文件操作命令做简单介绍。 文件及目录移动12345678# 将file1的文件名改为file2mv file1 file2# 将file1文件移动到目录dir1下，文件名仍为file1mv file1 dir1# 若目录dir2存在，则将目录dir1及其所有文件和子目录，移动到目录dir2下，新目录名仍为dir1。若目录dir2 不存在，则将dir1的目录名改为dir2mv dir1 dir2 创建一个空文件及目录12345# 创建一个空文件，名为filenametouch filename# 创建一个目录，名为dirnamemkdir dirname 删除文件及目录1234567891011121314# 删除一个空目录rmdir emptydir# 删除一个或多个文件rm file1 file2# 强制删除一个文件rm -f file# 删除一个非空目录下的所有文件rm -r dir# 强制删除非空目录下的所有文件，不提醒rm -rf dir 文件重命名12# //将file1.txt的文件名改为file2.txtrename 's/file1/file2' *.txt 详细信息见博客]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Ubuntu</tag>
+        <tag>mv</tag>
+        <tag>mkdir</tag>
+        <tag>rmdir</tag>
+        <tag>rm</tag>
+        <tag>rename</tag>
       </tags>
   </entry>
 </search>
