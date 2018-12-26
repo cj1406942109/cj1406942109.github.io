@@ -403,7 +403,14 @@
 
     <url>
         <loc>http://cj1406942109.github.io/tags/create-react-app/</loc>
-        <lastmod>2018-12-26T14:06:31.457Z</lastmod>
+        <lastmod>2018-12-26T15:57:53.304Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://cj1406942109.github.io/tags/storybook/</loc>
+        <lastmod>2018-12-26T15:57:53.304Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
