@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="CSS 布局,">
+  <meta name="keywords" content="JavaScript,ES6,数据类型,">
 
 
 
@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="本文将详细介绍 CSS 中的样式层叠规则，主要从重要性、专用性和源码顺序进行说明计算的规则。">
-<meta name="keywords" content="CSS 布局">
+<meta name="description" content="看了很多关于 JavaScript 基本数据类型和引用数据类型的说明，真的是众说纷纭，有的其中还存在一些错误的描述，感觉不容易理清楚，因此想对其做一个总结。 JavaScript 是一种弱类型或者说动态语言。这意味着你不用提前声明变量的类型，在程序运行过程中，类型会被自动确定。这也意味着你可以使用同一个变量保存不同类型的数据。">
+<meta name="keywords" content="JavaScript,ES6,数据类型">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSS 样式层叠继承规则">
-<meta property="og:url" content="http://cj1406942109.github.io/2018/08/13/CSS 样式层叠继承规则/index.html">
+<meta property="og:title" content="JavaScript 中的 7 种数据类型详解">
+<meta property="og:url" content="http://cj1406942109.github.io/2018/12/26/JavaScript中的7种数据类型详解/index.html">
 <meta property="og:site_name" content="猿梦·随笔">
-<meta property="og:description" content="本文将详细介绍 CSS 中的样式层叠规则，主要从重要性、专用性和源码顺序进行说明计算的规则。">
+<meta property="og:description" content="看了很多关于 JavaScript 基本数据类型和引用数据类型的说明，真的是众说纷纭，有的其中还存在一些错误的描述，感觉不容易理清楚，因此想对其做一个总结。 JavaScript 是一种弱类型或者说动态语言。这意味着你不用提前声明变量的类型，在程序运行过程中，类型会被自动确定。这也意味着你可以使用同一个变量保存不同类型的数据。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-19T17:15:57.111Z">
+<meta property="og:updated_time" content="2018-12-26T09:39:56.358Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSS 样式层叠继承规则">
-<meta name="twitter:description" content="本文将详细介绍 CSS 中的样式层叠规则，主要从重要性、专用性和源码顺序进行说明计算的规则。">
+<meta name="twitter:title" content="JavaScript 中的 7 种数据类型详解">
+<meta name="twitter:description" content="看了很多关于 JavaScript 基本数据类型和引用数据类型的说明，真的是众说纷纭，有的其中还存在一些错误的描述，感觉不容易理清楚，因此想对其做一个总结。 JavaScript 是一种弱类型或者说动态语言。这意味着你不用提前声明变量的类型，在程序运行过程中，类型会被自动确定。这也意味着你可以使用同一个变量保存不同类型的数据。">
 
 
 
@@ -129,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://cj1406942109.github.io/2018/08/13/CSS 样式层叠继承规则/">
+  <link rel="canonical" href="http://cj1406942109.github.io/2018/12/26/JavaScript中的7种数据类型详解/">
 
 
 
 
 
-  <title>CSS 样式层叠继承规则 | 猿梦·随笔</title>
+  <title>JavaScript 中的 7 种数据类型详解 | 猿梦·随笔</title>
   
 
 
@@ -303,7 +303,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cj1406942109.github.io/2018/08/13/CSS 样式层叠继承规则/">
+    <link itemprop="mainEntityOfPage" href="http://cj1406942109.github.io/2018/12/26/JavaScript中的7种数据类型详解/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Abraham">
@@ -320,7 +320,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">CSS 样式层叠继承规则</h2>
+          <h2 class="post-title" itemprop="name headline">JavaScript 中的 7 种数据类型详解</h2>
         
 
         <div class="post-meta">
@@ -332,8 +332,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-13T00:00:00+08:00">
-                2018-08-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-26T14:00:00+08:00">
+                2018-12-26
               </time>
             
 
@@ -355,8 +355,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/CSS/" itemprop="url" rel="index">
-                    <span itemprop="name">CSS</span>
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
                   </a>
                 </span>
 
@@ -391,7 +391,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.4k 字
+                  1.9k 字
                 </span>
               
 
@@ -407,7 +407,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5 分钟
+                  7 分钟
                 </span>
               
             </div>
@@ -428,46 +428,130 @@
       
 
       
-        <p>本文将详细介绍 CSS 中的样式层叠规则，主要从重要性、专用性和源码顺序进行说明计算的规则。</p>
+        <p>看了很多关于 JavaScript 基本数据类型和引用数据类型的说明，真的是众说纷纭，有的其中还存在一些错误的描述，感觉不容易理清楚，因此想对其做一个总结。</p>
+<p>JavaScript 是一种弱类型或者说动态语言。这意味着你不用提前声明变量的类型，在程序运行过程中，类型会被自动确定。这也意味着你可以使用同一个变量保存不同类型的数据。</p>
 <a id="more"></a>
-<h2 id="层叠"><a href="#层叠" class="headerlink" title="层叠"></a>层叠</h2><p>CSS 是 Cascading Style Sheets 的缩写，这暗示层叠（cascade）的概念是很重要的。在最基本的层面上，它表明 CSS 规则的顺序很重要，但它比那更复杂。什么选择器在层叠中胜出取决于三个因素（这些都是按重量级顺序排列的——前面的的一种会否决后一种）：</p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>最新的 ECMAScript 标准定义了 7 种数据类型：</p>
 <ul>
-<li>重要性（Importance）</li>
-<li>专用性（Specificity）</li>
-<li>源代码次序（Source order）</li>
+<li>6 种原始类型（或者叫做基本类型）：<ul>
+<li><code>Boolean</code></li>
+<li><code>Null</code></li>
+<li><code>Undefined</code></li>
+<li><code>Number</code></li>
+<li><code>String</code></li>
+<li><code>Symbol</code> （ES 6 新增）</li>
 </ul>
-<h3 id="重要性"><a href="#重要性" class="headerlink" title="重要性"></a>重要性</h3><p>在 CSS 中，有一个特别的语法可以让一条规则总是优先于其他规则：<code>!important</code>。</p>
-<p>知道 !important 存在是很有用的，这样当你在别人的代码中遇到它时，你就知道它是什么了。但是！我们建议你千万不要使用它，除非你绝对必须使用它。您可能不得不使用它的一种情况是，当您在CMS中工作时，您不能编辑核心的CSS模块，并且您确实想要重写一种不能以其他方式覆盖的样式。 但是，如果你能避免的话，不要使用它。由于 !important 改变了层叠正常工作的方式，因此调试CSS问题，尤其是在大型样式表中，会变得非常困难。</p>
-<h3 id="专用性"><a href="#专用性" class="headerlink" title="专用性"></a>专用性</h3><p>专用性基本上是衡量选择器的具体程度的一种方法——它能匹配多少元素。如上面所示的示例所示，元素选择器具有很低的专用性。类选择器具有更高的专用性，所以将战胜元素选择器。ID 选择器有甚至更高的专用性, 所以将战胜类选择器. 战胜 ID 选择器的唯一方法是使用 <code>!important</code>。</p>
-<p>一个选择器具有的专用性的量是用四种不同的值（或组件）来衡量的，它们可以被认为是千位，百位，十位和个位——在四个列中的四个简单数字：</p>
+</li>
+<li>1 种引用类型：<ul>
+<li><code>Object</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><p>除 <code>Object</code> 之外的所有类型，它们的值都是不可变的。例如：JavaScript 中对字符串的操作，是返回了一个新的字符串，而原字符串并没有被改变。</p>
+<p>这些类型的值，被称为“原始值”。</p>
+<h3 id="Boolean-类型"><a href="#Boolean-类型" class="headerlink" title="Boolean 类型"></a><code>Boolean</code> 类型</h3><p>在计算机科学中，布尔值是一种取值仅能为 真 或 假 的数据类型，它赋予了编程语言在逻辑上表达真 或 假 的能力。</p>
+<p>布尔表示一个逻辑实体，可以有两个值：<code>true</code> 和 <code>false</code>。</p>
+<h3 id="Null-类型"><a href="#Null-类型" class="headerlink" title="Null 类型"></a><code>Null</code> 类型</h3><p>Null 类型只有一个值： <code>null</code>。</p>
+<p>值 <code>null</code> 特指对象的值未设置。</p>
+<p>值 <code>null</code> 是一个字面量。 <code>null</code> 是表示缺少的标识，指示变量未指向任何对象。把 <code>null</code> 作为尚未创建的对象，也许更好理解。在 APIs 中， <code>null</code> 常在返回类型是对象，但没关联值的地方使用。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// foo不存在，它从来没有被定义过或者是初始化过：</span></span><br><span class="line">foo;</span><br><span class="line"><span class="string">"ReferenceError: foo is not defined"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// foo现在已经是知存在的，但是它没有类型或者是值：</span></span><br><span class="line"><span class="keyword">var</span> foo = <span class="literal">null</span>; </span><br><span class="line">foo;</span><br><span class="line"><span class="literal">null</span></span><br></pre></td></tr></table></figure>
+<h3 id="Undefined-类型"><a href="#Undefined-类型" class="headerlink" title="Undefined 类型"></a><code>Undefined</code> 类型</h3><p>一个没有被赋值的变量会有个默认值 <code>undefined</code>。全局属性 undefined 表示原始值 <code>undefined</code>。</p>
+<p>undefined 是全局对象的一个属性。也就是说，它是全局作用域的一个变量。undefined 的最初值就是原始数据类型 <code>undefined</code> 。</p>
+<p>自 ECMAscript5 标准以来 undefined 是一个不能被配置（non-configurable），不能被重写（non-writable）的属性。即便事实并非如此，也要避免去重写它。</p>
+<p>一个没有被赋值的变量的类型是 undefined。</p>
+<p>一个函数如果没有使用 <code>return</code> 语句指定返回值，就会返回一个 <code>undefined</code> 值。</p>
+<h4 id="严格相等操作符"><a href="#严格相等操作符" class="headerlink" title="严格相等操作符"></a>严格相等操作符</h4><p>可以使用严格相等操作符 <code>===</code> 来判断一个变量是否拥有值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (x === <span class="literal">undefined</span>) &#123;</span><br><span class="line"><span class="comment">// 执行这些语句</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line"><span class="comment">// 这些语句不会被执行</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>注意：</strong> 不能用标准相等操作符 <code>==</code> 来判断，因为当值为 <code>null</code> 时， <code>null == undefined</code> 的结果为 <code>true</code>。但是 <code>null</code> 不同于 <code>undefined</code>。</p>
+</blockquote>
+<h4 id="typeof-操作符"><a href="#typeof-操作符" class="headerlink" title="typeof 操作符"></a>typeof 操作符</h4><p>也可以使用 <code>typeof</code> 操作符，对变量进行判断。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x;</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">typeof</span> x === <span class="string">'undefined'</span>) &#123;</span><br><span class="line">    <span class="comment">// 执行这些语句</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>使用 <code>typeof</code> 可以避免在变量没有声明时抛出错误。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这里没有声明y</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">typeof</span> y === <span class="string">'undefined'</span>) &#123;       <span class="comment">// 没有错误，执行结果为true</span></span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">"y is "</span> + <span class="keyword">typeof</span> y )  <span class="comment">// y is undefined</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(y === <span class="literal">undefined</span>) &#123;                <span class="comment">// ReferenceError: y is not defined</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="void-操作符"><a href="#void-操作符" class="headerlink" title="void 操作符"></a>void 操作符</h4><p>还可以使用 <code>void</code> 操作符。</p>
+<p><code>void expression</code> 对给定的表达式进行求值，然后返回 <code>undefined</code>。</p>
+<p>void 运算符通常只用于获取 <code>undefined</code> 的原始值，一般使用<code>void(0)</code>（等同于<code>void 0</code>）。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x;</span><br><span class="line"><span class="keyword">if</span>(x === <span class="keyword">void</span> <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="comment">// 执行这些语句</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 没有声明y</span></span><br><span class="line"><span class="keyword">if</span>(y === <span class="keyword">void</span> <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="comment">// 抛出一个RenferenceError错误(与`typeof`相比)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Number-类型"><a href="#Number-类型" class="headerlink" title="Number 类型"></a><code>Number</code> 类型</h3><p>根据 ECMAScript 标准，JavaScript 中只有一种数字类型：</p>
+<p>基于 IEEE 754 标准的双精度 64 位二进制格式的值，即：$-(2^{63} - 1)$ 到 $2^{63} - 1$。</p>
+<p>JavaScript 中，并没有为整数设置一个特定的类型（如其他语言中常见的 int）。</p>
+<p>除了能够表示浮点数之外，还能表示一些带符号的值：</p>
 <ul>
-<li>千位：如果声明是在 <code>style</code> 属性中该列加1分（这样的声明没有选择器，所以它们的专用性总是1000。）否则为0。</li>
-<li>百位：在整个选择器中每包含一个ID选择器就在该列中加1分。</li>
-<li>十位：在整个选择器中每包含一个类选择器、属性选择器、或者伪类就在该列中加1分。</li>
-<li>个位：在整个选择器中每包含一个元素选择器或伪元素就在该列中加1分。</li>
+<li><code>+Infinity</code></li>
+<li><code>-Infinity</code></li>
+<li><code>NaN</code>（非数值，Not-a-Number）</li>
 </ul>
-<blockquote>
-<p><strong>注意：</strong> 通用选择器（<code>*</code>）, 复合选择器（<code>+</code>, <code>&gt;</code>, <code>~</code>, ‘ ‘）和否定伪类 （<code>:not</code>）在专用性中无影响。</p>
-</blockquote>
-<p>示例：<br>| 选择器 | 千位 | 百位 | 十位 | 个位 | 合计值 |<br>| — | — | — | — | — | — |<br>| h1 | 0 | 0 | 0 | 1 | 0001 |<br>| #indentifier | 0 | 1 | 0 | 0 | 0100 |<br>| h1 + p::first-letter | 0 | 0 | 0 | 3 | 0003 |<br>| li &gt; a[href*=”zh-CN”] &gt; .inline-warning | 0 | 0 | 2 | 2 | 0022 |<br>| 没有选择器, 规则在一个元素的 <code>&lt;style&gt;</code> 属性里 | 1 | 0 | 0 | 0 | 1000 |</p>
-<blockquote>
-<p><strong>注意：</strong> 如果多个选择器具有相同的重要性和专用性，则选择哪一个选择器取决于源码顺序。</p>
-</blockquote>
-<h3 id="源码顺序"><a href="#源码顺序" class="headerlink" title="源码顺序"></a>源码顺序</h3><p>如果多个相互竞争的选择器具有相同的重要性和专用性，那么第三个因素将帮助决定哪一个规则获胜——后面的规则将战胜先前的规则。例如:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: blue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* This rule will win over the first one */</span></span><br><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="规则混合的注意事项"><a href="#规则混合的注意事项" class="headerlink" title="规则混合的注意事项"></a>规则混合的注意事项</h3><p>在考虑所有这些层叠理论和什么样式优先于其他样式被应用时，你应该记住的一件事是，所有这些都发生在属性级别上——属性覆盖其他属性，但你不会让整个规则凌驾于其他规则之上。</p>
-<p>也就是说，当多个 CSS 规则匹配相同的元素时，它们都被应用到该元素中。只有在这之后，任何相互冲突的属性才会使用以上的覆盖规则。</p>
-<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>CSS 继承是我们需要研究的最后一部分，以获取所有信息并了解什么样式应用于元素。其思想是，应用于某个元素的一些属性值将由该元素的子元素继承，而有些则不会。</p>
-<p>哪些属性默认被继承哪些不被继承大部分符合常识。如果你想确定，你可以参考<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference" target="_blank" rel="noopener"> CSS 参考资料</a>—— 每个单独的属性页都会从一个汇总表开始，其中包含有关该元素的各种详细信息，包括是否被继承。</p>
-<p>CSS 为处理继承提供了四种特殊的通用属性值：</p>
-<ul>
-<li><code>inherit：</code> 该值将应用到选定元素的属性值设置为与其父元素一样。</li>
-<li><code>initial</code> ：该值将应用到选定元素的属性值设置为与浏览器默认样式表中该元素设置的值一样。如果浏览器默认样式表中没有设置值，并且该属性是自然继承的，那么该属性值就被设置为 <code>inherit</code>。</li>
-<li><code>unset</code> ：该值将属性重置为其自然值，即如果属性是自然继承的，那么它就表现得像 <code>inherit</code>，否则就是表现得像 <code>initial</code>。</li>
-<li><code>revert</code> ：如果当前的节点没有应用任何样式，则将该属性恢复到它所拥有的值。换句话说，属性值被设置成自定义样式所定义的属性（如果被设置）， 否则属性值被设置成用户代理的默认样式。</li>
+<h3 id="String-类型"><a href="#String-类型" class="headerlink" title="String 类型"></a><code>String</code> 类型</h3><p>JavaScript 的字符串类型用于表示文本数据。它是一组 16 位的无符号整数值的“元素”。在字符串中的每个元素占据了字符串的位置。第一个元素的索引为0，下一个是索引1，依此类推。字符串的长度是它的元素的数量。</p>
+<p>这里不做过多描述。</p>
+<h3 id="Symbol-类型"><a href="#Symbol-类型" class="headerlink" title="Symbol 类型"></a><code>Symbol</code> 类型</h3><p>符号是 ECMAScript 第 6 版新定义的。符号类型是唯一的并且是不可修改的, 并且也可以用来作为 Object 的 key 的值。</p>
+<p>要了解详细使用场景和方法，可以参考<a href="http://es6.ruanyifeng.com/#docs/symbol" target="_blank" rel="noopener">ECMAScript 6 入门 - Symbol</a>。</p>
+<h2 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h2><h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><p>在 Javascript 里，对象可以被看作是一组属性的集合。</p>
+<p>一个 Javascript 对象就是键和值之间的映射.。键是一个字符串（或者 Symbol） ，值可以是任意类型的值。</p>
+<p>函数是一个附带可被调用功能的常规对象。</p>
+<p>数组是一种使用整数作为键(integer-key-ed)属性和长度(length)属性之间关联的常规对象。</p>
+<p>类型数组(Typed Arrays)是ECMAScript Edition 6中新定义的 JavaScript 内建对象，提供了一个基本的二进制数据缓冲区的类数组视图。</p>
+<p>JavaScript 有一个内置对象的标准库。请查看<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects" target="_blank" rel="noopener">参考</a>来了解更多对象。</p>
+<p>涉及 <code>Object</code> 的具体细节过多，不是本文重点，不做描述。</p>
+<h2 id="typeof-操作符与数据类型"><a href="#typeof-操作符与数据类型" class="headerlink" title="typeof 操作符与数据类型"></a>typeof 操作符与数据类型</h2><p>虽说 JavaScript 有 7 种数据类型，而 <code>typeof</code> 操作符的功能是返回一个未经计算的操作数的类型的字符串值。</p>
+<p>但是 <code>typeof</code> 的返回值还是与我们预料的有些差别，我们来看一下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Undefined</td>
+<td style="text-align:center">“undefined”</td>
+</tr>
+<tr>
+<td style="text-align:center">Null</td>
+<td style="text-align:center">“object”</td>
+</tr>
+<tr>
+<td style="text-align:center">Boolean</td>
+<td style="text-align:center">“boolean”</td>
+</tr>
+<tr>
+<td style="text-align:center">Number</td>
+<td style="text-align:center">“number”</td>
+</tr>
+<tr>
+<td style="text-align:center">String</td>
+<td style="text-align:center">“string”</td>
+</tr>
+<tr>
+<td style="text-align:center">Symbol</td>
+<td style="text-align:center">“symbol”</td>
+</tr>
+<tr>
+<td style="text-align:center">宿主对象（由 JS 环境提供）</td>
+<td style="text-align:center">Implementation-dependent</td>
+</tr>
+<tr>
+<td style="text-align:center">函数对象</td>
+<td style="text-align:center">“function”</td>
+</tr>
+<tr>
+<td style="text-align:center">任何其他对象</td>
+<td style="text-align:center">“object”</td>
+</tr>
+</tbody>
+</table>
+<p>其中，最值得注意的是：<code>typeof null</code> 的结果为 <code>&quot;object&quot;</code>，要说为什么，只能说是历史遗留的问题。</p>
+<p>在 JavaScript 最初的实现中，JavaScript 中的值是由一个表示类型的标签和实际数据值表示的。对象的类型标签是 0。由于 <code>null</code> 代表的是空指针（大多数平台下值为 0x00），因此，null的类型标签也成为了 0，<code>typeof null</code> 就错误的返回了<code>&quot;object&quot;</code>。</p>
+<p>ECMAScript提出了一个修复（通过opt-in），但被拒绝了。</p>
+<p>因此，我们记住这点就好，<strong><code>typeof null</code> 的结果为 <code>&quot;object&quot;</code></strong>。</p>
+<p>代码示例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Numbers</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="number">37</span> === <span class="string">'number'</span>;</span><br><span class="line"><span class="keyword">typeof</span> <span class="number">3.14</span> === <span class="string">'number'</span>;</span><br><span class="line"><span class="keyword">typeof</span> <span class="built_in">Math</span>.LN2 === <span class="string">'number'</span>;</span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">Infinity</span> === <span class="string">'number'</span>;</span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">NaN</span> === <span class="string">'number'</span>; <span class="comment">// 尽管NaN是"Not-A-Number"的缩写</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="built_in">Number</span>(<span class="number">1</span>) === <span class="string">'number'</span>; <span class="comment">// 但不要使用这种形式!</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Strings</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="string">""</span> === <span class="string">'string'</span>;</span><br><span class="line"><span class="keyword">typeof</span> <span class="string">"bla"</span> === <span class="string">'string'</span>;</span><br><span class="line"><span class="keyword">typeof</span> (<span class="keyword">typeof</span> <span class="number">1</span>) === <span class="string">'string'</span>; <span class="comment">// typeof总是返回一个字符串</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="built_in">String</span>(<span class="string">"abc"</span>) === <span class="string">'string'</span>; <span class="comment">// 但不要使用这种形式!</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Booleans</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">true</span> === <span class="string">'boolean'</span>;</span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">false</span> === <span class="string">'boolean'</span>;</span><br><span class="line"><span class="keyword">typeof</span> <span class="built_in">Boolean</span>(<span class="literal">true</span>) === <span class="string">'boolean'</span>; <span class="comment">// 但不要使用这种形式!</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Symbols</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="built_in">Symbol</span>() === <span class="string">'symbol'</span>;</span><br><span class="line"><span class="keyword">typeof</span> <span class="built_in">Symbol</span>(<span class="string">'foo'</span>) === <span class="string">'symbol'</span>;</span><br><span class="line"><span class="keyword">typeof</span> <span class="built_in">Symbol</span>.iterator === <span class="string">'symbol'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Undefined</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">undefined</span> === <span class="string">'undefined'</span>;</span><br><span class="line"><span class="keyword">typeof</span> declaredButUndefinedVariable === <span class="string">'undefined'</span>;</span><br><span class="line"><span class="keyword">typeof</span> undeclaredVariable === <span class="string">'undefined'</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">// Objects</span></span><br><span class="line"><span class="keyword">typeof</span> &#123;<span class="attr">a</span>:<span class="number">1</span>&#125; === <span class="string">'object'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用Array.isArray 或者 Object.prototype.toString.call</span></span><br><span class="line"><span class="comment">// 区分数组,普通对象</span></span><br><span class="line"><span class="keyword">typeof</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>] === <span class="string">'object'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> <span class="keyword">new</span> <span class="built_in">Date</span>() === <span class="string">'object'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 下面的容易令人迷惑，不要使用！</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="literal">true</span>) === <span class="string">'object'</span>;</span><br><span class="line"><span class="keyword">typeof</span> <span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">1</span>) === <span class="string">'object'</span>;</span><br><span class="line"><span class="keyword">typeof</span> <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">"abc"</span>) === <span class="string">'object'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125; === <span class="string">'function'</span>;</span><br><span class="line"><span class="keyword">typeof</span> <span class="class"><span class="keyword">class</span> <span class="title">C</span></span>&#123;&#125; === <span class="string">'function'</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="built_in">Math</span>.sin === <span class="string">'function'</span>;</span><br><span class="line"><span class="keyword">typeof</span> <span class="keyword">new</span> <span class="built_in">Function</span>() === <span class="string">'function'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">null</span> === <span class="string">'object'</span>; <span class="comment">// 从一开始出现JavaScript就是这样的</span></span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>JavaScript 中目前一共有 7 种数据类型，<code>Boolean</code>，<code>Null</code>，<code>Undefined</code>，<code>Number</code>，<code>String</code>，<code>Symbol</code>（ES 6 新增） 和 <code>Object</code>。</p>
+<p>其中基本数据类型一共有 6 种，分别是 <code>Boolean</code>，<code>Null</code>，<code>Undefined</code>，<code>Number</code>，<code>String</code> 和 <code>Symbol</code>。</p>
+<p>而常见的诸如函数（<code>function</code>），数组（<code>array</code>）等，都是属于对象，<code>Object</code> 类型。</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures" target="_blank" rel="noopener">JavaScript 数据类型和数据结构</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof" target="_blank" rel="noopener">typeof 操作符</a></li>
 </ul>
-<blockquote>
-<p><strong>注意：</strong> <code>initial</code> 和 <code>unset</code> 不被IE支持。</p>
-</blockquote>
 
       
     </div>
@@ -497,7 +581,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://cj1406942109.github.io/2018/08/13/CSS 样式层叠继承规则/" title="CSS 样式层叠继承规则">http://cj1406942109.github.io/2018/08/13/CSS 样式层叠继承规则/</a>
+    <a href="http://cj1406942109.github.io/2018/12/26/JavaScript中的7种数据类型详解/" title="JavaScript 中的 7 种数据类型详解">http://cj1406942109.github.io/2018/12/26/JavaScript中的7种数据类型详解/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -512,7 +596,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/CSS-布局/" rel="tag"><i class="fa fa-tag"></i> CSS 布局</a>
+            <a href="/tags/JavaScript/" rel="tag"><i class="fa fa-tag"></i> JavaScript</a>
+          
+            <a href="/tags/ES6/" rel="tag"><i class="fa fa-tag"></i> ES6</a>
+          
+            <a href="/tags/数据类型/" rel="tag"><i class="fa fa-tag"></i> 数据类型</a>
           
         </div>
       
@@ -525,8 +613,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/13/CSS 常见的布局方式/" rel="next" title="CSS 常见的布局方式">
-                <i class="fa fa-chevron-left"></i> CSS 常见的布局方式
+              <a href="/2018/12/21/CSS实现元素垂直居中方法总结/" rel="next" title="CSS 实现元素垂直居中方法总结">
+                <i class="fa fa-chevron-left"></i> CSS 实现元素垂直居中方法总结
               </a>
             
           </div>
@@ -534,10 +622,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/23/Centos 根据 PID 查看进程详细信息/" rel="prev" title="Centos 根据 PID 查看进程详细信息">
-                Centos 根据 PID 查看进程详细信息 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -699,7 +783,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#层叠"><span class="nav-number">1.</span> <span class="nav-text">层叠</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#重要性"><span class="nav-number">1.1.</span> <span class="nav-text">重要性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#专用性"><span class="nav-number">1.2.</span> <span class="nav-text">专用性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#源码顺序"><span class="nav-number">1.3.</span> <span class="nav-text">源码顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#规则混合的注意事项"><span class="nav-number">1.4.</span> <span class="nav-text">规则混合的注意事项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继承"><span class="nav-number">2.</span> <span class="nav-text">继承</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-number">1.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本数据类型"><span class="nav-number">2.</span> <span class="nav-text">基本数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Boolean-类型"><span class="nav-number">2.1.</span> <span class="nav-text">Boolean 类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Null-类型"><span class="nav-number">2.2.</span> <span class="nav-text">Null 类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Undefined-类型"><span class="nav-number">2.3.</span> <span class="nav-text">Undefined 类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#严格相等操作符"><span class="nav-number">2.3.1.</span> <span class="nav-text">严格相等操作符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#typeof-操作符"><span class="nav-number">2.3.2.</span> <span class="nav-text">typeof 操作符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#void-操作符"><span class="nav-number">2.3.3.</span> <span class="nav-text">void 操作符</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Number-类型"><span class="nav-number">2.4.</span> <span class="nav-text">Number 类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String-类型"><span class="nav-number">2.5.</span> <span class="nav-text">String 类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Symbol-类型"><span class="nav-number">2.6.</span> <span class="nav-text">Symbol 类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用类型"><span class="nav-number">3.</span> <span class="nav-text">引用类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对象"><span class="nav-number">3.1.</span> <span class="nav-text">对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#typeof-操作符与数据类型"><span class="nav-number">4.</span> <span class="nav-text">typeof 操作符与数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考链接"><span class="nav-number">6.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
             
 
           </div>

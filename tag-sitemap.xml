@@ -318,21 +318,7 @@
     </url>
 
     <url>
-        <loc>http://cj1406942109.github.io/tags/JavaScript/</loc>
-        <lastmod>2018-12-13T09:28:52.172Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://cj1406942109.github.io/tags/%E6%A8%A1%E5%9D%97%E5%8C%96/</loc>
-        <lastmod>2018-12-13T09:28:52.172Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://cj1406942109.github.io/tags/ES6/</loc>
         <lastmod>2018-12-13T09:28:52.172Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -383,6 +369,27 @@
     <url>
         <loc>http://cj1406942109.github.io/tags/%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD/</loc>
         <lastmod>2018-12-21T14:13:08.728Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://cj1406942109.github.io/tags/JavaScript/</loc>
+        <lastmod>2018-12-26T09:39:56.358Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://cj1406942109.github.io/tags/ES6/</loc>
+        <lastmod>2018-12-26T09:39:56.358Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://cj1406942109.github.io/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</loc>
+        <lastmod>2018-12-26T09:39:56.358Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
