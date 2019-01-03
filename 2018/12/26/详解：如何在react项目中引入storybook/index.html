@@ -455,7 +455,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; configure &#125; <span class="keyword">from</span> <span class="string">'@storybook/react'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> req = <span class="built_in">require</span>.context(<span class="string">'../stories'</span>, <span class="literal">true</span>, /.stories.js$/);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadStories</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  req.keys().forEach(<span class="function"><span class="params">filename</span> =&gt;</span> req(filename));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">configure(loadStories, <span class="built_in">module</span>);</span><br></pre></td></tr></table></figure>
 <p>安装上面的代码修改之后，我们就能批量导入根目录下 <code>stories</code> 目录中的所有 <code>.stories.js</code> 为后缀的文件了。</p>
 <h2 id="第五步：创建-stories"><a href="#第五步：创建-stories" class="headerlink" title="第五步：创建 stories"></a>第五步：创建 stories</h2><p>接下来，我们需要创建 stories 了。接第四步，我们在项目根目录下创建 <code>stories</code> 目录，并在该目录下创建 <code>index.js</code> 文件，其内容如下：</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// stories/index.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; storiesOf &#125; <span class="keyword">from</span> <span class="string">'@storybook/react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Button &#125; <span class="keyword">from</span> <span class="string">'@storybook/react/demo'</span>;</span><br><span class="line"></span><br><span class="line">storiesOf(<span class="string">'Button'</span>, <span class="built_in">module</span>)</span><br><span class="line">  .add(<span class="string">'with text'</span>, () =&gt; (</span><br><span class="line">    &lt;Button&gt;Hello Button&lt;<span class="regexp">/Button&gt;</span></span><br><span class="line"><span class="regexp">  ))</span></span><br><span class="line"><span class="regexp">  .add('with some emoji', () =&gt; (</span></span><br><span class="line"><span class="regexp">    &lt;Button&gt;&lt;span role="img" aria-label="so cool"&gt;😀 😎 👍 💯&lt;/</span>span&gt;&lt;/Button&gt;</span><br><span class="line">  ));</span><br></pre></td></tr></table></figure>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// stories/index.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; storiesOf &#125; <span class="keyword">from</span> <span class="string">'@storybook/react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Button &#125; <span class="keyword">from</span> <span class="string">'@storybook/react/demo'</span>;</span><br><span class="line"></span><br><span class="line">storiesOf(<span class="string">'Button'</span>, <span class="built_in">module</span>)</span><br><span class="line">  .add(<span class="string">'with text'</span>, () =&gt; (</span><br><span class="line">    &lt;Button&gt;Hello Button&lt;<span class="regexp">/Button&gt;</span></span><br><span class="line"><span class="regexp">  ))</span></span><br><span class="line"><span class="regexp">  .add('with some emoji', () =&gt; (</span></span><br><span class="line"><span class="regexp">    &lt;Button&gt;&lt;span role="img" aria-label="so cool"&gt;😀 😎 👍 💯&lt;/</span>span&gt;<span class="xml"><span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span></span><br><span class="line">  ));</span><br></pre></td></tr></table></figure>
 <h2 id="第六步：启动-storybook"><a href="#第六步：启动-storybook" class="headerlink" title="第六步：启动 storybook"></a>第六步：启动 storybook</h2><p>到这一步，所有的准备工作已经做好了，只需要启动 storybook 即可：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run storybook</span><br></pre></td></tr></table></figure>
 <p>服务启动之后，会自动打开浏览器：</p>
@@ -533,6 +533,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/03/CSS-中伪元素的-content-属性详解/" rel="prev" title="CSS 中伪元素的 content 属性详解">
+                CSS 中伪元素的 content 属性详解 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -616,7 +620,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">64</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -638,7 +642,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">63</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -714,7 +718,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -728,7 +732,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">51.9k</span>
+    <span title="Site words total count">54.9k</span>
   
 </div>
 
