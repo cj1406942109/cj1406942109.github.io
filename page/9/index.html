@@ -313,7 +313,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cj1406942109.github.io/2018/07/04/latex-and-vscode-integration-on-windows/">
+    <link itemprop="mainEntityOfPage" href="http://cj1406942109.github.io/2018/07/04/latex-document-compile-methods/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Abraham">
@@ -332,7 +332,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/07/04/latex-and-vscode-integration-on-windows/" itemprop="url">Windows 下 VSCode + Latex 的集成使用</a></h2>
+                <a class="post-title-link" href="/2018/07/04/latex-document-compile-methods/" itemprop="url">Latex 文档编译方法</a></h2>
         
 
         <div class="post-meta">
@@ -398,7 +398,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  426 字
+                  536 字
                 </span>
               
 
@@ -414,7 +414,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  2 分钟
                 </span>
               
             </div>
@@ -436,10 +436,11 @@
 
       
         
-          <p>本文将简单介绍 Windows 下 VSCode + Latex 的集成使用的环境配置过程。</p>
+          <p>几种常见的编译方式: XeLaTeX， pdfLaTeX， LaTeX。 推荐使用XeLaTeX， pdfLaTeX 编译， 直接<br>得到pdf 文档。</p>
+<p>不同的编译方法， 对应的源文件一般略有不同。 使用pdfLATEX 编译得到的<br>pdf 文件， 其中文是乱码。 需要增加UTF8 选项：<br><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">\<span class="name">documentclass</span><span class="string">[UTF8]</span><span class="string">&#123;ctexart&#125;</span></span></span><br><span class="line"><span class="tag">\<span class="name">begin</span><span class="string">&#123;document&#125;</span></span></span><br><span class="line">  中文文档测试。</span><br><span class="line"><span class="tag">\<span class="name">end</span><span class="string">&#123;document&#125;</span></span></span><br></pre></td></tr></table></figure></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/07/04/latex-and-vscode-integration-on-windows/#more" rel="contents">
+            <a class="btn" href="/2018/07/04/latex-document-compile-methods/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>

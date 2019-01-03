@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://cj1406942109.github.io/2018/11/01/this-and-arrow-function-in-js/</loc>
+    <lastmod>2019-01-03T12:37:27.251Z</lastmod>
+  </url>  <url>
+    <loc>http://cj1406942109.github.io/2016/11/11/linux-ftp/</loc>
+    <lastmod>2019-01-03T12:35:25.162Z</lastmod>
+  </url>  <url>
     <loc>http://cj1406942109.github.io/2018/12/26/detailed-description-of-7-data-types-in-js/</loc>
     <lastmod>2019-01-03T10:11:24.075Z</lastmod>
   </url>  <url>
     <loc>http://cj1406942109.github.io/2018/08/29/js-expressions-and-operators/</loc>
     <lastmod>2019-01-03T10:10:39.704Z</lastmod>
-  </url>  <url>
-    <loc>http://cj1406942109.github.io/2018/11/01/this-and-arrow-function-in-js/</loc>
-    <lastmod>2019-01-03T10:10:12.640Z</lastmod>
   </url>  <url>
     <loc>http://cj1406942109.github.io/2018/08/30/js-arithmetic-operator/</loc>
     <lastmod>2019-01-03T10:09:44.028Z</lastmod>
@@ -57,9 +60,6 @@
   </url>  <url>
     <loc>http://cj1406942109.github.io/2018/12/26/npx-create-react-app-my-app-no-response/</loc>
     <lastmod>2019-01-03T10:04:04.056Z</lastmod>
-  </url>  <url>
-    <loc>http://cj1406942109.github.io/2016/11/11/linux-ftp/</loc>
-    <lastmod>2019-01-03T10:03:48.676Z</lastmod>
   </url>  <url>
     <loc>http://cj1406942109.github.io/2018/07/04/latex-document-compile-methods/</loc>
     <lastmod>2019-01-03T10:03:29.791Z</lastmod>
