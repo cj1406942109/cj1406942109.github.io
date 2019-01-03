@@ -22,8 +22,8 @@
         <category>React</category>
       </categories>
       <tags>
-        <tag>create-react-app</tag>
         <tag>storybook</tag>
+        <tag>create-react-app</tag>
       </tags>
   </entry>
   <entry>
@@ -34,8 +34,8 @@
         <category>React</category>
       </categories>
       <tags>
-        <tag>npx</tag>
         <tag>create-react-app</tag>
+        <tag>npx</tag>
       </tags>
   </entry>
   <entry>
@@ -85,8 +85,8 @@
       </categories>
       <tags>
         <tag>JavaScript</tag>
-        <tag>模块化</tag>
         <tag>ES6</tag>
+        <tag>模块化</tag>
         <tag>Import</tag>
         <tag>Export</tag>
       </tags>
@@ -100,8 +100,8 @@
       </categories>
       <tags>
         <tag>JavaScript</tag>
-        <tag>模块化</tag>
         <tag>ES6</tag>
+        <tag>模块化</tag>
         <tag>CommonJS</tag>
         <tag>AMD</tag>
         <tag>CMD</tag>
@@ -155,9 +155,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Babel 配置]]></title>
-    <url>%2F2018%2F10%2F31%2Fhow-to-config-babel%2F</url>
-    <content type="text"><![CDATA[Babel 是可以配置的。很多其他的工具都有着类似地配置：ESLint（.eslintrc），Prettier（.prettierrc）。 查看所有的 Babel API 选项。 你的应用场景是什么？ 你希望以编程方式创建配置？ 你想编译node_modules？ 那么使用babel.config.js吧。 你的静态配置只应用于简单的单个包? 那么使用.babelrc吧。 babel.config.js在你的项目根目录下创建一个名为babel.config.js的文件，包含以下内容：123456789module.exports = function () &#123; const presets = [ ... ]; const plugins = [ ... ]; return &#123; presets, plugins &#125;;&#125; 查看 babel.config.js 文档浏览更多配置选项。 .babelrc在项目中创建一个名为.babelrc的文件，包含以下内容：1234&#123; "presets": [...], "plugins": [...]&#125; 查看 .babelrc 文档浏览更多配置选项。 package.json你也可以在package.json文件中指定.babelrc配置：12345678&#123; "name": "my-package", "version": "1.0.0", "babel": &#123; "presets": [ ... ], "plugins": [ ... ], &#125;&#125; .babelrc.js除了你可以使用 JavaScript 编写之外，其他配置和.babelrc一样：1234const presets = [ ... ];const plugins = [ ... ];module.exports = &#123; presets, plugins &#125;; 你可以访问任何 Node.js 的 API ，例如基于进程的环境进行动态配置：12345678const presets = [ ... ];const plugins = [ ... ];if (process.env["ENV"] === "prod") &#123; plugins.push(...);&#125;module.exports = &#123; presets, plugins &#125;; 使用 CLI（@babel/cli）1babel --plugins @babel/plugin-transform-arrow-functions script.js 查看 babel-cli 文档浏览更多配置选项。 使用 API（@babel/core）123require("@babel/core").transform("code", &#123; plugins: ["@babel/plugin-transform-arrow-functions"]&#125;); 查看 babel-core 文档浏览更多配置选项。]]></content>
+    <title><![CDATA[Babel Preset 详解]]></title>
+    <url>%2F2018%2F10%2F31%2Fbabel-preset-detail%2F</url>
+    <content type="text"><![CDATA[我们在转换代码时，可能会用到很多其他的 ES2015+ 的特性，此时，为了避免一个一个的添加插件，我们可以使用preset，这是一个预先确定的插件集。 就像使用插件一样，你也可以创建自己的 Preset 来共享你需要的任何插件组合。 不想组装自己的插件集？没问题！ Preset 可以作为一个 Babel 插件数组，甚至一个可共享的选项配置。 对于我们这里的用例，有一个非常好的 Preset 名为env。 123npm install --save-dev @babel/preset-env./node_modules/.bin/babel src --out-dir lib --presets=@babel/env 没有任何配置的情况下，该preset会包含所有的插件来支持现代化 JavaScript （ES2015，ES2016，…）。当然，Preset 也可以配置选项。除了从命令行同时传递cli和preset选项，我们可以使用配置文件传递配置选项。 配置 Preset创建一个包含以下内容的babel.config.js文件：123456789101112131415const presets = [ [ "@babel/env", &#123; targets: &#123; edge: "17", firefox: "60", chrome: "67", safari: "11.1", &#125;, &#125;, ],];module.exports = &#123; presets &#125;; 现在，env Preset 只会加载我们指定的浏览器不包含的一些特性的转换插件。 官方 Presets官方为常见的环境组装了一些： @babel/preset-env @babel/preset-flow @babel/preset-react @babel/preset-typescript 许多其他社区维护的 Preset 在 npm 上可用! stage-X (实验性 Preset)stage-x Presets 中的任何转换都是对尚未被批准作为 Javascript 版本（如 ES6/ES2015）的一部分的语言的更改。 这些提议可能会改变，所以使用时要格外小心，尤其是对于任何准备阶段3的项目。我们计划在每次 TC39 会议后，当提案改变时，更新 stage-x 预设。 TC39 将提议分为以下阶段: Stage 0 - Strawman: 只是一个想法，可能是 Babel 插件 Stage 1 - Proposal: 这是值得努力的 Stage 2 - Draft: 最初的规范 Stage 3 - Candidate: 完整的规范和最初的浏览器实现 Stage 4 - Finished: 将添加到下一个年度版本 创建一个 Preset创建你自己的 Preset，只需要导出一个配置，返回一个插件的数组：123456789module.exports = function() &#123; return &#123; plugins: [ "pluginA", "pluginB", "pluginC", ] &#125;;&#125; Preset 可以包含其他的 Preset 和带选项的插件：123456789module.exports = () =&gt; (&#123; presets: [ require("@babel/preset-env"), ], plugins: [ [require("@babel/plugin-proposal-class-properties"), &#123; loose: true &#125;], require("@babel/plugin-proposal-object-rest-spread"), ],&#125;); Preset 路径如果在 npm 上，你可以传入 Preset 的名称，Babel 将检查它是否安装在 node_modules 中：123&#123; "presets": ["babel-preset-myPreset"]&#125; 也可以指定 Preset 的相对路径或绝对路径：123&#123; "presets": ["./myProject/myPreset"]&#125; Preset 缩写如果包名的前缀为babel-preset-，可以使用缩写：123456&#123; "presets": [ "myPreset", "babel-preset-myPreset" // equivalent ]&#125; 123456&#123; "presets": [ "@org/babel-preset-name", "@org/name" // equivalent ]&#125; Preset 排序Preset 的排序是逆向的，从最后一个到第一个。1234567&#123; "presets": [ "a", "b", "c" ]&#125; 将会按c，b，a的顺序运行。]]></content>
       <categories>
         <category>JavaScript</category>
       </categories>
@@ -166,9 +166,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Babel Preset 详解]]></title>
-    <url>%2F2018%2F10%2F31%2Fbabel-preset-detail%2F</url>
-    <content type="text"><![CDATA[我们在转换代码时，可能会用到很多其他的 ES2015+ 的特性，此时，为了避免一个一个的添加插件，我们可以使用preset，这是一个预先确定的插件集。 就像使用插件一样，你也可以创建自己的 Preset 来共享你需要的任何插件组合。 不想组装自己的插件集？没问题！ Preset 可以作为一个 Babel 插件数组，甚至一个可共享的选项配置。 对于我们这里的用例，有一个非常好的 Preset 名为env。 123npm install --save-dev @babel/preset-env./node_modules/.bin/babel src --out-dir lib --presets=@babel/env 没有任何配置的情况下，该preset会包含所有的插件来支持现代化 JavaScript （ES2015，ES2016，…）。当然，Preset 也可以配置选项。除了从命令行同时传递cli和preset选项，我们可以使用配置文件传递配置选项。 配置 Preset创建一个包含以下内容的babel.config.js文件：123456789101112131415const presets = [ [ "@babel/env", &#123; targets: &#123; edge: "17", firefox: "60", chrome: "67", safari: "11.1", &#125;, &#125;, ],];module.exports = &#123; presets &#125;; 现在，env Preset 只会加载我们指定的浏览器不包含的一些特性的转换插件。 官方 Presets官方为常见的环境组装了一些： @babel/preset-env @babel/preset-flow @babel/preset-react @babel/preset-typescript 许多其他社区维护的 Preset 在 npm 上可用! stage-X (实验性 Preset)stage-x Presets 中的任何转换都是对尚未被批准作为 Javascript 版本（如 ES6/ES2015）的一部分的语言的更改。 这些提议可能会改变，所以使用时要格外小心，尤其是对于任何准备阶段3的项目。我们计划在每次 TC39 会议后，当提案改变时，更新 stage-x 预设。 TC39 将提议分为以下阶段: Stage 0 - Strawman: 只是一个想法，可能是 Babel 插件 Stage 1 - Proposal: 这是值得努力的 Stage 2 - Draft: 最初的规范 Stage 3 - Candidate: 完整的规范和最初的浏览器实现 Stage 4 - Finished: 将添加到下一个年度版本 创建一个 Preset创建你自己的 Preset，只需要导出一个配置，返回一个插件的数组：123456789module.exports = function() &#123; return &#123; plugins: [ "pluginA", "pluginB", "pluginC", ] &#125;;&#125; Preset 可以包含其他的 Preset 和带选项的插件：123456789module.exports = () =&gt; (&#123; presets: [ require("@babel/preset-env"), ], plugins: [ [require("@babel/plugin-proposal-class-properties"), &#123; loose: true &#125;], require("@babel/plugin-proposal-object-rest-spread"), ],&#125;); Preset 路径如果在 npm 上，你可以传入 Preset 的名称，Babel 将检查它是否安装在 node_modules 中：123&#123; "presets": ["babel-preset-myPreset"]&#125; 也可以指定 Preset 的相对路径或绝对路径：123&#123; "presets": ["./myProject/myPreset"]&#125; Preset 缩写如果包名的前缀为babel-preset-，可以使用缩写：123456&#123; "presets": [ "myPreset", "babel-preset-myPreset" // equivalent ]&#125; 123456&#123; "presets": [ "@org/babel-preset-name", "@org/name" // equivalent ]&#125; Preset 排序Preset 的排序是逆向的，从最后一个到第一个。1234567&#123; "presets": [ "a", "b", "c" ]&#125; 将会按c，b，a的顺序运行。]]></content>
+    <title><![CDATA[Babel 配置]]></title>
+    <url>%2F2018%2F10%2F31%2Fhow-to-config-babel%2F</url>
+    <content type="text"><![CDATA[Babel 是可以配置的。很多其他的工具都有着类似地配置：ESLint（.eslintrc），Prettier（.prettierrc）。 查看所有的 Babel API 选项。 你的应用场景是什么？ 你希望以编程方式创建配置？ 你想编译node_modules？ 那么使用babel.config.js吧。 你的静态配置只应用于简单的单个包? 那么使用.babelrc吧。 babel.config.js在你的项目根目录下创建一个名为babel.config.js的文件，包含以下内容：123456789module.exports = function () &#123; const presets = [ ... ]; const plugins = [ ... ]; return &#123; presets, plugins &#125;;&#125; 查看 babel.config.js 文档浏览更多配置选项。 .babelrc在项目中创建一个名为.babelrc的文件，包含以下内容：1234&#123; "presets": [...], "plugins": [...]&#125; 查看 .babelrc 文档浏览更多配置选项。 package.json你也可以在package.json文件中指定.babelrc配置：12345678&#123; "name": "my-package", "version": "1.0.0", "babel": &#123; "presets": [ ... ], "plugins": [ ... ], &#125;&#125; .babelrc.js除了你可以使用 JavaScript 编写之外，其他配置和.babelrc一样：1234const presets = [ ... ];const plugins = [ ... ];module.exports = &#123; presets, plugins &#125;; 你可以访问任何 Node.js 的 API ，例如基于进程的环境进行动态配置：12345678const presets = [ ... ];const plugins = [ ... ];if (process.env["ENV"] === "prod") &#123; plugins.push(...);&#125;module.exports = &#123; presets, plugins &#125;; 使用 CLI（@babel/cli）1babel --plugins @babel/plugin-transform-arrow-functions script.js 查看 babel-cli 文档浏览更多配置选项。 使用 API（@babel/core）123require("@babel/core").transform("code", &#123; plugins: ["@babel/plugin-transform-arrow-functions"]&#125;); 查看 babel-core 文档浏览更多配置选项。]]></content>
       <categories>
         <category>JavaScript</category>
       </categories>
@@ -199,6 +199,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[Android Studio AVD 的配置与使用]]></title>
+    <url>%2F2018%2F10%2F12%2Fconfig-and-use-android-studio-avd%2F</url>
+    <content type="text"><![CDATA[本文将简单介绍 Android Stuido 中的 Android Virtual Device（AVD）的创建与运行，以及可能遇到的问题的解决方案。 Android Studio 自带的 AVDAndroid Studio 程序可以在真机上调试运行，Android Studio 也提供了模拟器来调试运行，这时需要配置 AVD 来选择你调试程序的模拟环境。 具体的配置过程不做详述，可以参考博客 Android Studio 中创建和启动 AVD 。 问题这里，在使用 AVD 时遇到一个问题，启动配置好的 AVD 时，发生如下错误：123Emulator: emulator: ERROR: x86 emulation currently requires hardware acceleration!Emulator: Process finished with exit code 1 这是因为：在 Intel CPU 的主机上，为了加速 AVD 模拟器的运行速度，需要启用 HAXM 。如果在没有启用 HAXM 时就运行程序，调用 AVD 模拟器时就会报该错误。 解决方案 确保电脑的BIOS已经启用Intel Virtual Technology。 正常安装 Android Studio 的情况下，intelhaxm-android.exe已经帮你下载好，其目录为{sdkpath}/extras/intel/Hardware_Accelerated_Execution_Manager，找到intelhaxm-android.exe，点击安装即可；如果没有下载，可以访问Intel® Hardware Accelerated Execution Manager手动下载安装。 安装完成之后，再次点击 AVD 启动按钮，即可正常运行 AVD。 注意：对于非 Intel CPU 的主机或不能安装 HAXM 的主机，则只能选择 arm 模拟器 或 选择其它第三方的模拟器（像Genymotion，夜神模拟器等）。]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android Studio</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Windows 下安装 Android Studio]]></title>
     <url>%2F2018%2F10%2F12%2Finstall-android-studio-on-windows%2F</url>
     <content type="text"><![CDATA[本文将简单介绍 Windows 系统（测试系统：win10）下的 Android Studio 集成开发环境的安装与配置，并新建项目进行简单的测试运行。 下载访问 Android Studio 官方网站，找到 Android Studio 的下载链接，点击下载即可。 安装安装比较简单，详情可以参考博客 Android studio 安装与配置 注意问题 安装时，默认情况会出现Unable to access Android SDK add-on list错误，这是因为其源需要翻墙才能访问。 解决方法，点击下方的setup proxy按钮，设置代理。可使用代理软件 Lantern 、 Shadowsocks 等。 安装成功之后，点击Config\Settings\，搜索encoding，将Project Encoding和Default encoding for properties files设置为UTF-8。 新建项目参考博客 Android studio 安装与配置新建项目，这里在安装 Gradle 时同样需要翻墙，设置代理之后，可能会下载失败，点击右上角的Try Again，多试几次即可。 生成 apk点击Build\Build Bundle(s)/APK(s)\Build/APK(s)，就可以在项目目录/app/build/outputs/apk/debug/app-debug.apk下，找到构建好的app，安装到手机上，就可以运行了。]]></content>
@@ -208,17 +219,6 @@
       <tags>
         <tag>Android Studio</tag>
         <tag>Windows</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Android Studio AVD 的配置与使用]]></title>
-    <url>%2F2018%2F10%2F12%2Fconfig-and-use-android-studio-avd%2F</url>
-    <content type="text"><![CDATA[本文将简单介绍 Android Stuido 中的 Android Virtual Device（AVD）的创建与运行，以及可能遇到的问题的解决方案。 Android Studio 自带的 AVDAndroid Studio 程序可以在真机上调试运行，Android Studio 也提供了模拟器来调试运行，这时需要配置 AVD 来选择你调试程序的模拟环境。 具体的配置过程不做详述，可以参考博客 Android Studio 中创建和启动 AVD 。 问题这里，在使用 AVD 时遇到一个问题，启动配置好的 AVD 时，发生如下错误：123Emulator: emulator: ERROR: x86 emulation currently requires hardware acceleration!Emulator: Process finished with exit code 1 这是因为：在 Intel CPU 的主机上，为了加速 AVD 模拟器的运行速度，需要启用 HAXM 。如果在没有启用 HAXM 时就运行程序，调用 AVD 模拟器时就会报该错误。 解决方案 确保电脑的BIOS已经启用Intel Virtual Technology。 正常安装 Android Studio 的情况下，intelhaxm-android.exe已经帮你下载好，其目录为{sdkpath}/extras/intel/Hardware_Accelerated_Execution_Manager，找到intelhaxm-android.exe，点击安装即可；如果没有下载，可以访问Intel® Hardware Accelerated Execution Manager手动下载安装。 安装完成之后，再次点击 AVD 启动按钮，即可正常运行 AVD。 注意：对于非 Intel CPU 的主机或不能安装 HAXM 的主机，则只能选择 arm 模拟器 或 选择其它第三方的模拟器（像Genymotion，夜神模拟器等）。]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android Studio</tag>
       </tags>
   </entry>
   <entry>
@@ -279,6 +279,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[JavaScript 表达式和运算符]]></title>
+    <url>%2F2018%2F08%2F29%2Fjs-expressions-and-operators%2F</url>
+    <content type="text"><![CDATA[JavaScript 拥有二元和一元运算符， 和一个特殊的三元运算符（条件运算符）。 一个二元运算符需要两个操作数，分别在运算符的前面和后面：1操作数1 运算符 操作数2 // 如：3+4 或 x*y。 一个一元运算符需要一个操作数，在运算符前面或后面：12345运算符 操作数 // 如：++x// 或操作数 运算符 // 如：x++ 主要表达式JavaScript中基本关键字和常用表达式。 this：this 关键字指向函数的执行上下文。 function：function 关键字定义了函数表达式。 class：class 关键字定义了类表达式。 function*：function* 关键字定义了一个 generator 函数表达式。 yield：暂停和恢复 generator 函数。 yield*：委派给另外一个generator函数或可迭代的对象。 []：数组初始化/字面量语法。 {}：对象初始化/字面量语法。 /ab+c/i：正则表达式字面量语法。 ( )：分组操作符。 赋值运算符一个 赋值运算符(assignment operator) 将它右边操作数的值赋给它左边的操作数。最简单的赋值运算符是等于（=），它将右边的操作数值赋给左边的操作数。 还有一些复合赋值操作符。 名字 简写的操作符 含义 赋值(Assignment) x = y x = y 加法赋值(Addition assignment) x += y x = x + y 减法赋值(Subtraction assignment) x -= y x = x - y 乘法赋值(Multiplication assignment) x *= y x = x * y 除法赋值(Division assignment) x /= y x = x / y 求余赋值(Remainder assignment) x %= y x = x % y 求幂赋值(Exponentiation assignment) x **= y x = x ** y 左移位赋值(Left shift assignment) x &lt;&lt;= y x = x &lt;&lt; y 右移位赋值(Right shift assignment) x &gt;&gt;= y x = x &gt;&gt; y 无符号右移位赋值(Unsigned right shift assignment) x &gt;&gt;&gt;= y x = x &gt;&gt;&gt; y 按位与赋值(Bitwise AND assignment) x &amp;= y x = x &amp; y 按位异或赋值(Bitwise XOR assignment) x ^= y x = x ^ y 按位或赋值(Bitwise OR assignment) `x \ = y` `x = x \ y` 位运算符位运算符将它的操作数视为32位元的二进制串（0和1组成）而非十进制八进制或十六进制数。例如：十进制数字9用二进制表示为1001，位运算符就是在这个二进制表示上执行运算，但是返回结果是标准的JavaScript数值。 操作符 用法 描述 按位与 AND a &amp; b 在 a,b 的位表示中，每一个对应的位都为1则返回1， 否则返回0。 按位或 OR `a \ b` 在 a,b 的位表示中，每一个对应的位，只要有一个为1则返回1， 否则返回0。 按位异或 XOR a ^ b 在 a,b 的位表示中，每一个对应的位，两个不相同则返回1，相同则返回0。 按位非 NOT ~a 反转被操作数的位。 左移 shift a &lt;&lt; b 将a的二进制串向左移动b位，右边移入0。 算术右移 a &gt;&gt; b 把 a 的二进制表示向右移动 b 位，丢弃被移出的所有位。算术右移左边空出的位是根据最高位是0和1来进行填充的。 无符号右移 (左边空出位用0填充) a &gt;&gt;&gt; b 把 a 的二进制表示向右移动 b 位，丢弃被移出的所有位，并把左边空出的位都填充为0。 位逻辑运算符概念上来讲, 位逻辑运算符工作流程如下: 操作数被转换为32位整数，以位序列（0和1组成）表示。若超过32位，则取地位32位，如下所示： 12Before: 11100110111110100000000000000110000000000001After: 10100000000000000110000000000001 第一个操作数的每一位都与第二个操作数的对应位组对: 第一位对应第一位,第二位对应第二位，以此类推。 运算符被应用到每一对“位”上，最终的运算结果由每一对“位”的运算结果组合起来。 示例： 表达式 结果 二进制描述 15 &amp; 9 9 1111 &amp; 1001 = 1001 `15 \ 9` 15 `1111 1001 = 1111` 15 ^ 9 6 1111 &amp; 1001 = 0110 ~15 -16 ~00000000...00001111 = 11111111...11110000 ~9 -10 ~00000000...00001001 = 11111111...11110110 注意位运算符“非”将所有的32位取反，而值的最高位(最左边的一位)为1则表示负数(2-补码表示法)。 移位运算符移位运算符带两个操作数：第一个是待移位的数，第二个是指定第一个数要被移多少位的数。移位的方向由运算符来控制。 移位运算符把操作数转为32位整数，然后得出一个与待移位数相同种类的值。 移位运算符列表如下。 运算符 描述 范例 &lt;&lt;(左移位) 将第一个操作数向左移动指定数量的位。左边移出位被抛弃。左边移出的几位被丢弃，右边多出的空位由0补齐。 9&lt;&lt;2产生36，因为1001移位2比特向左变为100100，它是36。 &gt;&gt;(带符号右移) 将第一个操作数向右移动指定数量的位。右边移出位被抛弃，左边多出的空位由原值的最左边数字补齐。 9&gt;&gt;2产生2，因为1001移位2位向右变为10，其是2。同样，-9&gt;&gt;2产生-3，由于符号被保留。 &gt;&gt;&gt;(补零右移) 将第一个操作数向右移动指定数量的位。右边移出位被抛弃，左边多出的空位由0补齐。 19&gt;&gt;&gt;2产生4，因为10011移位2位向右变为100，它是4。对非负数值，补零右移和带符号右移产生相同结果。 一元操作符一元操作符仅对应一个操作数。 delete 操作符，删除一个对象或一个对象的属性或者一个数组中某一个键值。 1234delete objectName;delete objectName.property;delete objectName[index];delete property; // legal only within a with statement 你能使用 delete 删除各种各样的隐式声明， 但是被var声明的除外。 如果 delete 操作成功，属性或者元素会变成 undefined。如果 delete可行会返回true，如果不成功返回false。 123456789x = 42;var y = 43;myobj = new Number();myobj.h = 4; // create property hdelete x; // returns true (can delete if declared implicitly)delete y; // returns false (cannot delete if declared with var)delete Math.PI; // returns false (cannot delete predefined properties)delete myobj.h; // returns true (can delete user-defined properties)delete myobj; // returns true (can delete if declared implicitly) 删除数组中的元素时，数组的长度是不变的，例如删除 a[3], a[4]，a[4] 和 a[3] 仍然存在变成了undefined。 delete 删除数组中的一个元素，这个元素就不在数组中了。例如，trees[3]被删除，trees[3] 仍然可寻址并返回undefined。 12345var trees = new Array("redwood", "bay", "cedar", "oak", "maple");delete trees[3];if (3 in trees) &#123; // 不会被执行&#125; 如果想让数组中存在一个元素但是是undefined值，使用undefined关键字而不是delete操作. 如下： trees[3] 分配一个undefined,但是这个数组元素仍然存在: 12345var trees = new Array("redwood", "bay", "cedar", "oak", "maple");trees[3] = undefined;if (3 in trees) &#123; // this gets executed（会被执行）&#125; typeof操作符可通过下面2种方式使用 12typeof operandtypeof (operand) void 运算符运用方法如下： 12void (expression)void expression void 运算符，表明一个运算没有返回值。expression 是 JavaScript 表达式，括号中的表达式是一个可选项，当然使用该方式是一种好的形式。 12345&lt;!-- 如下创建了一个超链接文本，当用户单击该文本时，不会有任何效果 --&gt;&lt;a href="javascript:void(0)"&gt;Click here to do nothing&lt;/a&gt;&lt;!-- 下面的代码创建了一个超链接，当用户单击它时，提交一个表单。 --&gt;&lt;a href="javascript:void(document.form.submit())"&gt;Click here to submit&lt;/a&gt; 关系操作符关系操作符对操作数进行比较，根据比较结果真或假，返回相应的布尔值。 in 操作符，如果所指定的属性确实存在于所指定的对象中，则会返回true，语法如下：1propNameOrNumber in objectName 123456789101112131415161718// Arraysvar trees = new Array("redwood", "bay", "cedar", "oak", "maple");0 in trees; // returns true3 in trees; // returns true6 in trees; // returns false"bay" in trees; // returns false (you must specify the index number, // not the value at that index)"length" in trees; // returns true (length is an Array property)// Predefined objects"PI" in Math; // returns truevar myString = new String("coral");"length" in myString; // returns true// Custom objectsvar mycar = &#123;make: "Honda", model: "Accord", year: 1998&#125;;"make" in mycar; // returns true"model" in mycar; // returns true instanceof如果所判别的对象确实是所指定的类型，则返回true。其语法如下： 1objectName instanceof objectType 当你需要确认一个对象在运行时的类型时，可使用instanceof. 例如，需要 catch 异常时，你可以针对抛出异常的类型，来做不同的异常处理。 1234var theDay = new Date(1995, 12, 17);if (theDay instanceof Date) &#123; // statements to execute&#125;]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[JavaScript 变量提升]]></title>
     <url>%2F2018%2F08%2F29%2Fjs-hoisting%2F</url>
     <content type="text"><![CDATA[因为变量声明在任何代码执行之前被处理，所以在变量作用域的任何地方声明一个变量等同于在变量作用域的顶部声明该变量。 因此，一个变量可以在它被声明之前使用，这种行为，就叫 变量提升（hoisting），其表现就是变量声明会被移动到函数或者全局代码的顶部。 由于该原因，建议始终在变量的作用域（全局代码或函数）顶部声明该变量，这样能够很清晰地看到哪些变量是局部变量，哪些事全局变量。 注意： 变量提升会影响变量声明，但是不会影响变量值得初始化。 12345678910111213function do_something() &#123; console.log(bar); // undefined var bar = 111; console.log(bar); // 111&#125;// is implicitly understood as: function do_something() &#123; var bar; console.log(bar); // undefined bar = 111; console.log(bar); // 111&#125;]]></content>
@@ -313,14 +324,16 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[JavaScript 表达式和运算符]]></title>
-    <url>%2F2018%2F08%2F29%2Fjs-expressions-and-operators%2F</url>
-    <content type="text"><![CDATA[JavaScript 拥有二元和一元运算符， 和一个特殊的三元运算符（条件运算符）。 一个二元运算符需要两个操作数，分别在运算符的前面和后面：1操作数1 运算符 操作数2 // 如：3+4 或 x*y。 一个一元运算符需要一个操作数，在运算符前面或后面：12345运算符 操作数 // 如：++x// 或操作数 运算符 // 如：x++ 主要表达式JavaScript中基本关键字和常用表达式。 this：this 关键字指向函数的执行上下文。 function：function 关键字定义了函数表达式。 class：class 关键字定义了类表达式。 function*：function* 关键字定义了一个 generator 函数表达式。 yield：暂停和恢复 generator 函数。 yield*：委派给另外一个generator函数或可迭代的对象。 []：数组初始化/字面量语法。 {}：对象初始化/字面量语法。 /ab+c/i：正则表达式字面量语法。 ( )：分组操作符。 赋值运算符一个 赋值运算符(assignment operator) 将它右边操作数的值赋给它左边的操作数。最简单的赋值运算符是等于（=），它将右边的操作数值赋给左边的操作数。 还有一些复合赋值操作符。 名字 简写的操作符 含义 赋值(Assignment) x = y x = y 加法赋值(Addition assignment) x += y x = x + y 减法赋值(Subtraction assignment) x -= y x = x - y 乘法赋值(Multiplication assignment) x *= y x = x * y 除法赋值(Division assignment) x /= y x = x / y 求余赋值(Remainder assignment) x %= y x = x % y 求幂赋值(Exponentiation assignment) x **= y x = x ** y 左移位赋值(Left shift assignment) x &lt;&lt;= y x = x &lt;&lt; y 右移位赋值(Right shift assignment) x &gt;&gt;= y x = x &gt;&gt; y 无符号右移位赋值(Unsigned right shift assignment) x &gt;&gt;&gt;= y x = x &gt;&gt;&gt; y 按位与赋值(Bitwise AND assignment) x &amp;= y x = x &amp; y 按位异或赋值(Bitwise XOR assignment) x ^= y x = x ^ y 按位或赋值(Bitwise OR assignment) `x \ = y` `x = x \ y` 位运算符位运算符将它的操作数视为32位元的二进制串（0和1组成）而非十进制八进制或十六进制数。例如：十进制数字9用二进制表示为1001，位运算符就是在这个二进制表示上执行运算，但是返回结果是标准的JavaScript数值。 操作符 用法 描述 按位与 AND a &amp; b 在 a,b 的位表示中，每一个对应的位都为1则返回1， 否则返回0。 按位或 OR `a \ b` 在 a,b 的位表示中，每一个对应的位，只要有一个为1则返回1， 否则返回0。 按位异或 XOR a ^ b 在 a,b 的位表示中，每一个对应的位，两个不相同则返回1，相同则返回0。 按位非 NOT ~a 反转被操作数的位。 左移 shift a &lt;&lt; b 将a的二进制串向左移动b位，右边移入0。 算术右移 a &gt;&gt; b 把 a 的二进制表示向右移动 b 位，丢弃被移出的所有位。算术右移左边空出的位是根据最高位是0和1来进行填充的。 无符号右移 (左边空出位用0填充) a &gt;&gt;&gt; b 把 a 的二进制表示向右移动 b 位，丢弃被移出的所有位，并把左边空出的位都填充为0。 位逻辑运算符概念上来讲, 位逻辑运算符工作流程如下: 操作数被转换为32位整数，以位序列（0和1组成）表示。若超过32位，则取地位32位，如下所示： 12Before: 11100110111110100000000000000110000000000001After: 10100000000000000110000000000001 第一个操作数的每一位都与第二个操作数的对应位组对: 第一位对应第一位,第二位对应第二位，以此类推。 运算符被应用到每一对“位”上，最终的运算结果由每一对“位”的运算结果组合起来。 示例： 表达式 结果 二进制描述 15 &amp; 9 9 1111 &amp; 1001 = 1001 `15 \ 9` 15 `1111 1001 = 1111` 15 ^ 9 6 1111 &amp; 1001 = 0110 ~15 -16 ~00000000...00001111 = 11111111...11110000 ~9 -10 ~00000000...00001001 = 11111111...11110110 注意位运算符“非”将所有的32位取反，而值的最高位(最左边的一位)为1则表示负数(2-补码表示法)。 移位运算符移位运算符带两个操作数：第一个是待移位的数，第二个是指定第一个数要被移多少位的数。移位的方向由运算符来控制。 移位运算符把操作数转为32位整数，然后得出一个与待移位数相同种类的值。 移位运算符列表如下。 运算符 描述 范例 &lt;&lt;(左移位) 将第一个操作数向左移动指定数量的位。左边移出位被抛弃。左边移出的几位被丢弃，右边多出的空位由0补齐。 9&lt;&lt;2产生36，因为1001移位2比特向左变为100100，它是36。 &gt;&gt;(带符号右移) 将第一个操作数向右移动指定数量的位。右边移出位被抛弃，左边多出的空位由原值的最左边数字补齐。 9&gt;&gt;2产生2，因为1001移位2位向右变为10，其是2。同样，-9&gt;&gt;2产生-3，由于符号被保留。 &gt;&gt;&gt;(补零右移) 将第一个操作数向右移动指定数量的位。右边移出位被抛弃，左边多出的空位由0补齐。 19&gt;&gt;&gt;2产生4，因为10011移位2位向右变为100，它是4。对非负数值，补零右移和带符号右移产生相同结果。 一元操作符一元操作符仅对应一个操作数。 delete 操作符，删除一个对象或一个对象的属性或者一个数组中某一个键值。 1234delete objectName;delete objectName.property;delete objectName[index];delete property; // legal only within a with statement 你能使用 delete 删除各种各样的隐式声明， 但是被var声明的除外。 如果 delete 操作成功，属性或者元素会变成 undefined。如果 delete可行会返回true，如果不成功返回false。 123456789x = 42;var y = 43;myobj = new Number();myobj.h = 4; // create property hdelete x; // returns true (can delete if declared implicitly)delete y; // returns false (cannot delete if declared with var)delete Math.PI; // returns false (cannot delete predefined properties)delete myobj.h; // returns true (can delete user-defined properties)delete myobj; // returns true (can delete if declared implicitly) 删除数组中的元素时，数组的长度是不变的，例如删除 a[3], a[4]，a[4] 和 a[3] 仍然存在变成了undefined。 delete 删除数组中的一个元素，这个元素就不在数组中了。例如，trees[3]被删除，trees[3] 仍然可寻址并返回undefined。 12345var trees = new Array("redwood", "bay", "cedar", "oak", "maple");delete trees[3];if (3 in trees) &#123; // 不会被执行&#125; 如果想让数组中存在一个元素但是是undefined值，使用undefined关键字而不是delete操作. 如下： trees[3] 分配一个undefined,但是这个数组元素仍然存在: 12345var trees = new Array("redwood", "bay", "cedar", "oak", "maple");trees[3] = undefined;if (3 in trees) &#123; // this gets executed（会被执行）&#125; typeof操作符可通过下面2种方式使用 12typeof operandtypeof (operand) void 运算符运用方法如下： 12void (expression)void expression void 运算符，表明一个运算没有返回值。expression 是 JavaScript 表达式，括号中的表达式是一个可选项，当然使用该方式是一种好的形式。 12345&lt;!-- 如下创建了一个超链接文本，当用户单击该文本时，不会有任何效果 --&gt;&lt;a href="javascript:void(0)"&gt;Click here to do nothing&lt;/a&gt;&lt;!-- 下面的代码创建了一个超链接，当用户单击它时，提交一个表单。 --&gt;&lt;a href="javascript:void(document.form.submit())"&gt;Click here to submit&lt;/a&gt; 关系操作符关系操作符对操作数进行比较，根据比较结果真或假，返回相应的布尔值。 in 操作符，如果所指定的属性确实存在于所指定的对象中，则会返回true，语法如下：1propNameOrNumber in objectName 123456789101112131415161718// Arraysvar trees = new Array("redwood", "bay", "cedar", "oak", "maple");0 in trees; // returns true3 in trees; // returns true6 in trees; // returns false"bay" in trees; // returns false (you must specify the index number, // not the value at that index)"length" in trees; // returns true (length is an Array property)// Predefined objects"PI" in Math; // returns truevar myString = new String("coral");"length" in myString; // returns true// Custom objectsvar mycar = &#123;make: "Honda", model: "Accord", year: 1998&#125;;"make" in mycar; // returns true"model" in mycar; // returns true instanceof如果所判别的对象确实是所指定的类型，则返回true。其语法如下： 1objectName instanceof objectType 当你需要确认一个对象在运行时的类型时，可使用instanceof. 例如，需要 catch 异常时，你可以针对抛出异常的类型，来做不同的异常处理。 1234var theDay = new Date(1995, 12, 17);if (theDay instanceof Date) &#123; // statements to execute&#125;]]></content>
+    <title><![CDATA[Centos 查看端口被占用情况]]></title>
+    <url>%2F2018%2F08%2F23%2Fcentos-check-the-port-occupancy-status%2F</url>
+    <content type="text"><![CDATA[使用netstat命令1netstat -tunlp 参数说明 -t： --tcp，显示 TCP 协议的连接情况 -u： --udp，显示 UDP 协议的连接情况 -n： --numeric，显示数值形式的IP地址，而不是尝试确定主机符号、端口或用户名 -l： --listening，只显示监听的端口 -p：--program，显示每个端口的 PID 和程序名称]]></content>
       <categories>
-        <category>JavaScript</category>
+        <category>Linux</category>
       </categories>
       <tags>
-        <tag>JavaScript</tag>
+        <tag>Centos</tag>
+        <tag>端口占用</tag>
+        <tag>netstat</tag>
       </tags>
   </entry>
   <entry>
@@ -337,22 +350,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Centos 查看端口被占用情况]]></title>
-    <url>%2F2018%2F08%2F23%2Fcentos-check-the-port-occupancy-status%2F</url>
-    <content type="text"><![CDATA[使用netstat命令1netstat -tunlp 参数说明 -t： --tcp，显示 TCP 协议的连接情况 -u： --udp，显示 UDP 协议的连接情况 -n： --numeric，显示数值形式的IP地址，而不是尝试确定主机符号、端口或用户名 -l： --listening，只显示监听的端口 -p：--program，显示每个端口的 PID 和程序名称]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Centos</tag>
-        <tag>端口占用</tag>
-        <tag>netstat</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[CSS 选择器详解]]></title>
-    <url>%2F2018%2F08%2F13%2Fcss-selector-detail%2F</url>
-    <content type="text"><![CDATA[本文将详细讲解 CSS 中的一大重要知识点，选择器。 在 CSS 中，选择器用于定位我们想要样式化的网页 HTML 元素。各种各样可用的 CSS 选择器允许我们精确选择要样式化的元素。 选择器分类 简单选择器：通过元素类型、class 或 id 匹配一个或多个元素。 属性选择器：通过 属性 / 属性值 匹配一个或多个元素。 伪类：匹配处于确定状态的一个或多个元素，比如被鼠标指针悬停的元素，或当前被选中或未选中的复选框，或元素是 DOM 树中一父节点的第一个子节点。 伪元素：匹配处于相关的确定位置的一个或多个元素，例如每个段落的第一个字，或者某个元素之前生成的内容。 组合器：以有效的方式组合两个或更多的选择器用于非常特定的选择的方法。例如，你可以只选择divs的直系子节点的段落，或者直接跟在 headings 后面的段落。 多重选择器：将以逗号分隔开的多个选择器放在一个 CSS 规则下面， 以将一组声明应用于由这些选择器选择的所有元素。 简单选择器简单选择器基于元素的类型（或其 class或 id）直接匹配文档的一个或多个元素。 类型选择器（元素选择器）此选择器只是一个选择器名和指定的HTML元素名的不区分大小写的匹配。这是选择所有指定类型的最简单方式。 类选择器类选择器由一个点“.”以及类后面的类名组成。类名是在 HTML class 文档元素属性中没有空格的任何值。由你自己选择一个名字。同样值得一提的是，文档中的多个元素可以具有相同的类名，而单个元素可以有多个类名(以空格分开多个类名的形式书写)。 ID 选择器ID 选择器由哈希/磅符号（#）组成，后面是给定元素的 ID 名称。 任何元素都可以使用 id 属性设置唯一的 ID 名称。 由你自己选择的 ID 是什么。 这是选择单个元素的最有效的方式。 注意： 一个 ID 名称必须在文件中是唯一的。关于重复ID的行为是不可预测的，比如在一些浏览器只是第一个实例计算，其余的将被忽略。 通用选择器通用选择（*）是最终的王牌。它允许选择在一个页面中的所有元素。由于给每个元素应用同样的规则几乎没有什么实际价值，更常见的做法是与其他选择器结合使用。 注意： 使用通用选择时小心。因为它适用于所有的元素，在大型网页利用它可以对性能有明显的影响：网页可以显示比预期要慢。大多数情况下，不要使用这个选择器。 属性选择器属性选择器是一种特殊类型的选择器，它根据元素的 属性 和属性值来匹配元素。它们的通用语法由方括号 ([]) 组成，其中包含属性名称，后跟可选条件以匹配属性的值。 属性选择器可以根据其匹配属性值的方式分为两类： 存在和值属性选择器和子串值属性选择器。 存在和值（Presence and value）属性选择器这些属性选择器尝试匹配精确的属性值： [attr]：该选择器选择包含 attr 属性的所有元素，不论 attr 的值为何。 [attr=val]：该选择器仅选择 attr 属性被赋值为 val 的所有元素。 [attr~=val]：该选择器仅选择具有 attr 属性的元素，而且要求 val 值是 attr 值包含的被空格分隔的取值列表里中的一个。 子串值（Substring value）属性选择器这种情况的属性选择器也被称为“伪正则选择器”，因为它们提供类似正则的灵活匹配方式（但请注意，这些选择器并不是真正的正则表达式）： [attr|=val]：选择attr属性的值是 val 或值以 val- 开头的元素（注意，这里的 “-” 不是一个错误，这是用来处理语言编码的）。 [attr^=val]：选择attr属性的值以 val 开头（包括 val）的元素。 [attr$=val]：选择attr属性的值以 val 结尾（包括 val）的元素。 [attr*=val]：选择attr属性的值中包含子字符串 val 的元素（一个子字符串就是一个字符串的一部分而已，例如，”cat“ 是 字符串 ”caterpillar“ 的子字符串）。 伪类一个 CSS 伪类（pseudo-class） 是一个以冒号（:）作为前缀，被添加到一个选择器末尾的关键字，当你希望样式在特定状态下才被呈现到指定的元素时，你可以往元素的选择器后面加上对应的伪类（pseudo-class）。你可能希望某个元素在处于某种状态下呈现另一种样式，例如当鼠标悬停在元素上面时，或者当一个复选框被禁用或被勾选时，又或者当一个元素是它在 DOM 树中父元素的第一个子元素时。如： :link :visited :hover :active 更多请参考 CSS 伪类 伪元素伪元素（Pseudo-element）跟伪类很像，但它们又有不同的地方。它们都是关键字，但这次伪元素前缀是两个冒号 (::) ， 同样是添加到选择器后面去选择某个元素的某个部分。如： ::after ::before ::first-letter 更多请参考 CSS 伪元素 组合器虽然一次使用一个选择器就很有用，但在某些情形中却可能效率低下。 CSS 选择器在你开始组合他们进行细粒度选择的时候变得更具使用价值。基于元素之间的相互关联关系，CSS 提供了几种方法来对元素进行选择。下表使用连接符展示了这些关联关系（A 和 B 代表前文所述的任意选择器）: 组合 选择结果 A , B 匹配满足 A（和/或）B 的任意元素 A B 后代选择器：匹配任意元素，满足条件：B 是 A 的后代结点（B 是 A 的子节点，或者 A 的子节点的子节点） A &gt; B 子选择器：匹配任意元素，满足条件：B 是 A 的直接子节点 A + B 相邻兄弟选择器：匹配任意元素，满足条件：B 是 A 的下一个兄弟节点（AB 有相同的父结点，并且 B 紧跟在 A 的后面） A ~ B 普通兄弟选择器：匹配任意元素，满足条件：B是A之后的兄弟节点中的任意一个（AB 有相同的父节点，B 在 A 之后，但不一定是紧挨着 A） 多重选择器通过相互间用逗号分隔的多个选择器所形成的组，可以一次性将同一规则同时应用到多组选定元素。]]></content>
+    <title><![CDATA[CSS 外边距坍塌（margin collapsing）详解]]></title>
+    <url>%2F2018%2F08%2F13%2Fcss-margin-collapsing%2F</url>
+    <content type="text"><![CDATA[本文将详细讲解 CSS 布局中遇到的外边距坍塌现象， 分析其出现的原因和场景，以及对应的处理方式。 块级元素的上外边距和下外边距有时会合并（或折叠）为一个外边距，其大小取其中的最大者，这种行为称为外边距折叠（margin collapsing），有时也翻译为外边距合并，外边距坍塌。 出现外边距坍塌的三种基本情况 相邻元素之间毗邻的两个元素之间的外边距会折叠，除非有一个元素需要清除之前的浮动 父元素与其第一个或最后一个子元素之间如果在父元素（更准确的说是父元素的上边距）与其第一个子元素之间不存在边框、内边距、行内内容，也没有创建块格式化上下文、或者清除浮动将两者的 margin-top 分开；或者在父元素（更准确的说是父元素的下边距）与其最后一个子元素之间不存在边框、内边距、行内内容、height、min-height、max-height 将两者的 margin-bottom 分开，那么这两对外边距之间会产生折叠。此时子元素的外边距会“溢出”到父元素的外面。 空的块级元素如果一个块级元素中不包含任何内容，并且在其 margin-top 与 margin-bottom 之间没有边框、内边距、行内内容、height、min-height 将两者分开（即上下边距直接相连），则该元素的上下外边距会折叠。 注意： 上述情况的组合会产生更复杂的外边距折叠。 即使某一外边距为0，这些规则仍然适用。因此就算父元素的外边距是0，第一个或最后一个子元素的外边距仍然会“溢出”到父元素的外面。 如果参与折叠的外边距中包含负值，折叠后的外边距的值为最大的正边距与最小的负边距（即绝对值最大的负边距）的和。 如果所有参与折叠的外边距都为负，折叠后的外边距的值为最小的负边距的值。这一规则适用于相邻元素和嵌套元素。]]></content>
       <categories>
         <category>CSS</category>
       </categories>
@@ -369,29 +369,6 @@
       </categories>
       <tags>
         <tag>CSS 工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[CSS 盒子模型详解]]></title>
-    <url>%2F2018%2F08%2F13%2Fcss-box-model-detail%2F</url>
-    <content type="text"><![CDATA[本文将详细讲解 CSS 中最常用的知识之一，盒子模型。 文档的每个元素构成文档布局内的一个矩形框，框每层的大小都可以用一些特定的CSS属性进行调整。相关属性如下： margin: 外边距（margin）代表 CSS 框周围的外部区域，称为外边距，它在布局中推开其它 CSS 框。 border: CSS 框的边界（border）是一个分隔层，位于内边距的外边缘以及外边距的内边缘之间。边界的默认大小为0——从而让它不可见——不过我们可以设置边界的厚度、风格和颜色让它出现。Mozilla文档中指出属性的简写形式可以被各种普通书写的更详细属性所覆盖，经过测试，发现，该覆盖还是满足层叠的规则，也就是如果详细属性在简写形式之前定义，还是没办法实现覆盖的效果。 padding: 表示一个 CSS 框的内边距，——这一层位于内容框的外边缘与边界的内边缘之间。这里是属性的简写形式，可以通过具体属性进行单独设置，此处不作赘述。 width和height: 设置内容框（content box）的宽度和高度。内容框是框内容显示的区域——包括框内的文本内容，以及表示嵌套子元素的其它框。 注意： 外边距（margin）有一个特别的行为被称作外边距塌陷（margin collapsing），当两个框彼此接触时，它们的间距将取两个相邻外边界的最大值，而非两者的总和。 如果盒子的高度被设置为百分比长度，那么盒子高度不会遵循这个设置了的百分比长度，而是总会采用盒子内容的高度，除非给它设置了一个绝对高度（例如，像素或者 em）。这比把页面上每个盒子的高度默认设置为视口高度的 100% 更方便。 边界（border）也会忽略百分比宽度设置。 盒子模型调整可以通过box-sizing属性来调整盒子模型。 高级的框操作溢流当你使用绝对的值设置了一个框的大小（如，固定像素的宽/高），允许的大小可能不适合放置内容，这种情况下内容会从盒子溢流。 可以使用overflow属性来控制这种情况的发生。不同取值： auto：当内容过多，溢流的内容被隐藏，然后出现滚动条来让我们滚动查看所有的内容。 hidden：当内容过多，溢流的内容被隐藏。 visible：当内容过多，溢流的内容被显示在盒子的外边（这个是默认的行为）。 背景裁剪（Background clip）框的背景是由颜色和图片组成的，它们堆叠在一起（background-color, background-image）。 它们被应用到一个盒子里，然后被画在盒子的下面。默认情况下，背景延伸到了边界外沿。如果你只想要它延伸到内容的边沿会怎么做？该行为可以通过设置盒子的background-clip属性来调整。 如果没有设置背景颜色或图片，那么这个属性只有在边框（border）设置为透明或半透明时才能看到视觉效果，不然的话，这个属性造成的样式变化会被边框覆盖住。 border-box：背景延伸到边框外沿（但是在边框之下）。 padding-box：边框下面没有背景，即背景延伸到内边距外沿。 context-box：背景裁剪到内容区 (content-box) 外沿。 text：背景被裁剪为文字的前景色(只有chrome支持)。 轮廓（Outline） 一个框的 outline 是一个看起来像是边界但又不属于框模型的东西。它的行为和边界差不多，但是并不改变框的尺寸（更准确的说，轮廓被勾画于在框边界之外，外边距区域之内）。 CSS框类型以上框操作都是针对于块级元素的，css还有一些其他框类型，可以通过display属性来设置，最常见的三种类型分别为： block：块框，是定义为堆放在其他框上的框（例如：其内容会独占一行），而且可以设置它的宽高 inline：行内框与块框是相反的，它随着文档的文字（例如：它将会和周围的文字和其他行内元素出现在同一行，而且它的内容会像一段中的文字一样随着文字部分的流动而打乱），对行内框设置宽高无效，设置padding, margin 和 border都会更新周围文字的位置，但是对于周围的的块框（ block box）不会有影响。 inline-block：行内块状框像是上述两种的集合：它不会重新另起一行但会像行内框（ inline box）一样随着周围文字而流动，而且他能够设置宽高，并且像块框一样保持了其块特性的完整性，它不会在段落行中断开。]]></content>
-      <categories>
-        <category>CSS</category>
-      </categories>
-      <tags>
-        <tag>CSS 布局</tag>
-        <tag>盒子模型</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[CSS 外边距坍塌（margin collapsing）详解]]></title>
-    <url>%2F2018%2F08%2F13%2Fcss-margin-collapsing%2F</url>
-    <content type="text"><![CDATA[本文将详细讲解 CSS 布局中遇到的外边距坍塌现象， 分析其出现的原因和场景，以及对应的处理方式。 块级元素的上外边距和下外边距有时会合并（或折叠）为一个外边距，其大小取其中的最大者，这种行为称为外边距折叠（margin collapsing），有时也翻译为外边距合并，外边距坍塌。 出现外边距坍塌的三种基本情况 相邻元素之间毗邻的两个元素之间的外边距会折叠，除非有一个元素需要清除之前的浮动 父元素与其第一个或最后一个子元素之间如果在父元素（更准确的说是父元素的上边距）与其第一个子元素之间不存在边框、内边距、行内内容，也没有创建块格式化上下文、或者清除浮动将两者的 margin-top 分开；或者在父元素（更准确的说是父元素的下边距）与其最后一个子元素之间不存在边框、内边距、行内内容、height、min-height、max-height 将两者的 margin-bottom 分开，那么这两对外边距之间会产生折叠。此时子元素的外边距会“溢出”到父元素的外面。 空的块级元素如果一个块级元素中不包含任何内容，并且在其 margin-top 与 margin-bottom 之间没有边框、内边距、行内内容、height、min-height 将两者分开（即上下边距直接相连），则该元素的上下外边距会折叠。 注意： 上述情况的组合会产生更复杂的外边距折叠。 即使某一外边距为0，这些规则仍然适用。因此就算父元素的外边距是0，第一个或最后一个子元素的外边距仍然会“溢出”到父元素的外面。 如果参与折叠的外边距中包含负值，折叠后的外边距的值为最大的正边距与最小的负边距（即绝对值最大的负边距）的和。 如果所有参与折叠的外边距都为负，折叠后的外边距的值为最小的负边距的值。这一规则适用于相邻元素和嵌套元素。]]></content>
-      <categories>
-        <category>CSS</category>
-      </categories>
-      <tags>
-        <tag>CSS 布局</tag>
       </tags>
   </entry>
   <entry>
@@ -417,20 +394,32 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Docker 服务详解]]></title>
-    <url>%2F2018%2F07%2F27%2Fdocker-services-detail%2F</url>
-    <content type="text"><![CDATA[本文将参考官方文档，详细讲解 Docker 服务的相关内容。 参考：https://docs.docker.com/get-started/part3/ 为了扩展应用程序并启用负载平衡，必须在分布式应用程序的层次结构中提升一级：服务。 创建一个docker-compose.yml文件在 Docker 平台中，只需要创建一个docker-compose.yml文件，就可以实现服务的定义，运行与扩展。123456789101112131415161718192021# docker-compose.ymlversion: "3"services: web: # replace username/repo:tag with your name and image details image: username/repo:tag deploy: replicas: 5 resources: limits: cpus: "0.1" memory: 50M restart_policy: condition: on-failure ports: - "4000:80" networks: - webnetnetworks: webnet: docker-compose.yml文件告诉 Docker 执行以下操作： 将指定的镜像从注册中心 pull 下来 将该镜像的5个实例作为名为web的服务运行，限制每个实例最多使用10%的CPU和50MB的内存资源 如果一个实例失败了，则立即重启容器 将主机的4000端口映射到web服务的80端口 指定web服务的容器通过称为webnet的负载均衡网络共享80端口。 使用默认设置定义webnet网络（这是一个负载均衡网络） 运行新的负载均衡 app 先运行命令 docker swarm init 不使用该命令会报错： 1Error response from daemon: This node is not a swarm manager. Use "docker swarm init" or "docker swarm join" to connect this node to swarm and try again. 将app命名为getstartedlab，并运行 1234$ docker stack deploy -c docker-compose.yml getstartedlab# 查看服务信息$ docker service ls 服务里运行的单个容器称为一个task，查看service中的task信息： 12345678$ docker service ps getstartedlab_webID NAME IMAGE NODE DESIRED STATE CURRENT STATE ERROR PORTSnnw0bqh9kdh7 getstartedlab_web.1 cj1406942109/get-started:first-demo linuxkit-00155d0ae915 Running Running 2 minutes agohdeo9vn0hzo4 getstartedlab_web.2 cj1406942109/get-started:first-demo linuxkit-00155d0ae915 Running Running 2 minutes agof7l22z600893 getstartedlab_web.3 cj1406942109/get-started:first-demo linuxkit-00155d0ae915 Running Running 2 minutes agoh7yqtkopoqrf getstartedlab_web.4 cj1406942109/get-started:first-demo linuxkit-00155d0ae915 Running Running 2 minutes agovyxbnymk9up7 getstartedlab_web.5 cj1406942109/get-started:first-demo linuxkit-00155d0ae915 Running Running 2 minutes ago 列出容器的时候可以看到taks的信息 1$ docker container ls -q 可以多次运行命令curl -4 http://localhost:4000或者在浏览器里输入 URL 并多次刷新查看效果，可以看到容器的 ID 发生改变，表明启用了负载均衡 可以通过修改docker-compose.yml文件中的replicas值来扩展 app，保存文件，重新运行docker stack deploy -c docker-compose.yml getstartedlab命令即可 拆卸app和swarm 12345# Take the app down with docker stack rm$ docker stack rm getstartedlab# Take down the swarm$ docker swarm leave --force]]></content>
+    <title><![CDATA[CSS 盒子模型详解]]></title>
+    <url>%2F2018%2F08%2F13%2Fcss-box-model-detail%2F</url>
+    <content type="text"><![CDATA[本文将详细讲解 CSS 中最常用的知识之一，盒子模型。 文档的每个元素构成文档布局内的一个矩形框，框每层的大小都可以用一些特定的CSS属性进行调整。相关属性如下： margin: 外边距（margin）代表 CSS 框周围的外部区域，称为外边距，它在布局中推开其它 CSS 框。 border: CSS 框的边界（border）是一个分隔层，位于内边距的外边缘以及外边距的内边缘之间。边界的默认大小为0——从而让它不可见——不过我们可以设置边界的厚度、风格和颜色让它出现。Mozilla文档中指出属性的简写形式可以被各种普通书写的更详细属性所覆盖，经过测试，发现，该覆盖还是满足层叠的规则，也就是如果详细属性在简写形式之前定义，还是没办法实现覆盖的效果。 padding: 表示一个 CSS 框的内边距，——这一层位于内容框的外边缘与边界的内边缘之间。这里是属性的简写形式，可以通过具体属性进行单独设置，此处不作赘述。 width和height: 设置内容框（content box）的宽度和高度。内容框是框内容显示的区域——包括框内的文本内容，以及表示嵌套子元素的其它框。 注意： 外边距（margin）有一个特别的行为被称作外边距塌陷（margin collapsing），当两个框彼此接触时，它们的间距将取两个相邻外边界的最大值，而非两者的总和。 如果盒子的高度被设置为百分比长度，那么盒子高度不会遵循这个设置了的百分比长度，而是总会采用盒子内容的高度，除非给它设置了一个绝对高度（例如，像素或者 em）。这比把页面上每个盒子的高度默认设置为视口高度的 100% 更方便。 边界（border）也会忽略百分比宽度设置。 盒子模型调整可以通过box-sizing属性来调整盒子模型。 高级的框操作溢流当你使用绝对的值设置了一个框的大小（如，固定像素的宽/高），允许的大小可能不适合放置内容，这种情况下内容会从盒子溢流。 可以使用overflow属性来控制这种情况的发生。不同取值： auto：当内容过多，溢流的内容被隐藏，然后出现滚动条来让我们滚动查看所有的内容。 hidden：当内容过多，溢流的内容被隐藏。 visible：当内容过多，溢流的内容被显示在盒子的外边（这个是默认的行为）。 背景裁剪（Background clip）框的背景是由颜色和图片组成的，它们堆叠在一起（background-color, background-image）。 它们被应用到一个盒子里，然后被画在盒子的下面。默认情况下，背景延伸到了边界外沿。如果你只想要它延伸到内容的边沿会怎么做？该行为可以通过设置盒子的background-clip属性来调整。 如果没有设置背景颜色或图片，那么这个属性只有在边框（border）设置为透明或半透明时才能看到视觉效果，不然的话，这个属性造成的样式变化会被边框覆盖住。 border-box：背景延伸到边框外沿（但是在边框之下）。 padding-box：边框下面没有背景，即背景延伸到内边距外沿。 context-box：背景裁剪到内容区 (content-box) 外沿。 text：背景被裁剪为文字的前景色(只有chrome支持)。 轮廓（Outline） 一个框的 outline 是一个看起来像是边界但又不属于框模型的东西。它的行为和边界差不多，但是并不改变框的尺寸（更准确的说，轮廓被勾画于在框边界之外，外边距区域之内）。 CSS框类型以上框操作都是针对于块级元素的，css还有一些其他框类型，可以通过display属性来设置，最常见的三种类型分别为： block：块框，是定义为堆放在其他框上的框（例如：其内容会独占一行），而且可以设置它的宽高 inline：行内框与块框是相反的，它随着文档的文字（例如：它将会和周围的文字和其他行内元素出现在同一行，而且它的内容会像一段中的文字一样随着文字部分的流动而打乱），对行内框设置宽高无效，设置padding, margin 和 border都会更新周围文字的位置，但是对于周围的的块框（ block box）不会有影响。 inline-block：行内块状框像是上述两种的集合：它不会重新另起一行但会像行内框（ inline box）一样随着周围文字而流动，而且他能够设置宽高，并且像块框一样保持了其块特性的完整性，它不会在段落行中断开。]]></content>
       <categories>
-        <category>Docker</category>
+        <category>CSS</category>
       </categories>
       <tags>
-        <tag>Docker</tag>
+        <tag>CSS 布局</tag>
+        <tag>盒子模型</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Docker 容器的创建与发布]]></title>
-    <url>%2F2018%2F07%2F27%2Fdocker-creation-and-publishing-of-container%2F</url>
-    <content type="text"><![CDATA[本文将参考官方文档，详细讲解 Docker 容器的创建与发布的步骤。 参考：https://docs.docker.com/get-started/part2/ 创建一个 Docker 容器创建目录新建一个目录，并切换到该目录12mkdir container-testcd container-test Dockerfile文件创建一个名为Dockerfile的文件 该文件在你的容器中定义环境相关的配置，访问在环境中虚拟化之后诸如网络接口、磁盘驱动的资源，它们独立于你的系统，因此需要与外界进行端口映射，并指定你想要复制到环境中的文件。 示例文件内容如下：1234567891011121314151617181920# Use an official Python runtime as a parent imageFROM python:2.7-slim# Set the working directory to /appWORKDIR /app# Copy the current directory contents into the container at /appADD . /app# Install any needed packages specified in requirements.txtRUN pip install --trusted-host pypi.python.org -r requirements.txt# Make port 80 available to the world outside this containerEXPOSE 80# Define environment variableENV NAME World# Run app.py when the container launchesCMD ["python", "app.py"] 创建requirements.txt和app.py文件 requirements.txt 12FlaskRedis app.py 123456789101112131415161718192021222324from flask import Flaskfrom redis import Redis, RedisErrorimport osimport socket# Connect to Redisredis = Redis(host="redis", db=0, socket_connect_timeout=2, socket_timeout=2)app = Flask(__name__)@app.route("/")def hello(): try: visits = redis.incr("counter") except RedisError: visits = "&lt;i&gt;cannot connect to Redis, counter disabled&lt;/i&gt;" html = "&lt;h3&gt;Hello &#123;name&#125;!&lt;/h3&gt;" \ "&lt;b&gt;Hostname:&lt;/b&gt; &#123;hostname&#125;&lt;br/&gt;" \ "&lt;b&gt;Visits:&lt;/b&gt; &#123;visits&#125;" return html.format(name=os.getenv("NAME", "world"), hostname=socket.gethostname(), visits=visits)if __name__ == "__main__": app.run(host='0.0.0.0', port=80) 构建 app12345678910111213# 查看当前目录下的文件$ lsDockerfile app.py requirements.txt# 使用 docker build 命令进行构建$ docker build -t friendlyhello . # -t 用于给该镜像创建一个标签# 查看创建好的镜像$ docker image lsREPOSITORY TAG IMAGE IDfriendlyhello latest 326387cea398 运行 app12# 将本地机器的4000端口与容器的发布端口80进行映射docker run -p 4000:80 friendlyhello 测试： 打开本地浏览器访问：http://localhost:4000尽管你看到Running on http://0.0.0.0:80/的消息，但这是从容器内部发出来的，它并不知道你指定的映射端口是什么，所以，在浏览器应该输入正确的URLhttp://localhost:4000 使用curl命令访问 123$ curl http://localhost:4000&lt;h3&gt;Hello World!&lt;/h3&gt;&lt;b&gt;Hostname:&lt;/b&gt; 8fc990912a14&lt;br/&gt;&lt;b&gt;Visits:&lt;/b&gt; &lt;i&gt;cannot connect to Redis, counter disabled&lt;/i&gt; 注意： 在 Windows 系统下，使用CTRL+C命令，不会停止容器，需要显式地停止容器，步骤如下： 使用CTRL+C命令回到命令行，或者重新打开一个 shell 输入docker container ls查看正在运行的容器 使用docker container stop &lt;Container NAME or ID&gt;命令停止容器 123456$ docker container lsCONTAINER ID IMAGE COMMAND ...99c48d68f9ce friendlyhello "python app.py" ...$ docker container stop 99c48d68f9ce99c48d68f9ce 后台运行app：docker run -d -p 4000:80 friendlyhello 分享镜像注册中心是仓库的集合，仓库是镜像的集合，类似于 github 仓库。注册中心的一个账户可以创建多个仓库，docker CLI 默认使用 Docker 的公共注册中心（public registry），你可以通过配置选择其他的注册中心： 使用你的 docker id 进行登录 1$ docker login 给镜像打标签使用username/repository:tag将本地镜像与注册中心的一个仓库建立联系，注册中心将根据tag为 Docker 镜像创建版本，建议使用有实际意义的标签 12# 设置本地镜像要上传到注册中心的仓库$ docker tag image username/repository:tag # 如：docker tag friendlyhello gordon/get-started:part2 使用docker image ls命令查看新打标签的镜像 123456$ docker image ls REPOSITORY TAG IMAGE ID CREATED SIZE friendlyhello latest d9e555c53008 3 minutes ago 195MB gordon/get-started part2 d9e555c53008 3 minutes ago 195MB python 2.7-slim 1c7128a655f6 5 days ago 183MB ... 发布镜像将打了标签的镜像上传到仓库：1docker push username/repository:tag 发布完成之后，该镜像就是公开可用的了，登录到 Docker Hub ，你可以看到你的新镜像。 从远程仓库 pull 并运行镜像现在，你可以使用docker run命令在任何机器上运行你的 app 了，如果本地机器没有该镜像，Docker 会从仓库 pull 下来。1docker run -p 4000:80 username/repository:tag]]></content>
+    <title><![CDATA[CSS 选择器详解]]></title>
+    <url>%2F2018%2F08%2F13%2Fcss-selector-detail%2F</url>
+    <content type="text"><![CDATA[本文将详细讲解 CSS 中的一大重要知识点，选择器。 在 CSS 中，选择器用于定位我们想要样式化的网页 HTML 元素。各种各样可用的 CSS 选择器允许我们精确选择要样式化的元素。 选择器分类 简单选择器：通过元素类型、class 或 id 匹配一个或多个元素。 属性选择器：通过 属性 / 属性值 匹配一个或多个元素。 伪类：匹配处于确定状态的一个或多个元素，比如被鼠标指针悬停的元素，或当前被选中或未选中的复选框，或元素是 DOM 树中一父节点的第一个子节点。 伪元素：匹配处于相关的确定位置的一个或多个元素，例如每个段落的第一个字，或者某个元素之前生成的内容。 组合器：以有效的方式组合两个或更多的选择器用于非常特定的选择的方法。例如，你可以只选择divs的直系子节点的段落，或者直接跟在 headings 后面的段落。 多重选择器：将以逗号分隔开的多个选择器放在一个 CSS 规则下面， 以将一组声明应用于由这些选择器选择的所有元素。 简单选择器简单选择器基于元素的类型（或其 class或 id）直接匹配文档的一个或多个元素。 类型选择器（元素选择器）此选择器只是一个选择器名和指定的HTML元素名的不区分大小写的匹配。这是选择所有指定类型的最简单方式。 类选择器类选择器由一个点“.”以及类后面的类名组成。类名是在 HTML class 文档元素属性中没有空格的任何值。由你自己选择一个名字。同样值得一提的是，文档中的多个元素可以具有相同的类名，而单个元素可以有多个类名(以空格分开多个类名的形式书写)。 ID 选择器ID 选择器由哈希/磅符号（#）组成，后面是给定元素的 ID 名称。 任何元素都可以使用 id 属性设置唯一的 ID 名称。 由你自己选择的 ID 是什么。 这是选择单个元素的最有效的方式。 注意： 一个 ID 名称必须在文件中是唯一的。关于重复ID的行为是不可预测的，比如在一些浏览器只是第一个实例计算，其余的将被忽略。 通用选择器通用选择（*）是最终的王牌。它允许选择在一个页面中的所有元素。由于给每个元素应用同样的规则几乎没有什么实际价值，更常见的做法是与其他选择器结合使用。 注意： 使用通用选择时小心。因为它适用于所有的元素，在大型网页利用它可以对性能有明显的影响：网页可以显示比预期要慢。大多数情况下，不要使用这个选择器。 属性选择器属性选择器是一种特殊类型的选择器，它根据元素的 属性 和属性值来匹配元素。它们的通用语法由方括号 ([]) 组成，其中包含属性名称，后跟可选条件以匹配属性的值。 属性选择器可以根据其匹配属性值的方式分为两类： 存在和值属性选择器和子串值属性选择器。 存在和值（Presence and value）属性选择器这些属性选择器尝试匹配精确的属性值： [attr]：该选择器选择包含 attr 属性的所有元素，不论 attr 的值为何。 [attr=val]：该选择器仅选择 attr 属性被赋值为 val 的所有元素。 [attr~=val]：该选择器仅选择具有 attr 属性的元素，而且要求 val 值是 attr 值包含的被空格分隔的取值列表里中的一个。 子串值（Substring value）属性选择器这种情况的属性选择器也被称为“伪正则选择器”，因为它们提供类似正则的灵活匹配方式（但请注意，这些选择器并不是真正的正则表达式）： [attr|=val]：选择attr属性的值是 val 或值以 val- 开头的元素（注意，这里的 “-” 不是一个错误，这是用来处理语言编码的）。 [attr^=val]：选择attr属性的值以 val 开头（包括 val）的元素。 [attr$=val]：选择attr属性的值以 val 结尾（包括 val）的元素。 [attr*=val]：选择attr属性的值中包含子字符串 val 的元素（一个子字符串就是一个字符串的一部分而已，例如，”cat“ 是 字符串 ”caterpillar“ 的子字符串）。 伪类一个 CSS 伪类（pseudo-class） 是一个以冒号（:）作为前缀，被添加到一个选择器末尾的关键字，当你希望样式在特定状态下才被呈现到指定的元素时，你可以往元素的选择器后面加上对应的伪类（pseudo-class）。你可能希望某个元素在处于某种状态下呈现另一种样式，例如当鼠标悬停在元素上面时，或者当一个复选框被禁用或被勾选时，又或者当一个元素是它在 DOM 树中父元素的第一个子元素时。如： :link :visited :hover :active 更多请参考 CSS 伪类 伪元素伪元素（Pseudo-element）跟伪类很像，但它们又有不同的地方。它们都是关键字，但这次伪元素前缀是两个冒号 (::) ， 同样是添加到选择器后面去选择某个元素的某个部分。如： ::after ::before ::first-letter 更多请参考 CSS 伪元素 组合器虽然一次使用一个选择器就很有用，但在某些情形中却可能效率低下。 CSS 选择器在你开始组合他们进行细粒度选择的时候变得更具使用价值。基于元素之间的相互关联关系，CSS 提供了几种方法来对元素进行选择。下表使用连接符展示了这些关联关系（A 和 B 代表前文所述的任意选择器）: 组合 选择结果 A , B 匹配满足 A（和/或）B 的任意元素 A B 后代选择器：匹配任意元素，满足条件：B 是 A 的后代结点（B 是 A 的子节点，或者 A 的子节点的子节点） A &gt; B 子选择器：匹配任意元素，满足条件：B 是 A 的直接子节点 A + B 相邻兄弟选择器：匹配任意元素，满足条件：B 是 A 的下一个兄弟节点（AB 有相同的父结点，并且 B 紧跟在 A 的后面） A ~ B 普通兄弟选择器：匹配任意元素，满足条件：B是A之后的兄弟节点中的任意一个（AB 有相同的父节点，B 在 A 之后，但不一定是紧挨着 A） 多重选择器通过相互间用逗号分隔的多个选择器所形成的组，可以一次性将同一规则同时应用到多组选定元素。]]></content>
+      <categories>
+        <category>CSS</category>
+      </categories>
+      <tags>
+        <tag>CSS 布局</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Docker 服务详解]]></title>
+    <url>%2F2018%2F07%2F27%2Fdocker-services-detail%2F</url>
+    <content type="text"><![CDATA[本文将参考官方文档，详细讲解 Docker 服务的相关内容。 参考：https://docs.docker.com/get-started/part3/ 为了扩展应用程序并启用负载平衡，必须在分布式应用程序的层次结构中提升一级：服务。 创建一个docker-compose.yml文件在 Docker 平台中，只需要创建一个docker-compose.yml文件，就可以实现服务的定义，运行与扩展。123456789101112131415161718192021# docker-compose.ymlversion: "3"services: web: # replace username/repo:tag with your name and image details image: username/repo:tag deploy: replicas: 5 resources: limits: cpus: "0.1" memory: 50M restart_policy: condition: on-failure ports: - "4000:80" networks: - webnetnetworks: webnet: docker-compose.yml文件告诉 Docker 执行以下操作： 将指定的镜像从注册中心 pull 下来 将该镜像的5个实例作为名为web的服务运行，限制每个实例最多使用10%的CPU和50MB的内存资源 如果一个实例失败了，则立即重启容器 将主机的4000端口映射到web服务的80端口 指定web服务的容器通过称为webnet的负载均衡网络共享80端口。 使用默认设置定义webnet网络（这是一个负载均衡网络） 运行新的负载均衡 app 先运行命令 docker swarm init 不使用该命令会报错： 1Error response from daemon: This node is not a swarm manager. Use "docker swarm init" or "docker swarm join" to connect this node to swarm and try again. 将app命名为getstartedlab，并运行 1234$ docker stack deploy -c docker-compose.yml getstartedlab# 查看服务信息$ docker service ls 服务里运行的单个容器称为一个task，查看service中的task信息： 12345678$ docker service ps getstartedlab_webID NAME IMAGE NODE DESIRED STATE CURRENT STATE ERROR PORTSnnw0bqh9kdh7 getstartedlab_web.1 cj1406942109/get-started:first-demo linuxkit-00155d0ae915 Running Running 2 minutes agohdeo9vn0hzo4 getstartedlab_web.2 cj1406942109/get-started:first-demo linuxkit-00155d0ae915 Running Running 2 minutes agof7l22z600893 getstartedlab_web.3 cj1406942109/get-started:first-demo linuxkit-00155d0ae915 Running Running 2 minutes agoh7yqtkopoqrf getstartedlab_web.4 cj1406942109/get-started:first-demo linuxkit-00155d0ae915 Running Running 2 minutes agovyxbnymk9up7 getstartedlab_web.5 cj1406942109/get-started:first-demo linuxkit-00155d0ae915 Running Running 2 minutes ago 列出容器的时候可以看到taks的信息 1$ docker container ls -q 可以多次运行命令curl -4 http://localhost:4000或者在浏览器里输入 URL 并多次刷新查看效果，可以看到容器的 ID 发生改变，表明启用了负载均衡 可以通过修改docker-compose.yml文件中的replicas值来扩展 app，保存文件，重新运行docker stack deploy -c docker-compose.yml getstartedlab命令即可 拆卸app和swarm 12345# Take the app down with docker stack rm$ docker stack rm getstartedlab# Take down the swarm$ docker swarm leave --force]]></content>
       <categories>
         <category>Docker</category>
       </categories>
@@ -450,6 +439,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[Docker 容器的创建与发布]]></title>
+    <url>%2F2018%2F07%2F27%2Fdocker-creation-and-publishing-of-container%2F</url>
+    <content type="text"><![CDATA[本文将参考官方文档，详细讲解 Docker 容器的创建与发布的步骤。 参考：https://docs.docker.com/get-started/part2/ 创建一个 Docker 容器创建目录新建一个目录，并切换到该目录12mkdir container-testcd container-test Dockerfile文件创建一个名为Dockerfile的文件 该文件在你的容器中定义环境相关的配置，访问在环境中虚拟化之后诸如网络接口、磁盘驱动的资源，它们独立于你的系统，因此需要与外界进行端口映射，并指定你想要复制到环境中的文件。 示例文件内容如下：1234567891011121314151617181920# Use an official Python runtime as a parent imageFROM python:2.7-slim# Set the working directory to /appWORKDIR /app# Copy the current directory contents into the container at /appADD . /app# Install any needed packages specified in requirements.txtRUN pip install --trusted-host pypi.python.org -r requirements.txt# Make port 80 available to the world outside this containerEXPOSE 80# Define environment variableENV NAME World# Run app.py when the container launchesCMD ["python", "app.py"] 创建requirements.txt和app.py文件 requirements.txt 12FlaskRedis app.py 123456789101112131415161718192021222324from flask import Flaskfrom redis import Redis, RedisErrorimport osimport socket# Connect to Redisredis = Redis(host="redis", db=0, socket_connect_timeout=2, socket_timeout=2)app = Flask(__name__)@app.route("/")def hello(): try: visits = redis.incr("counter") except RedisError: visits = "&lt;i&gt;cannot connect to Redis, counter disabled&lt;/i&gt;" html = "&lt;h3&gt;Hello &#123;name&#125;!&lt;/h3&gt;" \ "&lt;b&gt;Hostname:&lt;/b&gt; &#123;hostname&#125;&lt;br/&gt;" \ "&lt;b&gt;Visits:&lt;/b&gt; &#123;visits&#125;" return html.format(name=os.getenv("NAME", "world"), hostname=socket.gethostname(), visits=visits)if __name__ == "__main__": app.run(host='0.0.0.0', port=80) 构建 app12345678910111213# 查看当前目录下的文件$ lsDockerfile app.py requirements.txt# 使用 docker build 命令进行构建$ docker build -t friendlyhello . # -t 用于给该镜像创建一个标签# 查看创建好的镜像$ docker image lsREPOSITORY TAG IMAGE IDfriendlyhello latest 326387cea398 运行 app12# 将本地机器的4000端口与容器的发布端口80进行映射docker run -p 4000:80 friendlyhello 测试： 打开本地浏览器访问：http://localhost:4000尽管你看到Running on http://0.0.0.0:80/的消息，但这是从容器内部发出来的，它并不知道你指定的映射端口是什么，所以，在浏览器应该输入正确的URLhttp://localhost:4000 使用curl命令访问 123$ curl http://localhost:4000&lt;h3&gt;Hello World!&lt;/h3&gt;&lt;b&gt;Hostname:&lt;/b&gt; 8fc990912a14&lt;br/&gt;&lt;b&gt;Visits:&lt;/b&gt; &lt;i&gt;cannot connect to Redis, counter disabled&lt;/i&gt; 注意： 在 Windows 系统下，使用CTRL+C命令，不会停止容器，需要显式地停止容器，步骤如下： 使用CTRL+C命令回到命令行，或者重新打开一个 shell 输入docker container ls查看正在运行的容器 使用docker container stop &lt;Container NAME or ID&gt;命令停止容器 123456$ docker container lsCONTAINER ID IMAGE COMMAND ...99c48d68f9ce friendlyhello "python app.py" ...$ docker container stop 99c48d68f9ce99c48d68f9ce 后台运行app：docker run -d -p 4000:80 friendlyhello 分享镜像注册中心是仓库的集合，仓库是镜像的集合，类似于 github 仓库。注册中心的一个账户可以创建多个仓库，docker CLI 默认使用 Docker 的公共注册中心（public registry），你可以通过配置选择其他的注册中心： 使用你的 docker id 进行登录 1$ docker login 给镜像打标签使用username/repository:tag将本地镜像与注册中心的一个仓库建立联系，注册中心将根据tag为 Docker 镜像创建版本，建议使用有实际意义的标签 12# 设置本地镜像要上传到注册中心的仓库$ docker tag image username/repository:tag # 如：docker tag friendlyhello gordon/get-started:part2 使用docker image ls命令查看新打标签的镜像 123456$ docker image ls REPOSITORY TAG IMAGE ID CREATED SIZE friendlyhello latest d9e555c53008 3 minutes ago 195MB gordon/get-started part2 d9e555c53008 3 minutes ago 195MB python 2.7-slim 1c7128a655f6 5 days ago 183MB ... 发布镜像将打了标签的镜像上传到仓库：1docker push username/repository:tag 发布完成之后，该镜像就是公开可用的了，登录到 Docker Hub ，你可以看到你的新镜像。 从远程仓库 pull 并运行镜像现在，你可以使用docker run命令在任何机器上运行你的 app 了，如果本地机器没有该镜像，Docker 会从仓库 pull 下来。1docker run -p 4000:80 username/repository:tag]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Windows 下 Docker 安装]]></title>
     <url>%2F2018%2F07%2F26%2Finstall-docker-on-windows%2F</url>
     <content type="text"><![CDATA[Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。 Windows 下 Docker 安装步骤 访问 Docker 官网，注册一个 docker hub 账号。 注意：此处需要vpn访问外网，通过谷歌验证才能完成注册 注册后，成功登录，访问 Windows 社区版下载页，点击下载即可。 下载之后点击安装，很简单，不能自定义安装目录，默认装在C:\Program Files\Docker。 安装成功之后，需要重启电脑，然后启动 Docker。 注意，需要先启用win10的hyper-v程序，否则 Docker 将启动失败，这里，我在选择 windows container 时，启动失败了，切换到 linux container 之后，成功启动。 设置：Docker 的镜像默认安装在 C 盘，为了避免 C 盘空间不够，修改其目录： windows10 的 Docker 使用的是 Hyper-V 虚拟机，所以镜像存放的目录就是 Hyper-V 的目录，首先停止 Docker，然后修改 Hyper-V 的目录，默认为C:\Users\Public\Documents\Hyper-V\Virtual hard disks 重启 Docker 即可]]></content>
@@ -459,17 +459,6 @@
       <tags>
         <tag>Docker</tag>
         <tag>Windows</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Latex 文档基本构成]]></title>
-    <url>%2F2018%2F07%2F04%2Flatex-document-basic-composition%2F</url>
-    <content type="text"><![CDATA[一篇LATEX 文档, 由三个部分组成: 文档类声明, 导言区, 正文。12345\documentclass&#123;article&#125;\usepackage&#123;hyperref&#125;\begin&#123;document&#125; Hello World!\end&#123;document&#125; 文档类：\documentclass{...}，里面声明你要书写什么样式的文档，常用的有：article，book，report。可以自己定义一个新的文档类， 对文章的总体样式和各个细节进行声明， 或者定义自己的命令。 latex指明文档类的基本命令：\documentclass[选项]{文档类}：文档类 article 排版科技期刊、短报告、程序文档、邀请函等。 report 排版多章节的长报告、短篇的书籍、博士论文等。 book 排版书籍。 slides 排版幻灯片。其中使用了较大的 sans serif 字体。也可以考虑使用 FoilTEX 来得到相同的效果。 选项 纸张大小（a4paper，a5paper，b4paper，letterpaper，legalpaper，executivepaper）：默认的letterpaper 纸张常见于美国，和国内常用的A4 纸张的大小稍有差别，建议自己指定。 字体大小（10pt，11pt，12pt）：默认为10pt。 纸张方向（portrait，landscape）：默认为portrait（纵向），在屏幕阅读也许landscape（横向）更方便。 草稿定稿（draft，final）：默认为final（定稿）；如果是draft（草稿），页面内容有溢出时会显示粗黑条。 单面双面（oneside，twoside）：对于article 和report 文档类，默认设置为单面，页码总是在右边；对于book 文档类，默认设置为双面，奇数页页码在右边，偶数页页码在左边，这样双面打印时页码总在外侧。 新章开始（openright，openany）：仅对book 文档类有效，默认值为openright，即每章都从奇数页开始；如果设置为openany，则每章仅从新的一页开始，不管奇偶页。 正文：即\begin{document}和\end{document}之间的部分。 导言区： 夹在\documentclass{...}和\begin{document}之间的部分，放置需要使用的宏包，或者自己规定一些新的命令。如： 12345\documentclass&#123;article&#125;\newcommand&#123;\wuda&#125;&#123;中国湖北省武汉市武汉大学&#125;\begin&#123;document&#125; 你好，我来自\wuda。\end&#123;document&#125; 定义了一个新命令\wuda，得到的正文内容就是你好，我来自中国湖北省武汉市武汉大学。 可能你需要定义的东西太多，这时，可以将它们写在一个文档里，这种文档就是宏包，使用时，只需要在导言区用\usepackage{...}，即可插入该文档的内容。 例如，我们想书写一个数学符号⊵，该数学符号已经由宏包 amssymb 定义过了， 这样只需要在导言区写上\usepackage{amssymb}， 加载该宏包即可。 12345\documentclass&#123;ctexart&#125;\usepackage&#123;amssymb&#125;\begin&#123;document&#125; $\unrhd$\end&#123;document&#125;]]></content>
-      <categories>
-        <category>Latex</category>
-      </categories>
-      <tags>
-        <tag>Latex 文档</tag>
       </tags>
   </entry>
   <entry>
@@ -498,14 +487,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Git 工作区和暂存区]]></title>
-    <url>%2F2018%2F07%2F03%2Fgit-workspace-and-stage%2F</url>
-    <content type="text"><![CDATA[本文将对 Git 的工作区和暂存区做简单介绍。 工作区电脑里面能看到的目录，就是工作区。 版本库工作区有一个隐藏目录.git，不算工作区，而是 Git 的版本库。 暂存区Git 的版本库里面存了很多东西，其中最重要的就是暂存区，称为stage或者index，还有 Git 为我们自动创建的第一个分支master，以及指向master的一个指针HEAD。 git add命令实际上是把要提交的所有修改放到暂存区（stage），然后执行git commit命令，就可以将暂存区的所有修改提交到分支。 Git 跟踪管理修改而不是文件如果进行以下操作： 第一次修改 -&gt; git add -&gt; 第二次修改 -&gt; git commit 最终的结果是，第一次的修改被提交，而第二次的修改未被提交。 如果要提交第二次修改，可以继续使用git add和git commit命令。 当然，你还可以不进行第一次提交，进行以下操作: 第一次修改 -&gt; git add -&gt; 第二次修改 -&gt; git add -&gt; git commit 相当于把两次修改合并提交了。]]></content>
+    <title><![CDATA[Latex 文档基本构成]]></title>
+    <url>%2F2018%2F07%2F04%2Flatex-document-basic-composition%2F</url>
+    <content type="text"><![CDATA[一篇LATEX 文档, 由三个部分组成: 文档类声明, 导言区, 正文。12345\documentclass&#123;article&#125;\usepackage&#123;hyperref&#125;\begin&#123;document&#125; Hello World!\end&#123;document&#125; 文档类：\documentclass{...}，里面声明你要书写什么样式的文档，常用的有：article，book，report。可以自己定义一个新的文档类， 对文章的总体样式和各个细节进行声明， 或者定义自己的命令。 latex指明文档类的基本命令：\documentclass[选项]{文档类}：文档类 article 排版科技期刊、短报告、程序文档、邀请函等。 report 排版多章节的长报告、短篇的书籍、博士论文等。 book 排版书籍。 slides 排版幻灯片。其中使用了较大的 sans serif 字体。也可以考虑使用 FoilTEX 来得到相同的效果。 选项 纸张大小（a4paper，a5paper，b4paper，letterpaper，legalpaper，executivepaper）：默认的letterpaper 纸张常见于美国，和国内常用的A4 纸张的大小稍有差别，建议自己指定。 字体大小（10pt，11pt，12pt）：默认为10pt。 纸张方向（portrait，landscape）：默认为portrait（纵向），在屏幕阅读也许landscape（横向）更方便。 草稿定稿（draft，final）：默认为final（定稿）；如果是draft（草稿），页面内容有溢出时会显示粗黑条。 单面双面（oneside，twoside）：对于article 和report 文档类，默认设置为单面，页码总是在右边；对于book 文档类，默认设置为双面，奇数页页码在右边，偶数页页码在左边，这样双面打印时页码总在外侧。 新章开始（openright，openany）：仅对book 文档类有效，默认值为openright，即每章都从奇数页开始；如果设置为openany，则每章仅从新的一页开始，不管奇偶页。 正文：即\begin{document}和\end{document}之间的部分。 导言区： 夹在\documentclass{...}和\begin{document}之间的部分，放置需要使用的宏包，或者自己规定一些新的命令。如： 12345\documentclass&#123;article&#125;\newcommand&#123;\wuda&#125;&#123;中国湖北省武汉市武汉大学&#125;\begin&#123;document&#125; 你好，我来自\wuda。\end&#123;document&#125; 定义了一个新命令\wuda，得到的正文内容就是你好，我来自中国湖北省武汉市武汉大学。 可能你需要定义的东西太多，这时，可以将它们写在一个文档里，这种文档就是宏包，使用时，只需要在导言区用\usepackage{...}，即可插入该文档的内容。 例如，我们想书写一个数学符号⊵，该数学符号已经由宏包 amssymb 定义过了， 这样只需要在导言区写上\usepackage{amssymb}， 加载该宏包即可。 12345\documentclass&#123;ctexart&#125;\usepackage&#123;amssymb&#125;\begin&#123;document&#125; $\unrhd$\end&#123;document&#125;]]></content>
       <categories>
-        <category>Git</category>
+        <category>Latex</category>
       </categories>
       <tags>
-        <tag>Git</tag>
+        <tag>Latex 文档</tag>
       </tags>
   </entry>
   <entry>
@@ -529,6 +518,17 @@
       <tags>
         <tag>Git</tag>
         <tag>GitHub</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Git 工作区和暂存区]]></title>
+    <url>%2F2018%2F07%2F03%2Fgit-workspace-and-stage%2F</url>
+    <content type="text"><![CDATA[本文将对 Git 的工作区和暂存区做简单介绍。 工作区电脑里面能看到的目录，就是工作区。 版本库工作区有一个隐藏目录.git，不算工作区，而是 Git 的版本库。 暂存区Git 的版本库里面存了很多东西，其中最重要的就是暂存区，称为stage或者index，还有 Git 为我们自动创建的第一个分支master，以及指向master的一个指针HEAD。 git add命令实际上是把要提交的所有修改放到暂存区（stage），然后执行git commit命令，就可以将暂存区的所有修改提交到分支。 Git 跟踪管理修改而不是文件如果进行以下操作： 第一次修改 -&gt; git add -&gt; 第二次修改 -&gt; git commit 最终的结果是，第一次的修改被提交，而第二次的修改未被提交。 如果要提交第二次修改，可以继续使用git add和git commit命令。 当然，你还可以不进行第一次提交，进行以下操作: 第一次修改 -&gt; git add -&gt; 第二次修改 -&gt; git add -&gt; git commit 相当于把两次修改合并提交了。]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -717,19 +717,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Ubuntu 文件操作说明]]></title>
-    <url>%2F2016%2F11%2F10%2Fubuntu-file-operations%2F</url>
-    <content type="text"><![CDATA[本文将对 Ubuntu 系统中常用的文件操作命令做简单介绍。 文件及目录移动12345678# 将file1的文件名改为file2mv file1 file2# 将file1文件移动到目录dir1下，文件名仍为file1mv file1 dir1# 若目录dir2存在，则将目录dir1及其所有文件和子目录，移动到目录dir2下，新目录名仍为dir1。若目录dir2 不存在，则将dir1的目录名改为dir2mv dir1 dir2 创建一个空文件及目录12345# 创建一个空文件，名为filenametouch filename# 创建一个目录，名为dirnamemkdir dirname 删除文件及目录1234567891011121314# 删除一个空目录rmdir emptydir# 删除一个或多个文件rm file1 file2# 强制删除一个文件rm -f file# 删除一个非空目录下的所有文件rm -r dir# 强制删除非空目录下的所有文件，不提醒rm -rf dir 文件重命名12# //将file1.txt的文件名改为file2.txtrename 's/file1/file2' *.txt 详细信息见博客]]></content>
+    <title><![CDATA[tar 压缩解压操作说明]]></title>
+    <url>%2F2016%2F11%2F10%2Ftar-zip-and-unzip%2F</url>
+    <content type="text"><![CDATA[tar 是 Linux 系统中常用的压缩解压命令，本文将对其使用方法和参数说明做简单介绍。 使用方法12345678910 Usage: tar [OPTION...] [FILE]... Examples:# Create archive.tar from files foo and bar.tar -cf archive.tar foo bar# List all files in archive.tar verbosely.tar -tvf archive.tar# Extract all files from archive.tar.tar -xf archive.tar 必选参数 必选其中的一个参数，并且一次只能使用其中一个，不能同时使用多个 12345-c：创建一个压缩文件(create 的意思)-x：解压一个压缩文件-t：查看压缩文件里面的内容-r：向压缩文件末尾追加文件-u：更新原压缩文件中的内容 可选参数12345678910111213141516171819202122-z：有gzip属性，即需要用 gzip 压缩-j：有bz2属性，即需要用 bzip2 压缩-Z：有compress属性的-v ：压缩的过程中显示文件(显示所有过程)！这个常用，但不建议在后台执行时使用-O：将文件解开到标准输出-f ：使用文档名，请注意，在 f 之后要立即接文档名！不要再加参数！例如使用『 tar -zcvfP tfile sfile』就是错误的写法，要写成『 tar -zcvPf tfile sfile』才对喔！-p ：使用原文件的原来属性（属性不会依据使用者而变）-P ：可以使用绝对路径来压缩-N ：比后面接的日期(yyyy/mm/dd)还要新的才会被打包进新建的文件中--exclude FILE：在压缩的过程中，不要将 FILE 打包-f: 使用档案名字，切记，这个参数是最后一个参数，后面只能接档案名# 将所有.jpg的文件打成一个名为all.tar的包。-c是表示产生新的包，-f指定包的文件名tar -cf all.tar *.jpg# 将所有.gif的文件增加到all.tar的包里面去。-r是表示增加文件tar -rf all.tar *.gif# 更新原来tar包all.tar中logo.gif文件，-u是表示更新文件tar -uf all.tar logo.gif# 列出all.tar包中所有文件，-t是列出文件tar -tf all.tar# 解出all.tar包中所有文件，-x是解压tar -xf all.tar 查看12# 在不解压的情况下查看压缩包的内容tar -tf a.tar.gz 压缩1234567891011# 将目录里所有jpg文件打包成jpg.tartar –cvf jpg.tar *.jpg# 将目录里所有jpg文件打包成jpg.tar后，并且将其用gzip压缩，生成一个gzip压缩过的包，命名为jpg.tar.gztar –czf jpg.tar.gz *.jpg# 将目录里所有jpg文件打包成jpg.tar后，并且将其用bzip2压缩，生成一个bzip2压缩过的包，命名为jpg.tar.bz2tar –cjf jpg.tar.bz2 *.jpg# 将目录里所有jpg文件打包成jpg.tar后，并且将其用compress压缩，生成一个umcompress压缩过的包，命名为jpg.tar.Ztar –cZf jpg.tar.Z *.jpg 解压1234567*.tar 用 tar –xvf 解压*.gz 用 gzip -d 或者 gunzip 解压*.tar.gz 和 *.tgz 用 tar –xzf 解压*.bz2 用 bzip2 -d 或者 bunzip2 解压*.tar.bz2 用 tar –xjf 解压*.Z 用 uncompress 解压*.tar.Z 用 tar –xZf 解压]]></content>
       <categories>
         <category>Linux</category>
       </categories>
       <tags>
-        <tag>Ubuntu</tag>
-        <tag>mv</tag>
-        <tag>mkdir</tag>
-        <tag>rmdir</tag>
-        <tag>rm</tag>
-        <tag>rename</tag>
+        <tag>tar</tag>
       </tags>
   </entry>
   <entry>
@@ -745,14 +740,19 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[tar 压缩解压操作说明]]></title>
-    <url>%2F2016%2F11%2F10%2Ftar-zip-and-unzip%2F</url>
-    <content type="text"><![CDATA[tar 是 Linux 系统中常用的压缩解压命令，本文将对其使用方法和参数说明做简单介绍。 使用方法12345678910 Usage: tar [OPTION...] [FILE]... Examples:# Create archive.tar from files foo and bar.tar -cf archive.tar foo bar# List all files in archive.tar verbosely.tar -tvf archive.tar# Extract all files from archive.tar.tar -xf archive.tar 必选参数 必选其中的一个参数，并且一次只能使用其中一个，不能同时使用多个 12345-c：创建一个压缩文件(create 的意思)-x：解压一个压缩文件-t：查看压缩文件里面的内容-r：向压缩文件末尾追加文件-u：更新原压缩文件中的内容 可选参数12345678910111213141516171819202122-z：有gzip属性，即需要用 gzip 压缩-j：有bz2属性，即需要用 bzip2 压缩-Z：有compress属性的-v ：压缩的过程中显示文件(显示所有过程)！这个常用，但不建议在后台执行时使用-O：将文件解开到标准输出-f ：使用文档名，请注意，在 f 之后要立即接文档名！不要再加参数！例如使用『 tar -zcvfP tfile sfile』就是错误的写法，要写成『 tar -zcvPf tfile sfile』才对喔！-p ：使用原文件的原来属性（属性不会依据使用者而变）-P ：可以使用绝对路径来压缩-N ：比后面接的日期(yyyy/mm/dd)还要新的才会被打包进新建的文件中--exclude FILE：在压缩的过程中，不要将 FILE 打包-f: 使用档案名字，切记，这个参数是最后一个参数，后面只能接档案名# 将所有.jpg的文件打成一个名为all.tar的包。-c是表示产生新的包，-f指定包的文件名tar -cf all.tar *.jpg# 将所有.gif的文件增加到all.tar的包里面去。-r是表示增加文件tar -rf all.tar *.gif# 更新原来tar包all.tar中logo.gif文件，-u是表示更新文件tar -uf all.tar logo.gif# 列出all.tar包中所有文件，-t是列出文件tar -tf all.tar# 解出all.tar包中所有文件，-x是解压tar -xf all.tar 查看12# 在不解压的情况下查看压缩包的内容tar -tf a.tar.gz 压缩1234567891011# 将目录里所有jpg文件打包成jpg.tartar –cvf jpg.tar *.jpg# 将目录里所有jpg文件打包成jpg.tar后，并且将其用gzip压缩，生成一个gzip压缩过的包，命名为jpg.tar.gztar –czf jpg.tar.gz *.jpg# 将目录里所有jpg文件打包成jpg.tar后，并且将其用bzip2压缩，生成一个bzip2压缩过的包，命名为jpg.tar.bz2tar –cjf jpg.tar.bz2 *.jpg# 将目录里所有jpg文件打包成jpg.tar后，并且将其用compress压缩，生成一个umcompress压缩过的包，命名为jpg.tar.Ztar –cZf jpg.tar.Z *.jpg 解压1234567*.tar 用 tar –xvf 解压*.gz 用 gzip -d 或者 gunzip 解压*.tar.gz 和 *.tgz 用 tar –xzf 解压*.bz2 用 bzip2 -d 或者 bunzip2 解压*.tar.bz2 用 tar –xjf 解压*.Z 用 uncompress 解压*.tar.Z 用 tar –xZf 解压]]></content>
+    <title><![CDATA[Ubuntu 文件操作说明]]></title>
+    <url>%2F2016%2F11%2F10%2Fubuntu-file-operations%2F</url>
+    <content type="text"><![CDATA[本文将对 Ubuntu 系统中常用的文件操作命令做简单介绍。 文件及目录移动12345678# 将file1的文件名改为file2mv file1 file2# 将file1文件移动到目录dir1下，文件名仍为file1mv file1 dir1# 若目录dir2存在，则将目录dir1及其所有文件和子目录，移动到目录dir2下，新目录名仍为dir1。若目录dir2 不存在，则将dir1的目录名改为dir2mv dir1 dir2 创建一个空文件及目录12345# 创建一个空文件，名为filenametouch filename# 创建一个目录，名为dirnamemkdir dirname 删除文件及目录1234567891011121314# 删除一个空目录rmdir emptydir# 删除一个或多个文件rm file1 file2# 强制删除一个文件rm -f file# 删除一个非空目录下的所有文件rm -r dir# 强制删除非空目录下的所有文件，不提醒rm -rf dir 文件重命名12# //将file1.txt的文件名改为file2.txtrename 's/file1/file2' *.txt 详细信息见博客]]></content>
       <categories>
         <category>Linux</category>
       </categories>
       <tags>
-        <tag>tar</tag>
+        <tag>Ubuntu</tag>
+        <tag>mv</tag>
+        <tag>mkdir</tag>
+        <tag>rmdir</tag>
+        <tag>rm</tag>
+        <tag>rename</tag>
       </tags>
   </entry>
 </search>
