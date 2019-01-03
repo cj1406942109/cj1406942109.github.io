@@ -360,20 +360,6 @@
     </url>
 
     <url>
-        <loc>http://cj1406942109.github.io/tags/CSS-%E5%B8%83%E5%B1%80/</loc>
-        <lastmod>2018-12-21T14:13:08.728Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://cj1406942109.github.io/tags/%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD/</loc>
-        <lastmod>2018-12-21T14:13:08.728Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://cj1406942109.github.io/tags/JavaScript/</loc>
         <lastmod>2018-12-26T09:39:56.358Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -411,6 +397,48 @@
     <url>
         <loc>http://cj1406942109.github.io/tags/storybook/</loc>
         <lastmod>2018-12-26T15:57:53.304Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://cj1406942109.github.io/tags/CSS-%E5%B8%83%E5%B1%80/</loc>
+        <lastmod>2019-01-03T02:54:48.054Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://cj1406942109.github.io/tags/%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD/</loc>
+        <lastmod>2019-01-03T02:54:48.054Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://cj1406942109.github.io/tags/%E4%BC%AA%E5%85%83%E7%B4%A0/</loc>
+        <lastmod>2019-01-03T08:52:58.116Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://cj1406942109.github.io/tags/content/</loc>
+        <lastmod>2019-01-03T08:52:58.116Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://cj1406942109.github.io/tags/counter/</loc>
+        <lastmod>2019-01-03T08:52:58.116Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://cj1406942109.github.io/tags/quotes/</loc>
+        <lastmod>2019-01-03T08:52:58.116Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
