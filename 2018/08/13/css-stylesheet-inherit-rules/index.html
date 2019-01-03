@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="猿梦·随笔">
 <meta property="og:description" content="本文将详细介绍 CSS 中的样式层叠规则，主要从重要性、专用性和源码顺序进行说明计算的规则。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-03T09:48:40.130Z">
+<meta property="og:updated_time" content="2019-01-03T12:38:50.973Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS 样式层叠继承规则">
 <meta name="twitter:description" content="本文将详细介绍 CSS 中的样式层叠规则，主要从重要性、专用性和源码顺序进行说明计算的规则。">
@@ -459,7 +459,61 @@
 <blockquote>
 <p><strong>注意：</strong> 通用选择器（<code>*</code>）, 复合选择器（<code>+</code>, <code>&gt;</code>, <code>~</code>, ‘ ‘）和否定伪类 （<code>:not</code>）在专用性中无影响。</p>
 </blockquote>
-<p>示例：<br>| 选择器 | 千位 | 百位 | 十位 | 个位 | 合计值 |<br>| — | — | — | — | — | — |<br>| h1 | 0 | 0 | 0 | 1 | 0001 |<br>| #indentifier | 0 | 1 | 0 | 0 | 0100 |<br>| h1 + p::first-letter | 0 | 0 | 0 | 3 | 0003 |<br>| li &gt; a[href*=”zh-CN”] &gt; .inline-warning | 0 | 0 | 2 | 2 | 0022 |<br>| 没有选择器, 规则在一个元素的 <code>&lt;style&gt;</code> 属性里 | 1 | 0 | 0 | 0 | 1000 |</p>
+<p>示例：</p>
+<table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>千位</th>
+<th>百位</th>
+<th>十位</th>
+<th>个位</th>
+<th>合计值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>h1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0001</td>
+</tr>
+<tr>
+<td>#indentifier</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0100</td>
+</tr>
+<tr>
+<td>h1 + p::first-letter</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>3</td>
+<td>0003</td>
+</tr>
+<tr>
+<td>li &gt; a[href*=”zh-CN”] &gt; .inline-warning</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td>2</td>
+<td>0022</td>
+</tr>
+<tr>
+<td>没有选择器, 规则在一个元素的 <code>&lt;style&gt;</code> 属性里</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1000</td>
+</tr>
+</tbody>
+</table>
 <blockquote>
 <p><strong>注意：</strong> 如果多个选择器具有相同的重要性和专用性，则选择哪一个选择器取决于源码顺序。</p>
 </blockquote>
@@ -545,8 +599,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/13/css-validation-tools/" rel="prev" title="CSS 样式层叠继承规则">
-                CSS 样式层叠继承规则 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/13/css-validation-tools/" rel="prev" title="CSS 格式验证工具">
+                CSS 格式验证工具 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
